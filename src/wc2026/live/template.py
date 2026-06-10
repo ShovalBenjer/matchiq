@@ -1,153 +1,180 @@
-"""Self-contained dashboard renderer for the live data."""
+"""Premium self-contained dashboard renderer (2026 design system)."""
 
 from __future__ import annotations
 
 import json
 
+from wc2026.live.theme import CSS, FONTS, JS_HELPERS
+
 
 def render(data: dict) -> str:
-    return _HTML.replace("/*__DATA__*/", json.dumps(data, separators=(",", ":")))
+    return _HTML.replace("/*__CSS__*/", CSS).replace("<!--FONTS-->", FONTS)\
+                .replace("/*__HELPERS__*/", JS_HELPERS)\
+                .replace("/*__DATA__*/", json.dumps(data, separators=(",", ":")))
 
 
-_HTML = r"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>matchiq · World Cup 2026 live</title>
-<style>
- :root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--fg:#e6edf3;--muted:#8b949e;
-   --accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149}
- *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);
-   font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
- header{max-width:1180px;margin:0 auto;padding:22px 20px 6px}
- h1{margin:0;font-size:23px} .sub{color:var(--muted);font-size:13px;margin-top:2px}
- .banner{max-width:1180px;margin:10px auto;padding:9px 14px;background:#1c2128;
-   border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:12.5px}
- nav{max-width:1180px;margin:14px auto 0;display:flex;gap:8px;flex-wrap:wrap;padding:0 20px}
- nav button{background:var(--panel);color:var(--fg);border:1px solid var(--line);
-   padding:8px 13px;border-radius:8px;cursor:pointer;font-size:14px}
- nav button.active{border-color:var(--accent);color:var(--accent)}
- main{max-width:1180px;margin:14px auto 60px;padding:0 20px}
- .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;
-   overflow:hidden;margin-bottom:16px}
- .card h3{margin:0;padding:10px 14px;font-size:14px;border-bottom:1px solid var(--line);color:var(--muted)}
- table{width:100%;border-collapse:collapse;font-size:13.5px}
- th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line)}
- th{color:var(--muted);font-weight:600} tr:last-child td{border-bottom:none}
- td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
- .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;border:1px solid var(--line)}
- .value{color:var(--good);border-color:var(--good)} .muted{color:var(--muted)}
- .live{color:var(--bad);font-weight:700} .grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
- .hidden{display:none} code{background:#21262d;padding:1px 5px;border-radius:4px}
- .bar{height:6px;background:#21262d;border-radius:4px;overflow:hidden;min-width:60px}
- .bar>i{display:block;height:100%;background:var(--accent)}
- footer{max-width:1180px;margin:0 auto 40px;padding:0 20px;color:var(--muted);font-size:12px}
- .date{margin:14px 0 6px;color:var(--accent);font-size:13px;font-weight:600}
-</style></head><body>
-<header><h1>⚽ matchiq — World Cup 2026 <span class="live" id="livedot"></span></h1>
-<div class="sub">Live fixtures · group tables · winner & top scorer · book vs crowd value. Synced <span id="gen"></span>.</div></header>
-<div class="banner" id="banner"></div>
-<nav>
- <button data-tab="fixtures" class="active">Next fixtures</button>
- <button data-tab="groups">Groups</button>
- <button data-tab="ko">Knockout seeds</button>
- <button data-tab="winner">Winner</button>
- <button data-tab="scorer">Top scorer</button>
-</nav>
-<main>
- <section id="tab-fixtures"></section>
- <section id="tab-groups" class="hidden"></section>
- <section id="tab-ko" class="hidden"></section>
- <section id="tab-winner" class="card hidden"></section>
- <section id="tab-scorer" class="card hidden"></section>
+_HTML = r"""<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>matchiq · World Cup 2026 — live</title>
+<!--FONTS-->
+<style>/*__CSS__*/</style></head><body>
+<div class="aurora"><i></i><i></i><i></i></div>
+<header class="top"><div class="wrap topbar">
+  <div class="brand">⚽ matchiq <span class="dot" title="live"></span></div>
+  <span class="chip" id="countdown">—</span>
+  <div class="spacer"></div>
+  <span class="chip" id="src"></span>
+  <span class="chip" id="synced"></span>
+</div></header>
+<main class="wrap">
+  <section class="bento stagger" id="hero"></section>
+  <nav class="tabs" id="tabs"></nav>
+  <section class="view" id="v-fixtures"></section>
+  <section class="view hidden" id="v-groups"></section>
+  <section class="view hidden" id="v-ko"></section>
+  <section class="view hidden" id="v-winner"></section>
+  <section class="view hidden" id="v-scorer"></section>
 </main>
-<footer id="foot"></footer>
+<footer>
+  <div id="disc"></div>
+  <div class="crosslinks">
+    <a href="../index.html">← Hub</a>
+    <a href="../futures.html">Futures · winner · exact scores</a>
+    <a href="../RESEARCH.md">Research dossier</a>
+  </div>
+</footer>
 <script>
 const D=/*__DATA__*/;
-const pct=x=>x==null?'—':(100*x).toFixed(1)+'%';
-const el=(t,a={},h='')=>{const e=document.createElement(t);for(const k in a)e.setAttribute(k,a[k]);if(h)e.innerHTML=h;return e;};
-document.getElementById('gen').textContent=D.generated_at;
-document.getElementById('foot').textContent=D.disclaimer;
-document.getElementById('banner').innerHTML=
- `Sources: results & odds <code>${D.sources.results_odds}</code> · crowd <code>${D.sources.crowd}</code>. `+
- `Fixture probabilities are de-vigged book lines; <b>value</b> fires when the crowd's fair price beats the book.`;
+/*__HELPERS__*/
+document.getElementById('synced').textContent='synced '+new Date(D.generated_at).toUTCString().slice(5,22);
+document.getElementById('src').textContent=D.sources.results_odds+' · '+D.sources.crowd;
+document.getElementById('disc').textContent=D.disclaimer;
+
+const fx=D.fixtures||[];
+const upcoming=fx.filter(f=>f.status==='pre');
+const nextM=upcoming[0]||fx[0];
+const fav=(D.winner||[])[0]; const boot=(D.top_scorer||[])[0];
+const valueN=fx.filter(f=>f.value&&f.value.is_value).length;
+
+// ---- bento hero ----
+function hero(){
+  const h=document.getElementById('hero');h.innerHTML='';
+  if(nextM){
+    const b=nextM.book||{};
+    h.append(el('div',{class:'glass tile big grad'},
+      `<div class="k">Next kick-off</div>
+       <div class="v">${flag(nextM.home)}${nextM.home}<div style="font:600 14px Inter;color:var(--muted);margin:6px 0">vs</div>${flag(nextM.away)}${nextM.away}</div>
+       <div class="s" id="nextcd">—</div>
+       <div style="display:flex;gap:18px;margin-top:14px">
+        ${leg('Home',b.home)}${leg('Draw',b.draw)}${leg('Away',b.away)}
+       </div>`));
+  }
+  if(fav)h.append(el('div',{class:'glass tile grad'},
+    `<div class="k">Title favourite</div><div class="v"><span class="num" data-to="${(fav.prob*100).toFixed(2)}" data-dp="1" data-fmt="#%">0%</span></div>
+     <div class="s">${flag(fav.team)}${fav.team} · crowd</div>`));
+  if(boot)h.append(el('div',{class:'glass tile grad'},
+    `<div class="k">Golden Boot</div><div class="v" style="font-size:22px">${boot.player}</div>
+     <div class="s"><span class="num" data-to="${(boot.prob*100).toFixed(2)}" data-dp="1" data-fmt="#%">0%</span> · crowd</div>`));
+  h.append(el('div',{class:'glass tile wide'},
+    `<div class="k">Market watch</div>
+     <div class="v" style="font-size:22px">${valueN?valueN+' value flag'+(valueN>1?'s':''):'Market efficient'}</div>
+     <div class="s">${valueN? 'crowd beats the book on '+valueN+' line(s)':'book ≈ crowd within the vig — no free lunch in the opener'}</div>`));
+  // hero stat count-ups
+  h.querySelectorAll('.num').forEach(countUp);
+  if(nextM)tickCountdown();
+}
+function leg(label,p){return `<div><div class="k">${label}</div><div style="font:700 18px 'Space Grotesk'">${pct(p)}</div></div>`;}
+function tickCountdown(){
+  const t=new Date(nextM.date).getTime();
+  function upd(){const d=t-Date.now();const cd=document.getElementById('countdown');const nc=document.getElementById('nextcd');
+    if(d<=0){if(cd)cd.textContent='⚽ underway';if(nc)nc.textContent='Kick-off';return;}
+    const h=Math.floor(d/3.6e6),m=Math.floor(d%3.6e6/6e4),s=Math.floor(d%6e4/1e3);
+    const txt=(h?h+'h ':'')+m+'m '+s+'s';
+    if(cd)cd.textContent='next match in '+txt;
+    if(nc)nc.textContent=new Date(nextM.date).toUTCString().slice(0,22)+' · in '+txt;
+    setTimeout(upd,1000);}
+  upd();
+}
 
 // ---- fixtures by date ----
-function fixtures(){
- const s=document.getElementById('tab-fixtures');s.innerHTML='';
- const byDate={};(D.fixtures||[]).forEach(f=>{const d=(f.date||'').slice(0,10);(byDate[d]=byDate[d]||[]).push(f);});
- Object.keys(byDate).sort().forEach(d=>{
-  s.append(el('div',{class:'date'},d||'TBD'));
-  const card=el('div',{class:'card'});const t=el('table');
-  t.innerHTML=`<thead><tr><th>Match</th><th>Status</th><th class=num>Home</th><th class=num>Draw</th>
-   <th class=num>Away</th><th class=num>Crowd</th><th class=num>O/U</th><th>Value</th></tr></thead>`;
-  const tb=el('tbody');
-  byDate[d].forEach(f=>{
-   const b=f.book||{},c=f.crowd;
-   const crowd=c?`${pct(c.home)}/${pct(c.draw)}/${pct(c.away)}`:'—';
-   let val='<span class=muted>—</span>';
-   if(f.value&&f.value.is_value)val=`<span class="pill value">${f.value.outcome} +${pct(f.value.ev)} @${f.value.offered_odds}</span>`;
-   else if(f.value)val=`<span class=muted>${f.value.outcome} ${(100*f.value.ev).toFixed(1)}%</span>`;
-   const st=f.status==='in'?'<span class=live>LIVE</span>':(f.status==='post'?(f.score||'FT'):(f.date||'').slice(11,16));
-   tb.append(el('tr',{}, `<td><b>${f.home}</b> v <b>${f.away}</b>${f.details?` <span class=muted>(${f.details})</span>`:''}</td>
-    <td>${st}</td><td class=num>${pct(b.home)}</td><td class=num>${pct(b.draw)}</td><td class=num>${pct(b.away)}</td>
-    <td class=num>${crowd}</td><td class=num>${f.over_under??'—'}</td><td>${val}</td>`));
+function vFixtures(){
+  const s=document.getElementById('v-fixtures');s.innerHTML='';
+  const byDate={};fx.forEach(f=>{const d=(f.date||'').slice(0,10);(byDate[d]=byDate[d]||[]).push(f);});
+  Object.keys(byDate).sort().forEach(d=>{
+    s.append(el('div',{class:'datehead'},new Date(d).toUTCString().slice(0,16)||'TBD'));
+    const card=el('div',{class:'glass'});const t=el('table');
+    t.innerHTML=`<thead><tr><th>Match</th><th>Status</th><th class=num>Home</th><th class=num>Draw</th><th class=num>Away</th><th class=num>Crowd</th><th class=num>O/U</th><th>Edge</th></tr></thead>`;
+    const tb=el('tbody');
+    byDate[d].forEach(f=>{
+      const b=f.book||{},c=f.crowd;
+      const crowd=c?`${pct(c.home)} / ${pct(c.draw)} / ${pct(c.away)}`:'<span class=muted>—</span>';
+      let v='<span class=muted>—</span>';
+      if(f.value&&f.value.is_value)v=`<span class="pill value">${f.value.outcome} +${pct(f.value.ev)} @${f.value.offered_odds}</span>`;
+      else if(f.value)v=`<span class=muted>${f.value.outcome} ${(100*f.value.ev).toFixed(1)}%</span>`;
+      const st=f.status==='in'?'<span class=pill live>● LIVE</span>':(f.status==='post'?('<b>'+(f.score||'FT')+'</b>'):'<span class=muted>'+(f.date||'').slice(11,16)+'Z</span>');
+      tb.append(el('tr',{}, `<td class=team>${flag(f.home)}${f.home} <span class=muted>v</span> ${flag(f.away)}${f.away}${f.details?` <span class=muted style="font-size:11px">(${f.details})</span>`:''}</td>
+        <td>${st}</td><td class=num>${pct(b.home)}</td><td class=num>${pct(b.draw)}</td><td class=num>${pct(b.away)}</td>
+        <td class=num style="font-size:12px">${crowd}</td><td class=num>${f.over_under??'—'}</td><td>${v}</td>`));
+    });
+    t.append(tb);card.append(t);s.append(card);
   });
+  if(!fx.length)s.innerHTML='<div class="glass" style="padding:24px" >No fixtures in window.</div>';
+}
+// ---- groups (bento) ----
+function vGroups(){
+  const s=document.getElementById('v-groups');s.innerHTML='';
+  const g=el('div',{class:'grid2'});
+  Object.keys(D.groups||{}).sort().forEach(name=>{
+    const card=el('div',{class:'glass'});card.append(el('div',{class:'card-h'},`<span>${name}</span><span>top 2 advance</span>`));
+    const t=el('table');
+    t.append(el('thead',{},'<tr><th>Team</th><th class=num>P</th><th class=num>W</th><th class=num>D</th><th class=num>L</th><th class=num>GD</th><th class=num>Pts</th></tr>'));
+    const tb=el('tbody');
+    (D.groups[name]||[]).forEach((r,i)=>tb.append(el('tr',{},
+      `<td class=team>${i<2?'<span style="color:var(--good)">●</span> ':'<span class=muted>○</span> '}${flag(r.team)}${r.team}</td>
+       <td class=num>${r.P}</td><td class=num>${r.W}</td><td class=num>${r.D}</td><td class=num>${r.L}</td>
+       <td class=num>${r.GD>0?'+':''}${r.GD}</td><td class=num><b>${r.Pts}</b></td>`)));
+    t.append(tb);card.append(t);g.append(card);
+  });
+  s.append(g);
+  if(!Object.keys(D.groups||{}).length)s.innerHTML='<div class="glass" style="padding:24px">Standings unavailable.</div>';
+}
+// ---- knockout seeds ----
+function vKo(){
+  const s=document.getElementById('v-ko');s.innerHTML='';
+  const g=el('div',{class:'grid2'});
+  Object.keys(D.group_winners||{}).sort().forEach(grp=>{
+    const card=el('div',{class:'glass'});card.append(el('div',{class:'card-h'},`<span>Group ${grp}</span><span>win group</span>`));
+    const t=el('table');const tb=el('tbody');
+    (D.group_winners[grp]||[]).forEach(r=>tb.append(el('tr',{},
+      `<td class=team>${flag(r.team)}${r.team}</td>
+       <td class=num style="width:46%"><div class="bar"><i data-w="${Math.max(3,100*r.prob)}%"></i></div></td>
+       <td class=num>${pct(r.prob)}</td>`)));
+    t.append(tb);card.append(t);g.append(card);
+  });
+  s.append(g);
+  if(!Object.keys(D.group_winners||{}).length)s.innerHTML='<div class="glass" style="padding:24px">Knockout seeds appear once group markets open.</div>';
+}
+// ---- ranked tables (winner / scorer) ----
+function vRanked(id,rows,title,who){
+  const s=document.getElementById(id);s.innerHTML='';
+  const card=el('div',{class:'glass'});card.append(el('div',{class:'card-h'},`<span>${title}</span><span>crowd · fair odds</span>`));
+  const t=el('table');const tb=el('tbody');
+  (rows||[]).forEach((r,i)=>tb.append(el('tr',{},
+    `<td class=team><span class=muted>${i+1}</span>&nbsp; ${flag(r.team||r.player)}${r.team||r.player}</td>
+     <td class=num style="width:42%"><div class="bar"><i data-w="${Math.max(2,100*r.prob)}%"></i></div></td>
+     <td class=num>${pct(r.prob)}</td><td class=num>${r.fair_odds??'—'}</td>`)));
   t.append(tb);card.append(t);s.append(card);
- });
- if(!(D.fixtures||[]).length)s.innerHTML='<div class=card><h3>No fixtures in window</h3></div>';
+  if(!(rows||[]).length)s.innerHTML='<div class="glass" style="padding:24px">'+who+' market unavailable.</div>';
 }
-// ---- groups ----
-function groups(){
- const s=document.getElementById('tab-groups');s.innerHTML='';
- const g=el('div',{class:'grid2'});
- Object.keys(D.groups||{}).sort().forEach(name=>{
-  const card=el('div',{class:'card'});card.append(el('h3',{},name));
-  const t=el('table');t.innerHTML='<thead><tr><th>Team</th><th class=num>P</th><th class=num>W</th><th class=num>D</th><th class=num>L</th><th class=num>GD</th><th class=num>Pts</th></tr></thead>';
-  const tb=el('tbody');
-  (D.groups[name]||[]).forEach((r,i)=>tb.append(el('tr',{}, `<td>${i<2?'<b>'+r.team+'</b>':r.team}</td>
-   <td class=num>${r.P}</td><td class=num>${r.W}</td><td class=num>${r.D}</td><td class=num>${r.L}</td>
-   <td class=num>${r.GD>0?'+':''}${r.GD}</td><td class=num><b>${r.Pts}</b></td>`)));
-  t.append(tb);card.append(t);g.append(card);
- });
- s.append(g);
- if(!Object.keys(D.groups||{}).length)s.innerHTML='<div class=card><h3>Standings unavailable</h3></div>';
-}
-// ---- knockout seeds (projected group winners from crowd) ----
-function ko(){
- const s=document.getElementById('tab-ko');s.innerHTML='';
- const g=el('div',{class:'grid2'});
- Object.keys(D.group_winners||{}).sort().forEach(grp=>{
-  const card=el('div',{class:'card'});card.append(el('h3',{},'Group '+grp+' — projected'));
-  const t=el('table');t.innerHTML='<thead><tr><th>Team</th><th class=num>Win group</th></tr></thead>';
-  const tb=el('tbody');
-  (D.group_winners[grp]||[]).forEach(r=>{const tr=el('tr');
-   const td=el('td',{class:'num'});const bar=el('div',{class:'bar'});const i=el('i');i.style.width=Math.max(3,100*r.prob)+'%';bar.append(i);
-   td.append(bar);const sp=el('span',{class:'muted'});sp.style.marginLeft='6px';sp.textContent=pct(r.prob);td.append(sp);
-   tr.append(el('td',{}, r.team));tr.append(td);tb.append(tr);});
-  t.append(tb);card.append(t);g.append(card);
- });
- s.append(g);
- if(!Object.keys(D.group_winners||{}).length)s.innerHTML='<div class=card><h3>Knockout seeds available after group markets open</h3></div>';
-}
-// ---- ranked tables ----
-function ranked(secId,rows,label){
- const s=document.getElementById(secId);s.innerHTML='';
- s.append(el('h3',{},label));
- const t=el('table');t.innerHTML='<thead><tr><th>'+(rows[0]&&rows[0].player?'Player':'Team')+'</th><th class=num>Crowd prob</th><th class=num>Fair odds</th></tr></thead>';
- const tb=el('tbody');
- (rows||[]).forEach(r=>{const tr=el('tr');tr.append(el('td',{}, r.team||r.player));
-  const td=el('td',{class:'num'});const bar=el('div',{class:'bar'});const i=el('i');i.style.width=Math.max(2,100*r.prob)+'%';bar.append(i);
-  td.append(bar);const sp=el('span',{class:'muted'});sp.style.marginLeft='6px';sp.textContent=pct(r.prob);td.append(sp);tr.append(td);
-  tr.append(el('td',{class:'num'}, r.fair_odds??'—'));tb.append(tr);});
- t.append(tb);s.append(t);
- if(!(rows||[]).length)s.innerHTML='<h3>'+label+'</h3><div style="padding:12px" class=muted>market unavailable</div>';
-}
-fixtures();groups();ko();
-ranked('tab-winner',D.winner,'Tournament winner (Polymarket crowd)');
-ranked('tab-scorer',D.top_scorer,'Top scorer / Golden Boot (Polymarket crowd)');
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
- document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
- ['fixtures','groups','ko','winner','scorer'].forEach(t=>document.getElementById('tab-'+t).classList.toggle('hidden',t!==b.dataset.tab));
-});
+
+// ---- tabs ----
+const TABS=[['fixtures','Next fixtures'],['groups','Groups'],['ko','Knockout seeds'],['winner','Winner'],['scorer','Top scorer']];
+const nav=document.getElementById('tabs');
+TABS.forEach(([id,label],i)=>{const b=el('button',{class:'tab'+(i?'':' active')},label);b.onclick=()=>switchView(id,b);nav.append(b);});
+
+hero();vFixtures();vGroups();vKo();
+vRanked('v-winner',D.winner,'Tournament winner — Polymarket crowd','Winner');
+vRanked('v-scorer',D.top_scorer,'Golden Boot — Polymarket crowd','Top-scorer');
+fillBars(document.getElementById('v-fixtures'));
 </script></body></html>
 """

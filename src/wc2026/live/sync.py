@@ -205,10 +205,15 @@ class LiveSync:
         data = self.build(start)
         OUT_DIR.mkdir(parents=True, exist_ok=True)
         (OUT_DIR / "data.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
+        from wc2026.live.landing import render_landing
         from wc2026.live.template import render
 
         (OUT_DIR / "index.html").write_text(render(data), encoding="utf-8")
         (OUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
+        # Deployed site root = the premium landing hub (links live + futures).
+        docs_root = OUT_DIR.parent
+        (docs_root / "index.html").write_text(render_landing(), encoding="utf-8")
+        (docs_root / ".nojekyll").write_text("", encoding="utf-8")
         logger.info("wrote %s (fixtures=%d, groups=%d, winner=%d)",
                     OUT_DIR, len(data["fixtures"]), len(data["groups"]), len(data["winner"]))
         return data

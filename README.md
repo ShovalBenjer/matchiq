@@ -157,7 +157,16 @@ value flag + O/U), **Groups** (live ESPN standings), **Knockout seeds**
 | Fixtures, scores, 3-way odds (open+close), group standings | ESPN / DraftKings | none |
 | Winner, Golden Boot, group-winner & match crowd prices | Polymarket | none |
 
-`.github/workflows/live-sync.yml` re-syncs twice daily and commits `docs/live/`.
+The pages share one **2026 design system** (`wc2026/live/theme.py`): OKLCH color
+tokens, neo-glassmorphism, a bento hero grid, physics-based micro-interactions,
+the native View Transitions API, animated count-ups/probability bars, and
+`prefers-reduced-motion` support — all dependency-free single-file HTML. Site
+root is a landing hub (`docs/index.html`) linking the live dashboard, the futures
+page, and the research dossier.
+
+`.github/workflows/live-sync.yml` re-syncs twice daily and commits `docs/live/`;
+`.github/workflows/pages.yml` deploys `docs/` to GitHub Pages (auto-enables Pages
+via `configure-pages` `enablement: true`).
 A "value" flag fires only when the crowd's fair price beats the book's offered
 price — in practice the book and crowd agree to within the vig, so honest output
 shows **slightly negative EV** (no free lunch) rather than fabricated edges.

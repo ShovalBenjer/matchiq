@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T20:53:44+00:00",
+  "generated_at": "2026-06-10T21:18:07+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -752,9 +752,9 @@
         "away": 0.7888
       },
       "crowd": {
-        "home": 0.0637,
+        "home": 0.0633,
         "draw": 0.1345,
-        "away": 0.8018
+        "away": 0.8022
       },
       "clv": {
         "home_open": 7.0,
@@ -763,7 +763,7 @@
       },
       "value": {
         "outcome": "away",
-        "ev": -0.0098,
+        "ev": -0.0093,
         "is_value": false,
         "offered_odds": 1.235
       },
@@ -888,9 +888,9 @@
         "away": 0.0189
       },
       "crowd": {
-        "home": 0.9362,
-        "draw": 0.0443,
-        "away": 0.0194
+        "home": 0.9348,
+        "draw": 0.0438,
+        "away": 0.0214
       },
       "clv": {
         "home_open": 1.005,
@@ -899,7 +899,7 @@
       },
       "value": {
         "outcome": "home",
-        "ev": -0.0367,
+        "ev": -0.0381,
         "is_value": false,
         "offered_odds": 1.029
       },
@@ -1074,17 +1074,17 @@
       "away_id": "new_zealand",
       "score": "0-0",
       "over_under": 2.5,
-      "details": "IRN -110",
+      "details": "IRN -115",
       "book": {
-        "home": 0.5084,
-        "draw": 0.2768,
-        "away": 0.2148
+        "home": 0.5186,
+        "draw": 0.2721,
+        "away": 0.2093
       },
       "crowd": null,
       "clv": {
         "home_open": 1.645,
-        "home_close": 1.909,
-        "drift": 0.264
+        "home_close": 1.87,
+        "drift": 0.225
       },
       "value": null,
       "pick": "home"
@@ -1094,146 +1094,146 @@
     {
       "team": "Spain",
       "team_id": "spain",
-      "prob": 0.16,
-      "fair_odds": 6.25
+      "prob": 0.1599,
+      "fair_odds": 6.26
     },
     {
       "team": "France",
       "team_id": "france",
-      "prob": 0.1561,
-      "fair_odds": 6.4
+      "prob": 0.156,
+      "fair_odds": 6.41
     },
     {
       "team": "England",
       "team_id": "england",
-      "prob": 0.1055,
-      "fair_odds": 9.47
+      "prob": 0.1054,
+      "fair_odds": 9.48
     },
     {
       "team": "Portugal",
       "team_id": "portugal",
-      "prob": 0.1026,
-      "fair_odds": 9.74
+      "prob": 0.1025,
+      "fair_odds": 9.75
     },
     {
       "team": "Argentina",
       "team_id": "argentina",
-      "prob": 0.0832,
-      "fair_odds": 12.02
+      "prob": 0.0831,
+      "fair_odds": 12.04
     },
     {
       "team": "Brazil",
       "team_id": "brazil",
-      "prob": 0.0822,
-      "fair_odds": 12.17
+      "prob": 0.0821,
+      "fair_odds": 12.18
     },
     {
       "team": "Germany",
       "team_id": "germany",
-      "prob": 0.0511,
-      "fair_odds": 19.58
+      "prob": 0.051,
+      "fair_odds": 19.6
     },
     {
       "team": "Netherlands",
       "team_id": "netherlands",
       "prob": 0.0394,
-      "fair_odds": 25.38
+      "fair_odds": 25.41
     },
     {
       "team": "Norway",
       "team_id": "norway",
       "prob": 0.0238,
-      "fair_odds": 41.96
+      "fair_odds": 42.0
     },
     {
       "team": "Belgium",
       "team_id": "belgium",
       "prob": 0.0209,
-      "fair_odds": 47.81
+      "fair_odds": 47.86
     },
     {
       "team": "Colombia",
       "team_id": "colombia",
       "prob": 0.018,
-      "fair_odds": 55.57
+      "fair_odds": 55.62
     },
     {
       "team": "Japan",
       "team_id": "japan",
       "prob": 0.017,
-      "fair_odds": 58.74
+      "fair_odds": 58.8
     },
     {
       "team": "Morocco",
       "team_id": "morocco",
-      "prob": 0.0161,
-      "fair_odds": 62.3
+      "prob": 0.016,
+      "fair_odds": 62.36
     },
     {
       "team": "Mexico",
       "team_id": "mexico",
       "prob": 0.0131,
-      "fair_odds": 76.15
+      "fair_odds": 76.22
+    },
+    {
+      "team": "Usa",
+      "team_id": "usa",
+      "prob": 0.0121,
+      "fair_odds": 82.32
     },
     {
       "team": "Turkiye",
       "team_id": "turkiye",
-      "prob": 0.0122,
-      "fair_odds": 82.24
+      "prob": 0.0121,
+      "fair_odds": 82.32
     },
     {
       "team": "Switzerland",
       "team_id": "switzerland",
       "prob": 0.0112,
-      "fair_odds": 89.39
-    },
-    {
-      "team": "Usa",
-      "team_id": "usa",
-      "prob": 0.0112,
-      "fair_odds": 89.39
+      "fair_odds": 89.48
     },
     {
       "team": "Uruguay",
       "team_id": "uruguay",
       "prob": 0.0102,
-      "fair_odds": 97.9
+      "fair_odds": 98.0
     },
     {
       "team": "Croatia",
       "team_id": "croatia",
       "prob": 0.0092,
-      "fair_odds": 108.21
+      "fair_odds": 108.32
     },
     {
       "team": "Ecuador",
       "team_id": "ecuador",
       "prob": 0.0083,
-      "fair_odds": 120.94
+      "fair_odds": 121.06
     },
     {
       "team": "Senegal",
       "team_id": "senegal",
       "prob": 0.0073,
-      "fair_odds": 137.07
+      "fair_odds": 137.2
     },
     {
       "team": "Ivory Coast",
       "team_id": "ivory_coast",
       "prob": 0.0044,
-      "fair_odds": 228.44
+      "fair_odds": 228.67
     },
     {
       "team": "Austria",
       "team_id": "austria",
       "prob": 0.0044,
-      "fair_odds": 228.44
+      "fair_odds": 228.67
     },
     {
       "team": "Canada",
       "team_id": "canada",
       "prob": 0.0034,
-      "fair_odds": 293.71
+      "fair_odds": 294.0
     }
   ],
   "top_scorer": [
@@ -1259,8 +1259,8 @@
     },
     {
       "player": "Cristiano Ronaldo",
-      "prob": 0.0491,
-      "fair_odds": 20.38
+      "prob": 0.0496,
+      "fair_odds": 20.16
     },
     {
       "player": "Julian Alvarez",
@@ -1303,14 +1303,14 @@
       "fair_odds": 38.6
     },
     {
-      "player": "Lautaro Martinez",
+      "player": "Cody Gakpo",
       "prob": 0.0237,
       "fair_odds": 42.19
     },
     {
-      "player": "Cody Gakpo",
-      "prob": 0.0232,
-      "fair_odds": 43.19
+      "player": "Lautaro Martinez",
+      "prob": 0.0226,
+      "fair_odds": 44.24
     },
     {
       "player": "Igor Thiago",
@@ -1396,19 +1396,19 @@
     "D": [
       {
         "team": "Usa",
-        "prob": 0.3698
+        "prob": 0.3729
       },
       {
         "team": "T\u00fcrkiye",
-        "prob": 0.3649
+        "prob": 0.3631
       },
       {
         "team": "Paraguay",
-        "prob": 0.1726
+        "prob": 0.1717
       },
       {
         "team": "Australia",
-        "prob": 0.0927
+        "prob": 0.0922
       }
     ],
     "E": [
@@ -1432,11 +1432,11 @@
     "F": [
       {
         "team": "Netherlands",
-        "prob": 0.5217
+        "prob": 0.5214
       },
       {
         "team": "Japan",
-        "prob": 0.2682
+        "prob": 0.268
       },
       {
         "team": "Sweden",
@@ -1444,7 +1444,7 @@
       },
       {
         "team": "Tunisia",
-        "prob": 0.059
+        "prob": 0.0595
       }
     ],
     "G": [
@@ -1486,33 +1486,33 @@
     "I": [
       {
         "team": "France",
-        "prob": 0.6412
+        "prob": 0.6409
       },
       {
         "team": "Norway",
-        "prob": 0.2398
+        "prob": 0.2397
       },
       {
         "team": "Senegal",
-        "prob": 0.1126
+        "prob": 0.1125
       },
       {
         "team": "Iraq",
-        "prob": 0.0064
+        "prob": 0.0068
       }
     ],
     "J": [
       {
         "team": "Argentina",
-        "prob": 0.7065
+        "prob": 0.7072
       },
       {
         "team": "Austria",
-        "prob": 0.1828
+        "prob": 0.183
       },
       {
         "team": "Algeria",
-        "prob": 0.0963
+        "prob": 0.0955
       },
       {
         "team": "Jordan",
@@ -1540,15 +1540,15 @@
     "L": [
       {
         "team": "England",
-        "prob": 0.6878
+        "prob": 0.6874
       },
       {
         "team": "Croatia",
-        "prob": 0.2259
+        "prob": 0.2258
       },
       {
         "team": "Ghana",
-        "prob": 0.0577
+        "prob": 0.0582
       },
       {
         "team": "Panama",

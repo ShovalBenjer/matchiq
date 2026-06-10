@@ -155,9 +155,9 @@ def main() -> None:
     data = build(cfg, args.paths)
 
     DOCS.mkdir(parents=True, exist_ok=True)
-    (DOCS / "data.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
-    (DOCS / "index.html").write_text(render_html(data), encoding="utf-8")
-    print(f"Wrote {DOCS/'index.html'} and {DOCS/'data.json'}")
+    (DOCS / "futures.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
+    (DOCS / "futures.html").write_text(render_html(data), encoding="utf-8")
+    print(f"Wrote {DOCS/'futures.html'} and {DOCS/'futures.json'}")
     print(f"  winner rows={len(data['winner'])}  "
           f"top_scorer rows={len(data['top_scorer'])}  "
           f"fixtures={len(data['fixtures'])}")
