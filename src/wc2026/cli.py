@@ -103,6 +103,32 @@ def cmd_simulate(args) -> int:
     return 0
 
 
+def cmd_probe(args) -> int:
+    from wc2026.data.ingest import Ingestor
+    from wc2026.data.probe import probe_store
+
+    cfg = load_config(args.config)
+    store = Ingestor(cfg).run()
+    report = probe_store(store)
+    print(report)
+    return 0 if report.passed else 1
+
+
+def cmd_validate(args) -> int:
+    from wc2026.pipeline.orchestrator import Orchestrator
+    from wc2026.pipeline.validate import SemanticValidator
+
+    cfg = load_config(args.config)
+    orch = Orchestrator(cfg).fit()
+    validator = SemanticValidator(orch)
+    if args.narrate:
+        print(validator.narrate())
+        return 0
+    report = validator.run()
+    print(report)
+    return 0 if report.passed else 1
+
+
 def cmd_predict(args) -> int:
     orch = _orchestrator(args)
     match = next((m for m in orch.matches
@@ -143,6 +169,14 @@ def build_parser() -> argparse.ArgumentParser:
     ps.add_argument("--paths", type=int, default=20000)
     ps.add_argument("--top", type=int, default=15)
     ps.set_defaults(func=cmd_simulate)
+
+    pq = sub.add_parser("probe", help="SQL data-quality probe of the feature store")
+    pq.set_defaults(func=cmd_probe)
+
+    pv = sub.add_parser("validate", help="semantic/agentic sanity checks on outputs")
+    pv.add_argument("--narrate", action="store_true",
+                    help="natural-language verdict (Claude if available)")
+    pv.set_defaults(func=cmd_validate)
 
     pp = sub.add_parser("predict", help="predict a single fixture")
     pp.add_argument("--home", required=True)

@@ -55,6 +55,9 @@ class DixonColesConfig:
     decay_alpha: float = 0.0065  # per-day exponential time weight
     max_goals: int = 10
     home_advantage_init: float = 0.25
+    ridge: float = 1.0  # Gaussian-prior shrinkage on attack/defence (anti-blowup)
+    max_rate: float = 6.0  # hard clamp on expected goals per side (safety net)
+    param_bound: float = 2.0  # |attack|, |defence| box bound for the optimiser
 
 
 @dataclass
@@ -73,7 +76,12 @@ class EnsembleConfig:
         "chronos",
         "bradley_terry",
     )
-    meta_learner: str = "weighted"  # "weighted" (convex blend) | "average" | "logistic"
+    # "average" is the default: robust, calibrated, and faithful to the blueprint
+    # ("the meta-learner averages model outputs"). "weighted"/"logistic" are
+    # opt-in and can overfit on small validation samples.
+    meta_learner: str = "average"  # "average" | "weighted" (convex blend) | "logistic"
+    weight_shrinkage: float = 0.25  # pull convex weights toward equal (anti-collapse)
+    weight_floor: float = 0.05      # minimum weight retained per member
     cv_folds: int = 5
 
 

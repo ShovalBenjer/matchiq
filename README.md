@@ -69,6 +69,8 @@ wc2026 backtest --warmup 250                  # walk-forward calibration + betti
 wc2026 recommend --top 10                     # value bets for 2026 fixtures
 wc2026 simulate --paths 50000                 # winner + top-scorer Monte-Carlo
 wc2026 predict --home argentina --away brazil # one fixture, every model's view
+wc2026 probe                                  # SQL data-quality probe of the store
+wc2026 validate [--narrate]                   # semantic / agentic sanity checks
 ```
 
 Or the end-to-end demo:
@@ -138,16 +140,64 @@ four with best-third-placed qualification in the Monte-Carlo simulator, and a
 
 ---
 
-## Testing
+## Optimizers
+
+Each model uses the optimizer suited to its likelihood surface:
+
+| Component | Optimizer | Why |
+|---|---|---|
+| Dixon-Coles MLE | **L-BFGS-B** (bounded, `scipy`) | smooth, box-bounded, ~`2·n_teams+2` params |
+| Bradley-Terry-Davidson MAP | **L-BFGS-B** | smooth concave-ish with Gaussian prior |
+| TabPFN numpy fallback (softmax reg.) | **L-BFGS-B** with analytic gradient | convex multinomial logistic |
+| Tournament HMM | **Baum-Welch (EM)** | latent-variable MLE, closed-form M-step |
+| Ensemble convex weights | **Nelder-Mead** + restarts | tiny simplex-constrained, non-smooth with floor/shrinkage |
+| Simultaneous Kelly | **SLSQP** (constrained) | maximise log-wealth s.t. Σstake ≤ 1 |
+| Shin devig | **Brent root-finding** | 1-D root for the insider fraction `z` |
+| Chronos fallback (Holt) | closed-form recursion | no optimization needed |
+
+## Testing pyramid (correctness + a "human/agentic eye")
 
 ```bash
-pytest -q          # tests across all five layers
+pytest -q                 # unit · integration · e2e · data · semantic
+python -m wc2026.cli probe     # SQL data-quality probe of the store
+python -m wc2026.cli validate  # semantic / agentic sanity checks on outputs
 ```
 
+Five tiers, broad base to sharp tip:
+
+1. **Unit** — `tau` correction, Kelly math, devig, softmax-regression, Elo.
+2. **Integration** — feature builder ↔ models, ensemble blending, Monte-Carlo.
+3. **End-to-end** — `Orchestrator.fit/predict/recommend/update`, walk-forward `BackTester`.
+4. **Data** (`wc2026/data/probe.py`) — *probes the DuckDB store with SQL*: schema
+   contract, null/uniqueness/range/referential integrity, and football-domain
+   distribution sanity (home-win/draw rates, overround). Runs the real SQL path
+   when DuckDB is installed, else a pandas fallback.
+5. **Semantic / agentic-eye** (`wc2026/pipeline/validate.py`) — encodes analyst
+   reasoning as assertions: probabilities live on the simplex, expected goals
+   stay in a plausible band, the modal scoreline is low-scoring, Dixon-Coles and
+   Bradley-Terry rankings agree, the stronger team is favoured head-to-head, and
+   **the pick is coherent with the xG gap** (no draw pick against a clear
+   favourite). `validate --narrate` returns a Claude verdict when a key is set.
+
+> These last two tiers caught two real bugs during development: a Dixon-Coles
+> blow-up that produced a `0-10` "most likely" score (fixed with prior
+> shrinkage + a rate clamp), and a synthetic odds generator emitting decimal
+> odds below `1.0` (fixed by clipping implied probabilities). That is exactly
+> what they are for.
+
 The synthetic corpus is generated from a Poisson model, so the statistical
-models can genuinely *recover* the latent team strengths — the tests assert,
-e.g., that Dixon-Coles favours the strongest team over the weakest and that the
-back-tested model beats a uniform prior.
+models can genuinely *recover* the latent team strengths.
+
+## Static gambles page (GitHub Pages)
+
+```bash
+python scripts/build_site.py --paths 50000    # writes docs/index.html + docs/data.json
+```
+
+A self-contained page (data embedded — opens locally or on Pages) with three
+tabs: **group-fixture exact scores** (most-likely Dixon-Coles scoreline + 1X2 +
+value bet), **tournament winner**, and **top scorer**. Deploy with the included
+`.github/workflows/pages.yml` (Settings → Pages → Source: GitHub Actions).
 
 ## Project layout
 

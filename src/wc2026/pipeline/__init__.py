@@ -2,5 +2,7 @@
 
 from wc2026.pipeline.orchestrator import Orchestrator, MatchPrediction
 from wc2026.pipeline.backtest import BackTester, BacktestResult
+from wc2026.pipeline.validate import SemanticValidator, ValidationReport
 
-__all__ = ["Orchestrator", "MatchPrediction", "BackTester", "BacktestResult"]
+__all__ = ["Orchestrator", "MatchPrediction", "BackTester", "BacktestResult",
+           "SemanticValidator", "ValidationReport"]

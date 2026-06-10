@@ -97,14 +97,17 @@ class StackingEnsemble:
         p_correct = P[np.arange(n), :, y]  # (n, M) prob each member gave the truth
 
         uniform = np.full(M, 1.0 / M)
+        shrink = getattr(self.cfg, "weight_shrinkage", 0.25)
+        floor = getattr(self.cfg, "weight_floor", 0.05)
 
         def neg_ll(r):
             w = softmax(r)                  # convex weights via softmax param
             blended = p_correct @ w         # (n,)
             ll = -float(np.mean(safe_log(blended)))
-            # Light shrinkage toward equal weights preserves member diversity
-            # and guards against collapsing onto a single (possibly lucky) model.
-            ll += 0.05 * float(np.sum((w - uniform) ** 2))
+            # Strong shrinkage toward equal weights preserves member diversity and
+            # prevents the meta-learner from collapsing onto a single (lucky-on-the
+            # -validation-slice) model and discarding the calibrated scoreline view.
+            ll += shrink * float(np.sum((w - uniform) ** 2))
             return ll
 
         best = None
@@ -114,7 +117,10 @@ class StackingEnsemble:
                            options={"maxiter": 500, "xatol": 1e-4, "fatol": 1e-6})
             if best is None or res.fun < best.fun:
                 best = res
-        return softmax(best.x)
+        w = softmax(best.x)
+        # Hard floor + renormalise so every member keeps a voice.
+        w = np.maximum(w, floor)
+        return w / w.sum()
 
     # ------------------------------------------------------------------
     def predict(self, prob_dict: dict[str, OutcomeProb]) -> OutcomeProb:

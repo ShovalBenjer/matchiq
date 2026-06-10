@@ -133,8 +133,9 @@ class SyntheticSource(DataSource):
         p = np.array(probs)
         noisy = np.clip(p + self.rng.normal(0, self.odds_noise, 3), 1e-3, None)
         noisy /= noisy.sum()
-        # Apply an overround so implied probabilities sum to 1 + margin.
-        implied = noisy * (1 + self.margin)
+        # Apply an overround so implied probabilities sum to 1 + margin. Clip each
+        # implied probability below 1.0 so decimal odds are always > 1.0 (valid).
+        implied = np.clip(noisy * (1 + self.margin), 1e-3, 0.97)
         dec = 1.0 / implied
         return Odds(home=round(float(dec[0]), 3),
                     draw=round(float(dec[1]), 3),

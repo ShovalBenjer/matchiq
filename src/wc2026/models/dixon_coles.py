@@ -109,11 +109,16 @@ class DixonColesModel:
             t = np.where(m10, 1.0 + mu * rho, t)
             t = np.where(m11, 1.0 - rho, t)
             ll = ll_pois + safe_log(t)
-            penalty = 1e3 * attack.mean() ** 2 + 1e-3 * (attack @ attack + defense @ defense)
+            # Mean-zero anchor (identifiability) + Gaussian-prior ridge. The ridge
+            # shrinks teams with little (time-weighted) data toward league average,
+            # preventing the exp() blow-ups that produce absurd scorelines.
+            penalty = (1e3 * attack.mean() ** 2
+                       + 0.5 * self.cfg.ridge * (attack @ attack + defense @ defense))
             return -float(np.sum(w * ll)) + penalty
 
         x0 = np.concatenate(([self.home_adv, self.rho], np.zeros(n), np.zeros(n)))
-        bounds = [(-1.0, 1.5), (-0.9, 0.9)] + [(-3, 3)] * (2 * n)
+        b = self.cfg.param_bound
+        bounds = [(-1.0, 1.5), (-0.9, 0.9)] + [(-b, b)] * (2 * n)
         res = minimize(nll, x0, method="L-BFGS-B", bounds=bounds,
                        options={"maxiter": 200, "ftol": 1e-9})
         self.home_adv, self.rho, attack, defense = unpack(res.x)
@@ -143,7 +148,9 @@ class DixonColesModel:
         hf = 0.0 if neutral else 1.0
         lam = float(np.exp(self.home_adv * hf + att_h + def_a))
         mu = float(np.exp(att_a + def_h))
-        return lam, mu
+        # Hard clamp: even a degenerate fit can never emit nonsensical rates.
+        cap = self.cfg.max_rate
+        return min(max(lam, 1e-3), cap), min(max(mu, 1e-3), cap)
 
     def score_matrix(self, home_id: str, away_id: str, neutral: bool = True) -> np.ndarray:
         """Full ``(max_goals+1) x (max_goals+1)`` scoreline probability matrix."""

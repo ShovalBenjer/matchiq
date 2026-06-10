@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>matchiq · World Cup 2026 model gambles</title>
+<style>
+  :root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--fg:#e6edf3;--muted:#8b949e;
+        --accent:#58a6ff;--good:#3fb950;--warn:#d29922;}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--fg)}
+  header{padding:24px 20px 8px;max-width:1100px;margin:0 auto}
+  h1{margin:0 0 4px;font-size:24px}
+  .sub{color:var(--muted);font-size:13px}
+  .banner{max-width:1100px;margin:12px auto;padding:10px 14px;background:#1c2128;
+          border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:13px}
+  nav{max-width:1100px;margin:16px auto 0;display:flex;gap:8px;flex-wrap:wrap;padding:0 20px}
+  nav button{background:var(--panel);color:var(--fg);border:1px solid var(--line);
+             padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px}
+  nav button.active{border-color:var(--accent);color:var(--accent)}
+  main{max-width:1100px;margin:16px auto 60px;padding:0 20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+        padding:4px 0;overflow:hidden;margin-bottom:18px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .bar{height:7px;background:#21262d;border-radius:4px;overflow:hidden;min-width:80px}
+  .bar > i{display:block;height:100%;background:var(--accent)}
+  .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;
+        border:1px solid var(--line)}
+  .value{color:var(--good);border-color:var(--good)}
+  .muted{color:var(--muted)}
+  .score{font-weight:700;font-variant-numeric:tabular-nums}
+  .hidden{display:none}
+  code{background:#21262d;padding:1px 5px;border-radius:4px}
+  footer{max-width:1100px;margin:0 auto 40px;padding:0 20px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚽ matchiq — World Cup 2026 model gambles</h1>
+  <div class="sub">Tournament winner · top scorer · first group-fixture exact scores. Generated <span id="gen"></span>.</div>
+</header>
+<div class="banner" id="banner"></div>
+<nav>
+  <button data-tab="fixtures" class="active">Group fixtures (exact score)</button>
+  <button data-tab="winner">Tournament winner</button>
+  <button data-tab="scorer">Top scorer</button>
+</nav>
+<main>
+  <section id="tab-fixtures" class="card"></section>
+  <section id="tab-winner" class="card hidden"></section>
+  <section id="tab-scorer" class="card hidden"></section>
+</main>
+<footer>
+  Educational model output — not betting advice. Probabilities are the model's, not
+  the market's. On an efficient market the long-run result is break-even minus vig.
+</footer>
+<script>
+const DATA = {"generated_at":"2026-06-10T05:47:29+00:00","meta":{"n_matches":858,"n_teams":48,"mc_paths":20000,"tabpfn_backend":"numpy_softmax","chronos_backend":"holt","news_backend":"rule_based","ensemble_meta":"average","ensemble_weights":{"dixon_coles":0.25,"tabpfn":0.25,"chronos":0.25,"bradley_terry":0.25},"edge_threshold":0.03,"kelly_fraction":0.25,"corpus":"synthetic"},"winner":[{"team":"Argentina","team_id":"argentina","prob":0.4037,"fair_odds":2.48},{"team":"Brazil","team_id":"brazil","prob":0.1689,"fair_odds":5.92},{"team":"Portugal","team_id":"portugal","prob":0.1169,"fair_odds":8.55},{"team":"Mexico","team_id":"mexico","prob":0.11,"fair_odds":9.09},{"team":"Japan","team_id":"japan","prob":0.0653,"fair_odds":15.33},{"team":"Iran","team_id":"iran","prob":0.0372,"fair_odds":26.85},{"team":"Belgium","team_id":"belgium","prob":0.0161,"fair_odds":62.11},{"team":"Canada","team_id":"canada","prob":0.0147,"fair_odds":68.03},{"team":"France","team_id":"france","prob":0.0135,"fair_odds":74.35},{"team":"Netherlands","team_id":"netherlands","prob":0.0131,"fair_odds":76.63},{"team":"Morocco","team_id":"morocco","prob":0.0075,"fair_odds":134.23},{"team":"Germany","team_id":"germany","prob":0.006,"fair_odds":166.67},{"team":"Australia","team_id":"australia","prob":0.0051,"fair_odds":196.08},{"team":"Norway","team_id":"norway","prob":0.0034,"fair_odds":298.51},{"team":"USA","team_id":"usa","prob":0.0029,"fair_odds":344.83},{"team":"Wales","team_id":"wales","prob":0.0022,"fair_odds":454.55},{"team":"Colombia","team_id":"colombia","prob":0.0017,"fair_odds":588.24},{"team":"Peru","team_id":"peru","prob":0.0014,"fair_odds":714.29},{"team":"Senegal","team_id":"senegal","prob":0.0012,"fair_odds":833.33},{"team":"Switzerland","team_id":"switzerland","prob":0.001,"fair_odds":1000.0},{"team":"Ivory Coast","team_id":"ivory_coast","prob":0.0009,"fair_odds":1052.63},{"team":"Nigeria","team_id":"nigeria","prob":0.0009,"fair_odds":1111.11},{"team":"Qatar","team_id":"qatar","prob":0.0008,"fair_odds":1176.47},{"team":"Uruguay","team_id":"uruguay","prob":0.0008,"fair_odds":1250.0}],"top_scorer":[{"player":"Argentina Striker 1","team":"Argentina","prob":0.1464,"fair_odds":6.83,"p_5plus":0.4262,"exp_goals":4.36},{"player":"Argentina Striker 2","team":"Argentina","prob":0.0976,"fair_odds":10.25,"p_5plus":0.349,"exp_goals":3.82},{"player":"Argentina Striker 3","team":"Argentina","prob":0.0824,"fair_odds":12.14,"p_5plus":0.3088,"exp_goals":3.59},{"player":"Brazil Striker 2","team":"Brazil","prob":0.0682,"fair_odds":14.65,"p_5plus":0.2734,"exp_goals":3.34},{"player":"Brazil Striker 1","team":"Brazil","prob":0.0566,"fair_odds":17.65,"p_5plus":0.2493,"exp_goals":3.19},{"player":"Japan Striker 1","team":"Japan","prob":0.0357,"fair_odds":28.01,"p_5plus":0.1791,"exp_goals":2.72},{"player":"Belgium Striker 1","team":"Belgium","prob":0.03,"fair_odds":33.33,"p_5plus":0.1594,"exp_goals":2.56},{"player":"Portugal Striker 1","team":"Portugal","prob":0.03,"fair_odds":33.39,"p_5plus":0.1722,"exp_goals":2.67},{"player":"Brazil Striker 3","team":"Brazil","prob":0.0288,"fair_odds":34.72,"p_5plus":0.1661,"exp_goals":2.64},{"player":"Netherlands Striker 1","team":"Netherlands","prob":0.0212,"fair_odds":47.17,"p_5plus":0.1346,"exp_goals":2.35},{"player":"Mexico Striker 1","team":"Mexico","prob":0.0206,"fair_odds":48.54,"p_5plus":0.139,"exp_goals":2.44},{"player":"Morocco Striker 1","team":"Morocco","prob":0.0172,"fair_odds":58.14,"p_5plus":0.1151,"exp_goals":2.19},{"player":"Portugal Striker 2","team":"Portugal","prob":0.0156,"fair_odds":64.31,"p_5plus":0.1124,"exp_goals":2.24},{"player":"Uruguay Striker 1","team":"Uruguay","prob":0.0151,"fair_odds":66.23,"p_5plus":0.1006,"exp_goals":2.05},{"player":"France Striker 2","team":"France","prob":0.0146,"fair_odds":68.73,"p_5plus":0.1026,"exp_goals":2.09},{"player":"Croatia Striker 1","team":"Croatia","prob":0.0141,"fair_odds":70.92,"p_5plus":0.0974,"exp_goals":2.04},{"player":"Mexico Striker 2","team":"Mexico","prob":0.0136,"fair_odds":73.53,"p_5plus":0.0993,"exp_goals":2.14},{"player":"Colombia Striker 1","team":"Colombia","prob":0.0126,"fair_odds":79.37,"p_5plus":0.0882,"exp_goals":1.93},{"player":"Belgium Striker 3","team":"Belgium","prob":0.0122,"fair_odds":81.63,"p_5plus":0.0886,"exp_goals":2.0},{"player":"Morocco Striker 2","team":"Morocco","prob":0.0116,"fair_odds":85.84,"p_5plus":0.0812,"exp_goals":1.92}],"fixtures":[{"group":"G1","match_id":"WC2026-G001","date":"2026-06-11","home":"Argentina","away":"Brazil","prob_1x2":{"home":0.5098,"draw":0.2295,"away":0.2606},"most_likely_score":"1-0","scorelines":[{"score":"1-0","prob":0.1261},{"score":"2-1","prob":0.0966},{"score":"0-1","prob":0.0931},{"score":"2-0","prob":0.0845},{"score":"1-1","prob":0.0837}],"expected_goals":[1.73,1.14],"pick_1x2":"home","odds":{"home":2.354,"draw":2.994,"away":3.32},"value":{"outcome":"home","edge":0.1091,"is_value":true,"fair_odds":2.5}},{"group":"G2","match_id":"WC2026-G007","date":"2026-06-17","home":"Spain","away":"Portugal","prob_1x2":{"home":0.2865,"draw":0.2492,"away":0.4643},"most_likely_score":"0-1","scorelines":[{"score":"0-1","prob":0.1621},{"score":"0-2","prob":0.1497},{"score":"0-3","prob":0.1058},{"score":"1-2","prob":0.0881},{"score":"1-3","prob":0.0623}],"expected_goals":[0.59,2.12],"pick_1x2":"away","odds":{"home":2.581,"draw":2.696,"away":3.316},"value":{"outcome":"away","edge":0.1797,"is_value":true,"fair_odds":3.51}},{"group":"G3","match_id":"WC2026-G013","date":"2026-06-23","home":"Belgium","away":"Italy","prob_1x2":{"home":0.6236,"draw":0.2134,"away":0.163},"most_likely_score":"1-0","scorelines":[{"score":"1-0","prob":0.154},{"score":"2-0","prob":0.1151},{"score":"2-1","prob":0.0974},{"score":"0-1","prob":0.0862},{"score":"1-1","prob":0.0803}],"expected_goals":[1.81,0.85],"pick_1x2":"home","odds":{"home":2.071,"draw":3.549,"away":3.385},"value":{"outcome":"home","edge":0.1681,"is_value":true,"fair_odds":2.2}},{"group":"G4","match_id":"WC2026-G019","date":"2026-06-29","home":"Colombia","away":"USA","prob_1x2":{"home":0.4248,"draw":0.3127,"away":0.2626},"most_likely_score":"0-0","scorelines":[{"score":"0-0","prob":0.3116},{"score":"0-1","prob":0.2175},{"score":"1-0","prob":0.1992},{"score":"1-1","prob":0.0744},{"score":"0-2","prob":0.055}],"expected_goals":[0.52,0.57],"pick_1x2":"home","odds":{"home":3.235,"draw":2.645,"away":2.683},"value":{"outcome":"home","edge":0.1331,"is_value":true,"fair_odds":3.43}},{"group":"G5","match_id":"WC2026-G025","date":"2026-07-05","home":"Morocco","away":"Senegal","prob_1x2":{"home":0.3897,"draw":0.3335,"away":0.2768},"most_likely_score":"0-0","scorelines":[{"score":"0-0","prob":0.411},{"score":"1-0","prob":0.2469},{"score":"0-1","prob":0.1523},{"score":"2-0","prob":0.061},{"score":"1-1","prob":0.0535}],"expected_goals":[0.53,0.31],"pick_1x2":"home","odds":{"home":2.828,"draw":3.62,"away":2.325},"value":{"outcome":"draw","edge":0.0729,"is_value":true,"fair_odds":3.84}},{"group":"G6","match_id":"WC2026-G031","date":"2026-07-11","home":"Switzerland","away":"Denmark","prob_1x2":{"home":0.3937,"draw":0.2899,"away":0.3165},"most_likely_score":"1-0","scorelines":[{"score":"1-0","prob":0.2196},{"score":"2-0","prob":0.1262},{"score":"0-1","prob":0.1177},{"score":"0-0","prob":0.1136},{"score":"1-1","prob":0.0876}],"expected_goals":[1.33,0.62],"pick_1x2":"home","odds":{"home":2.339,"draw":3.374,"away":2.975},"value":{"outcome":"draw","edge":0.0103,"is_value":false,"fair_odds":3.58}},{"group":"G7","match_id":"WC2026-G037","date":"2026-07-17","home":"Ecuador","away":"Peru","prob_1x2":{"home":0.2909,"draw":0.2888,"away":0.4203},"most_likely_score":"0-1","scorelines":[{"score":"0-1","prob":0.2008},{"score":"1-0","prob":0.1444},{"score":"0-0","prob":0.1122},{"score":"0-2","prob":0.0975},{"score":"1-1","prob":0.097}],"expected_goals":[0.77,1.16],"pick_1x2":"away","odds":{"home":2.494,"draw":3.092,"away":2.979},"value":{"outcome":"away","edge":0.1037,"is_value":true,"fair_odds":3.16}},{"group":"G8","match_id":"WC2026-G043","date":"2026-07-23","home":"Saudi Arabia","away":"Nigeria","prob_1x2":{"home":0.3748,"draw":0.3217,"away":0.3035},"most_likely_score":"0-1","scorelines":[{"score":"0-1","prob":0.2466},{"score":"0-0","prob":0.1984},{"score":"1-0","prob":0.1476},{"score":"0-2","prob":0.1044},{"score":"1-1","prob":0.0852}],"expected_goals":[0.52,0.96],"pick_1x2":"home","odds":{"home":2.84,"draw":3.482,"away":2.377},"value":{"outcome":"draw","edge":0.0508,"is_value":true,"fair_odds":3.69}},{"group":"G9","match_id":"WC2026-G049","date":"2026-07-29","home":"Tunisia","away":"Cameroon","prob_1x2":{"home":0.3224,"draw":0.2973,"away":0.3803},"most_likely_score":"1-0","scorelines":[{"score":"1-0","prob":0.1335},{"score":"0-1","prob":0.1212},{"score":"1-1","prob":0.0933},{"score":"2-1","prob":0.0866},{"score":"1-2","prob":0.0761}],"expected_goals":[1.39,1.22],"pick_1x2":"away","odds":{"home":3.199,"draw":3.727,"away":2.087},"value":{"outcome":"draw","edge":0.0442,"is_value":true,"fair_odds":3.95}},{"group":"G10","match_id":"WC2026-G055","date":"2026-08-04","home":"Sweden","away":"Austria","prob_1x2":{"home":0.407,"draw":0.2898,"away":0.3033},"most_likely_score":"2-1","scorelines":[{"score":"2-1","prob":0.0845},{"score":"3-1","prob":0.0748},{"score":"2-2","prob":0.0609},{"score":"1-0","prob":0.0602},{"score":"2-0","prob":0.0586}],"expected_goals":[2.65,1.44],"pick_1x2":"home","odds":{"home":2.533,"draw":2.891,"away":3.132},"value":{"outcome":"home","edge":0.0345,"is_value":true,"fair_odds":2.68}},{"group":"G11","match_id":"WC2026-G061","date":"2026-08-10","home":"Scotland","away":"Norway","prob_1x2":{"home":0.2285,"draw":0.314,"away":0.4575},"most_likely_score":"0-4","scorelines":[{"score":"0-4","prob":0.0731},{"score":"1-4","prob":0.0695},{"score":"0-5","prob":0.0672},{"score":"1-5","prob":0.0638},{"score":"0-3","prob":0.0637}],"expected_goals":[0.95,4.59],"pick_1x2":"away","odds":{"home":3.189,"draw":3.288,"away":2.261},"value":{"outcome":"away","edge":0.0403,"is_value":true,"fair_odds":2.4}},{"group":"G12","match_id":"WC2026-G067","date":"2026-08-16","home":"Jamaica","away":"Qatar","prob_1x2":{"home":0.2512,"draw":0.2627,"away":0.4861},"most_likely_score":"0-1","scorelines":[{"score":"0-1","prob":0.216},{"score":"0-2","prob":0.1641},{"score":"0-3","prob":0.0931},{"score":"0-0","prob":0.0902},{"score":"1-2","prob":0.0781}],"expected_goals":[0.48,1.7],"pick_1x2":"away","odds":{"home":2.227,"draw":2.589,"away":4.453},"value":{"outcome":"away","edge":0.2742,"is_value":true,"fair_odds":4.72}}]};
+const pct = x => (100*x).toFixed(1) + '%';
+const el = (t,a={},...k)=>{const e=document.createElement(t);for(const[p,v]of Object.entries(a)){
+  if(p==='class')e.className=v;else if(p==='html')e.innerHTML=v;else e.setAttribute(p,v);}
+  k.forEach(c=>e.append(c));return e;};
+function bar(p){const w=el('div',{class:'bar'});const i=document.createElement('i');
+  i.style.width=Math.max(2,100*p)+'%';w.append(i);return w;}
+
+document.getElementById('gen').textContent = DATA.generated_at;
+const m = DATA.meta;
+document.getElementById('banner').innerHTML =
+  `Corpus: <code>${m.corpus}</code> · ${m.n_matches} matches / ${m.n_teams} teams · `+
+  `Monte-Carlo ${m.mc_paths.toLocaleString()} paths · ensemble <code>${m.ensemble_meta}</code> · `+
+  `TabPFN <code>${m.tabpfn_backend}</code>, Chronos <code>${m.chronos_backend}</code>, `+
+  `news <code>${m.news_backend}</code> · edge≥${pct(m.edge_threshold)}, `+
+  `${m.kelly_fraction}-Kelly`;
+
+function tableSort(table, rows, render){
+  let dir = {};
+  table.querySelectorAll('th[data-key]').forEach(th=>{
+    th.onclick=()=>{const k=th.dataset.key;dir[k]=!dir[k];
+      rows.sort((a,b)=>{const x=a[k],y=b[k];return (dir[k]?1:-1)*((x>y)-(x<y));});
+      render();};});
+}
+
+function renderFixtures(){
+  const sec=document.getElementById('tab-fixtures');sec.innerHTML='';
+  const t=el('table');
+  t.innerHTML=`<thead><tr><th>Grp</th><th>Match</th><th class="num">xG</th>
+    <th>Most likely</th><th>Top scorelines</th><th class="num">H</th><th class="num">D</th>
+    <th class="num">A</th><th>Pick</th><th>Value bet</th></tr></thead>`;
+  const tb=el('tbody');
+  DATA.fixtures.forEach(f=>{
+    const sl=f.scorelines.map(s=>`${s.score} <span class="muted">${pct(s.prob)}</span>`).join(' · ');
+    let val='<span class="muted">—</span>';
+    if(f.value && f.value.is_value)
+      val=`<span class="pill value">${f.value.outcome} +${pct(f.value.edge)}</span>`;
+    else if(f.value) val=`<span class="muted">${f.value.outcome} ${(100*f.value.edge).toFixed(1)}%</span>`;
+    tb.append(el('tr',{html:
+      `<td>${f.group}</td><td><b>${f.home}</b> vs <b>${f.away}</b><br>
+       <span class="muted">${f.date}</span></td>
+       <td class="num">${f.expected_goals[0]}–${f.expected_goals[1]}</td>
+       <td class="score">${f.most_likely_score}</td>
+       <td style="font-size:12px">${sl}</td>
+       <td class="num">${pct(f.prob_1x2.home)}</td>
+       <td class="num">${pct(f.prob_1x2.draw)}</td>
+       <td class="num">${pct(f.prob_1x2.away)}</td>
+       <td><span class="pill">${f.pick_1x2}</span></td>
+       <td>${val}</td>`}));
+  });
+  t.append(tb);sec.append(el('div',{html:'<div style="padding:10px 12px" class="muted">'+
+    'Exact score = most likely Dixon-Coles scoreline. 1X2 = final ensemble probabilities.</div>'}),t);
+}
+
+function renderRanked(secId, rows, cols){
+  const sec=document.getElementById(secId);sec.innerHTML='';
+  const t=el('table');const head='<tr>'+cols.map(c=>
+    `<th class="${c.num?'num':''}" data-key="${c.key}">${c.label}</th>`).join('')+'</tr>';
+  t.innerHTML='<thead>'+head+'</thead>';
+  const tb=el('tbody');
+  const render=()=>{tb.innerHTML='';rows.forEach((r,i)=>{
+    const tr=el('tr');cols.forEach(c=>{
+      let v=r[c.key];
+      if(c.key==='prob'){const td=el('td',{class:'num'});td.append(bar(v));
+        const s=el('span',{class:'muted'});s.style.marginLeft='8px';s.textContent=pct(v);
+        td.append(s);tr.append(td);return;}
+      if(c.pctf) v=pct(v);
+      tr.append(el('td',{class:c.num?'num':'',html:String(v)}));
+    });tb.append(tr);});};
+  render();t.append(tb);tableSort(t,rows,render);sec.append(t);
+}
+
+renderFixtures();
+renderRanked('tab-winner', DATA.winner, [
+  {key:'team',label:'Team'},{key:'prob',label:'P(win)',num:true},
+  {key:'fair_odds',label:'Fair odds',num:true}]);
+renderRanked('tab-scorer', DATA.top_scorer, [
+  {key:'player',label:'Player'},{key:'team',label:'Team'},
+  {key:'prob',label:'P(top scorer)',num:true},
+  {key:'p_5plus',label:'P(5+)',num:true,pctf:true},
+  {key:'exp_goals',label:'xGoals',num:true},
+  {key:'fair_odds',label:'Fair odds',num:true}]);
+
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  ['fixtures','winner','scorer'].forEach(t=>
+    document.getElementById('tab-'+t).classList.toggle('hidden', t!==b.dataset.tab));
+});
+</script>
+</body>
+</html>
