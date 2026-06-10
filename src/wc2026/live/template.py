@@ -28,6 +28,8 @@ _HTML = r"""<!doctype html><html lang="en"><head>
 </div></header>
 <main class="wrap">
   <section class="bento stagger" id="hero"></section>
+  <section id="chaos"></section>
+  <div id="legend" class="glass" style="padding:10px 16px;margin:10px 0;font-size:12px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap"></div>
   <nav class="tabs" id="tabs"></nav>
   <section class="view" id="v-fixtures"></section>
   <section class="view hidden" id="v-groups"></section>
@@ -103,18 +105,20 @@ function vFixtures(){
   Object.keys(byDate).sort().forEach(d=>{
     s.append(el('div',{class:'datehead'},new Date(d).toUTCString().slice(0,16)||'TBD'));
     const card=el('div',{class:'glass'});const t=el('table');
-    t.innerHTML=`<thead><tr><th>Match</th><th>Status</th><th class=num>Home</th><th class=num>Draw</th><th class=num>Away</th><th class=num>Crowd</th><th class=num>O/U</th><th>Edge</th></tr></thead>`;
+    t.innerHTML=`<thead><tr><th>Match</th><th>Status</th><th class=num>Book H/D/A</th><th class=num>Crowd</th><th class=num title="Dixon-Coles model on real results">Model</th><th class=num>O/U</th><th>Edge</th></tr></thead>`;
     const tb=el('tbody');
     byDate[d].forEach(f=>{
-      const b=f.book||{},c=f.crowd;
+      const b=f.book||{},c=f.crowd,m=f.model;
+      const book=b.home!=null?`${pct(b.home)} / ${pct(b.draw)} / ${pct(b.away)}`:'<span class=muted>—</span>';
       const crowd=c?`${pct(c.home)} / ${pct(c.draw)} / ${pct(c.away)}`:'<span class=muted>—</span>';
+      const model=m?`<span style="color:var(--accent)">${pct(m.home)} / ${pct(m.draw)} / ${pct(m.away)}</span>`:'<span class=muted>—</span>';
       let v='<span class=muted>—</span>';
       if(f.value&&f.value.is_value)v=`<span class="pill value">${f.value.outcome} +${pct(f.value.ev)} @${f.value.offered_odds}</span>`;
       else if(f.value)v=`<span class=muted>${f.value.outcome} ${(100*f.value.ev).toFixed(1)}%</span>`;
       const st=f.status==='in'?'<span class=pill live>● LIVE</span>':(f.status==='post'?('<b>'+(f.score||'FT')+'</b>'):'<span class=muted>'+(f.date||'').slice(11,16)+'Z</span>');
       tb.append(el('tr',{}, `<td class=team>${flag(f.home)}${f.home} <span class=muted>v</span> ${flag(f.away)}${f.away}${f.details?` <span class=muted style="font-size:11px">(${f.details})</span>`:''}</td>
-        <td>${st}</td><td class=num>${pct(b.home)}</td><td class=num>${pct(b.draw)}</td><td class=num>${pct(b.away)}</td>
-        <td class=num style="font-size:12px">${crowd}</td><td class=num>${f.over_under??'—'}</td><td>${v}</td>`));
+        <td>${st}</td><td class=num style="font-size:12px">${book}</td>
+        <td class=num style="font-size:12px">${crowd}</td><td class=num style="font-size:12px">${model}</td><td class=num>${f.over_under??'—'}</td><td>${v}</td>`));
     });
     t.append(tb);card.append(t);s.append(card);
   });
@@ -157,14 +161,40 @@ function vKo(){
 // ---- ranked tables (winner / scorer) ----
 function vRanked(id,rows,title,who){
   const s=document.getElementById(id);s.innerHTML='';
-  const card=el('div',{class:'glass'});card.append(el('div',{class:'card-h'},`<span>${title}</span><span>crowd · fair odds</span>`));
+  const hasModel=(rows||[]).some(r=>r.model!=null);
+  const sub=hasModel?'crowd · model · blended':'crowd · fair odds';
+  const card=el('div',{class:'glass'});card.append(el('div',{class:'card-h'},`<span>${title}</span><span>${sub}</span>`));
   const t=el('table');const tb=el('tbody');
-  (rows||[]).forEach((r,i)=>tb.append(el('tr',{},
+  (rows||[]).forEach((r,i)=>{
+    const extra=hasModel
+      ? `<td class=num style="color:var(--accent)">${r.model!=null?pct(r.model):'—'}</td><td class=num><b>${r.blended!=null?pct(r.blended):'—'}</b></td>`
+      : `<td class=num>${r.fair_odds??'—'}</td>`;
+    tb.append(el('tr',{},
     `<td class=team><span class=muted>${i+1}</span>&nbsp; ${flag(r.team||r.player)}${r.team||r.player}</td>
-     <td class=num style="width:42%"><div class="bar"><i data-w="${Math.max(2,100*r.prob)}%"></i></div></td>
-     <td class=num>${pct(r.prob)}</td><td class=num>${r.fair_odds??'—'}</td>`)));
+     <td class=num style="width:34%"><div class="bar"><i data-w="${Math.max(2,100*r.prob)}%"></i></div></td>
+     <td class=num>${pct(r.prob)}</td>${extra}`));
+  });
   t.append(tb);card.append(t);s.append(card);
   if(!(rows||[]).length)s.innerHTML='<div class="glass" style="padding:24px">'+who+' market unavailable.</div>';
+}
+
+// ---- chaos banner + provenance legend ----
+function vChaos(){
+  const c=D.chaos; if(!c){document.getElementById('chaos').remove?.();return;}
+  const cell=(k,v,s)=>`<div class="glass tile"><div class="k">${k}</div><div class="v" style="font-size:24px">${v}</div><div class="s">${s}</div></div>`;
+  document.getElementById('chaos').className='bento';
+  document.getElementById('chaos').innerHTML=
+    cell('Chaos index',(c.chaos_index*100).toFixed(0)+'%','sensitive dependence (Lyapunov proxy '+c.lyapunov_proxy+')')+
+    cell('Favourite',flag(titlecase(c.favourite))+titlecase(c.favourite)+' '+(c.favourite_prob*100).toFixed(0)+'%','fragility '+(c.favourite_fragility*100).toFixed(0)+'% — chance it does NOT win')+
+    cell('Field entropy',(c.field_entropy*100).toFixed(0)+'%','1 = wide-open tournament');
+}
+function titlecase(s){return (s||'').replace(/_/g,' ').replace(/\b\w/g,m=>m.toUpperCase());}
+function vLegend(){
+  const e=D.engines||{}; const L=document.getElementById('legend');
+  if(!e.model){L.remove();return;}
+  L.innerHTML=`<span><b style="color:var(--text)">Book</b> ${e.market}</span>`+
+    `<span><b style="color:var(--accent)">Model</b> ${e.model}</span>`+
+    `<span><b style="color:var(--text)">Blended</b> ${e.blend}</span>`;
 }
 
 // ---- tabs ----
@@ -172,9 +202,10 @@ const TABS=[['fixtures','Next fixtures'],['groups','Groups'],['ko','Knockout see
 const nav=document.getElementById('tabs');
 TABS.forEach(([id,label],i)=>{const b=el('button',{class:'tab'+(i?'':' active')},label);b.onclick=()=>switchView(id,b);nav.append(b);});
 
-hero();vFixtures();vGroups();vKo();
-vRanked('v-winner',D.winner,'Tournament winner — Polymarket crowd','Winner');
+hero();vChaos();vLegend();vFixtures();vGroups();vKo();
+vRanked('v-winner',D.winner,'Tournament winner — crowd vs model vs blended','Winner');
 vRanked('v-scorer',D.top_scorer,'Golden Boot — Polymarket crowd','Top-scorer');
 fillBars(document.getElementById('v-fixtures'));
+fillBars(document.getElementById('v-winner'));
 </script></body></html>
 """

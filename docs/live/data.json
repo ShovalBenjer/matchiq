@@ -1,9 +1,14 @@
 {
-  "generated_at": "2026-06-10T22:49:58+00:00",
+  "generated_at": "2026-06-10T23:16:20+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
     "crowd": "Polymarket"
+  },
+  "engines": {
+    "market": "DraftKings (3-way, Shin-devigged) + Polymarket crowd",
+    "model": "Dixon-Coles + ensemble on REAL international results (martj42, since 2015) with curse/aging/altitude priors",
+    "blend": "log-opinion pool, model weight \u2248 0.35"
   },
   "groups": {
     "Group A": [
@@ -767,7 +772,12 @@
         "is_value": false,
         "offered_odds": 1.235
       },
-      "pick": "away"
+      "pick": "away",
+      "model": {
+        "home": 0.1853,
+        "draw": 0.2633,
+        "away": 0.5514
+      }
     },
     {
       "match_id": "760419",
@@ -801,7 +811,12 @@
         "is_value": false,
         "offered_odds": 1.69
       },
-      "pick": "home"
+      "pick": "home",
+      "model": {
+        "home": 0.489,
+        "draw": 0.2751,
+        "away": 0.2359
+      }
     },
     {
       "match_id": "760418",
@@ -937,7 +952,12 @@
         "is_value": false,
         "offered_odds": 3.6
       },
-      "pick": "home"
+      "pick": "home",
+      "model": {
+        "home": 0.2127,
+        "draw": 0.2922,
+        "away": 0.4951
+      }
     },
     {
       "match_id": "760423",
@@ -962,7 +982,12 @@
         "drift": 0.3
       },
       "value": null,
-      "pick": "away"
+      "pick": "away",
+      "model": {
+        "home": 0.3472,
+        "draw": 0.3181,
+        "away": 0.3348
+      }
     },
     {
       "match_id": "760424",
@@ -996,7 +1021,12 @@
         "is_value": false,
         "offered_odds": 1.909
       },
-      "pick": "home"
+      "pick": "home",
+      "model": {
+        "home": 0.3625,
+        "draw": 0.3147,
+        "away": 0.3228
+      }
     }
   ],
   "winner": [
@@ -1004,247 +1034,294 @@
       "team": "Spain",
       "team_id": "spain",
       "prob": 0.1596,
-      "fair_odds": 6.27
+      "fair_odds": 6.27,
+      "model": 0.1157,
+      "blended": 0.1455
     },
     {
       "team": "France",
       "team_id": "france",
       "prob": 0.1557,
-      "fair_odds": 6.42
+      "fair_odds": 6.42,
+      "model": 0.0811,
+      "blended": 0.1264
     },
     {
       "team": "England",
       "team_id": "england",
       "prob": 0.1052,
-      "fair_odds": 9.5
+      "fair_odds": 9.5,
+      "model": 0.0429,
+      "blended": 0.0784
     },
     {
       "team": "Portugal",
       "team_id": "portugal",
       "prob": 0.1023,
-      "fair_odds": 9.77
+      "fair_odds": 9.77,
+      "model": 0.092,
+      "blended": 0.1006
     },
     {
       "team": "Argentina",
       "team_id": "argentina",
       "prob": 0.0849,
-      "fair_odds": 11.78
+      "fair_odds": 11.78,
+      "model": 0.1057,
+      "blended": 0.0935
     },
     {
       "team": "Brazil",
       "team_id": "brazil",
       "prob": 0.082,
-      "fair_odds": 12.2
+      "fair_odds": 12.2,
+      "model": 0.0756,
+      "blended": 0.0813
     },
     {
       "team": "Germany",
       "team_id": "germany",
       "prob": 0.0509,
-      "fair_odds": 19.64
+      "fair_odds": 19.64,
+      "model": 0.0126,
+      "blended": 0.0318
     },
     {
       "team": "Netherlands",
       "team_id": "netherlands",
       "prob": 0.0393,
-      "fair_odds": 25.46
+      "fair_odds": 25.46,
+      "model": 0.0106,
+      "blended": 0.0253
     },
     {
       "team": "Norway",
       "team_id": "norway",
       "prob": 0.0238,
-      "fair_odds": 42.08
+      "fair_odds": 42.08,
+      "model": 0.0134,
+      "blended": 0.0199
     },
     {
       "team": "Belgium",
       "team_id": "belgium",
       "prob": 0.0209,
-      "fair_odds": 47.95
+      "fair_odds": 47.95,
+      "model": 0.0527,
+      "blended": 0.0295
     },
     {
       "team": "Colombia",
       "team_id": "colombia",
       "prob": 0.0179,
-      "fair_odds": 55.73
+      "fair_odds": 55.73,
+      "model": 0.0554,
+      "blended": 0.0271
     },
     {
       "team": "Japan",
       "team_id": "japan",
       "prob": 0.017,
-      "fair_odds": 58.91
+      "fair_odds": 58.91,
+      "model": 0.0289,
+      "blended": 0.0209
     },
     {
       "team": "Morocco",
       "team_id": "morocco",
       "prob": 0.016,
-      "fair_odds": 62.48
+      "fair_odds": 62.48,
+      "model": 0.0864,
+      "blended": 0.0295
     },
     {
       "team": "Mexico",
       "team_id": "mexico",
       "prob": 0.0131,
-      "fair_odds": 76.37
+      "fair_odds": 76.37,
+      "model": 0.0072,
+      "blended": 0.0108
     },
     {
       "team": "Switzerland",
       "team_id": "switzerland",
       "prob": 0.0121,
-      "fair_odds": 82.48
+      "fair_odds": 82.48,
+      "model": 0.0164,
+      "blended": 0.0137
     },
     {
       "team": "Turkiye",
       "team_id": "turkiye",
       "prob": 0.0121,
-      "fair_odds": 82.48
+      "fair_odds": 82.48,
+      "blended": 0.0076
     },
     {
       "team": "Usa",
       "team_id": "usa",
       "prob": 0.0112,
-      "fair_odds": 89.65
+      "fair_odds": 89.65,
+      "model": 0.0009,
+      "blended": 0.0073
     },
     {
       "team": "Uruguay",
       "team_id": "uruguay",
       "prob": 0.0102,
-      "fair_odds": 98.19
+      "fair_odds": 98.19,
+      "model": 0.014,
+      "blended": 0.0116
     },
     {
       "team": "Croatia",
       "team_id": "croatia",
       "prob": 0.0092,
-      "fair_odds": 108.53
+      "fair_odds": 108.53,
+      "model": 0.0098,
+      "blended": 0.0096
     },
     {
       "team": "Ecuador",
       "team_id": "ecuador",
       "prob": 0.0082,
-      "fair_odds": 121.29
+      "fair_odds": 121.29,
+      "model": 0.0254,
+      "blended": 0.0124
     },
     {
       "team": "Senegal",
       "team_id": "senegal",
       "prob": 0.0073,
-      "fair_odds": 137.47
+      "fair_odds": 137.47,
+      "model": 0.0062,
+      "blended": 0.007
     },
     {
       "team": "Ivory Coast",
       "team_id": "ivory_coast",
       "prob": 0.0044,
-      "fair_odds": 229.11
+      "fair_odds": 229.11,
+      "model": 0.0244,
+      "blended": 0.0082
     },
     {
       "team": "Austria",
       "team_id": "austria",
       "prob": 0.0044,
-      "fair_odds": 229.11
+      "fair_odds": 229.11,
+      "model": 0.0311,
+      "blended": 0.0089
     },
     {
       "team": "Canada",
       "team_id": "canada",
       "prob": 0.0034,
-      "fair_odds": 294.57
+      "fair_odds": 294.57,
+      "model": 0.0019,
+      "blended": 0.0033
     }
   ],
   "top_scorer": [
     {
       "player": "Kylian Mbappe",
-      "prob": 0.1574,
-      "fair_odds": 6.36
+      "prob": 0.1562,
+      "fair_odds": 6.4
     },
     {
       "player": "Harry Kane",
-      "prob": 0.1356,
-      "fair_odds": 7.37
+      "prob": 0.14,
+      "fair_odds": 7.14
     },
     {
       "player": "Mikel Oyarzabal",
-      "prob": 0.0922,
-      "fair_odds": 10.84
+      "prob": 0.0969,
+      "fair_odds": 10.32
     },
     {
       "player": "Erling Haaland",
-      "prob": 0.0597,
-      "fair_odds": 16.75
+      "prob": 0.0592,
+      "fair_odds": 16.88
     },
     {
       "player": "Cristiano Ronaldo",
-      "prob": 0.051,
-      "fair_odds": 19.61
-    },
-    {
-      "player": "Michael Olise",
-      "prob": 0.0494,
-      "fair_odds": 20.25
+      "prob": 0.0522,
+      "fair_odds": 19.14
     },
     {
       "player": "Lionel Messi",
-      "prob": 0.045,
-      "fair_odds": 22.2
+      "prob": 0.0447,
+      "fair_odds": 22.37
     },
     {
       "player": "Julian Alvarez",
-      "prob": 0.045,
-      "fair_odds": 22.2
+      "prob": 0.0447,
+      "fair_odds": 22.37
+    },
+    {
+      "player": "Michael Olise",
+      "prob": 0.0436,
+      "fair_odds": 22.93
     },
     {
       "player": "Raphinha",
-      "prob": 0.0396,
-      "fair_odds": 25.25
+      "prob": 0.0393,
+      "fair_odds": 25.44
     },
     {
       "player": "Lamine Yamal",
-      "prob": 0.0364,
-      "fair_odds": 27.51
+      "prob": 0.0361,
+      "fair_odds": 27.72
     },
     {
       "player": "Vinicius Junior",
-      "prob": 0.0309,
-      "fair_odds": 32.33
+      "prob": 0.0307,
+      "fair_odds": 32.58
     },
     {
       "player": "Ferran Torres",
-      "prob": 0.0277,
-      "fair_odds": 36.14
+      "prob": 0.0275,
+      "fair_odds": 36.41
     },
     {
       "player": "Ousmane Dembele",
-      "prob": 0.0266,
-      "fair_odds": 37.61
+      "prob": 0.0264,
+      "fair_odds": 37.9
     },
     {
       "player": "Lautaro Martinez",
-      "prob": 0.0244,
-      "fair_odds": 40.96
+      "prob": 0.0248,
+      "fair_odds": 40.37
     },
     {
       "player": "Igor Thiago",
-      "prob": 0.0233,
-      "fair_odds": 42.86
+      "prob": 0.0232,
+      "fair_odds": 43.19
     },
     {
       "player": "Cody Gakpo",
-      "prob": 0.0233,
-      "fair_odds": 42.86
+      "prob": 0.0232,
+      "fair_odds": 43.19
     },
     {
       "player": "Luis Diaz",
-      "prob": 0.0125,
-      "fair_odds": 80.13
+      "prob": 0.0124,
+      "fair_odds": 80.74
     },
     {
       "player": "Deniz Undav",
-      "prob": 0.0103,
-      "fair_odds": 97.0
+      "prob": 0.0102,
+      "fair_odds": 97.74
     },
     {
       "player": "Bruno Fernandes",
-      "prob": 0.0103,
-      "fair_odds": 97.0
+      "prob": 0.0102,
+      "fair_odds": 97.74
     },
     {
       "player": "Luis Javier Su\u00e1rez",
-      "prob": 0.0087,
-      "fair_odds": 115.19
+      "prob": 0.0086,
+      "fair_odds": 116.06
     }
   ],
   "group_winners": {
@@ -1305,33 +1382,33 @@
     "D": [
       {
         "team": "Usa",
-        "prob": 0.3741
+        "prob": 0.374
       },
       {
         "team": "T\u00fcrkiye",
-        "prob": 0.3644
+        "prob": 0.3643
       },
       {
         "team": "Paraguay",
-        "prob": 0.1701
+        "prob": 0.17
       },
       {
         "team": "Australia",
-        "prob": 0.0914
+        "prob": 0.0918
       }
     ],
     "E": [
       {
         "team": "Germany",
-        "prob": 0.6677
+        "prob": 0.668
       },
       {
         "team": "Ecuador",
-        "prob": 0.2028
+        "prob": 0.2029
       },
       {
         "team": "Ivory Coast",
-        "prob": 0.1241
+        "prob": 0.1237
       },
       {
         "team": "Cura\u00e7ao",
@@ -1341,19 +1418,19 @@
     "F": [
       {
         "team": "Netherlands",
-        "prob": 0.5253
+        "prob": 0.5255
       },
       {
         "team": "Japan",
-        "prob": 0.27
+        "prob": 0.2701
       },
       {
         "team": "Sweden",
-        "prob": 0.1522
+        "prob": 0.1523
       },
       {
         "team": "Tunisia",
-        "prob": 0.0525
+        "prob": 0.0521
       }
     ],
     "G": [
@@ -1377,15 +1454,15 @@
     "H": [
       {
         "team": "Spain",
-        "prob": 0.7776
+        "prob": 0.7787
       },
       {
         "team": "Uruguay",
-        "prob": 0.1932
+        "prob": 0.1922
       },
       {
         "team": "Saudi Arabia",
-        "prob": 0.0198
+        "prob": 0.0197
       },
       {
         "team": "Cape Verde",
@@ -1465,5 +1542,75 @@
       }
     ]
   },
-  "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford."
+  "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
+  "chaos": {
+    "chaos_index": 0.076,
+    "lyapunov_proxy": 0.3052,
+    "field_entropy": 0.773,
+    "favourite_fragility": 0.887,
+    "favourite": "spain",
+    "favourite_prob": 0.113,
+    "tipping_points": [
+      {
+        "home": "saudi_arabia",
+        "away": "ghana",
+        "entropy": 1.0,
+        "probs": [
+          0.322,
+          0.338,
+          0.34
+        ]
+      },
+      {
+        "home": "usa",
+        "away": "canada",
+        "entropy": 0.999,
+        "probs": [
+          0.321,
+          0.323,
+          0.357
+        ]
+      },
+      {
+        "home": "serbia",
+        "away": "poland",
+        "entropy": 0.999,
+        "probs": [
+          0.34,
+          0.346,
+          0.314
+        ]
+      },
+      {
+        "home": "sweden",
+        "away": "ukraine",
+        "entropy": 0.999,
+        "probs": [
+          0.353,
+          0.326,
+          0.321
+        ]
+      },
+      {
+        "home": "argentina",
+        "away": "france",
+        "entropy": 0.997,
+        "probs": [
+          0.371,
+          0.325,
+          0.305
+        ]
+      },
+      {
+        "home": "argentina",
+        "away": "england",
+        "entropy": 0.997,
+        "probs": [
+          0.359,
+          0.297,
+          0.345
+        ]
+      }
+    ]
+  }
 }

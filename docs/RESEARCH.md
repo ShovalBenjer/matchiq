@@ -98,6 +98,34 @@ travel is an east>west asymmetric win-prob penalty; rest is a differential with 
 
 ---
 
+## 6. From synthetic to real (data + chaos)
+
+The historical corpus is now **real**: a free, no-key feed of every men's
+international since 2015 (martj42/`international_results`, CC0) — ~1,580 matches
+across all 48 WC2026 teams — trains Dixon-Coles/Elo instead of synthetic draws.
+Synthetic data now only supplies the WC2026 fixtures + squad metadata. The
+time-decay half-life was relaxed to ~460 days to suit sparse international
+schedules.
+
+**Environment is now wired** (was inert): altitude (Mexico City 2240 m moves the
+goal mean for a sea-level visitor), eastward travel, the rest-day 6-day kink and
+the heat→draw tempo modifier all enter `orchestrator.predict` from per-fixture
+context, surfaced in the prediction's `environment` notes.
+
+**Chaos as a measured quantity, not a slogan** (`models/chaos.py`): perturb team
+strengths by ε and measure how far the simulated *winner distribution* diverges
+(Jensen–Shannon) — a finite-size **Lyapunov proxy** for sensitive dependence —
+alongside field entropy, favourite fragility (P the favourite does *not* win) and
+the coin-flip "tipping-point" fixtures. Exposed via `wc2026 chaos` and on the
+live dashboard.
+
+**Model on the dashboard:** the live board now shows **Book vs Crowd vs Model**
+per fixture and **crowd · model · blended** on the winner table (log-opinion pool,
+model weight ≈ 0.35), with a provenance legend and a chaos banner — so it is
+always explicit which number is market, which is model, and which is the blend.
+
+---
+
 ## Verdict on the Argentina thesis
 
 Real markets (Polymarket $1.9B, FanDuel, Kalshi, June 2026) price **Argentina 5th–6th

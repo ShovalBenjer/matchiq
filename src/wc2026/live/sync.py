@@ -53,10 +53,11 @@ def _devig_book(close: dict, method: str = "shin") -> dict | None:
 
 class LiveSync:
     def __init__(self, days: int = 4, edge_threshold: float = 0.03,
-                 devig_method: str = "shin"):
+                 devig_method: str = "shin", with_model: bool = True):
         self.days = days
         self.edge_threshold = edge_threshold
         self.devig_method = devig_method
+        self.with_model = with_model
         self.espn = EspnSource()
         self.poly = PolymarketSource()
 
@@ -68,10 +69,16 @@ class LiveSync:
         winner = self._winner()
         top_scorer = self._top_scorer()
         group_winners = self._group_winners()
-        return {
+        data = {
             "generated_at": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
             "tournament": "FIFA World Cup 2026",
             "sources": {"results_odds": "ESPN / DraftKings", "crowd": "Polymarket"},
+            "engines": {
+                "market": "DraftKings (3-way, Shin-devigged) + Polymarket crowd",
+                "model": ("Dixon-Coles + ensemble on REAL international results "
+                          "(martj42, since 2015) with curse/aging/altitude priors"),
+                "blend": "log-opinion pool, model weight ≈ 0.35",
+            },
             "groups": groups,
             "fixtures": fixtures,
             "winner": winner,
@@ -80,6 +87,58 @@ class LiveSync:
             "disclaimer": ("Market-anchored, educational only — not financial "
                            "advice. Bet responsibly; only stake what you can afford."),
         }
+        if self.with_model:
+            self._augment_with_model(data)
+        return data
+
+    # ------------------------------------------------------------------
+    def _augment_with_model(self, data: dict) -> None:
+        """Overlay the statistical model + chaos on the market data (best-effort).
+
+        Adds a model 1X2 to each fixture, a model/blended column to the winner
+        table, and a tournament chaos summary — each clearly labelled so model
+        vs market vs crowd is never ambiguous. Any failure is logged and skipped
+        so the market-anchored dashboard always renders.
+        """
+        try:
+            from wc2026.config import Config
+            from wc2026.models.chaos import ChaosAnalyzer
+            from wc2026.models.priors import blend_market
+            from wc2026.pipeline.orchestrator import Orchestrator
+            from wc2026.data.schema import Match, Stage
+
+            orch = Orchestrator(Config()).fit()
+            known = set(getattr(orch.dixon_coles, "_idx", {}) or {})
+
+            # Per-fixture model 1X2 (only when both teams are in the model universe).
+            for f in data["fixtures"]:
+                h, a = _canon(f.get("home_id", "")), _canon(f.get("away_id", ""))
+                if h in known and a in known:
+                    p = orch.predict(Match(match_id=f["match_id"], date=_dt.date.today(),
+                                           home_id=h, away_id=a, stage=Stage.GROUP)).final
+                    f["model"] = {"home": round(p.home, 4), "draw": round(p.draw, 4),
+                                  "away": round(p.away, 4)}
+
+            # Winner: model (with structural priors, no market) blended with the
+            # crowd via a single log-opinion pool over the full team distribution.
+            orch.cfg.models.priors.enable_market_blend = False
+            sim = orch.simulate_tournament(n_paths=8000)
+            model_win = {_canon(k): float(v) for k, v in sim.get("win_prob", {}).items()}
+            crowd_win = {_canon(r["team_id"]): r["prob"] for r in data["winner"]
+                         if r.get("team_id")}
+            blended = blend_market(model_win, crowd_win, w_model=0.35) if model_win else {}
+            for row in data["winner"]:
+                tid = _canon(row.get("team_id", ""))
+                if tid in model_win:
+                    row["model"] = round(model_win[tid], 4)
+                if tid in blended:
+                    row["blended"] = round(blended[tid], 4)
+
+            rep = ChaosAnalyzer(orch).report(n_paths=4000, eps=0.05, n_perturb=5)
+            data["chaos"] = rep.as_dict()
+            logger.info("model overlay attached (chaos index %.2f)", rep.chaos_index)
+        except Exception as exc:  # never break the market-anchored dashboard
+            logger.warning("model overlay skipped: %s", exc)
 
     # ------------------------------------------------------------------
     def _safe(self, fn, default):
