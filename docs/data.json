@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-10T05:47:29+00:00",
+  "generated_at": "2026-06-10T20:15:04+00:00",
   "meta": {
     "n_matches": 858,
     "n_teams": 48,
-    "mc_paths": 20000,
+    "mc_paths": 30000,
     "tabpfn_backend": "numpy_softmax",
     "chronos_backend": "holt",
     "news_backend": "rule_based",
@@ -22,308 +22,356 @@
     {
       "team": "Argentina",
       "team_id": "argentina",
-      "prob": 0.4037,
-      "fair_odds": 2.48
-    },
-    {
-      "team": "Brazil",
-      "team_id": "brazil",
-      "prob": 0.1689,
-      "fair_odds": 5.92
+      "prob": 0.1741,
+      "model_prob": 0.4043,
+      "market_prob": 0.0832,
+      "fair_odds": 5.74
     },
     {
       "team": "Portugal",
       "team_id": "portugal",
-      "prob": 0.1169,
-      "fair_odds": 8.55
+      "prob": 0.1408,
+      "model_prob": 0.1184,
+      "market_prob": 0.1026,
+      "fair_odds": 7.1
     },
     {
-      "team": "Mexico",
-      "team_id": "mexico",
-      "prob": 0.11,
-      "fair_odds": 9.09
-    },
-    {
-      "team": "Japan",
-      "team_id": "japan",
-      "prob": 0.0653,
-      "fair_odds": 15.33
-    },
-    {
-      "team": "Iran",
-      "team_id": "iran",
-      "prob": 0.0372,
-      "fair_odds": 26.85
-    },
-    {
-      "team": "Belgium",
-      "team_id": "belgium",
-      "prob": 0.0161,
-      "fair_odds": 62.11
-    },
-    {
-      "team": "Canada",
-      "team_id": "canada",
-      "prob": 0.0147,
-      "fair_odds": 68.03
+      "team": "Brazil",
+      "team_id": "brazil",
+      "prob": 0.1376,
+      "model_prob": 0.1698,
+      "market_prob": 0.0822,
+      "fair_odds": 7.27
     },
     {
       "team": "France",
       "team_id": "france",
-      "prob": 0.0135,
-      "fair_odds": 74.35
+      "prob": 0.0913,
+      "model_prob": 0.013,
+      "market_prob": 0.1561,
+      "fair_odds": 10.96
+    },
+    {
+      "team": "Spain",
+      "team_id": "spain",
+      "prob": 0.0481,
+      "model_prob": 0.0007,
+      "market_prob": 0.16,
+      "fair_odds": 20.78
     },
     {
       "team": "Netherlands",
       "team_id": "netherlands",
-      "prob": 0.0131,
-      "fair_odds": 76.63
+      "prob": 0.0371,
+      "model_prob": 0.0128,
+      "market_prob": 0.0394,
+      "fair_odds": 26.95
     },
     {
-      "team": "Morocco",
-      "team_id": "morocco",
-      "prob": 0.0075,
-      "fair_odds": 134.23
+      "team": "England",
+      "team_id": "england",
+      "prob": 0.0367,
+      "model_prob": 0.0002,
+      "market_prob": 0.1055,
+      "fair_odds": 27.23
+    },
+    {
+      "team": "Japan",
+      "team_id": "japan",
+      "prob": 0.0363,
+      "model_prob": 0.0648,
+      "market_prob": 0.017,
+      "fair_odds": 27.58
+    },
+    {
+      "team": "Mexico",
+      "team_id": "mexico",
+      "prob": 0.0361,
+      "model_prob": 0.109,
+      "market_prob": 0.0131,
+      "fair_odds": 27.71
     },
     {
       "team": "Germany",
       "team_id": "germany",
-      "prob": 0.006,
-      "fair_odds": 166.67
+      "prob": 0.0345,
+      "model_prob": 0.0061,
+      "market_prob": 0.0511,
+      "fair_odds": 28.95
     },
     {
-      "team": "Australia",
-      "team_id": "australia",
-      "prob": 0.0051,
-      "fair_odds": 196.08
+      "team": "Belgium",
+      "team_id": "belgium",
+      "prob": 0.0262,
+      "model_prob": 0.016,
+      "market_prob": 0.0209,
+      "fair_odds": 38.12
     },
     {
       "team": "Norway",
       "team_id": "norway",
-      "prob": 0.0034,
-      "fair_odds": 298.51
+      "prob": 0.0178,
+      "model_prob": 0.0036,
+      "market_prob": 0.0238,
+      "fair_odds": 56.04
     },
     {
-      "team": "USA",
-      "team_id": "usa",
-      "prob": 0.0029,
-      "fair_odds": 344.83
-    },
-    {
-      "team": "Wales",
-      "team_id": "wales",
-      "prob": 0.0022,
-      "fair_odds": 454.55
+      "team": "Morocco",
+      "team_id": "morocco",
+      "prob": 0.0176,
+      "model_prob": 0.0078,
+      "market_prob": 0.0161,
+      "fair_odds": 56.66
     },
     {
       "team": "Colombia",
       "team_id": "colombia",
-      "prob": 0.0017,
-      "fair_odds": 588.24
+      "prob": 0.0116,
+      "model_prob": 0.0017,
+      "market_prob": 0.018,
+      "fair_odds": 85.99
     },
     {
-      "team": "Peru",
-      "team_id": "peru",
-      "prob": 0.0014,
-      "fair_odds": 714.29
+      "team": "USA",
+      "team_id": "usa",
+      "prob": 0.0102,
+      "model_prob": 0.0029,
+      "market_prob": 0.0112,
+      "fair_odds": 98.17
     },
     {
-      "team": "Senegal",
-      "team_id": "senegal",
-      "prob": 0.0012,
-      "fair_odds": 833.33
+      "team": "Iran",
+      "team_id": "iran",
+      "prob": 0.0088,
+      "model_prob": 0.0365,
+      "market_prob": 0.0015,
+      "fair_odds": 114.23
     },
     {
       "team": "Switzerland",
       "team_id": "switzerland",
-      "prob": 0.001,
-      "fair_odds": 1000.0
-    },
-    {
-      "team": "Ivory Coast",
-      "team_id": "ivory_coast",
-      "prob": 0.0009,
-      "fair_odds": 1052.63
-    },
-    {
-      "team": "Nigeria",
-      "team_id": "nigeria",
-      "prob": 0.0009,
-      "fair_odds": 1111.11
-    },
-    {
-      "team": "Qatar",
-      "team_id": "qatar",
-      "prob": 0.0008,
-      "fair_odds": 1176.47
+      "prob": 0.0085,
+      "model_prob": 0.0008,
+      "market_prob": 0.0112,
+      "fair_odds": 117.12
     },
     {
       "team": "Uruguay",
       "team_id": "uruguay",
-      "prob": 0.0008,
-      "fair_odds": 1250.0
+      "prob": 0.008,
+      "model_prob": 0.0007,
+      "market_prob": 0.0102,
+      "fair_odds": 124.26
+    },
+    {
+      "team": "Canada",
+      "team_id": "canada",
+      "prob": 0.0079,
+      "model_prob": 0.0147,
+      "market_prob": 0.0034,
+      "fair_odds": 126.68
+    },
+    {
+      "team": "Croatia",
+      "team_id": "croatia",
+      "prob": 0.0075,
+      "model_prob": 0.0008,
+      "market_prob": 0.0092,
+      "fair_odds": 132.61
+    },
+    {
+      "team": "Ecuador",
+      "team_id": "ecuador",
+      "prob": 0.007,
+      "model_prob": 0.0,
+      "market_prob": 0.0083,
+      "fair_odds": 142.55
+    },
+    {
+      "team": "Senegal",
+      "team_id": "senegal",
+      "prob": 0.0065,
+      "model_prob": 0.001,
+      "market_prob": 0.0073,
+      "fair_odds": 154.63
+    },
+    {
+      "team": "Austria",
+      "team_id": "austria",
+      "prob": 0.0046,
+      "model_prob": 0.0,
+      "market_prob": 0.0044,
+      "fair_odds": 215.53
+    },
+    {
+      "team": "Ivory Coast",
+      "team_id": "ivory_coast",
+      "prob": 0.0046,
+      "model_prob": 0.0011,
+      "market_prob": 0.0044,
+      "fair_odds": 215.53
     }
   ],
   "top_scorer": [
     {
       "player": "Argentina Striker 1",
       "team": "Argentina",
-      "prob": 0.1464,
-      "fair_odds": 6.83,
-      "p_5plus": 0.4262,
+      "prob": 0.1482,
+      "fair_odds": 6.75,
+      "p_5plus": 0.4254,
       "exp_goals": 4.36
     },
     {
       "player": "Argentina Striker 2",
       "team": "Argentina",
-      "prob": 0.0976,
-      "fair_odds": 10.25,
-      "p_5plus": 0.349,
-      "exp_goals": 3.82
+      "prob": 0.1008,
+      "fair_odds": 9.92,
+      "p_5plus": 0.353,
+      "exp_goals": 3.85
     },
     {
       "player": "Argentina Striker 3",
       "team": "Argentina",
-      "prob": 0.0824,
-      "fair_odds": 12.14,
-      "p_5plus": 0.3088,
-      "exp_goals": 3.59
+      "prob": 0.0788,
+      "fair_odds": 12.68,
+      "p_5plus": 0.307,
+      "exp_goals": 3.57
     },
     {
       "player": "Brazil Striker 2",
       "team": "Brazil",
-      "prob": 0.0682,
-      "fair_odds": 14.65,
-      "p_5plus": 0.2734,
-      "exp_goals": 3.34
+      "prob": 0.0666,
+      "fair_odds": 15.02,
+      "p_5plus": 0.2728,
+      "exp_goals": 3.36
     },
     {
       "player": "Brazil Striker 1",
       "team": "Brazil",
-      "prob": 0.0566,
-      "fair_odds": 17.65,
-      "p_5plus": 0.2493,
-      "exp_goals": 3.19
+      "prob": 0.0589,
+      "fair_odds": 16.98,
+      "p_5plus": 0.2548,
+      "exp_goals": 3.22
     },
     {
       "player": "Japan Striker 1",
       "team": "Japan",
-      "prob": 0.0357,
-      "fair_odds": 28.01,
-      "p_5plus": 0.1791,
-      "exp_goals": 2.72
-    },
-    {
-      "player": "Belgium Striker 1",
-      "team": "Belgium",
-      "prob": 0.03,
-      "fair_odds": 33.33,
-      "p_5plus": 0.1594,
-      "exp_goals": 2.56
+      "prob": 0.0329,
+      "fair_odds": 30.4,
+      "p_5plus": 0.1764,
+      "exp_goals": 2.69
     },
     {
       "player": "Portugal Striker 1",
       "team": "Portugal",
-      "prob": 0.03,
-      "fair_odds": 33.39,
-      "p_5plus": 0.1722,
-      "exp_goals": 2.67
+      "prob": 0.0292,
+      "fair_odds": 34.19,
+      "p_5plus": 0.1666,
+      "exp_goals": 2.65
     },
     {
       "player": "Brazil Striker 3",
       "team": "Brazil",
-      "prob": 0.0288,
-      "fair_odds": 34.72,
-      "p_5plus": 0.1661,
-      "exp_goals": 2.64
+      "prob": 0.0282,
+      "fair_odds": 35.46,
+      "p_5plus": 0.1674,
+      "exp_goals": 2.66
     },
     {
-      "player": "Netherlands Striker 1",
-      "team": "Netherlands",
-      "prob": 0.0212,
-      "fair_odds": 47.17,
-      "p_5plus": 0.1346,
-      "exp_goals": 2.35
+      "player": "Belgium Striker 1",
+      "team": "Belgium",
+      "prob": 0.0276,
+      "fair_odds": 36.3,
+      "p_5plus": 0.1582,
+      "exp_goals": 2.52
     },
     {
       "player": "Mexico Striker 1",
       "team": "Mexico",
-      "prob": 0.0206,
-      "fair_odds": 48.54,
-      "p_5plus": 0.139,
-      "exp_goals": 2.44
+      "prob": 0.0214,
+      "fair_odds": 46.73,
+      "p_5plus": 0.1366,
+      "exp_goals": 2.43
+    },
+    {
+      "player": "Netherlands Striker 1",
+      "team": "Netherlands",
+      "prob": 0.0197,
+      "fair_odds": 50.76,
+      "p_5plus": 0.1296,
+      "exp_goals": 2.32
     },
     {
       "player": "Morocco Striker 1",
       "team": "Morocco",
-      "prob": 0.0172,
-      "fair_odds": 58.14,
-      "p_5plus": 0.1151,
+      "prob": 0.0189,
+      "fair_odds": 52.91,
+      "p_5plus": 0.1168,
       "exp_goals": 2.19
     },
     {
       "player": "Portugal Striker 2",
       "team": "Portugal",
-      "prob": 0.0156,
-      "fair_odds": 64.31,
-      "p_5plus": 0.1124,
-      "exp_goals": 2.24
+      "prob": 0.0158,
+      "fair_odds": 63.09,
+      "p_5plus": 0.1136,
+      "exp_goals": 2.26
     },
     {
       "player": "Uruguay Striker 1",
       "team": "Uruguay",
       "prob": 0.0151,
       "fair_odds": 66.23,
-      "p_5plus": 0.1006,
-      "exp_goals": 2.05
+      "p_5plus": 0.0935,
+      "exp_goals": 2.03
     },
     {
       "player": "France Striker 2",
       "team": "France",
-      "prob": 0.0146,
-      "fair_odds": 68.73,
-      "p_5plus": 0.1026,
-      "exp_goals": 2.09
+      "prob": 0.0148,
+      "fair_odds": 67.34,
+      "p_5plus": 0.1016,
+      "exp_goals": 2.08
     },
     {
       "player": "Croatia Striker 1",
       "team": "Croatia",
-      "prob": 0.0141,
-      "fair_odds": 70.92,
-      "p_5plus": 0.0974,
+      "prob": 0.0142,
+      "fair_odds": 70.42,
+      "p_5plus": 0.0982,
       "exp_goals": 2.04
     },
     {
       "player": "Mexico Striker 2",
       "team": "Mexico",
-      "prob": 0.0136,
-      "fair_odds": 73.53,
-      "p_5plus": 0.0993,
-      "exp_goals": 2.14
+      "prob": 0.0122,
+      "fair_odds": 81.97,
+      "p_5plus": 0.0985,
+      "exp_goals": 2.15
     },
     {
       "player": "Colombia Striker 1",
       "team": "Colombia",
-      "prob": 0.0126,
-      "fair_odds": 79.37,
-      "p_5plus": 0.0882,
-      "exp_goals": 1.93
+      "prob": 0.0114,
+      "fair_odds": 87.34,
+      "p_5plus": 0.0836,
+      "exp_goals": 1.89
     },
     {
       "player": "Belgium Striker 3",
       "team": "Belgium",
-      "prob": 0.0122,
-      "fair_odds": 81.63,
-      "p_5plus": 0.0886,
-      "exp_goals": 2.0
+      "prob": 0.0111,
+      "fair_odds": 90.5,
+      "p_5plus": 0.086,
+      "exp_goals": 2.01
     },
     {
       "player": "Morocco Striker 2",
       "team": "Morocco",
-      "prob": 0.0116,
-      "fair_odds": 85.84,
-      "p_5plus": 0.0812,
-      "exp_goals": 1.92
+      "prob": 0.0107,
+      "fair_odds": 93.02,
+      "p_5plus": 0.0796,
+      "exp_goals": 1.9
     }
   ],
   "fixtures": [
