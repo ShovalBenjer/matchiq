@@ -32,6 +32,7 @@ from wc2026.models.bradley_terry import BradleyTerryModel
 from wc2026.models.chronos import ChronosForecaster
 from wc2026.models.dixon_coles import DixonColesModel
 from wc2026.models.ensemble import StackingEnsemble
+from wc2026.models.environment import EnvironmentConfig, EnvironmentModel
 from wc2026.models.hmm import TournamentHMM
 from wc2026.models.rag_agent import NewsRAGAgent, NewsSignal
 from wc2026.models.tabpfn import TabPFNModel
@@ -51,6 +52,7 @@ class MatchPrediction:
     away_momentum: float = 0.5
     news_home: NewsSignal | None = None
     news_away: NewsSignal | None = None
+    environment: dict | None = None
 
     def as_dict(self) -> dict:
         return {
@@ -62,6 +64,7 @@ class MatchPrediction:
             "models": {k: [v.home, v.draw, v.away] for k, v in self.model_probs.items()},
             "home_momentum": self.home_momentum,
             "away_momentum": self.away_momentum,
+            "environment": self.environment or {},
         }
 
 
@@ -77,6 +80,8 @@ class Orchestrator:
         self.dixon_coles = DixonColesModel(self.cfg.models.dixon_coles)
         self.bradley_terry = BradleyTerryModel(decay_alpha=self.cfg.models.dixon_coles.decay_alpha)
         self.hmm = TournamentHMM(self.cfg.models.hmm)
+        self.environment = EnvironmentModel(
+            EnvironmentConfig(enabled=self.cfg.models.priors.enable_environment))
         self.chronos = ChronosForecaster()
         self.news_agent = NewsRAGAgent(
             model=self.cfg.models.llm_model,
@@ -211,6 +216,22 @@ class Orchestrator:
         logits = np.log(np.clip(ensemble.as_array(), 1e-9, None))
         logits[0] += 0.3 * (h_mom - 0.5)
         logits[2] += 0.3 * (a_mom - 0.5)
+
+        # Environment & logistics (altitude / travel / rest / heat). No-op unless
+        # the fixture carries venue/schedule context or implies a high venue.
+        e = match.extra
+        dh, da, dd, env_notes = self.environment.match_logit_deltas(
+            home_id=match.home_id, away_id=match.away_id,
+            venue_city=e.get("venue_city"), venue_alt_m=e.get("venue_alt_m"),
+            prev_city_home=e.get("prev_city_home"), prev_city_away=e.get("prev_city_away"),
+            timezone_shift_home=e.get("timezone_shift_home", 0.0),
+            timezone_shift_away=e.get("timezone_shift_away", 0.0),
+            rest_days_home=e.get("rest_days_home", 6.0),
+            rest_days_away=e.get("rest_days_away", 6.0),
+            temp_c=e.get("temp_c"))
+        logits[0] += dh
+        logits[2] += da
+        logits[1] += dd
         tilted = OutcomeProb.from_array(softmax(logits))
 
         # News/injury adjustment (rule-based offline, Claude when available).
@@ -228,6 +249,7 @@ class Orchestrator:
         return MatchPrediction(
             match=match, model_probs=model_probs, ensemble=ensemble, final=final,
             home_momentum=h_mom, away_momentum=a_mom, news_home=ns_home, news_away=ns_away,
+            environment=env_notes,
         )
 
     # ------------------------------------------------------------------

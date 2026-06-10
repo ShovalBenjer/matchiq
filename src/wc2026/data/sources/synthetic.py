@@ -257,8 +257,11 @@ class SyntheticSource(DataSource):
             matches += self._friendlies(season, self._latent, date(season, 3, 1))
             matches += self._simulate_tournament(season, self._latent, t_start)
         # Pre-2026 friendlies (form signal feeding the upcoming tournament).
-        matches += self._friendlies(self.base_year, self._latent,
-                                    date(self.base_year, 3, 1), n=48)
+        # Skipped in fixtures-only mode (n_history=0) so they don't pollute a
+        # real-results corpus with synthetic outcomes.
+        if self.n_history_tournaments > 0:
+            matches += self._friendlies(self.base_year, self._latent,
+                                        date(self.base_year, 3, 1), n=48)
         matches += self._upcoming_fixtures()
         matches.sort(key=lambda m: (m.date, m.match_id))
         return matches

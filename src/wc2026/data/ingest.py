@@ -27,13 +27,25 @@ class Ingestor:
         self.config = config or Config()
         self.store = store or FeatureStore(self.config.data.store_dir)
         if sources is None:
-            sources = [
-                SyntheticSource(
-                    seed=self.config.data.synthetic_seed,
-                    n_history_tournaments=self.config.data.synthetic_n_history_tournaments,
-                )
-            ]
+            sources = self._default_sources()
         self.sources = sources
+
+    def _default_sources(self) -> list[DataSource]:
+        """Real international results for the history (when reachable), with the
+        synthetic source supplying WC2026 fixtures + team/player metadata. Falls
+        back to a fully synthetic corpus if real results can't be fetched."""
+        dc = self.config.data
+        if dc.use_real_results:
+            from wc2026.data.sources.intl_results import InternationalResultsSource
+
+            real = InternationalResultsSource(since_year=dc.real_results_since_year)
+            if real.available():
+                logger.info("using REAL international results for history")
+                return [real, SyntheticSource(seed=dc.synthetic_seed,
+                                              n_history_tournaments=0)]
+            logger.warning("real results unreachable — falling back to synthetic history")
+        return [SyntheticSource(seed=dc.synthetic_seed,
+                                n_history_tournaments=dc.synthetic_n_history_tournaments)]
 
     def run(self) -> FeatureStore:
         matches: dict[str, Match] = {}

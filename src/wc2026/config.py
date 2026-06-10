@@ -31,6 +31,11 @@ class DataConfig:
     # Synthetic corpus controls (used for offline development / tests).
     synthetic_seed: int = 2026
     synthetic_n_history_tournaments: int = 6
+    # Real, no-key historical results (martj42/international_results). When True
+    # and reachable, real outcomes replace the synthetic history; synthetic then
+    # only supplies WC2026 fixtures + team/player metadata.
+    use_real_results: bool = True
+    real_results_since_year: int = 2015
 
     def __post_init__(self) -> None:
         self.football_data_org_token = self.football_data_org_token or os.environ.get(
@@ -52,7 +57,8 @@ class FeatureConfig:
 
 @dataclass
 class DixonColesConfig:
-    decay_alpha: float = 0.0065  # per-day exponential time weight
+    decay_alpha: float = 0.0015  # per-day time weight (~460-day half-life, tuned
+    # for real international results which are far sparser than synthetic history)
     max_goals: int = 10
     home_advantage_init: float = 0.25
     ridge: float = 1.0  # Gaussian-prior shrinkage on attack/defence (anti-blowup)

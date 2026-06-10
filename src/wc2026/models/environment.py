@@ -42,6 +42,15 @@ HOST_VENUES: dict[str, tuple[float, float, float]] = {
 
 _R_EARTH_KM = 6371.0
 
+# Approx. home-stadium / capital altitude (m) for WC2026 nations that train at
+# altitude. Everyone else defaults to sea level (0). Drives acclimatisation: a
+# side used to thin air is far less penalised at Mexico City (2240 m).
+TEAM_HOME_ALTITUDE: dict[str, float] = {
+    "mexico": 2240.0, "ecuador": 2850.0, "colombia": 2640.0, "bolivia": 3640.0,
+    "south_africa": 1700.0, "iran": 1200.0, "saudi_arabia": 600.0,
+    "switzerland": 400.0, "austria": 170.0, "spain": 660.0,  # Madrid sits high-ish
+}
+
 
 @dataclass
 class EnvironmentConfig:
@@ -120,3 +129,56 @@ class EnvironmentModel:
             return 0.0
         # Suppressed tempo slightly raises draw probability; capped.
         return min(0.12, self.cfg.heat_tempo_per_c * (temp_c - 21.0))
+
+    # --- composite: per-side 1X2 logit deltas from a fixture's context ---
+    def match_logit_deltas(self, *, home_id: str, away_id: str,
+                           venue_city: str | None = None, venue_alt_m: float | None = None,
+                           prev_city_home: str | None = None, prev_city_away: str | None = None,
+                           timezone_shift_home: float = 0.0, timezone_shift_away: float = 0.0,
+                           rest_days_home: float = 6.0, rest_days_away: float = 6.0,
+                           temp_c: float | None = None,
+                           goal_to_logit: float = 1.4) -> tuple[float, float, float, dict]:
+        """Return ``(home_logit, away_logit, draw_logit, notes)`` for one fixture.
+
+        All effects are no-ops without the relevant context, so this is safe to
+        call on every prediction; it only moves the number when real venue /
+        schedule data is attached (or a high-altitude venue is implied).
+        """
+        if not self.cfg.enabled:
+            return 0.0, 0.0, 0.0, {}
+        notes: dict[str, float] = {}
+        dh = da = dd = 0.0
+
+        # Altitude (the one factor that moves the goal mean → converted to logit).
+        if venue_alt_m is None and venue_city in HOST_VENUES:
+            venue_alt_m = HOST_VENUES[venue_city][2]
+        if venue_alt_m is not None:
+            hgd, agd = self.altitude_goal_delta(
+                venue_alt_m, TEAM_HOME_ALTITUDE.get(home_id, 0.0),
+                TEAM_HOME_ALTITUDE.get(away_id, 0.0))
+            if abs(hgd) > 1e-6:
+                dh += goal_to_logit * hgd
+                da += goal_to_logit * agd
+                notes["altitude"] = round(goal_to_logit * (hgd - agd), 3)
+
+        # Travel / jet lag (penalises the travelling side).
+        th = self.travel_logit_delta(prev_city_home, venue_city, timezone_shift_home)
+        ta = self.travel_logit_delta(prev_city_away, venue_city, timezone_shift_away)
+        if th or ta:
+            dh += th
+            da += ta
+            notes["travel"] = round(th - ta, 3)
+
+        # Rest differential (already a net home delta).
+        rest = self.rest_logit_delta(rest_days_home, rest_days_away)
+        if rest:
+            dh += rest
+            notes["rest"] = round(rest, 3)
+
+        # Heat (raises the draw).
+        heat = self.heat_draw_logit_delta(temp_c)
+        if heat:
+            dd += heat
+            notes["heat_draw"] = round(heat, 3)
+
+        return dh, da, dd, notes
