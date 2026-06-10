@@ -110,8 +110,17 @@ class FeatureStore:
 
     # --- persistence ---------------------------------------------------
     def save(self) -> None:
-        """Persist all in-memory tables to Parquet (best-effort)."""
+        """Persist all in-memory tabular tables to Parquet (best-effort).
+
+        Only ``DataFrame`` tables are persisted here; non-tabular artefacts
+        (e.g. lists of domain objects registered for in-memory use) are skipped.
+        """
+        import pandas as pd
+
+        self.path.mkdir(parents=True, exist_ok=True)
         for name, frame in self._frames.items():
+            if not isinstance(frame, pd.DataFrame):
+                continue
             target = self.path / f"{name}.parquet"
             try:
                 frame.to_parquet(target, index=False)
