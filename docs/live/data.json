@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T22:41:22+00:00",
+  "generated_at": "2026-06-10T22:49:58+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -752,9 +752,9 @@
         "away": 0.7888
       },
       "crowd": {
-        "home": 0.0619,
+        "home": 0.0623,
         "draw": 0.1347,
-        "away": 0.8034
+        "away": 0.803
       },
       "clv": {
         "home_open": 7.0,
@@ -763,7 +763,7 @@
       },
       "value": {
         "outcome": "away",
-        "ev": -0.0078,
+        "ev": -0.0083,
         "is_value": false,
         "offered_odds": 1.235
       },
@@ -1149,16 +1149,16 @@
     {
       "player": "Kylian Mbappe",
       "prob": 0.1574,
-      "fair_odds": 6.35
+      "fair_odds": 6.36
     },
     {
       "player": "Harry Kane",
-      "prob": 0.1357,
+      "prob": 0.1356,
       "fair_odds": 7.37
     },
     {
       "player": "Mikel Oyarzabal",
-      "prob": 0.0923,
+      "prob": 0.0922,
       "fair_odds": 10.84
     },
     {
@@ -1169,82 +1169,82 @@
     {
       "player": "Cristiano Ronaldo",
       "prob": 0.051,
-      "fair_odds": 19.6
+      "fair_odds": 19.61
     },
     {
       "player": "Michael Olise",
       "prob": 0.0494,
-      "fair_odds": 20.24
+      "fair_odds": 20.25
     },
     {
       "player": "Lionel Messi",
-      "prob": 0.0451,
-      "fair_odds": 22.19
+      "prob": 0.045,
+      "fair_odds": 22.2
     },
     {
       "player": "Julian Alvarez",
-      "prob": 0.0451,
-      "fair_odds": 22.19
+      "prob": 0.045,
+      "fair_odds": 22.2
     },
     {
       "player": "Raphinha",
       "prob": 0.0396,
-      "fair_odds": 25.23
+      "fair_odds": 25.25
     },
     {
       "player": "Lamine Yamal",
       "prob": 0.0364,
-      "fair_odds": 27.49
+      "fair_odds": 27.51
     },
     {
       "player": "Vinicius Junior",
       "prob": 0.0309,
-      "fair_odds": 32.32
+      "fair_odds": 32.33
     },
     {
       "player": "Ferran Torres",
       "prob": 0.0277,
-      "fair_odds": 36.12
+      "fair_odds": 36.14
     },
     {
       "player": "Ousmane Dembele",
       "prob": 0.0266,
-      "fair_odds": 37.59
+      "fair_odds": 37.61
     },
     {
       "player": "Lautaro Martinez",
       "prob": 0.0244,
-      "fair_odds": 40.93
+      "fair_odds": 40.96
     },
     {
       "player": "Igor Thiago",
       "prob": 0.0233,
-      "fair_odds": 42.84
+      "fair_odds": 42.86
     },
     {
       "player": "Cody Gakpo",
-      "prob": 0.0228,
-      "fair_odds": 43.86
+      "prob": 0.0233,
+      "fair_odds": 42.86
     },
     {
       "player": "Luis Diaz",
       "prob": 0.0125,
-      "fair_odds": 80.09
+      "fair_odds": 80.13
     },
     {
       "player": "Deniz Undav",
       "prob": 0.0103,
-      "fair_odds": 96.95
+      "fair_odds": 97.0
     },
     {
       "player": "Bruno Fernandes",
       "prob": 0.0103,
-      "fair_odds": 96.95
+      "fair_odds": 97.0
     },
     {
       "player": "Luis Javier Su\u00e1rez",
       "prob": 0.0087,
-      "fair_odds": 115.12
+      "fair_odds": 115.19
     }
   ],
   "group_winners": {
@@ -1287,51 +1287,51 @@
     "C": [
       {
         "team": "Brazil",
-        "prob": 0.7069
+        "prob": 0.7104
       },
       {
         "team": "Morocco",
-        "prob": 0.2076
+        "prob": 0.2037
       },
       {
         "team": "Scotland",
-        "prob": 0.0786
+        "prob": 0.079
       },
       {
         "team": "Haiti",
-        "prob": 0.0069
+        "prob": 0.007
       }
     ],
     "D": [
       {
         "team": "Usa",
-        "prob": 0.3729
+        "prob": 0.3741
       },
       {
         "team": "T\u00fcrkiye",
-        "prob": 0.3631
+        "prob": 0.3644
       },
       {
         "team": "Paraguay",
-        "prob": 0.1717
+        "prob": 0.1701
       },
       {
         "team": "Australia",
-        "prob": 0.0922
+        "prob": 0.0914
       }
     ],
     "E": [
       {
         "team": "Germany",
-        "prob": 0.6614
+        "prob": 0.6677
       },
       {
         "team": "Ecuador",
-        "prob": 0.2107
+        "prob": 0.2028
       },
       {
         "team": "Ivory Coast",
-        "prob": 0.1225
+        "prob": 0.1241
       },
       {
         "team": "Cura\u00e7ao",
@@ -1449,19 +1449,19 @@
     "L": [
       {
         "team": "England",
-        "prob": 0.6888
+        "prob": 0.6884
       },
       {
         "team": "Croatia",
-        "prob": 0.2262
+        "prob": 0.2261
       },
       {
         "team": "Ghana",
-        "prob": 0.0563
+        "prob": 0.0568
       },
       {
         "team": "Panama",
-        "prob": 0.0287
+        "prob": 0.0286
       }
     ]
   },
