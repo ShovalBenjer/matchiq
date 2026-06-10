@@ -129,6 +129,26 @@ def cmd_validate(args) -> int:
     return 0 if report.passed else 1
 
 
+def cmd_live_sync(args) -> int:
+    """Pull real fixtures/odds/standings + crowd markets → live dashboard."""
+    import datetime as _dt
+
+    from wc2026.live.sync import LiveSync
+
+    start = _dt.date.fromisoformat(args.date) if args.date else _dt.date.today()
+    data = LiveSync(days=args.days).write(start)
+    print(f"Live sync OK → docs/live/  ({len(data['fixtures'])} fixtures, "
+          f"{len(data['groups'])} groups, winner rows={len(data['winner'])}, "
+          f"top-scorer rows={len(data['top_scorer'])})")
+    val = [f for f in data["fixtures"] if f.get("value", {}) and f["value"].get("is_value")]
+    if val:
+        print(f"  value flags: {len(val)}")
+        for f in val[:8]:
+            print(f"   {f['home']} v {f['away']}: {f['value']['outcome']} "
+                  f"+{f['value']['ev']*100:.1f}% @ {f['value']['offered_odds']}")
+    return 0
+
+
 def cmd_crowd(args) -> int:
     """Compare the model's winner probabilities to live Polymarket crowd wisdom."""
     orch = _orchestrator(args)
@@ -196,6 +216,11 @@ def build_parser() -> argparse.ArgumentParser:
     pv.add_argument("--narrate", action="store_true",
                     help="natural-language verdict (Claude if available)")
     pv.set_defaults(func=cmd_validate)
+
+    pl = sub.add_parser("live-sync", help="build the live dashboard from real data")
+    pl.add_argument("--days", type=int, default=4, help="fixture window (days)")
+    pl.add_argument("--date", default=None, help="start date YYYY-MM-DD (default today)")
+    pl.set_defaults(func=cmd_live_sync)
 
     pc = sub.add_parser("crowd", help="model vs Polymarket crowd wisdom (winner)")
     pc.add_argument("--paths", type=int, default=20000)

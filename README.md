@@ -141,6 +141,27 @@ four with best-third-placed qualification in the Monte-Carlo simulator, and a
 
 ---
 
+## Production live dashboard (daily synced)
+
+```bash
+wc2026 live-sync --days 5        # → docs/live/index.html + docs/live/data.json
+```
+
+Pulls **real** data and renders a self-contained dashboard with tabs:
+**Next fixtures** (by date, with de-vigged DraftKings 3-way + Polymarket crowd +
+value flag + O/U), **Groups** (live ESPN standings), **Knockout seeds**
+(projected group winners from the crowd), **Winner**, and **Top scorer**.
+
+| Feed | Source | Key |
+|---|---|---|
+| Fixtures, scores, 3-way odds (open+close), group standings | ESPN / DraftKings | none |
+| Winner, Golden Boot, group-winner & match crowd prices | Polymarket | none |
+
+`.github/workflows/live-sync.yml` re-syncs twice daily and commits `docs/live/`.
+A "value" flag fires only when the crowd's fair price beats the book's offered
+price — in practice the book and crowd agree to within the vig, so honest output
+shows **slightly negative EV** (no free lunch) rather than fabricated edges.
+
 ## Live data & crowd wisdom
 
 Three real sources are reachable **without an API key** and are wired in:
