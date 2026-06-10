@@ -129,6 +129,26 @@ def cmd_validate(args) -> int:
     return 0 if report.passed else 1
 
 
+def cmd_chaos(args) -> int:
+    """Tournament chaos diagnostics: sensitive dependence, entropy, tipping points."""
+    from wc2026.models.chaos import ChaosAnalyzer
+
+    orch = _orchestrator(args)
+    report = ChaosAnalyzer(orch).report(n_paths=args.paths, eps=args.eps)
+    d = report.as_dict()
+    print(f"Tournament chaos index : {d['chaos_index']:.2f}  (0 = predictable, 1 = pure chaos)")
+    print(f"Lyapunov proxy (JS/ε)  : {d['lyapunov_proxy']:.3f}")
+    print(f"Field entropy          : {d['field_entropy']:.2f}  (1 = wide open)")
+    print(f"Favourite              : {d['favourite']} {d['favourite_prob']*100:.0f}%"
+          f"  → fragility {d['favourite_fragility']*100:.0f}% (chance it does NOT win)")
+    print("Tipping-point matches (closest to a coin flip):")
+    for r in d["tipping_points"]:
+        print(f"  {r['home']:>14} v {r['away']:<14} entropy={r['entropy']:.2f}  H/D/A={r['probs']}")
+    if args.json:
+        print(json.dumps(d, indent=2))
+    return 0
+
+
 def cmd_post(args) -> int:
     """Compose and post the daily update to configured social channels."""
     from wc2026.social.post import available_channels, post_update
@@ -234,6 +254,12 @@ def build_parser() -> argparse.ArgumentParser:
     pv.add_argument("--narrate", action="store_true",
                     help="natural-language verdict (Claude if available)")
     pv.set_defaults(func=cmd_validate)
+
+    pch = sub.add_parser("chaos", help="tournament chaos / sensitive-dependence diagnostics")
+    pch.add_argument("--paths", type=int, default=3000, help="Monte-Carlo paths per run")
+    pch.add_argument("--eps", type=float, default=0.05, help="strength perturbation size")
+    pch.add_argument("--json", action="store_true", help="also emit raw JSON")
+    pch.set_defaults(func=cmd_chaos)
 
     pp2 = sub.add_parser("post", help="post the daily update to social channels")
     pp2.add_argument("--dry-run", action="store_true", help="compose only; do not send")
