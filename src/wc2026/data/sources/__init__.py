@@ -13,6 +13,7 @@ from wc2026.data.sources.synthetic import SyntheticSource
 from wc2026.data.sources.football_data_org import FootballDataOrgSource
 from wc2026.data.sources.football_data_couk import FootballDataCoUkSource
 from wc2026.data.sources.apify import ApifySource
+from wc2026.data.sources.polymarket import PolymarketSource
 
 __all__ = [
     "DataSource",
@@ -21,4 +22,5 @@ __all__ = [
     "FootballDataOrgSource",
     "FootballDataCoUkSource",
     "ApifySource",
+    "PolymarketSource",
 ]

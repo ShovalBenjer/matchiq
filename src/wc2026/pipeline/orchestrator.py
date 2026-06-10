@@ -282,19 +282,79 @@ class Orchestrator:
             groups = {f"G{i//4+1}": teams[i:i + 4] for i in range(0, len(teams) - len(teams) % 4, 4)}
         return groups
 
-    def simulate_tournament(self, n_paths: int | None = None) -> dict:
+    def simulate_tournament(self, n_paths: int | None = None,
+                            apply_priors: bool = True) -> dict:
         if not self._fitted:
             self.fit()
         n_paths = n_paths or self.cfg.betting.monte_carlo_paths
         groups = self._group_structure()
         sim = TournamentSimulator(self.dixon_coles, groups, seed=self.cfg.data.synthetic_seed)
         result = sim.run(n_paths=n_paths)
+        result["win_prob_model"] = dict(result["win_prob"])  # keep the raw model view
         # Top scorer using simulated match counts.
         if self.players:
             ts = TopScorerSimulator(self.players, result["expected_matches"],
                                     seed=self.cfg.data.synthetic_seed)
             result["top_scorer"] = ts.run(n_paths=min(n_paths, 20_000))
+        if apply_priors:
+            self._apply_winner_priors(result)
         return result
+
+    def _apply_winner_priors(self, result: dict) -> None:
+        """Apply aging / holders'-curse / favourite-shrink / crowd-wisdom blend."""
+        from wc2026.data import wc2026_facts as facts
+        from wc2026.models.priors import (blend_market, champions_curse_multiplier,
+                                          favourite_shrink, squad_age_attack_multiplier)
+
+        pc = self.cfg.models.priors
+        wp = dict(result["win_prob"])
+        notes: dict[str, dict] = {}
+
+        # 1) squad-age decline + holders' curse (team-level multipliers).
+        for t in list(wp):
+            mult = 1.0
+            if pc.enable_squad_age:
+                age = facts.SQUAD_AGE.get(t, facts.DEFAULT_SQUAD_AGE)
+                m = squad_age_attack_multiplier(age, pc.squad_age_baseline, pc.squad_age_coef)
+                mult *= m
+                notes.setdefault(t, {})["squad_age"] = round(m, 3)
+            if pc.enable_champions_curse and t == facts.DEFENDING_CHAMPION:
+                m = champions_curse_multiplier(pc.champions_curse_xpts)
+                mult *= m
+                notes.setdefault(t, {})["champions_curse"] = round(m, 3)
+            wp[t] *= mult
+        s = sum(wp.values()) or 1.0
+        wp = {k: v / s for k, v in wp.items()}
+
+        # 2) favourite shrink (flatten the top of the board).
+        if pc.enable_favourite_shrink:
+            wp = favourite_shrink(wp, pc.favourite_shrink_power)
+
+        # 3) crowd-wisdom blend (real Polymarket → log opinion pool).
+        market = self._fetch_market_winner()
+        if pc.enable_market_blend and market:
+            wp = blend_market(wp, market, pc.market_blend_weight)
+            wp = {k: v for k, v in wp.items() if k in result["win_prob_model"]}
+            s = sum(wp.values()) or 1.0
+            wp = {k: v / s for k, v in wp.items()}
+            result["market_winner"] = market
+
+        result["win_prob"] = dict(sorted(wp.items(), key=lambda kv: kv[1], reverse=True))
+        result["prior_notes"] = notes
+
+    def _fetch_market_winner(self) -> dict[str, float] | None:
+        """Live Polymarket crowd probabilities, falling back to a logged snapshot."""
+        from wc2026.data import wc2026_facts as facts
+
+        try:
+            from wc2026.data.sources.polymarket import PolymarketSource
+
+            snap = PolymarketSource().winner_market()
+            logger.info("Crowd wisdom: live Polymarket (%d teams)", len(snap.probabilities))
+            return snap.probabilities
+        except Exception as exc:  # offline / blocked → documented snapshot
+            logger.info("Polymarket unavailable (%s); using logged market snapshot", exc)
+            return dict(facts.MARKET_WINNER_SNAPSHOT)
 
     # ------------------------------------------------------------------
     # Update cycle

@@ -71,6 +71,7 @@ wc2026 simulate --paths 50000                 # winner + top-scorer Monte-Carlo
 wc2026 predict --home argentina --away brazil # one fixture, every model's view
 wc2026 probe                                  # SQL data-quality probe of the store
 wc2026 validate [--narrate]                   # semantic / agentic sanity checks
+wc2026 crowd --top 12                         # model vs Polymarket crowd vs blended
 ```
 
 Or the end-to-end demo:
@@ -139,6 +140,51 @@ four with best-third-placed qualification in the Monte-Carlo simulator, and a
 `stake_indifferent` feature that deflates the favourite in dead-rubber matches.
 
 ---
+
+## Live data & crowd wisdom
+
+Three real sources are reachable **without an API key** and are wired in:
+
+| Source | Data | Status |
+|---|---|---|
+| **Polymarket** (`PolymarketSource`) | WC2026 winner, Golden Boot, 12 group winners, match moneylines — real crowd wisdom (>$1.9B volume) | live, key-free |
+| **football-data.co.uk** (`FootballDataCoUkSource`) | historical multi-bookmaker odds (Bet365, Pinnacle, bwin…) incl. kickoff time | live, key-free |
+| **football-data.org** (`FootballDataOrgSource`) | WC match results/standings | needs a free `FOOTBALL_DATA_ORG_TOKEN` |
+| Reddit/Twitter (via Apify) | sentiment | needs `APIFY_TOKEN` |
+
+```bash
+wc2026 crowd --top 12          # model vs Polymarket crowd vs blended winner
+```
+
+The crowd-wisdom blend is the biggest lever. Example (real Polymarket, June 2026):
+the synthetic model overrated Argentina at 40.6%; the crowd has them 5th at 8.3%;
+**logarithmic-opinion-pool blending pulls the final to ~17%**, and the
+aging/holders'-curse/favourite-shrink priors push further toward the market —
+exactly the correction the evidence demands. See `docs/RESEARCH.md`.
+
+## Evidence-based priors (`models/priors.py`, `models/environment.py`)
+
+Small, regressed, citable adjustments (full dossier + sources in `docs/RESEARCH.md`):
+
+- **Crowd-wisdom blend** — log-opinion pooling toward the market (model weight ≈0.35).
+- **Holders' curse** — group-stage-only haircut on the defending champion (4/6 modern
+  holders fell in the group; regressed to ~−4%/match given n=6).
+- **Squad aging** — minutes-weighted squad age vs 27, supra-linear past +3 yrs
+  (Argentina ≈28.6 → ~−3–4% attack).
+- **Favourite shrink** — flatten the outright board for single-elimination variance.
+- **Environment** — altitude shifts the goal mean (+~0.4 goal/1000 m diff, Mexico
+  City); heat is a tempo modifier (not goals); travel is an east>west win-prob
+  penalty; rest is a differential with a 6-day kink.
+
+## Which factors are considered?
+
+Base tabular features (`features/builder.py`): Elo diff & expected score, squad
+value ratio, injury index diff, time-decayed form (home/away/diff), rolling
+goals & xG diffs, head-to-head, rest-day diff, knockout flag, host flag, stakeless
+flag. **Plus** the priors above add: defending-champion status, squad age,
+altitude, heat/kickoff, travel distance, and crowd-market probabilities. Factors
+**not** yet modelled (documented honestly): referee tendencies, pitch
+dimensions, and live in-play state beyond the optional Bernoulli hook.
 
 ## Optimizers
 

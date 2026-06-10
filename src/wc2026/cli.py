@@ -129,6 +129,25 @@ def cmd_validate(args) -> int:
     return 0 if report.passed else 1
 
 
+def cmd_crowd(args) -> int:
+    """Compare the model's winner probabilities to live Polymarket crowd wisdom."""
+    orch = _orchestrator(args)
+    res = orch.simulate_tournament(n_paths=args.paths)
+    model = res["win_prob_model"]
+    market = res.get("market_winner", {})
+    blended = res["win_prob"]
+    teams = sorted(set(model) | set(market), key=lambda t: -blended.get(t, 0))
+    print(f"{'team':>16} | {'model':>7} | {'market':>7} | {'blended':>7}")
+    print("-" * 48)
+    for t in teams[: args.top]:
+        m = model.get(t, 0); k = market.get(t); b = blended.get(t, 0)
+        ks = f"{k*100:6.1f}%" if k is not None else "   —  "
+        print(f"{t:>16} | {m*100:6.1f}% | {ks} | {b*100:6.1f}%")
+    if not market:
+        print("\n(no live market; used logged snapshot or blend disabled)")
+    return 0
+
+
 def cmd_predict(args) -> int:
     orch = _orchestrator(args)
     match = next((m for m in orch.matches
@@ -177,6 +196,11 @@ def build_parser() -> argparse.ArgumentParser:
     pv.add_argument("--narrate", action="store_true",
                     help="natural-language verdict (Claude if available)")
     pv.set_defaults(func=cmd_validate)
+
+    pc = sub.add_parser("crowd", help="model vs Polymarket crowd wisdom (winner)")
+    pc.add_argument("--paths", type=int, default=20000)
+    pc.add_argument("--top", type=int, default=15)
+    pc.set_defaults(func=cmd_crowd)
 
     pp = sub.add_parser("predict", help="predict a single fixture")
     pp.add_argument("--home", required=True)

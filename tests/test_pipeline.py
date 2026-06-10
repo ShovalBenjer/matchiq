@@ -35,6 +35,35 @@ def test_orchestrator_recommend_and_simulate():
     assert np.isclose(sum(sim["win_prob"].values()), 1.0, atol=0.05)
 
 
+def test_winner_priors_blend_pulls_toward_market():
+    """Aging/curse/shrink + crowd-wisdom blend must alter the raw model winner."""
+    orch = Orchestrator(_small_cfg()).fit()
+    res = orch.simulate_tournament(n_paths=400)
+    assert "win_prob_model" in res and "win_prob" in res
+    assert np.isclose(sum(res["win_prob"].values()), 1.0, atol=0.02)
+    # Market info is attached (live Polymarket or the logged snapshot fallback).
+    assert "market_winner" in res
+    # Defending champion (argentina) carries a curse note when present.
+    if "argentina" in res["prior_notes"]:
+        assert "champions_curse" in res["prior_notes"]["argentina"]
+
+
+def test_priors_can_be_disabled():
+    cfg = _small_cfg()
+    cfg.models.priors.enable_market_blend = False
+    cfg.models.priors.enable_favourite_shrink = False
+    cfg.models.priors.enable_champions_curse = False
+    cfg.models.priors.enable_squad_age = False
+    cfg.models.priors.enable_environment = False
+    orch = Orchestrator(cfg).fit()
+    res = orch.simulate_tournament(n_paths=400)
+    # With all priors off, blended winner matches the raw model winner.
+    assert set(res["win_prob"]) == set(res["win_prob_model"])
+    for t, p in res["win_prob_model"].items():
+        assert abs(res["win_prob"][t] - p) < 1e-9
+    assert "market_winner" not in res
+
+
 def test_update_after_match_refits():
     orch = Orchestrator(_small_cfg())
     orch.fit()

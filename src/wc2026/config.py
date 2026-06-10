@@ -86,12 +86,34 @@ class EnsembleConfig:
 
 
 @dataclass
+class PriorsConfig:
+    """Evidence-based priors (see docs/RESEARCH.md). All small & regressed."""
+
+    # Crowd-wisdom blend (logarithmic opinion pooling); weight on the MODEL.
+    enable_market_blend: bool = True
+    market_blend_weight: float = 0.35  # rest of the weight goes to the market
+    # Holders' curse (group-stage only, heavily regressed from ~2.3 xPts).
+    enable_champions_curse: bool = True
+    champions_curse_xpts: float = 0.4
+    # Squad-age decline.
+    enable_squad_age: bool = True
+    squad_age_baseline: float = 27.0
+    squad_age_coef: float = 0.02
+    # Favourite shrink (single-elimination variance).
+    enable_favourite_shrink: bool = True
+    favourite_shrink_power: float = 0.92  # <1 flattens the top of the board
+    # Environmental/logistical adjustments (altitude/heat/travel/rest).
+    enable_environment: bool = True
+
+
+@dataclass
 class ModelConfig:
     """Layer 3 — model stack."""
 
     dixon_coles: DixonColesConfig = field(default_factory=DixonColesConfig)
     hmm: HMMConfig = field(default_factory=HMMConfig)
     ensemble: EnsembleConfig = field(default_factory=EnsembleConfig)
+    priors: PriorsConfig = field(default_factory=PriorsConfig)
     # LLM RAG agent
     llm_model: str = "claude-opus-4-8"
     llm_enabled: bool = True

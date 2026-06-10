@@ -52,10 +52,14 @@ def build(config: Config, paths: int) -> dict:
     player_name = {p.player_id: p.name for p in orch.players}
     player_team = {p.player_id: p.team_id for p in orch.players}
 
-    # --- winner & top scorer (Monte Carlo) ----------------------------
+    # --- winner & top scorer (Monte Carlo + crowd-wisdom blend) -------
     sim = orch.simulate_tournament(n_paths=paths)
+    model_wp = sim.get("win_prob_model", {})
+    market_wp = sim.get("market_winner", {})
     winner = [
         {"team": teams.get(t, t), "team_id": t, "prob": round(p, 4),
+         "model_prob": round(model_wp.get(t, 0.0), 4),
+         "market_prob": round(market_wp.get(t), 4) if t in market_wp else None,
          "fair_odds": round(1.0 / p, 2) if p > 0 else None}
         for t, p in sim["win_prob"].items() if p > 0
     ][:24]
@@ -287,6 +291,7 @@ function renderRanked(secId, rows, cols){
       if(c.key==='prob'){const td=el('td',{class:'num'});td.append(bar(v));
         const s=el('span',{class:'muted'});s.style.marginLeft='8px';s.textContent=pct(v);
         td.append(s);tr.append(td);return;}
+      if(v===null||v===undefined){tr.append(el('td',{class:c.num?'num':'',html:'<span class="muted">—</span>'}));return;}
       if(c.pctf) v=pct(v);
       tr.append(el('td',{class:c.num?'num':'',html:String(v)}));
     });tb.append(tr);});};
@@ -295,7 +300,9 @@ function renderRanked(secId, rows, cols){
 
 renderFixtures();
 renderRanked('tab-winner', DATA.winner, [
-  {key:'team',label:'Team'},{key:'prob',label:'P(win)',num:true},
+  {key:'team',label:'Team'},{key:'prob',label:'Blended',num:true},
+  {key:'model_prob',label:'Model',num:true,pctf:true},
+  {key:'market_prob',label:'Crowd',num:true,pctf:true},
   {key:'fair_odds',label:'Fair odds',num:true}]);
 renderRanked('tab-scorer', DATA.top_scorer, [
   {key:'player',label:'Player'},{key:'team',label:'Team'},
