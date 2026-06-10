@@ -129,6 +129,24 @@ def cmd_validate(args) -> int:
     return 0 if report.passed else 1
 
 
+def cmd_post(args) -> int:
+    """Compose and post the daily update to configured social channels."""
+    from wc2026.social.post import available_channels, post_update
+
+    chans = available_channels()
+    res = post_update(dry_run=args.dry_run,
+                      channels=(chans or None) if not args.dry_run else None)
+    print("--- post preview ---")
+    print(res["text"])
+    print(res["link"])
+    print("--- channels ---")
+    if not args.dry_run and not chans:
+        print("  (no channels configured — set BLUESKY_HANDLE/BLUESKY_APP_PASSWORD etc.)")
+    for c, status in res["channels"].items():
+        print(f"  {c}: {status}")
+    return 0
+
+
 def cmd_live_sync(args) -> int:
     """Pull real fixtures/odds/standings + crowd markets → live dashboard."""
     import datetime as _dt
@@ -216,6 +234,10 @@ def build_parser() -> argparse.ArgumentParser:
     pv.add_argument("--narrate", action="store_true",
                     help="natural-language verdict (Claude if available)")
     pv.set_defaults(func=cmd_validate)
+
+    pp2 = sub.add_parser("post", help="post the daily update to social channels")
+    pp2.add_argument("--dry-run", action="store_true", help="compose only; do not send")
+    pp2.set_defaults(func=cmd_post)
 
     pl = sub.add_parser("live-sync", help="build the live dashboard from real data")
     pl.add_argument("--days", type=int, default=4, help="fixture window (days)")

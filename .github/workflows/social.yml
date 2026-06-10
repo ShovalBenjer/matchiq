@@ -1,0 +1,43 @@
+name: Daily social post
+
+# Composes a daily World Cup 2026 update from the live data and posts it to every
+# channel you have a secret for (Bluesky / Discord / Mastodon / X). Runs after the
+# morning live-sync. Add secrets under Settings → Secrets and variables → Actions.
+
+on:
+  schedule:
+    - cron: "30 11 * * *"   # 11:30 UTC, just after the live-sync
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Compose only (don't send)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e .
+      - name: Refresh live data
+        run: python -m wc2026.cli live-sync --days 5
+      - name: Post update
+        env:
+          SITE_URL: "https://shovalbenjer.github.io/matchiq/"
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          MASTODON_BASE_URL: ${{ secrets.MASTODON_BASE_URL }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: python -m wc2026.cli post ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '--dry-run' || '' }}
