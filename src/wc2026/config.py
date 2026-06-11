@@ -81,6 +81,7 @@ class EnsembleConfig:
         "tabpfn",
         "chronos",
         "bradley_terry",
+        "graph",
     )
     # "average" is the default: robust, calibrated, and faithful to the blueprint
     # ("the meta-learner averages model outputs"). "weighted"/"logistic" are

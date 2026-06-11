@@ -33,6 +33,7 @@ from wc2026.models.chronos import ChronosForecaster
 from wc2026.models.dixon_coles import DixonColesModel
 from wc2026.models.ensemble import StackingEnsemble
 from wc2026.models.environment import EnvironmentConfig, EnvironmentModel
+from wc2026.models.graph_model import GraphRatingModel
 from wc2026.models.hmm import TournamentHMM
 from wc2026.models.rag_agent import NewsRAGAgent, NewsSignal
 from wc2026.models.tabpfn import TabPFNModel
@@ -53,6 +54,7 @@ class MatchPrediction:
     news_home: NewsSignal | None = None
     news_away: NewsSignal | None = None
     environment: dict | None = None
+    over_under: dict | None = None
 
     def as_dict(self) -> dict:
         return {
@@ -65,6 +67,7 @@ class MatchPrediction:
             "home_momentum": self.home_momentum,
             "away_momentum": self.away_momentum,
             "environment": self.environment or {},
+            "over_under": self.over_under or {},
         }
 
 
@@ -79,6 +82,7 @@ class Orchestrator:
         # Model stack
         self.dixon_coles = DixonColesModel(self.cfg.models.dixon_coles)
         self.bradley_terry = BradleyTerryModel(decay_alpha=self.cfg.models.dixon_coles.decay_alpha)
+        self.graph = GraphRatingModel(decay_alpha=self.cfg.models.dixon_coles.decay_alpha)
         self.hmm = TournamentHMM(self.cfg.models.hmm)
         self.environment = EnvironmentModel(
             EnvironmentConfig(enabled=self.cfg.models.priors.enable_environment))
@@ -126,6 +130,7 @@ class Orchestrator:
 
         # Strength prior → Dixon-Coles → both refit on full history.
         self.bradley_terry.fit(played)
+        self.graph.fit(played)
         self.dixon_coles.fit(played)
 
         # Tabular features + TabPFN.
@@ -207,6 +212,7 @@ class Orchestrator:
             "bradley_terry": self.bradley_terry.predict_match(match),
             "tabpfn": self.tabpfn.predict_match(match),
             "chronos": self._chronos_outcome(match),
+            "graph": self.graph.predict_match(match),
         }
         ensemble = self.ensemble.predict(model_probs)
 
@@ -246,10 +252,17 @@ class Orchestrator:
         if match.extra.get("stake_indifferent"):
             final = _deflate_favourite(final)
 
+        # Over/Under 2.5 goals, straight from the fitted scoreline grid.
+        try:
+            p_over, p_under = self.dixon_coles.over_under(match.home_id, match.away_id, 2.5)
+            over_under = {"line": 2.5, "over": round(float(p_over), 4), "under": round(float(p_under), 4)}
+        except Exception:
+            over_under = None
+
         return MatchPrediction(
             match=match, model_probs=model_probs, ensemble=ensemble, final=final,
             home_momentum=h_mom, away_momentum=a_mom, news_home=ns_home, news_away=ns_away,
-            environment=env_notes,
+            environment=env_notes, over_under=over_under,
         )
 
     # ------------------------------------------------------------------

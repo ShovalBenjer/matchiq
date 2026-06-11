@@ -75,8 +75,8 @@ class LiveSync:
             "sources": {"results_odds": "ESPN / DraftKings", "crowd": "Polymarket"},
             "engines": {
                 "market": "DraftKings (3-way, Shin-devigged) + Polymarket crowd",
-                "model": ("Dixon-Coles + ensemble on REAL international results "
-                          "(martj42, since 2015) with curse/aging/altitude priors"),
+                "model": ("Dixon-Coles + Bradley-Terry + graph-centrality ensemble on "
+                          "REAL results (martj42, since 2015) with curse/aging/altitude/rest priors"),
                 "blend": "log-opinion pool, model weight ≈ 0.35",
             },
             "groups": groups,
@@ -90,6 +90,22 @@ class LiveSync:
         if self.with_model:
             self._augment_with_model(data)
         return data
+
+    @staticmethod
+    def _rest_days(fixtures: list[dict]) -> dict:
+        """Real rest days per (match_id, side) from each team's previous fixture."""
+        seen: dict[str, _dt.date] = {}
+        out: dict = {}
+        for f in sorted(fixtures, key=lambda x: x.get("date") or ""):
+            try:
+                d = _dt.date.fromisoformat((f.get("date") or "")[:10])
+            except ValueError:
+                continue
+            for side, tid in (("home", f.get("home_id")), ("away", f.get("away_id"))):
+                prev = seen.get(tid)
+                out[(f["match_id"], side)] = (d - prev).days if prev else 7.0
+                seen[tid] = d
+        return out
 
     # ------------------------------------------------------------------
     def _augment_with_model(self, data: dict) -> None:
@@ -109,15 +125,23 @@ class LiveSync:
 
             orch = Orchestrator(Config()).fit()
             known = set(getattr(orch.dixon_coles, "_idx", {}) or {})
+            rest = self._rest_days(data["fixtures"])
 
-            # Per-fixture model 1X2 (only when both teams are in the model universe).
+            # Per-fixture model 1X2 + Over/Under (when both teams are known to the model).
             for f in data["fixtures"]:
                 h, a = _canon(f.get("home_id", "")), _canon(f.get("away_id", ""))
                 if h in known and a in known:
-                    p = orch.predict(Match(match_id=f["match_id"], date=_dt.date.today(),
-                                           home_id=h, away_id=a, stage=Stage.GROUP)).final
+                    extra = {"rest_days_home": rest.get((f["match_id"], "home"), 6.0),
+                             "rest_days_away": rest.get((f["match_id"], "away"), 6.0)}
+                    pred = orch.predict(Match(match_id=f["match_id"], date=_dt.date.today(),
+                                              home_id=h, away_id=a, stage=Stage.GROUP, extra=extra))
+                    p = pred.final
                     f["model"] = {"home": round(p.home, 4), "draw": round(p.draw, 4),
                                   "away": round(p.away, 4)}
+                    if pred.over_under:
+                        f["model_ou"] = pred.over_under
+                    if pred.environment:
+                        f["env"] = pred.environment
 
             # Winner: model (with structural priors, no market) blended with the
             # crowd via a single log-opinion pool over the full team distribution.

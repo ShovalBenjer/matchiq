@@ -82,9 +82,10 @@ class EspnSource(DataSource):
     @staticmethod
     def _parse_odds(comp: dict) -> dict:
         odds_list = comp.get("odds") or []
-        if not odds_list:
+        # ESPN sometimes returns null entries in the odds array; take the first real one.
+        o = next((x for x in odds_list if isinstance(x, dict)), None)
+        if not o:
             return {}
-        o = odds_list[0]
         ml = o.get("moneyline") or {}
 
         def leg(side: str, phase: str):

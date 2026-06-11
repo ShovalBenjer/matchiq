@@ -105,20 +105,21 @@ function vFixtures(){
   Object.keys(byDate).sort().forEach(d=>{
     s.append(el('div',{class:'datehead'},new Date(d).toUTCString().slice(0,16)||'TBD'));
     const card=el('div',{class:'glass'});const t=el('table');
-    t.innerHTML=`<thead><tr><th>Match</th><th>Status</th><th class=num>Book H/D/A</th><th class=num>Crowd</th><th class=num title="Dixon-Coles model on real results">Model</th><th class=num>O/U</th><th>Edge</th></tr></thead>`;
+    t.innerHTML=`<thead><tr><th>Match</th><th>Status</th><th class=num>Book H/D/A</th><th class=num>Crowd</th><th class=num title="Dixon-Coles model on real results">Model</th><th class=num title="model P(over 2.5) / book line">O/U 2.5</th><th>Edge</th></tr></thead>`;
     const tb=el('tbody');
     byDate[d].forEach(f=>{
-      const b=f.book||{},c=f.crowd,m=f.model;
+      const b=f.book||{},c=f.crowd,m=f.model,ou=f.model_ou;
       const book=b.home!=null?`${pct(b.home)} / ${pct(b.draw)} / ${pct(b.away)}`:'<span class=muted>—</span>';
       const crowd=c?`${pct(c.home)} / ${pct(c.draw)} / ${pct(c.away)}`:'<span class=muted>—</span>';
       const model=m?`<span style="color:var(--accent)">${pct(m.home)} / ${pct(m.draw)} / ${pct(m.away)}</span>`:'<span class=muted>—</span>';
+      const ouCell=ou?`<span style="color:var(--accent)">O ${pct(ou.over)}</span>${f.over_under!=null?` <span class=muted>/ ${f.over_under}</span>`:''}`:(f.over_under!=null?`<span class=muted>${f.over_under}</span>`:'<span class=muted>—</span>');
       let v='<span class=muted>—</span>';
       if(f.value&&f.value.is_value)v=`<span class="pill value">${f.value.outcome} +${pct(f.value.ev)} @${f.value.offered_odds}</span>`;
       else if(f.value)v=`<span class=muted>${f.value.outcome} ${(100*f.value.ev).toFixed(1)}%</span>`;
       const st=f.status==='in'?'<span class=pill live>● LIVE</span>':(f.status==='post'?('<b>'+(f.score||'FT')+'</b>'):'<span class=muted>'+(f.date||'').slice(11,16)+'Z</span>');
       tb.append(el('tr',{}, `<td class=team>${flag(f.home)}${f.home} <span class=muted>v</span> ${flag(f.away)}${f.away}${f.details?` <span class=muted style="font-size:11px">(${f.details})</span>`:''}</td>
         <td>${st}</td><td class=num style="font-size:12px">${book}</td>
-        <td class=num style="font-size:12px">${crowd}</td><td class=num style="font-size:12px">${model}</td><td class=num>${f.over_under??'—'}</td><td>${v}</td>`));
+        <td class=num style="font-size:12px">${crowd}</td><td class=num style="font-size:12px">${model}</td><td class=num style="font-size:12px">${ouCell}</td><td>${v}</td>`));
     });
     t.append(tb);card.append(t);s.append(card);
   });
