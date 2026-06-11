@@ -190,6 +190,15 @@ function vChaos(){
     cell('Field entropy',(c.field_entropy*100).toFixed(0)+'%','1 = wide-open tournament');
 }
 function titlecase(s){return (s||'').replace(/_/g,' ').replace(/\b\w/g,m=>m.toUpperCase());}
+function vTempo(){
+  const t=D.tempo; if(!t)return;
+  const cell=(k,v,s)=>`<div class="glass tile"><div class="k">${k}</div><div class="v" style="font-size:24px">${v}</div><div class="s">${s}</div></div>`;
+  const colour=t.lean==='attacking'?'var(--good)':(t.lean==='defensive'?'var(--accent)':'var(--text)');
+  const el2=document.getElementById('chaos');
+  el2.insertAdjacentHTML('beforeend',
+    cell('Tournament tempo',`<span style="color:${colour}">${t.lean.toUpperCase()}</span>`,`index ${t.index}/100 · 50 = avg (${t.baseline} g/g)`)+
+    cell('Exp. goals/game',t.avg_goals,`model mean · ${(t.avg_over25*100).toFixed(0)}% of games over 2.5`));
+}
 function vLegend(){
   const e=D.engines||{}; const L=document.getElementById('legend');
   if(!e.model){L.remove();return;}

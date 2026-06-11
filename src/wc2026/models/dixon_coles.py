@@ -51,6 +51,7 @@ class DixonColesModel:
         self.defense: np.ndarray | None = None
         self.home_adv: float = self.cfg.home_advantage_init
         self.rho: float = -0.1
+        self.goal_scale: float = 1.0  # tournament goal-mean calibration multiplier
         self._fitted = False
         self._ref_date: date | None = None
 
@@ -146,11 +147,35 @@ class DixonColesModel:
         att_a = a[ai] if ai is not None else 0.0
         def_a = d[ai] if ai is not None else 0.0
         hf = 0.0 if neutral else 1.0
-        lam = float(np.exp(self.home_adv * hf + att_h + def_a))
-        mu = float(np.exp(att_a + def_h))
+        lam = float(np.exp(self.home_adv * hf + att_h + def_a)) * self.goal_scale
+        mu = float(np.exp(att_a + def_h)) * self.goal_scale
         # Hard clamp: even a degenerate fit can never emit nonsensical rates.
         cap = self.cfg.max_rate
         return min(max(lam, 1e-3), cap), min(max(mu, 1e-3), cap)
+
+    def calibrate_goal_mean(self, target_total: float,
+                            sample: list[tuple[str, str]] | None = None) -> "DixonColesModel":
+        """Scale expected goals so the mean total over a sample matches ``target_total``.
+
+        WC matches historically average ~2.6 goals/game (2010 2.27 → 2022 2.69);
+        internationals at large run a touch higher, so we re-anchor the tournament
+        goal mean to a researched target. Bounded so it only ever nudges.
+        """
+        if not self._fitted or self.attack is None or target_total <= 0:
+            return self
+        pairs = sample or [(self.teams[i], self.teams[j])
+                           for i in range(len(self.teams))
+                           for j in range(len(self.teams)) if i != j]
+        if not pairs:
+            return self
+        self.goal_scale = 1.0  # measure on the raw fit
+        totals = [sum(self._rates(h, a, neutral=True)) for h, a in pairs]
+        cur = float(np.mean(totals)) if totals else 0.0
+        if cur > 0:
+            self.goal_scale = float(np.clip(target_total / cur, 0.7, 1.4))
+            logger.info("goal calibration: mean total %.2f → target %.2f (scale %.3f)",
+                        cur, target_total, self.goal_scale)
+        return self
 
     def score_matrix(self, home_id: str, away_id: str, neutral: bool = True) -> np.ndarray:
         """Full ``(max_goals+1) x (max_goals+1)`` scoreline probability matrix."""

@@ -132,6 +132,9 @@ class Orchestrator:
         self.bradley_terry.fit(played)
         self.graph.fit(played)
         self.dixon_coles.fit(played)
+        tgt = self.cfg.models.dixon_coles.target_goals_per_game
+        if tgt:
+            self.dixon_coles.calibrate_goal_mean(tgt)
 
         # Tabular features + TabPFN.
         self.builder = FeatureBuilder(self.cfg.features, teams=list(self.teams.values()))

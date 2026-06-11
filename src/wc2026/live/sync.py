@@ -123,9 +123,12 @@ class LiveSync:
             from wc2026.pipeline.orchestrator import Orchestrator
             from wc2026.data.schema import Match, Stage
 
+            from wc2026.data.expert_signals import load_signals, tempo_for
+
             orch = Orchestrator(Config()).fit()
             known = set(getattr(orch.dixon_coles, "_idx", {}) or {})
             rest = self._rest_days(data["fixtures"])
+            signals = load_signals()
 
             # Per-fixture model 1X2 + Over/Under (when both teams are known to the model).
             for f in data["fixtures"]:
@@ -142,6 +145,32 @@ class LiveSync:
                         f["model_ou"] = pred.over_under
                     if pred.environment:
                         f["env"] = pred.environment
+                    try:
+                        lam, mu = orch.dixon_coles.expected_goals(h, a, neutral=True)
+                        # Expert tactical tempo tilt (low block lowers goals, press raises).
+                        tilt = tempo_for(h, signals) * tempo_for(a, signals)
+                        f["model_goals"] = round(float((lam + mu) * tilt), 2)
+                    except Exception:
+                        pass
+                    notes = [{"team": t, **signals[t]} for t in (h, a) if t in signals]
+                    if notes:
+                        f["expert"] = notes
+
+            # Tournament tempo / attacking-vs-defensive trend from the model.
+            gs = [f["model_goals"] for f in data["fixtures"] if "model_goals" in f]
+            ous = [f["model_ou"]["over"] for f in data["fixtures"] if f.get("model_ou")]
+            if gs:
+                avg_goals = sum(gs) / len(gs)
+                avg_over = sum(ous) / len(ous) if ous else 0.0
+                # Index: 50 = neutral (~2.6 g/g); >50 attacking, <50 defensive.
+                idx = max(0, min(100, round(50 + (avg_goals - 2.6) * 40)))
+                data["tempo"] = {
+                    "avg_goals": round(avg_goals, 2),
+                    "avg_over25": round(avg_over, 3),
+                    "index": idx,
+                    "lean": "attacking" if idx >= 55 else ("defensive" if idx <= 45 else "balanced"),
+                    "baseline": 2.6,
+                }
 
             # Winner: model (with structural priors, no market) blended with the
             # crowd via a single log-opinion pool over the full team distribution.

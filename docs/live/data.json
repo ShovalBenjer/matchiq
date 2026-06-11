@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T23:16:20+00:00",
+  "generated_at": "2026-06-11T22:11:08+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -7,7 +7,7 @@
   },
   "engines": {
     "market": "DraftKings (3-way, Shin-devigged) + Polymarket crowd",
-    "model": "Dixon-Coles + ensemble on REAL international results (martj42, since 2015) with curse/aging/altitude priors",
+    "model": "Dixon-Coles + Bradley-Terry + graph-centrality ensemble on REAL results (martj42, since 2015) with curse/aging/altitude/rest priors",
     "blend": "log-opinion pool, model weight \u2248 0.35"
   },
   "groups": {
@@ -15,14 +15,14 @@
       {
         "team": "Mexico",
         "team_id": "mexico",
-        "P": 0,
-        "W": 0,
+        "P": 1,
+        "W": 1,
         "D": 0,
         "L": 0,
-        "GF": 0,
+        "GF": 2,
         "GA": 0,
-        "GD": 0,
-        "Pts": 0
+        "GD": 2,
+        "Pts": 3
       },
       {
         "team": "Czechia",
@@ -51,13 +51,13 @@
       {
         "team": "South Africa",
         "team_id": "south_africa",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
+        "L": 1,
         "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "GA": 2,
+        "GD": -2,
         "Pts": 0
       }
     ],
@@ -616,36 +616,23 @@
     {
       "match_id": "760415",
       "date": "2026-06-11T19:00Z",
-      "status": "pre",
+      "status": "post",
       "home": "Mexico",
       "away": "South Africa",
       "home_id": "mexico",
       "away_id": "south_africa",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "MEX -240",
-      "book": {
-        "home": 0.6844,
-        "draw": 0.2118,
-        "away": 0.1038
-      },
+      "score": "2-0",
+      "over_under": null,
+      "details": null,
+      "book": null,
       "crowd": {
-        "home": 0.6915,
-        "draw": 0.204,
-        "away": 0.1045
+        "home": 0.999,
+        "draw": 0.0005,
+        "away": 0.0005
       },
-      "clv": {
-        "home_open": 1.588,
-        "home_close": 1.417,
-        "drift": -0.171
-      },
-      "value": {
-        "outcome": "home",
-        "ev": -0.0201,
-        "is_value": false,
-        "offered_odds": 1.417
-      },
-      "pick": "home"
+      "clv": null,
+      "value": null,
+      "pick": null
     },
     {
       "match_id": "760414",
@@ -657,27 +644,27 @@
       "away_id": "czechia",
       "score": "0-0",
       "over_under": 2.5,
-      "details": "KOR +170",
+      "details": "KOR +165",
       "book": {
-        "home": 0.3551,
-        "draw": 0.3028,
-        "away": 0.3421
+        "home": 0.3642,
+        "draw": 0.3152,
+        "away": 0.3206
       },
       "crowd": {
-        "home": 0.3596,
-        "draw": 0.3103,
-        "away": 0.33
+        "home": 0.3731,
+        "draw": 0.3134,
+        "away": 0.3134
       },
       "clv": {
         "home_open": 2.55,
-        "home_close": 2.7,
-        "drift": 0.15
+        "home_close": 2.65,
+        "drift": 0.1
       },
       "value": {
-        "outcome": "draw",
-        "ev": -0.0226,
+        "outcome": "home",
+        "ev": -0.0113,
         "is_value": false,
-        "offered_odds": 3.15
+        "offered_odds": 2.65
       },
       "pick": "home"
     },
@@ -691,17 +678,17 @@
       "away_id": "bosnia_herzegovina",
       "score": "0-0",
       "over_under": 2.5,
-      "details": "CAN -125",
+      "details": "CAN -115",
       "book": {
-        "home": 0.5395,
-        "draw": 0.2646,
-        "away": 0.1959
+        "home": 0.5201,
+        "draw": 0.2694,
+        "away": 0.2105
       },
       "crowd": null,
       "clv": {
         "home_open": 2.0,
-        "home_close": 1.8,
-        "drift": -0.2
+        "home_close": 1.87,
+        "drift": -0.13
       },
       "value": null,
       "pick": "home"
@@ -723,9 +710,9 @@
         "away": 0.2223
       },
       "crowd": {
-        "home": 0.5025,
-        "draw": 0.2736,
-        "away": 0.2239
+        "home": 0.4924,
+        "draw": 0.2792,
+        "away": 0.2284
       },
       "clv": {
         "home_open": 2.05,
@@ -733,10 +720,10 @@
         "drift": -0.141
       },
       "value": {
-        "outcome": "home",
-        "ev": -0.0407,
+        "outcome": "draw",
+        "ev": -0.0368,
         "is_value": false,
-        "offered_odds": 1.909
+        "offered_odds": 3.45
       },
       "pick": "home"
     },
@@ -752,32 +739,38 @@
       "over_under": 2.5,
       "details": "SUI -425",
       "book": {
-        "home": 0.0709,
-        "draw": 0.1403,
-        "away": 0.7888
+        "home": 0.0663,
+        "draw": 0.1421,
+        "away": 0.7916
       },
       "crowd": {
-        "home": 0.0623,
-        "draw": 0.1347,
-        "away": 0.803
+        "home": 0.0651,
+        "draw": 0.1343,
+        "away": 0.8006
       },
       "clv": {
         "home_open": 7.0,
-        "home_close": 12.0,
-        "drift": 5.0
+        "home_close": 13.0,
+        "drift": 6.0
       },
       "value": {
         "outcome": "away",
-        "ev": -0.0083,
+        "ev": -0.0113,
         "is_value": false,
         "offered_odds": 1.235
       },
       "pick": "away",
       "model": {
-        "home": 0.1853,
-        "draw": 0.2633,
-        "away": 0.5514
-      }
+        "home": 0.1554,
+        "draw": 0.2393,
+        "away": 0.6053
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.6396,
+        "under": 0.3604
+      },
+      "model_goals": 3.3
     },
     {
       "match_id": "760419",
@@ -796,9 +789,9 @@
         "away": 0.1701
       },
       "crowd": {
-        "home": 0.5764,
-        "draw": 0.2512,
-        "away": 0.1724
+        "home": 0.5721,
+        "draw": 0.2537,
+        "away": 0.1741
       },
       "clv": {
         "home_open": 1.571,
@@ -807,16 +800,30 @@
       },
       "value": {
         "outcome": "home",
-        "ev": -0.0259,
+        "ev": -0.0332,
         "is_value": false,
         "offered_odds": 1.69
       },
       "pick": "home",
       "model": {
-        "home": 0.489,
-        "draw": 0.2751,
-        "away": 0.2359
-      }
+        "home": 0.5297,
+        "draw": 0.2595,
+        "away": 0.2108
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.4211,
+        "under": 0.5789
+      },
+      "model_goals": 2.18,
+      "expert": [
+        {
+          "team": "morocco",
+          "style": "low_block",
+          "note": "compact mid/low block + fast transitions (2022 SF run)",
+          "source": "analyst previews 2026"
+        }
+      ]
     },
     {
       "match_id": "760418",
@@ -828,16 +835,16 @@
       "away_id": "scotland",
       "score": "0-0",
       "over_under": 2.5,
-      "details": "SCO -180",
+      "details": "SCO -175",
       "book": {
-        "home": 0.1546,
-        "draw": 0.2197,
-        "away": 0.6257
+        "home": 0.1548,
+        "draw": 0.2254,
+        "away": 0.6198
       },
       "crowd": {
-        "home": 0.1542,
-        "draw": 0.2239,
-        "away": 0.6219
+        "home": 0.1558,
+        "draw": 0.2261,
+        "away": 0.6181
       },
       "clv": {
         "home_open": 6.5,
@@ -846,9 +853,9 @@
       },
       "value": {
         "outcome": "away",
-        "ev": -0.0323,
+        "ev": -0.029,
         "is_value": false,
-        "offered_odds": 1.556
+        "offered_odds": 1.571
       },
       "pick": "away"
     },
@@ -869,9 +876,9 @@
         "away": 0.5752
       },
       "crowd": {
-        "home": 0.1759,
-        "draw": 0.2563,
-        "away": 0.5678
+        "home": 0.1741,
+        "draw": 0.2537,
+        "away": 0.5721
       },
       "clv": {
         "home_open": 4.7,
@@ -880,7 +887,7 @@
       },
       "value": {
         "outcome": "draw",
-        "ev": -0.0132,
+        "ev": -0.0233,
         "is_value": false,
         "offered_odds": 3.85
       },
@@ -896,27 +903,27 @@
       "away_id": "cura\u00e7ao",
       "score": "0-0",
       "over_under": 4.5,
-      "details": "GER -3500",
+      "details": "GER -3000",
       "book": {
-        "home": 0.9387,
-        "draw": 0.0431,
-        "away": 0.0182
+        "home": 0.9368,
+        "draw": 0.0442,
+        "away": 0.019
       },
       "crowd": {
-        "home": 0.9348,
-        "draw": 0.0438,
-        "away": 0.0214
+        "home": 0.9358,
+        "draw": 0.0408,
+        "away": 0.0234
       },
       "clv": {
         "home_open": 1.005,
-        "home_close": 1.029,
-        "drift": 0.024
+        "home_close": 1.033,
+        "drift": 0.028
       },
       "value": {
         "outcome": "home",
-        "ev": -0.0381,
+        "ev": -0.0333,
         "is_value": false,
-        "offered_odds": 1.029
+        "offered_odds": 1.033
       },
       "pick": "home"
     },
@@ -937,9 +944,9 @@
         "away": 0.2565
       },
       "crowd": {
-        "home": 0.4673,
-        "draw": 0.2663,
-        "away": 0.2663
+        "home": 0.4778,
+        "draw": 0.2709,
+        "away": 0.2512
       },
       "clv": {
         "home_open": 1.952,
@@ -947,17 +954,31 @@
         "drift": 0.048
       },
       "value": {
-        "outcome": "away",
-        "ev": -0.0413,
+        "outcome": "home",
+        "ev": -0.0444,
         "is_value": false,
-        "offered_odds": 3.6
+        "offered_odds": 2.0
       },
       "pick": "home",
       "model": {
-        "home": 0.2127,
-        "draw": 0.2922,
-        "away": 0.4951
-      }
+        "home": 0.2212,
+        "draw": 0.287,
+        "away": 0.4918
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.4118,
+        "under": 0.5882
+      },
+      "model_goals": 2.47,
+      "expert": [
+        {
+          "team": "japan",
+          "style": "high_press",
+          "note": "aggressive front-foot press under Moriyasu",
+          "source": "Opta tactical preview 2026"
+        }
+      ]
     },
     {
       "match_id": "760423",
@@ -984,10 +1005,16 @@
       "value": null,
       "pick": "away",
       "model": {
-        "home": 0.3472,
-        "draw": 0.3181,
-        "away": 0.3348
-      }
+        "home": 0.298,
+        "draw": 0.2897,
+        "away": 0.4123
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.2176,
+        "under": 0.7824
+      },
+      "model_goals": 1.6
     },
     {
       "match_id": "760424",
@@ -1001,14 +1028,14 @@
       "over_under": 2.5,
       "details": "SWE -110",
       "book": {
-        "home": 0.5099,
-        "draw": 0.274,
-        "away": 0.2161
+        "home": 0.5064,
+        "draw": 0.2751,
+        "away": 0.2185
       },
       "crowd": {
-        "home": 0.5176,
-        "draw": 0.2764,
-        "away": 0.206
+        "home": 0.5025,
+        "draw": 0.2836,
+        "away": 0.2139
       },
       "clv": {
         "home_open": 1.87,
@@ -1016,579 +1043,762 @@
         "drift": 0.039
       },
       "value": {
-        "outcome": "home",
-        "ev": -0.0119,
+        "outcome": "draw",
+        "ev": -0.0216,
         "is_value": false,
-        "offered_odds": 1.909
+        "offered_odds": 3.45
       },
       "pick": "home",
       "model": {
-        "home": 0.3625,
-        "draw": 0.3147,
-        "away": 0.3228
-      }
+        "home": 0.3524,
+        "draw": 0.3115,
+        "away": 0.3361
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.6005,
+        "under": 0.3995
+      },
+      "model_goals": 3.11
+    },
+    {
+      "match_id": "760428",
+      "date": "2026-06-15T16:00Z",
+      "status": "pre",
+      "home": "Spain",
+      "away": "Cape Verde",
+      "home_id": "spain",
+      "away_id": "cape_verde",
+      "score": "0-0",
+      "over_under": 3.5,
+      "details": "ESP -1200",
+      "book": {
+        "home": 0.902,
+        "draw": 0.0707,
+        "away": 0.0273
+      },
+      "crowd": null,
+      "clv": {
+        "home_open": 1.071,
+        "home_close": 1.083,
+        "drift": 0.012
+      },
+      "value": null,
+      "pick": "home"
+    },
+    {
+      "match_id": "760426",
+      "date": "2026-06-15T19:00Z",
+      "status": "pre",
+      "home": "Belgium",
+      "away": "Egypt",
+      "home_id": "belgium",
+      "away_id": "egypt",
+      "score": "0-0",
+      "over_under": 2.5,
+      "details": "BEL -160",
+      "book": {
+        "home": 0.5894,
+        "draw": 0.2393,
+        "away": 0.1713
+      },
+      "crowd": {
+        "home": 0.592,
+        "draw": 0.2438,
+        "away": 0.1642
+      },
+      "clv": {
+        "home_open": 1.588,
+        "home_close": 1.625,
+        "drift": 0.037
+      },
+      "value": {
+        "outcome": "home",
+        "ev": -0.038,
+        "is_value": false,
+        "offered_odds": 1.625
+      },
+      "pick": "home",
+      "model": {
+        "home": 0.6149,
+        "draw": 0.2284,
+        "away": 0.1566
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.5627,
+        "under": 0.4373
+      },
+      "model_goals": 2.94
+    },
+    {
+      "match_id": "760429",
+      "date": "2026-06-15T22:00Z",
+      "status": "pre",
+      "home": "Saudi Arabia",
+      "away": "Uruguay",
+      "home_id": "saudi_arabia",
+      "away_id": "uruguay",
+      "score": "0-0",
+      "over_under": 2.5,
+      "details": "URU -220",
+      "book": {
+        "home": 0.1214,
+        "draw": 0.2092,
+        "away": 0.6694
+      },
+      "crowd": {
+        "home": 0.1133,
+        "draw": 0.2118,
+        "away": 0.6749
+      },
+      "clv": {
+        "home_open": 5.0,
+        "home_close": 7.5,
+        "drift": 2.5
+      },
+      "value": {
+        "outcome": "away",
+        "ev": -0.018,
+        "is_value": false,
+        "offered_odds": 1.455
+      },
+      "pick": "away",
+      "model": {
+        "home": 0.1702,
+        "draw": 0.3054,
+        "away": 0.5244
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.2747,
+        "under": 0.7253
+      },
+      "model_goals": 1.82
+    },
+    {
+      "match_id": "760427",
+      "date": "2026-06-16T01:00Z",
+      "status": "pre",
+      "home": "Iran",
+      "away": "New Zealand",
+      "home_id": "iran",
+      "away_id": "new_zealand",
+      "score": "0-0",
+      "over_under": 2.5,
+      "details": "IRN -120",
+      "book": {
+        "home": 0.5287,
+        "draw": 0.2717,
+        "away": 0.1996
+      },
+      "crowd": {
+        "home": 0.5276,
+        "draw": 0.2764,
+        "away": 0.196
+      },
+      "clv": {
+        "home_open": 1.645,
+        "home_close": 1.833,
+        "drift": 0.188
+      },
+      "value": {
+        "outcome": "draw",
+        "ev": -0.0326,
+        "is_value": false,
+        "offered_odds": 3.5
+      },
+      "pick": "home",
+      "model": {
+        "home": 0.6082,
+        "draw": 0.2176,
+        "away": 0.1742
+      },
+      "model_ou": {
+        "line": 2.5,
+        "over": 0.4772,
+        "under": 0.5228
+      },
+      "model_goals": 2.58
     }
   ],
   "winner": [
     {
       "team": "Spain",
       "team_id": "spain",
-      "prob": 0.1596,
-      "fair_odds": 6.27,
-      "model": 0.1157,
-      "blended": 0.1455
+      "prob": 0.1642,
+      "fair_odds": 6.09,
+      "model": 0.1187,
+      "blended": 0.1492
     },
     {
       "team": "France",
       "team_id": "france",
-      "prob": 0.1557,
-      "fair_odds": 6.42,
-      "model": 0.0811,
-      "blended": 0.1264
-    },
-    {
-      "team": "England",
-      "team_id": "england",
-      "prob": 0.1052,
-      "fair_odds": 9.5,
-      "model": 0.0429,
-      "blended": 0.0784
+      "prob": 0.1555,
+      "fair_odds": 6.43,
+      "model": 0.0791,
+      "blended": 0.1249
     },
     {
       "team": "Portugal",
       "team_id": "portugal",
-      "prob": 0.1023,
-      "fair_odds": 9.77,
-      "model": 0.092,
-      "blended": 0.1006
+      "prob": 0.1051,
+      "fair_odds": 9.51,
+      "model": 0.0901,
+      "blended": 0.1013
+    },
+    {
+      "team": "England",
+      "team_id": "england",
+      "prob": 0.1022,
+      "fair_odds": 9.78,
+      "model": 0.0539,
+      "blended": 0.0831
     },
     {
       "team": "Argentina",
       "team_id": "argentina",
-      "prob": 0.0849,
-      "fair_odds": 11.78,
-      "model": 0.1057,
-      "blended": 0.0935
+      "prob": 0.0858,
+      "fair_odds": 11.66,
+      "model": 0.1066,
+      "blended": 0.0942
     },
     {
       "team": "Brazil",
       "team_id": "brazil",
-      "prob": 0.082,
-      "fair_odds": 12.2,
-      "model": 0.0756,
+      "prob": 0.0838,
+      "fair_odds": 11.93,
+      "model": 0.0732,
       "blended": 0.0813
     },
     {
       "team": "Germany",
       "team_id": "germany",
-      "prob": 0.0509,
-      "fair_odds": 19.64,
-      "model": 0.0126,
-      "blended": 0.0318
+      "prob": 0.0499,
+      "fair_odds": 20.04,
+      "model": 0.0111,
+      "blended": 0.03
     },
     {
       "team": "Netherlands",
       "team_id": "netherlands",
-      "prob": 0.0393,
-      "fair_odds": 25.46,
-      "model": 0.0106,
-      "blended": 0.0253
+      "prob": 0.0441,
+      "fair_odds": 22.68,
+      "model": 0.0127,
+      "blended": 0.0291
     },
     {
       "team": "Norway",
       "team_id": "norway",
-      "prob": 0.0238,
-      "fair_odds": 42.08,
-      "model": 0.0134,
-      "blended": 0.0199
+      "prob": 0.0228,
+      "fair_odds": 43.91,
+      "model": 0.0137,
+      "blended": 0.0194
     },
     {
       "team": "Belgium",
       "team_id": "belgium",
-      "prob": 0.0209,
-      "fair_odds": 47.95,
-      "model": 0.0527,
-      "blended": 0.0295
+      "prob": 0.0199,
+      "fair_odds": 50.34,
+      "model": 0.0485,
+      "blended": 0.0277
     },
     {
       "team": "Colombia",
       "team_id": "colombia",
-      "prob": 0.0179,
-      "fair_odds": 55.73,
-      "model": 0.0554,
-      "blended": 0.0271
+      "prob": 0.017,
+      "fair_odds": 58.97,
+      "model": 0.0548,
+      "blended": 0.0261
     },
     {
       "team": "Japan",
       "team_id": "japan",
       "prob": 0.017,
-      "fair_odds": 58.91,
-      "model": 0.0289,
-      "blended": 0.0209
+      "fair_odds": 58.97,
+      "model": 0.0298,
+      "blended": 0.0211
     },
     {
       "team": "Morocco",
       "team_id": "morocco",
-      "prob": 0.016,
-      "fair_odds": 62.48,
-      "model": 0.0864,
-      "blended": 0.0295
+      "prob": 0.015,
+      "fair_odds": 66.58,
+      "model": 0.0899,
+      "blended": 0.0286
     },
     {
       "team": "Mexico",
       "team_id": "mexico",
       "prob": 0.0131,
-      "fair_odds": 76.37,
-      "model": 0.0072,
-      "blended": 0.0108
+      "fair_odds": 76.44,
+      "model": 0.0086,
+      "blended": 0.0115
     },
     {
       "team": "Switzerland",
       "team_id": "switzerland",
       "prob": 0.0121,
-      "fair_odds": 82.48,
-      "model": 0.0164,
-      "blended": 0.0137
-    },
-    {
-      "team": "Turkiye",
-      "team_id": "turkiye",
-      "prob": 0.0121,
-      "fair_odds": 82.48,
-      "blended": 0.0076
+      "fair_odds": 82.56,
+      "model": 0.0146,
+      "blended": 0.0131
     },
     {
       "team": "Usa",
       "team_id": "usa",
-      "prob": 0.0112,
-      "fair_odds": 89.65,
-      "model": 0.0009,
-      "blended": 0.0073
+      "prob": 0.0111,
+      "fair_odds": 89.74,
+      "model": 0.0012,
+      "blended": 0.0072
+    },
+    {
+      "team": "Turkiye",
+      "team_id": "turkiye",
+      "prob": 0.0102,
+      "fair_odds": 98.29,
+      "blended": 0.0068
     },
     {
       "team": "Uruguay",
       "team_id": "uruguay",
-      "prob": 0.0102,
-      "fair_odds": 98.19,
-      "model": 0.014,
-      "blended": 0.0116
-    },
-    {
-      "team": "Croatia",
-      "team_id": "croatia",
       "prob": 0.0092,
-      "fair_odds": 108.53,
-      "model": 0.0098,
-      "blended": 0.0096
+      "fair_odds": 108.63,
+      "model": 0.0137,
+      "blended": 0.0108
     },
     {
       "team": "Ecuador",
       "team_id": "ecuador",
       "prob": 0.0082,
-      "fair_odds": 121.29,
-      "model": 0.0254,
-      "blended": 0.0124
+      "fair_odds": 121.41,
+      "model": 0.0307,
+      "blended": 0.0132
+    },
+    {
+      "team": "Croatia",
+      "team_id": "croatia",
+      "prob": 0.0082,
+      "fair_odds": 121.41,
+      "model": 0.008,
+      "blended": 0.0083
     },
     {
       "team": "Senegal",
       "team_id": "senegal",
-      "prob": 0.0073,
-      "fair_odds": 137.47,
-      "model": 0.0062,
-      "blended": 0.007
-    },
-    {
-      "team": "Ivory Coast",
-      "team_id": "ivory_coast",
-      "prob": 0.0044,
-      "fair_odds": 229.11,
-      "model": 0.0244,
-      "blended": 0.0082
+      "prob": 0.0063,
+      "fair_odds": 158.77,
+      "model": 0.0049,
+      "blended": 0.0059
     },
     {
       "team": "Austria",
       "team_id": "austria",
       "prob": 0.0044,
-      "fair_odds": 229.11,
-      "model": 0.0311,
-      "blended": 0.0089
+      "fair_odds": 229.33,
+      "model": 0.0283,
+      "blended": 0.0086
     },
     {
       "team": "Canada",
       "team_id": "canada",
       "prob": 0.0034,
-      "fair_odds": 294.57,
-      "model": 0.0019,
+      "fair_odds": 294.86,
+      "model": 0.0016,
       "blended": 0.0033
+    },
+    {
+      "team": "Ivory Coast",
+      "team_id": "ivory_coast",
+      "prob": 0.0034,
+      "fair_odds": 294.86,
+      "model": 0.0205,
+      "blended": 0.0065
     }
   ],
   "top_scorer": [
     {
       "player": "Kylian Mbappe",
-      "prob": 0.1562,
-      "fair_odds": 6.4
+      "prob": 0.1536,
+      "fair_odds": 6.51
     },
     {
       "player": "Harry Kane",
-      "prob": 0.14,
-      "fair_odds": 7.14
+      "prob": 0.1256,
+      "fair_odds": 7.96
     },
     {
       "player": "Mikel Oyarzabal",
-      "prob": 0.0969,
-      "fair_odds": 10.32
+      "prob": 0.0884,
+      "fair_odds": 11.31
     },
     {
       "player": "Erling Haaland",
-      "prob": 0.0592,
-      "fair_odds": 16.88
-    },
-    {
-      "player": "Cristiano Ronaldo",
-      "prob": 0.0522,
-      "fair_odds": 19.14
+      "prob": 0.0838,
+      "fair_odds": 11.94
     },
     {
       "player": "Lionel Messi",
-      "prob": 0.0447,
-      "fair_odds": 22.37
-    },
-    {
-      "player": "Julian Alvarez",
-      "prob": 0.0447,
-      "fair_odds": 22.37
+      "prob": 0.0619,
+      "fair_odds": 16.16
     },
     {
       "player": "Michael Olise",
-      "prob": 0.0436,
-      "fair_odds": 22.93
+      "prob": 0.061,
+      "fair_odds": 16.4
     },
     {
-      "player": "Raphinha",
-      "prob": 0.0393,
-      "fair_odds": 25.44
+      "player": "Cristiano Ronaldo",
+      "prob": 0.0423,
+      "fair_odds": 23.62
     },
     {
       "player": "Lamine Yamal",
-      "prob": 0.0361,
-      "fair_odds": 27.72
+      "prob": 0.0419,
+      "fair_odds": 23.88
+    },
+    {
+      "player": "Julian Alvarez",
+      "prob": 0.0419,
+      "fair_odds": 23.88
+    },
+    {
+      "player": "Raphinha",
+      "prob": 0.0316,
+      "fair_odds": 31.6
     },
     {
       "player": "Vinicius Junior",
-      "prob": 0.0307,
-      "fair_odds": 32.58
+      "prob": 0.0256,
+      "fair_odds": 39.07
     },
     {
       "player": "Ferran Torres",
-      "prob": 0.0275,
-      "fair_odds": 36.41
-    },
-    {
-      "player": "Ousmane Dembele",
-      "prob": 0.0264,
-      "fair_odds": 37.9
-    },
-    {
-      "player": "Lautaro Martinez",
-      "prob": 0.0248,
-      "fair_odds": 40.37
-    },
-    {
-      "player": "Igor Thiago",
-      "prob": 0.0232,
-      "fair_odds": 43.19
+      "prob": 0.0256,
+      "fair_odds": 39.07
     },
     {
       "player": "Cody Gakpo",
-      "prob": 0.0232,
-      "fair_odds": 43.19
+      "prob": 0.0228,
+      "fair_odds": 43.86
+    },
+    {
+      "player": "Ousmane Dembele",
+      "prob": 0.0219,
+      "fair_odds": 45.72
+    },
+    {
+      "player": "Lautaro Martinez",
+      "prob": 0.0219,
+      "fair_odds": 45.72
+    },
+    {
+      "player": "Igor Thiago",
+      "prob": 0.0191,
+      "fair_odds": 52.41
     },
     {
       "player": "Luis Diaz",
-      "prob": 0.0124,
-      "fair_odds": 80.74
-    },
-    {
-      "player": "Deniz Undav",
-      "prob": 0.0102,
-      "fair_odds": 97.74
+      "prob": 0.0168,
+      "fair_odds": 59.69
     },
     {
       "player": "Bruno Fernandes",
-      "prob": 0.0102,
-      "fair_odds": 97.74
+      "prob": 0.0112,
+      "fair_odds": 89.54
     },
     {
-      "player": "Luis Javier Su\u00e1rez",
-      "prob": 0.0086,
-      "fair_odds": 116.06
+      "player": "Dani Olmo",
+      "prob": 0.0098,
+      "fair_odds": 102.33
+    },
+    {
+      "player": "Deniz Undav",
+      "prob": 0.0079,
+      "fair_odds": 126.41
     }
   ],
   "group_winners": {
     "A": [
       {
         "team": "Mexico",
-        "prob": 0.5646
+        "prob": 0.6732
       },
       {
         "team": "South Korea",
-        "prob": 0.2013
+        "prob": 0.1622
       },
       {
         "team": "Czechia",
-        "prob": 0.1718
+        "prob": 0.1523
       },
       {
         "team": "South Africa",
-        "prob": 0.0623
+        "prob": 0.0123
       }
     ],
     "B": [
       {
         "team": "Switzerland",
-        "prob": 0.5537
+        "prob": 0.5553
       },
       {
         "team": "Canada",
-        "prob": 0.2989
+        "prob": 0.2998
       },
       {
         "team": "Bosnia And Herzegovina",
-        "prob": 0.1225
+        "prob": 0.1229
       },
       {
         "team": "Qatar",
-        "prob": 0.025
+        "prob": 0.0221
       }
     ],
     "C": [
       {
         "team": "Brazil",
-        "prob": 0.7104
+        "prob": 0.7069
       },
       {
         "team": "Morocco",
-        "prob": 0.2037
+        "prob": 0.2027
       },
       {
         "team": "Scotland",
-        "prob": 0.079
+        "prob": 0.0761
       },
       {
         "team": "Haiti",
-        "prob": 0.007
+        "prob": 0.0143
       }
     ],
     "D": [
       {
         "team": "Usa",
-        "prob": 0.374
+        "prob": 0.3776
       },
       {
         "team": "T\u00fcrkiye",
-        "prob": 0.3643
+        "prob": 0.358
       },
       {
         "team": "Paraguay",
-        "prob": 0.17
+        "prob": 0.1717
       },
       {
         "team": "Australia",
-        "prob": 0.0918
+        "prob": 0.0927
       }
     ],
     "E": [
       {
         "team": "Germany",
-        "prob": 0.668
+        "prob": 0.662
       },
       {
         "team": "Ecuador",
-        "prob": 0.2029
+        "prob": 0.2041
       },
       {
         "team": "Ivory Coast",
-        "prob": 0.1237
+        "prob": 0.1294
       },
       {
         "team": "Cura\u00e7ao",
-        "prob": 0.0054
+        "prob": 0.0045
       }
     ],
     "F": [
       {
         "team": "Netherlands",
-        "prob": 0.5255
+        "prob": 0.5263
       },
       {
         "team": "Japan",
-        "prob": 0.2701
+        "prob": 0.2755
       },
       {
         "team": "Sweden",
-        "prob": 0.1523
+        "prob": 0.1476
       },
       {
         "team": "Tunisia",
-        "prob": 0.0521
+        "prob": 0.0507
       }
     ],
     "G": [
       {
         "team": "Belgium",
-        "prob": 0.6814
+        "prob": 0.6864
       },
       {
         "team": "Egypt",
-        "prob": 0.1618
+        "prob": 0.163
       },
       {
         "team": "Iran",
-        "prob": 0.1221
+        "prob": 0.1126
       },
       {
         "team": "New Zealand",
-        "prob": 0.0348
+        "prob": 0.038
       }
     ],
     "H": [
       {
         "team": "Spain",
-        "prob": 0.7787
+        "prob": 0.7807
       },
       {
         "team": "Uruguay",
-        "prob": 0.1922
+        "prob": 0.189
       },
       {
         "team": "Saudi Arabia",
-        "prob": 0.0197
+        "prob": 0.0169
       },
       {
         "team": "Cape Verde",
-        "prob": 0.0094
+        "prob": 0.0134
       }
     ],
     "I": [
       {
         "team": "France",
-        "prob": 0.6406
+        "prob": 0.6463
       },
       {
         "team": "Norway",
-        "prob": 0.2396
+        "prob": 0.2319
       },
       {
         "team": "Senegal",
-        "prob": 0.1125
+        "prob": 0.1135
       },
       {
         "team": "Iraq",
-        "prob": 0.0073
+        "prob": 0.0084
       }
     ],
     "J": [
       {
         "team": "Argentina",
-        "prob": 0.7072
+        "prob": 0.7055
       },
       {
         "team": "Austria",
-        "prob": 0.183
+        "prob": 0.1825
       },
       {
         "team": "Algeria",
-        "prob": 0.0955
+        "prob": 0.0962
       },
       {
         "team": "Jordan",
-        "prob": 0.0143
+        "prob": 0.0158
       }
     ],
     "K": [
       {
         "team": "Portugal",
-        "prob": 0.6158
+        "prob": 0.6241
       },
       {
         "team": "Colombia",
-        "prob": 0.3202
+        "prob": 0.3096
       },
       {
         "team": "Congo Dr",
-        "prob": 0.0419
+        "prob": 0.0408
       },
       {
         "team": "Uzbekistan",
-        "prob": 0.0222
+        "prob": 0.0256
       }
     ],
     "L": [
       {
         "team": "England",
-        "prob": 0.6884
+        "prob": 0.6929
       },
       {
         "team": "Croatia",
-        "prob": 0.2261
+        "prob": 0.2193
       },
       {
         "team": "Ghana",
-        "prob": 0.0568
+        "prob": 0.0593
       },
       {
         "team": "Panama",
-        "prob": 0.0286
+        "prob": 0.0284
       }
     ]
   },
   "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
+  "tempo": {
+    "avg_goals": 2.5,
+    "avg_over25": 0.451,
+    "index": 46,
+    "lean": "balanced",
+    "baseline": 2.6
+  },
   "chaos": {
-    "chaos_index": 0.076,
-    "lyapunov_proxy": 0.3052,
-    "field_entropy": 0.773,
-    "favourite_fragility": 0.887,
+    "chaos_index": 0.078,
+    "lyapunov_proxy": 0.3127,
+    "field_entropy": 0.77,
+    "favourite_fragility": 0.876,
     "favourite": "spain",
-    "favourite_prob": 0.113,
+    "favourite_prob": 0.124,
     "tipping_points": [
-      {
-        "home": "saudi_arabia",
-        "away": "ghana",
-        "entropy": 1.0,
-        "probs": [
-          0.322,
-          0.338,
-          0.34
-        ]
-      },
-      {
-        "home": "usa",
-        "away": "canada",
-        "entropy": 0.999,
-        "probs": [
-          0.321,
-          0.323,
-          0.357
-        ]
-      },
       {
         "home": "serbia",
         "away": "poland",
-        "entropy": 0.999,
+        "entropy": 1.0,
         "probs": [
-          0.34,
-          0.346,
-          0.314
+          0.345,
+          0.335,
+          0.32
         ]
       },
       {
         "home": "sweden",
         "away": "ukraine",
+        "entropy": 1.0,
+        "probs": [
+          0.336,
+          0.32,
+          0.345
+        ]
+      },
+      {
+        "home": "jamaica",
+        "away": "qatar",
         "entropy": 0.999,
         "probs": [
-          0.353,
-          0.326,
-          0.321
+          0.349,
+          0.314,
+          0.337
+        ]
+      },
+      {
+        "home": "usa",
+        "away": "canada",
+        "entropy": 0.998,
+        "probs": [
+          0.363,
+          0.311,
+          0.326
+        ]
+      },
+      {
+        "home": "saudi_arabia",
+        "away": "ghana",
+        "entropy": 0.998,
+        "probs": [
+          0.368,
+          0.321,
+          0.312
         ]
       },
       {
@@ -1596,19 +1806,9 @@
         "away": "france",
         "entropy": 0.997,
         "probs": [
-          0.371,
-          0.325,
-          0.305
-        ]
-      },
-      {
-        "home": "argentina",
-        "away": "england",
-        "entropy": 0.997,
-        "probs": [
-          0.359,
-          0.297,
-          0.345
+          0.373,
+          0.319,
+          0.308
         ]
       }
     ]

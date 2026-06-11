@@ -93,6 +93,36 @@ cleanest injury finding and matches our encoding.
 
 ---
 
+## 6. Tournament trends — tech, tactics, attacking vs defensive
+
+**Every World Cup shifts on a technology + a tactical theme; each leaves a goal fingerprint.**
+
+| WC | Tech | Theme | Goals/game |
+|---|---|---|---|
+| 2010 | Jabulani ball (NASA "knuckle" >70 km/h) | tiki-taka peak | **2.27** (modern low) |
+| 2014 | goal-line tech (14 cameras) | gegenpressing | **2.67** |
+| 2018 | **VAR debut** → **29 penalties** (was 13 in '14) | set-piece revival | **2.64** |
+| 2022 | semi-auto offside + sensor ball; **stoppage +59% (~11.6 min/match)** | deep block + transition, upsets | **2.69** |
+
+**New for 2026** (sources: FIFA, IFAB, Adidas, Sky): semi-automated offside routed
+**straight to on-pitch officials**; **referee body-cams** (after a 2025 Club WC trial);
+**Adidas "Trionda"** 4-panel ball with a **500 Hz side-mounted sensor**; an **8-second
+goalkeeper rule** (corner conceded); expanded VAR scope (2nd yellows, corners,
+set-piece fouls) + captain-only protocol; **26-player squads** for workload; 16
+cameras/stadium → 150M tracking points/match.
+
+**Attacking or defensive? Experts lean "pragmatic / defensive sophistication," not a goal-fest:**
+- Goals market sets the **2026 total at 279.5 (~2.69/g)** — record raw total, flat per-game rate (Bet365/Racing Post).
+- **Heat suppresses tempo:** WBGT >28°C in '14 cut sprints **~10%** and high-intensity distance **~24.8 m/min**; ~26 of 104 games projected ≥26°C WBGT; cooling breaks slow play further (GSSI; Al Jazeera; Climate Central — "~half of matches ≥50% impairment risk").
+- **Open-play vs set-pieces tension:** WC2022 went **open-play-heavy** (68% of goals, up from 46.7% in '18), but **club football has swung back to set-pieces/directness** (2025-26 PL: 28.3% of goals from set-pieces) — analysts expect **set pieces to decide knockouts**.
+- **48-team format:** more mismatches lift goal *totals*; more underdog low-blocks + dead rubbers suppress the *rate* → net **~2.5–2.7/g**, venue-dependent (hot = cagey, altitude = open).
+- **Consensus theme:** tactical *versatility* (press in bursts, compact block, fast transitions, inverted full-backs), not one global style.
+
+→ **Encoding:** `target_goals_per_game ≈ 2.6` calibrates the goal mean; heat→tempo
+and altitude→goal-mean already adjust per venue; the dashboard **tempo index**
+surfaces the attacking↔defensive lean as results land; expert tactical notes feed
+the news-agent nudge.
+
 ## What this changes in the model
 1. **Validated priors:** altitude (+0.5/1000 m), heat-as-tempo, 6-day rest kink, holders' curse (4/5), favourite-shrink — all match cited effect sizes. ✅
 2. **Re-anchor the favourite** toward ~16% (Opta/Kitman consensus), not the inflated synthetic value — via the market blend + shrink.
