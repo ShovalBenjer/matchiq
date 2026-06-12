@@ -16,6 +16,29 @@ from scipy.optimize import brentq
 from wc2026.data.schema import Odds
 
 
+def reliability_shrink(probs, fair, n_eff: float, k: float = 20.0) -> np.ndarray:
+    """Empirical-Bayes shrink of model probs toward the market for thin-data teams.
+
+    A team the model has barely seen (e.g. Haiti) gets wild, overconfident
+    estimates that flow into the ensemble and manufacture huge "edges" against a
+    sharp closing line. We pull each match's probability toward the devigged
+    market price by a weight that rises as the *thinnest* team's match count
+    falls: ``reliability = n_eff / (n_eff + k)``. Data-rich matchups
+    (Brazil–France) are essentially untouched; thin ones lean on the market.
+
+    ``k`` is the half-shrink count (reliability = 0.5 at n_eff = k); ``k = 0``
+    disables the shrink. Returns a renormalised probability vector.
+    """
+    probs = np.asarray(probs, dtype=float)
+    fair = np.asarray(fair, dtype=float)
+    if k <= 0:
+        return probs
+    rel = n_eff / (n_eff + k)
+    out = rel * probs + (1.0 - rel) * fair
+    s = out.sum()
+    return out / s if s > 0 else probs
+
+
 def implied_probabilities(odds) -> np.ndarray:
     """Raw implied probabilities ``1/decimal`` (sum to 1 + overround)."""
     arr = np.asarray(_as_array(odds), dtype=float)

@@ -22,7 +22,7 @@ import numpy as np
 from wc2026.betting.bankroll import Bankroll, BetRecommendation
 from wc2026.betting.kelly import kelly_stakes
 from wc2026.betting.monte_carlo import TopScorerSimulator, TournamentSimulator
-from wc2026.betting.value import devig, value_bets
+from wc2026.betting.value import devig, reliability_shrink, value_bets
 from wc2026.config import Config
 from wc2026.data.ingest import Ingestor
 from wc2026.data.schema import Match, Player, Team
@@ -118,6 +118,14 @@ class Orchestrator:
     @property
     def fixtures(self) -> list[Match]:
         return [m for m in self.matches if not m.is_played]
+
+    def _team_match_counts(self) -> dict[str, int]:
+        """How many played matches each team has in the corpus (data sufficiency)."""
+        counts: dict[str, int] = {}
+        for m in self.played:
+            counts[m.home_id] = counts.get(m.home_id, 0) + 1
+            counts[m.away_id] = counts.get(m.away_id, 0) + 1
+        return counts
 
     # ------------------------------------------------------------------
     # Fitting
@@ -275,6 +283,7 @@ class Orchestrator:
         fixtures = fixtures if fixtures is not None else self.fixtures
         recs: list[BetRecommendation] = []
         b = self.cfg.betting
+        n_by_team = self._team_match_counts()
         for m in fixtures:
             if m.odds is None:
                 continue
@@ -282,6 +291,10 @@ class Orchestrator:
             probs = pred.final.as_array()
             odds = np.array(m.odds.as_array())
             fair = devig(m.odds, b.devig_method)
+            # Thin-data guard: shrink toward the market when either team is barely
+            # in the corpus, so we don't stake on manufactured Haiti-type edges.
+            n_eff = min(n_by_team.get(m.home_id, 0), n_by_team.get(m.away_id, 0))
+            probs = reliability_shrink(probs, fair, n_eff, b.reliability_shrink_k)
             vbs = value_bets(probs, m.odds, b.edge_threshold, b.devig_method)
             if not vbs:
                 continue

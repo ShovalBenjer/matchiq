@@ -143,6 +143,9 @@ class BettingConfig:
     starting_bankroll: float = 1000.0
     devig_method: str = "multiplicative"  # "multiplicative" | "shin"
     monte_carlo_paths: int = 50_000
+    # Empirical-Bayes shrink toward the market for thin-data teams (half-shrink at
+    # this many prior matches; 0 disables). Stops Haiti-type overconfident edges.
+    reliability_shrink_k: float = 20.0
 
 
 @dataclass

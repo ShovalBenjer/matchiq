@@ -91,6 +91,29 @@ Also available:
    agent-dependent component and must be a separate ablation, never part of the
    evaluated strategy.
 
+## Thin-data guard (the Haiti fix) and a join bug it exposed
+
+The forward test's day-one red flag (model: Haiti 56% to beat Scotland; market:
+16%) traced to **data scarcity**: `reliability_shrink` (`betting/value.py`) now
+pulls each pick's probability toward the devigged market by
+`reliability = n_eff / (n_eff + k)` (k = 20), where `n_eff` is the thinnest
+team's match count in the corpus. `recommend()` applies it before value
+detection. Effect, measured on the real corpus:
+
+* **Haiti: 0 corpus matches → reliability 0 → 100% market.** The manufactured
+  +40pt edge vanishes entirely. ✅ fully fixed.
+* **Qatar: 43 matches → reliability 0.68.** Its 20%-vs-7% overconfidence only
+  partially shrinks — honest boundary: that is *genuine model miscalibration*,
+  not scarcity, and the shrink is not a cure for it.
+
+Building this surfaced a **second real bug**: the live ESPN feed names the host
+`united_states` and uses `haiti`, but the training corpus slug is `usa` and
+Haiti is absent — so on the *live* path these teams don't join to their history
+(`n_eff = 0`). The shrink makes that **safe** (defer to market) rather than
+dangerous (bet on noise), but it masks a loss of ~100+ real USA matches. The
+proper fix is a slug-alias layer between ESPN and corpus naming — the next data
+task. (The synthetic/backtest path is internally consistent: all 48 teams join.)
+
 ## Simulation quality — randomized QMC
 
 `TournamentSimulator(..., qmc=True)` replaces pseudo-random draws with
