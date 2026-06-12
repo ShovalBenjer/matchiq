@@ -75,7 +75,9 @@ class EspnSource(DataSource):
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                 return json.load(resp)
-        except (urllib.error.URLError, TimeoutError, ValueError) as exc:
+        except (OSError, ValueError) as exc:
+            # OSError covers URLError, TimeoutError, and raw connection resets —
+            # all of which happen on live feeds and must degrade, not crash.
             raise SourceUnavailable(f"ESPN request failed: {exc}") from exc
 
     # ------------------------------------------------------------------

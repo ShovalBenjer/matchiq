@@ -28,14 +28,22 @@ jobs:
       - run: pip install -e .
       - name: Sync live data
         run: python -m wc2026.cli live-sync --days 5
-      - name: Commit refreshed dashboard
+      - name: Forward test — settle finished matches, then snapshot new prices+picks
+        # The closing-line ledger is the only agent-independent PROOF of edge.
+        # Settle first (freeze closing lines for finished games), then capture new
+        # pre-kickoff prices and the model's paper picks at those exact prices.
+        run: |
+          python -m wc2026.cli lines settle --days 3 || echo "settle skipped"
+          python -m wc2026.cli lines snapshot --days 5 || echo "snapshot skipped"
+          python -m wc2026.cli lines report || true
+      - name: Commit refreshed dashboard + forward-test ledger
         run: |
           git config user.name  "matchiq-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/live
+          git add docs/live data/linelog.jsonl
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "chore(live): daily data sync [skip ci]"
+            git commit -m "chore(live): daily data sync + forward-test ledger [skip ci]"
             git push
           fi

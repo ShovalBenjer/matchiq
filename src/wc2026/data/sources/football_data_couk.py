@@ -63,12 +63,11 @@ class FootballDataCoUkSource(DataSource):
             odds = None
             if {"B365H", "B365D", "B365A"}.issubset(df.columns):
                 try:
-                    odds = Odds(
-                        home=float(r["B365H"]),
-                        draw=float(r["B365D"]),
-                        away=float(r["B365A"]),
-                        bookmaker="B365",
-                    )
+                    h, dr, a = float(r["B365H"]), float(r["B365D"]), float(r["B365A"])
+                    # Blank cells read back as NaN (a float, so no ValueError) — reject
+                    # them and any non-positive price; NaN odds would poison devig/Kelly.
+                    if all(v == v and v > 1.0 for v in (h, dr, a)):
+                        odds = Odds(home=h, draw=dr, away=a, bookmaker="B365")
                 except (ValueError, TypeError):
                     odds = None
             out.append(

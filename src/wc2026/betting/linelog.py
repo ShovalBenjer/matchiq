@@ -50,8 +50,14 @@ class LineLog:
         with self.path.open() as fh:
             for line in fh:
                 line = line.strip()
-                if line:
+                if not line:
+                    continue
+                try:
                     out.append(json.loads(line))
+                except json.JSONDecodeError:
+                    # A half-written append (e.g. a killed CI job) must not poison
+                    # the whole ledger — skip the corrupt line and keep the record.
+                    logger.warning("skipping corrupt linelog line: %.60s", line)
         return out
 
     # -- capture --------------------------------------------------------
