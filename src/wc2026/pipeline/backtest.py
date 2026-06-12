@@ -39,6 +39,7 @@ class BacktestResult:
     accuracy: float
     baseline_log_loss: float  # market (devigged-odds) log-loss for comparison
     bankroll: dict = field(default_factory=dict)
+    bets: list = field(default_factory=list)  # settled BetRecommendations (for validation)
 
     def __str__(self) -> str:
         return (f"Backtest(n={self.n}, log_loss={self.log_loss:.4f} "
@@ -103,6 +104,7 @@ class BackTester:
             accuracy=correct / n,
             baseline_log_loss=base_ll_sum / n if base_ll_sum else float("nan"),
             bankroll=bankroll.summary(),
+            bets=list(bankroll.history),
         )
         logger.info("%s", result)
         return result

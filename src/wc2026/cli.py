@@ -187,6 +187,62 @@ def cmd_live_sync(args) -> int:
     return 0
 
 
+def cmd_validate_strategy(args) -> int:
+    """Agent-independent verdict on the betting strategy (no model, no agent)."""
+    import copy
+
+    import numpy as np
+
+    from wc2026.data.ingest import Ingestor
+    from wc2026.pipeline.backtest import BackTester
+    from wc2026.validation import bets_to_arrays, evaluate_strategy
+
+    cfg = load_config(args.config)
+    ing = Ingestor(cfg)
+    ing.run()
+    matches = ing.match_objects
+
+    def _run(threshold):
+        c = copy.deepcopy(cfg)
+        if threshold is not None:
+            c.betting.edge_threshold = threshold
+        return BackTester(c, warmup=args.warmup, refit_every=args.refit_every).run(matches)
+
+    result = _run(None)
+    arr = bets_to_arrays(result.bets)
+
+    # Optional threshold sweep → per-match returns matrix for PBO + Deflated Sharpe.
+    trials_matrix, n_trials, sr_std = None, args.trials, 1.0
+    if args.sweep:
+        grid = [round(0.01 * k, 3) for k in range(1, 9)]  # edge thresholds 1%..8%
+        runs = {t: _run(t) for t in grid}
+        mids = sorted({b.match_id for r in runs.values() for b in r.bets
+                       if getattr(b, "won", None) is not None})
+        idx = {mid: i for i, mid in enumerate(mids)}
+        M = np.zeros((len(mids), len(grid)))
+        for col, t in enumerate(grid):
+            for b in runs[t].bets:
+                if b.match_id in idx and getattr(b, "won", None) is not None:
+                    M[idx[b.match_id], col] += b.pnl / max(b.stake, 1e-9)
+        trials_matrix = M if len(mids) >= 12 else None
+        n_trials = len(grid)
+        col_sr = [float(M[:, k].mean() / M[:, k].std()) if M[:, k].std() > 0 else 0.0
+                  for k in range(len(grid))]
+        sr_std = float(np.std(col_sr)) or 1.0
+
+    report = evaluate_strategy(arr["pnl"], arr["odds"], arr["stakes"], clv=arr["clv"],
+                               n_trials=n_trials, sr_std=sr_std, trials_matrix=trials_matrix)
+    report["calibration"] = {"model_log_loss": round(result.log_loss, 4),
+                             "market_log_loss": round(result.baseline_log_loss, 4),
+                             "brier": round(result.brier, 4)}
+    print(json.dumps(report, indent=2, default=float))
+    print("\nVERDICT:", report.get("verdict"))
+    if args.output:
+        with open(args.output, "w") as fh:
+            json.dump(report, fh, indent=2, default=float)
+    return 0
+
+
 def cmd_crowd(args) -> int:
     """Compare the model's winner probabilities to live Polymarket crowd wisdom."""
     orch = _orchestrator(args)
@@ -237,6 +293,17 @@ def build_parser() -> argparse.ArgumentParser:
     pb.add_argument("--warmup", type=int, default=200)
     pb.add_argument("--refit-every", type=int, default=25)
     pb.set_defaults(func=cmd_backtest)
+
+    pvs = sub.add_parser("validate-strategy",
+                         help="agent-independent overfitting/significance verdict")
+    pvs.add_argument("--warmup", type=int, default=200)
+    pvs.add_argument("--refit-every", type=int, default=25)
+    pvs.add_argument("--trials", type=int, default=20,
+                     help="strategy variants searched (Deflated Sharpe correction)")
+    pvs.add_argument("--sweep", action="store_true",
+                     help="sweep edge thresholds to compute PBO")
+    pvs.add_argument("--output", type=str, default=None)
+    pvs.set_defaults(func=cmd_validate_strategy)
 
     pr = sub.add_parser("recommend", help="value-bet recommendations for fixtures")
     pr.add_argument("--top", type=int, default=20)
