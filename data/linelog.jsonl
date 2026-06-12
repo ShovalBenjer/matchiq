@@ -1,0 +1,26 @@
+{"type": "snapshot", "match_id": "760416", "date": "2026-06-12T19:00Z", "home": "canada", "away": "bosnia_herzegovina", "odds": {"H": 1.833, "D": 3.5, "A": 4.8}, "ts": 1781274812.2215285}
+{"type": "snapshot", "match_id": "760417", "date": "2026-06-13T01:00Z", "home": "united_states", "away": "paraguay", "odds": {"H": 2.1, "D": 3.2, "A": 3.9}, "ts": 1781274812.221721}
+{"type": "snapshot", "match_id": "760420", "date": "2026-06-13T19:00Z", "home": "qatar", "away": "switzerland", "odds": {"H": 14.0, "D": 6.5, "A": 1.222}, "ts": 1781274812.2217946}
+{"type": "snapshot", "match_id": "760419", "date": "2026-06-13T22:00Z", "home": "brazil", "away": "morocco", "odds": {"H": 1.645, "D": 3.9, "A": 5.75}, "ts": 1781274812.221827}
+{"type": "snapshot", "match_id": "760418", "date": "2026-06-14T01:00Z", "home": "haiti", "away": "scotland", "odds": {"H": 6.0, "D": 4.2, "A": 1.571}, "ts": 1781274812.221848}
+{"type": "snapshot", "match_id": "760416", "date": "2026-06-12T19:00Z", "home": "canada", "away": "bosnia_herzegovina", "odds": {"H": 1.833, "D": 3.5, "A": 4.8}, "ts": 1781274845.177393}
+{"type": "pick", "match_id": "760416", "outcome": "A", "odds_taken": 4.8, "model_prob": 0.26433088317930875, "fair_prob": 0.2003973274109059, "edge": 0.06393355576840284, "stake": 17.68, "ts": 1781274845.182605}
+{"type": "snapshot", "match_id": "760417", "date": "2026-06-13T01:00Z", "home": "united_states", "away": "paraguay", "odds": {"H": 2.1, "D": 3.2, "A": 3.9}, "ts": 1781274845.1827235}
+{"type": "pick", "match_id": "760417", "outcome": "H", "odds_taken": 2.1, "model_prob": 0.5365653471437852, "fair_prob": 0.45564074479737127, "edge": 0.08092460234641397, "stake": 28.82, "ts": 1781274845.187883}
+{"type": "snapshot", "match_id": "760420", "date": "2026-06-13T19:00Z", "home": "qatar", "away": "switzerland", "odds": {"H": 14.0, "D": 6.5, "A": 1.222}, "ts": 1781274845.187959}
+{"type": "pick", "match_id": "760420", "outcome": "H", "odds_taken": 14.0, "model_prob": 0.2011020198655811, "fair_prob": 0.06844404615212277, "edge": 0.13265797371345833, "stake": 34.91, "ts": 1781274845.1935236}
+{"type": "pick", "match_id": "760420", "outcome": "D", "odds_taken": 6.5, "model_prob": 0.27093896380776183, "fair_prob": 0.1474179455584183, "edge": 0.12352101824934353, "stake": 34.6, "ts": 1781274845.1935806}
+{"type": "snapshot", "match_id": "760419", "date": "2026-06-13T22:00Z", "home": "brazil", "away": "morocco", "odds": {"H": 1.645, "D": 3.9, "A": 5.75}, "ts": 1781274845.1936138}
+{"type": "pick", "match_id": "760419", "outcome": "A", "odds_taken": 5.75, "model_prob": 0.23382443432202646, "fair_prob": 0.16750980763330872, "edge": 0.06631462668871774, "stake": 18.13, "ts": 1781274845.1998718}
+{"type": "snapshot", "match_id": "760418", "date": "2026-06-14T01:00Z", "home": "haiti", "away": "scotland", "odds": {"H": 6.0, "D": 4.2, "A": 1.571}, "ts": 1781274845.1999302}
+{"type": "pick", "match_id": "760418", "outcome": "H", "odds_taken": 6.0, "model_prob": 0.5577777604236569, "fair_prob": 0.16005647168410786, "edge": 0.39772128873954904, "stake": 50.0, "ts": 1781274845.2037902}
+{"type": "snapshot", "match_id": "760421", "date": "2026-06-14T04:00Z", "home": "australia", "away": "t\u00fcrkiye", "odds": {"H": 5.0, "D": 3.8, "A": 1.714}, "ts": 1781274845.203845}
+{"type": "pick", "match_id": "760421", "outcome": "H", "odds_taken": 5.0, "model_prob": 0.47516479248086424, "fair_prob": 0.19109708008637688, "edge": 0.28406771239448736, "stake": 50.0, "ts": 1781274845.2078078}
+{"type": "snapshot", "match_id": "760422", "date": "2026-06-14T17:00Z", "home": "germany", "away": "cura\u00e7ao", "odds": {"H": 1.033, "D": 16.0, "A": 29.0}, "ts": 1781274845.207864}
+{"type": "pick", "match_id": "760422", "outcome": "D", "odds_taken": 16.0, "model_prob": 0.18832081693311636, "fair_prob": 0.05868340891505136, "edge": 0.129637408018065, "stake": 33.55, "ts": 1781274845.212656}
+{"type": "pick", "match_id": "760422", "outcome": "A", "odds_taken": 29.0, "model_prob": 0.14012329477199015, "fair_prob": 0.03237705319451109, "edge": 0.10774624157747906, "stake": 27.35, "ts": 1781274845.2127125}
+{"type": "snapshot", "match_id": "760425", "date": "2026-06-14T20:00Z", "home": "netherlands", "away": "japan", "odds": {"H": 1.952, "D": 3.5, "A": 3.65}, "ts": 1781274845.2127402}
+{"type": "pick", "match_id": "760425", "outcome": "A", "odds_taken": 3.65, "model_prob": 0.5122414359113356, "fair_prob": 0.25557575621544376, "edge": 0.2566656796958919, "stake": 50.0, "ts": 1781274845.2205873}
+{"type": "snapshot", "match_id": "760423", "date": "2026-06-14T23:00Z", "home": "ivory_coast", "away": "ecuador", "odds": {"H": 3.6, "D": 2.85, "A": 2.45}, "ts": 1781274845.220663}
+{"type": "pick", "match_id": "760423", "outcome": "H", "odds_taken": 3.6, "model_prob": 0.4148880086899881, "fair_prob": 0.2679136690647482, "edge": 0.14697433962523987, "stake": 47.46, "ts": 1781274845.2264154}
+{"type": "snapshot", "match_id": "760424", "date": "2026-06-15T02:00Z", "home": "sweden", "away": "tunisia", "odds": {"H": 1.909, "D": 3.45, "A": 4.3}, "ts": 1781274845.2264776}

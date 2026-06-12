@@ -56,16 +56,38 @@ no-skill series, **detects** a genuine 8% edge, and assigns **high PBO** to the
 selection of the best of 40 pure-noise strategies (≈0.85) versus **low PBO**
 (<0.15) to a genuinely dominant one.
 
-## Getting to a *real* verdict
+## The closing-line forward test (live)
+
+`wc2026/betting/linelog.py` + `wc2026 lines {snapshot,settle,report}` run the
+only test that counts: an **append-only JSONL ledger** (`data/linelog.jsonl`,
+committed to git so history proves picks pre-date kickoff) of
+
+* real ESPN/DraftKings 1X2 prices snapshotted before kickoff,
+* the model's paper picks at those exact prices (value → fractional Kelly),
+* settlements: closing line = last pre-kickoff snapshot, realised result, P&L,
+  and genuine **CLV** per pick.
+
+`lines report` feeds the settled record straight to the agent-independent judge.
+The cycle during the tournament: `snapshot` daily (or several times a day —
+more snapshots → a truer closing line), `settle` after each matchday, `report`
+whenever you want the current verdict. The judge will say UNPROVEN until the
+sample earns anything stronger — that is correct behaviour, not a bug.
+
+First live capture (2026-06-12) logged 10 real prices and 11 paper picks — and
+immediately exposed a credibility problem the backtest never could: the model
+puts **55.8% on Haiti beating Scotland** (market: 16%) and 20% on Qatar beating
+Switzerland (market: 7%). Edges that large against a sharp closing line are far
+more likely miscalibration on thin international data than genuine value. The
+ledger will adjudicate with results, but expect the CLV/no-skill tests to be
+brutal — which is the point.
+
+Also available:
 
 1. **Real historical odds (club football):** drop a football-data.co.uk CSV at
    `data/licensed/historical_odds.csv`; the ingestor wires it in automatically
    so played matches gain real prices. (Different domain to the World Cup, but a
    real test of the betting machinery.)
-2. **Real WC2026 odds (the true forward test):** log the live ESPN closing lines
-   per fixture and settle them as matches finish → real CLV. This is the only
-   path to *international* out-of-sample evidence, and the only proof that counts.
-3. Freeze the optional LLM news tilt **off** for any measured run — it is the one
+2. Freeze the optional LLM news tilt **off** for any measured run — it is the one
    agent-dependent component and must be a separate ablation, never part of the
    evaluated strategy.
 

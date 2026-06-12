@@ -243,6 +243,27 @@ def cmd_validate_strategy(args) -> int:
     return 0
 
 
+def cmd_lines(args) -> int:
+    """Closing-line forward test: snapshot real prices, settle, judge."""
+    from wc2026.betting.linelog import LineLog
+
+    log = LineLog()
+    if args.action == "report":
+        print(json.dumps(log.report(), indent=2, default=float))
+        return 0
+
+    from wc2026.data.sources.espn import EspnSource
+
+    espn = EspnSource()
+    if args.action == "snapshot":
+        orch = None if args.no_picks else _orchestrator(args)
+        out = log.snapshot(espn, orchestrator=orch, days=args.days)
+    else:  # settle
+        out = log.settle(espn, days_back=args.days)
+    print(json.dumps(out))
+    return 0
+
+
 def cmd_crowd(args) -> int:
     """Compare the model's winner probabilities to live Polymarket crowd wisdom."""
     orch = _orchestrator(args)
@@ -304,6 +325,13 @@ def build_parser() -> argparse.ArgumentParser:
                      help="sweep edge thresholds to compute PBO")
     pvs.add_argument("--output", type=str, default=None)
     pvs.set_defaults(func=cmd_validate_strategy)
+
+    pl = sub.add_parser("lines", help="closing-line forward test (the real proof)")
+    pl.add_argument("action", choices=["snapshot", "settle", "report"])
+    pl.add_argument("--days", type=int, default=3)
+    pl.add_argument("--no-picks", action="store_true",
+                    help="snapshot prices only, without model paper picks")
+    pl.set_defaults(func=cmd_lines)
 
     pr = sub.add_parser("recommend", help="value-bet recommendations for fixtures")
     pr.add_argument("--top", type=int, default=20)
