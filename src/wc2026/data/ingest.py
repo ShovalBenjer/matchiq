@@ -108,6 +108,7 @@ def _teams_frame(teams: list[Team]):
                 "squad_value_eur": t.squad_value_eur,
                 "injured_value_eur": t.injured_value_eur,
                 "injury_index": t.injury_index,
+                "squad_rating": t.squad_rating,
                 "is_host": t.is_host,
             }
             for t in teams

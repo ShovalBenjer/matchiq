@@ -24,6 +24,7 @@ FEATURE_COLUMNS = [
     "elo_expected_home",
     "value_ratio",
     "log_value_ratio",
+    "rating_diff",
     "injury_diff",
     "form_diff",
     "form_home",
@@ -75,6 +76,12 @@ class FeatureBuilder:
         value_away = max(ta.squad_value_eur, 1.0)
         value_ratio = value_home / value_away
 
+        # FM26/EA FC overall gap — a strength proxy independent of euro value.
+        from wc2026.data.wc2026_facts import DEFAULT_SQUAD_RATING
+        rating_home = th.squad_rating or DEFAULT_SQUAD_RATING
+        rating_away = ta.squad_rating or DEFAULT_SQUAD_RATING
+        rating_diff = rating_home - rating_away
+
         # Head-to-head over the last 5 meetings (oriented to current home team).
         key = self._h2h_key(m.home_id, m.away_id)
         h2h = self._h2h[key]
@@ -97,6 +104,7 @@ class FeatureBuilder:
             "elo_expected_home": self.elo.expected(m.home_id, m.away_id, m.neutral),
             "value_ratio": value_ratio,
             "log_value_ratio": float(np.log(value_ratio)),
+            "rating_diff": rating_diff,
             "injury_diff": th.injury_index - ta.injury_index,
             "form_diff": f_home.form_score - f_away.form_score,
             "form_home": f_home.form_score,

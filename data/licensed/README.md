@@ -43,3 +43,28 @@ ratio** (a TabPFN feature) and backs the injured-value fraction in the schema.
 Because the contender pool is strength-ordered, real values stay correlated with
 latent team strength, so the value signal is genuinely predictive rather than
 noise.
+
+## `squad_ratings.csv` — FM26 / EA FC overall (independent proxy)
+
+A **second, independent** strength view to market value. The model ships a
+snapshot in `wc2026_facts.py` (`SQUAD_RATING`, ~70-86 top-XI overall); override
+it with a licensed export named **`squad_ratings.csv`**:
+
+```csv
+team_slug,overall
+spain,85
+argentina,85
+england,84
+...
+```
+
+`squad_ratings()` merges it over the snapshot (cached), feeding the
+**`rating_diff`** feature. The divergence from value is deliberate and useful —
+e.g. Argentina rates 85 (reigning champions) but is worth ~€720m, while England
+rates 84 yet is worth ~€1.5bn. Two uncorrelated strength signals beat one.
+
+### Where to get it
+
+- **Kaggle — EA Sports FC / FIFA player datasets**: average the top-XI `overall`
+  per nation.
+- **Kaggle — Football Manager data exports**: use FM ability/overall rollups.

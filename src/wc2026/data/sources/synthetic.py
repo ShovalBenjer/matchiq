@@ -55,6 +55,7 @@ class _LatentTeam:
     attack: float  # log-rate attack strength (centred ~0)
     defense: float  # log-rate defence strength (positive = concedes more)
     squad_value_eur: float
+    squad_rating: float
 
 
 class SyntheticSource(DataSource):
@@ -88,6 +89,7 @@ class SyntheticSource(DataSource):
         # Strength is a latent normal; better teams attack more and defend better.
         strengths = np.sort(self.rng.normal(0, 0.55, self.n_teams))[::-1]
         real_values = _facts.squad_values()
+        real_ratings = _facts.squad_ratings()
         for i in range(self.n_teams):
             name, conf = _TEAM_POOL[i]
             s = float(strengths[i])
@@ -99,6 +101,11 @@ class SyntheticSource(DataSource):
             value = real_values.get(slug)
             if value is None:
                 value = float(np.exp(6.0 + 1.4 * s + self.rng.normal(0, 0.2)) * 1e6)
+            # Real FM26/EA FC overall when known; else a synthetic rating mapped
+            # off latent strength (~76 baseline, ±, clipped to a sane band).
+            rating = real_ratings.get(slug)
+            if rating is None:
+                rating = float(np.clip(76.0 + 9.0 * s + self.rng.normal(0, 1.0), 65, 90))
             teams.append(
                 _LatentTeam(
                     team_id=name.lower().replace(" ", "_"),
@@ -107,6 +114,7 @@ class SyntheticSource(DataSource):
                     attack=attack,
                     defense=defense,
                     squad_value_eur=value,
+                    squad_rating=rating,
                 )
             )
         return teams
@@ -315,6 +323,7 @@ class SyntheticSource(DataSource):
                     confederation=lt.confederation,
                     squad_value_eur=lt.squad_value_eur,
                     injured_value_eur=lt.squad_value_eur * inj_frac,
+                    squad_rating=lt.squad_rating,
                     is_host=lt.name in _HOSTS,
                 )
             )

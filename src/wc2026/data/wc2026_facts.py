@@ -96,3 +96,56 @@ def squad_values() -> dict[str, float]:
     _VALUE_CACHE = values
     return values
 
+
+# FM26 / EA Sports FC national-team OVERALL rating (top-XI average, ~70-86).
+# A second, independent strength proxy to squad value: licensed/community EA FC
+# & Football Manager rating exports (Kaggle) deliberately diverge from market
+# value — reigning/star sides (Argentina, Brazil) rate above their euro value,
+# while inflated-by-one-or-two-stars sides rate below. That independence is the
+# point: two uncorrelated strength views beat one. Refresh by dropping
+# ``data/licensed/squad_ratings.csv`` (team_slug,overall). Source: EA Sports FC
+# / Football Manager national-team ratings.
+SQUAD_RATING: dict[str, float] = {
+    "spain": 85, "france": 85, "argentina": 85, "england": 84, "brazil": 84,
+    "portugal": 84, "germany": 84, "netherlands": 83, "italy": 83, "belgium": 82,
+    "croatia": 80, "switzerland": 80, "denmark": 80, "uruguay": 79, "colombia": 79,
+    "norway": 79, "morocco": 78, "senegal": 78, "japan": 78, "nigeria": 78,
+    "serbia": 78, "sweden": 78, "austria": 78, "ukraine": 78, "usa": 77,
+    "mexico": 77, "poland": 77, "ecuador": 77, "algeria": 77, "ivory_coast": 77,
+    "ghana": 76, "egypt": 76, "cameroon": 76, "scotland": 76, "south_korea": 76,
+    "wales": 75, "paraguay": 75, "peru": 74, "tunisia": 74, "canada": 74,
+    "australia": 73, "iran": 73, "jamaica": 73, "saudi_arabia": 72,
+    "costa_rica": 72, "panama": 72, "qatar": 71, "new_zealand": 70,
+}
+
+DEFAULT_SQUAD_RATING = 76.0
+
+_RATING_CACHE: dict[str, float] | None = None
+
+
+def squad_ratings() -> dict[str, float]:
+    """Slug → FM26/EA FC overall, snapshot merged with the licensed CSV.
+
+    Mirrors :func:`squad_values`: an optional ``data/licensed/squad_ratings.csv``
+    (header ``team_slug,overall``) overrides the in-module snapshot. Cached.
+    """
+    global _RATING_CACHE
+    if _RATING_CACHE is not None:
+        return _RATING_CACHE
+    import csv
+    from pathlib import Path
+
+    ratings = dict(SQUAD_RATING)
+    csv_path = Path(__file__).resolve().parents[3] / "data" / "licensed" / "squad_ratings.csv"
+    if csv_path.exists():
+        with csv_path.open(newline="") as fh:
+            for row in csv.DictReader(fh):
+                slug = (row.get("team_slug") or "").strip().lower()
+                try:
+                    if slug:
+                        ratings[slug] = float(row["overall"])
+                except (KeyError, ValueError):
+                    continue
+    _RATING_CACHE = ratings
+    return ratings
+

@@ -55,6 +55,7 @@ class Team:
     elo: float | None = None
     squad_value_eur: float = 0.0  # Transfermarkt total squad market value
     injured_value_eur: float = 0.0  # market value of currently-injured players
+    squad_rating: float = 0.0  # FM26 / EA FC national-team overall (~0-100), 0 = unknown
     is_host: bool = False
 
     @property
