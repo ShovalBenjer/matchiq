@@ -35,17 +35,33 @@ class Ingestor:
         synthetic source supplying WC2026 fixtures + team/player metadata. Falls
         back to a fully synthetic corpus if real results can't be fetched."""
         dc = self.config.data
+        extra: list[DataSource] = []
+        # Real historical ODDS drop-in (football-data.co.uk format) — gives played
+        # matches genuine bookmaker prices so the betting backtest/validation runs
+        # on real edge, not synthetic odds. Absent → played matches carry no odds
+        # and the validator honestly reports "no bets to evaluate".
+        from pathlib import Path
+
+        odds_csv = Path("data/licensed/historical_odds.csv")
+        if odds_csv.exists():
+            from wc2026.data.sources.football_data_couk import FootballDataCoUkSource
+
+            src = FootballDataCoUkSource(local_path=str(odds_csv))
+            if src.available():
+                logger.info("using REAL historical odds from %s", odds_csv)
+                extra.append(src)
+
         if dc.use_real_results:
             from wc2026.data.sources.intl_results import InternationalResultsSource
 
             real = InternationalResultsSource(since_year=dc.real_results_since_year)
             if real.available():
                 logger.info("using REAL international results for history")
-                return [real, SyntheticSource(seed=dc.synthetic_seed,
-                                              n_history_tournaments=0)]
+                return [*extra, real, SyntheticSource(seed=dc.synthetic_seed,
+                                                      n_history_tournaments=0)]
             logger.warning("real results unreachable — falling back to synthetic history")
-        return [SyntheticSource(seed=dc.synthetic_seed,
-                                n_history_tournaments=dc.synthetic_n_history_tournaments)]
+        return [*extra, SyntheticSource(seed=dc.synthetic_seed,
+                                        n_history_tournaments=dc.synthetic_n_history_tournaments)]
 
     def run(self) -> FeatureStore:
         matches: dict[str, Match] = {}

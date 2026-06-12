@@ -326,7 +326,9 @@ class Orchestrator:
             self.fit()
         n_paths = n_paths or self.cfg.betting.monte_carlo_paths
         groups = self._group_structure()
-        sim = TournamentSimulator(self.dixon_coles, groups, seed=self.cfg.data.synthetic_seed)
+        # Scrambled-Sobol' QMC: unbiased, lower-variance title probabilities at equal paths.
+        sim = TournamentSimulator(self.dixon_coles, groups,
+                                  seed=self.cfg.data.synthetic_seed, qmc=True)
         result = sim.run(n_paths=n_paths)
         result["win_prob_model"] = dict(result["win_prob"])  # keep the raw model view
         # Top scorer using simulated match counts.

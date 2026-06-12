@@ -20,14 +20,39 @@ import numpy as np
 from wc2026.data.schema import Player
 
 
+class _MCDraw:
+    """Plain pseudo-random draws with the same interface as ``QMCStream``."""
+
+    def __init__(self, rng):
+        self.rng = rng
+
+    def uniform(self) -> float:
+        return float(self.rng.random())
+
+    def bernoulli(self, p: float) -> bool:
+        return self.rng.random() < p
+
+    def poisson(self, lam: float) -> int:
+        return int(self.rng.poisson(max(lam, 0.0)))
+
+    def shuffle(self, seq) -> None:
+        self.rng.shuffle(seq)
+
+    def next_path_if_qmc(self) -> None:
+        pass
+
+
 class TournamentSimulator:
     """Simulate a tournament from group structure + a Dixon-Coles model."""
 
     def __init__(self, model, groups: dict[str, list[str]], seed: int = 0,
-                 qualifiers_per_group: int = 2, best_thirds: int = 8):
+                 qualifiers_per_group: int = 2, best_thirds: int = 8, qmc: bool = False):
         self.model = model
         self.groups = groups
+        self.seed = seed
         self.rng = np.random.default_rng(seed)
+        self.qmc = qmc
+        self._draw = _MCDraw(self.rng)  # swapped for a QMCStream in run() when qmc=True
         self.qpg = qualifiers_per_group
         self.best_thirds = best_thirds
         self.all_teams = [t for g in groups.values() for t in g]
@@ -35,14 +60,14 @@ class TournamentSimulator:
     # --- single match helpers -----------------------------------------
     def _sample_score(self, home: str, away: str) -> tuple[int, int]:
         lam, mu = self.model.expected_goals(home, away, neutral=True)
-        return int(self.rng.poisson(lam)), int(self.rng.poisson(mu))
+        return self._draw.poisson(lam), self._draw.poisson(mu)
 
     def _knockout_winner(self, a: str, b: str) -> str:
         p = self.model.predict_proba(a, b, neutral=True).as_array()
         # Split the draw mass proportionally to win probs (penalty shootout proxy).
         ph, _, pa = p
         denom = ph + pa if (ph + pa) > 0 else 1.0
-        return a if self.rng.random() < ph / denom else b
+        return a if self._draw.bernoulli(ph / denom) else b
 
     # --- group stage ---------------------------------------------------
     def _play_groups(self):
@@ -68,7 +93,7 @@ class TournamentSimulator:
                         pts[teams[j]] += 1
             ranked = sorted(
                 teams,
-                key=lambda t: (pts[t], gd[t], gf[t], self.rng.random()),
+                key=lambda t: (pts[t], gd[t], gf[t], self._draw.uniform()),
                 reverse=True,
             )
             qualified.extend(ranked[: self.qpg])
@@ -76,14 +101,14 @@ class TournamentSimulator:
                 third = ranked[self.qpg]
                 thirds.append((pts[third], gd[third], third))
         # Best third-placed teams (48-team format).
-        thirds.sort(key=lambda x: (x[0], x[1], self.rng.random()), reverse=True)
+        thirds.sort(key=lambda x: (x[0], x[1], self._draw.uniform()), reverse=True)
         qualified.extend(t for _, _, t in thirds[: self.best_thirds])
         return qualified
 
     # --- knockouts -----------------------------------------------------
     def _play_knockouts(self, qualified: list[str]):
         bracket = list(qualified)
-        self.rng.shuffle(bracket)
+        self._draw.shuffle(bracket)
         # Trim to the largest power of two for a clean single-elim bracket.
         size = 1 << (len(bracket).bit_length() - 1)
         bracket = bracket[:size]
@@ -113,7 +138,16 @@ class TournamentSimulator:
             "matches_played": matches,
         }
 
+    def _qmc_dimension(self) -> int:
+        """Per-path coordinate budget: 2 per group match + tiebreaks + knockouts + slack."""
+        group_matches = sum(len(g) * (len(g) - 1) // 2 for g in self.groups.values())
+        return 2 * group_matches + 4 * len(self.all_teams) + 256
+
     def run(self, n_paths: int = 50_000):
+        if self.qmc:
+            from wc2026.betting.qmc import QMCStream
+
+            self._draw = QMCStream(self._qmc_dimension(), n_paths, seed=self.seed)
         wins = defaultdict(int)
         qualify = defaultdict(int)
         matches_total = defaultdict(int)
@@ -125,6 +159,7 @@ class TournamentSimulator:
                 qualify[t] += 1
             for t, m in res["matches_played"].items():
                 matches_total[t] += m
+            self._draw.next_path_if_qmc()  # advance to the next low-discrepancy point
         win_prob = {t: wins[t] / n_paths for t in self.all_teams}
         qual_prob = {t: qualify[t] / n_paths for t in self.all_teams}
         exp_matches = {t: matches_total[t] / n_paths for t in self.all_teams}
