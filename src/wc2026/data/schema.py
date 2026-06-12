@@ -68,18 +68,33 @@ class Team:
 
 @dataclass
 class Player:
-    """A player tracked for the top-scorer market."""
+    """A squad player — used for starting-XI strength and the top-scorer market."""
 
     player_id: str
     name: str
     team_id: str
-    position: str = "FW"
+    position: str = "FWD"  # GK | DEF | MID | FWD
     age: float = 27.0
+    overall: float = 0.0  # FM26 / EA FC player overall (~40-95), 0 = unknown
+    market_value_eur: float = 0.0  # Transfermarkt player market value
+    club: str = ""
+    depth_rank: int = 1  # 1 = first choice at the position, 2 = backup, ...
+    available: bool = True  # False if injured/suspended for this tournament
     club_xg_per90: float = 0.0
     club_goals_per90: float = 0.0
     nt_goals: int = 0
     nt_caps: int = 0
     expected_minutes: float = 90.0  # expected minutes per match this tournament
+
+    @property
+    def is_outfield(self) -> bool:
+        return self.position != "GK"
+
+
+# Canonical position lines and the default formation used by the lineup builder.
+POSITIONS = ("GK", "DEF", "MID", "FWD")
+DEFAULT_FORMATION = {"GK": 1, "DEF": 4, "MID": 3, "FWD": 3}  # 4-3-3
+
 
 
 @dataclass

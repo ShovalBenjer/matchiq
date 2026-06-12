@@ -122,6 +122,13 @@ function vFixtures(){
       tb.append(el('tr',{}, `<td class=team>${flag(f.home)}${f.home} <span class=muted>v</span> ${flag(f.away)}${f.away}${f.details?` <span class=muted style="font-size:11px">(${f.details})</span>`:''}</td>
         <td>${st}</td><td class=num style="font-size:12px">${book}</td>
         <td class=num style="font-size:12px">${crowd}</td><td class=num style="font-size:12px">${model}</td><td class=num style="font-size:12px">${ouCell}</td><td class=num>${squadCell}</td><td>${v}</td>`));
+      if(f.lineup){const L=f.lineup;
+        const line=s=>`ATT ${s.attack} · DEF ${s.defense} · ★${s.star} · depth ${s.depth}`;
+        const out=s=>(s.absences&&s.absences.length)?` <span style="color:#ff9a9a">⚠ OUT: ${s.absences.join(', ')}</span>`:'';
+        tb.append(el('tr',{}, `<td colspan=8 style="padding:2px 12px 10px;font-size:11px" class=muted>
+          <span title="${(L.home.xi||[]).join(', ')}">▸ <b>${f.home}</b> XI&nbsp;${line(L.home)}${out(L.home)}</span>
+          &nbsp;&nbsp;<span class=muted>|</span>&nbsp;&nbsp;
+          <span title="${(L.away.xi||[]).join(', ')}"><b>${f.away}</b> XI&nbsp;${line(L.away)}${out(L.away)}</span></td>`));}
     });
     t.append(tb);card.append(t);s.append(card);
   });

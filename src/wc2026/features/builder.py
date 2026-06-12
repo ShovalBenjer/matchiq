@@ -14,9 +14,10 @@ import numpy as np
 import pandas as pd
 
 from wc2026.config import FeatureConfig
-from wc2026.data.schema import Match, Team
+from wc2026.data.schema import Match, Player, Team
 from wc2026.features.elo import EloConfig, EloRatings
 from wc2026.features.form import FormTracker
+from wc2026.features.lineup import LineupStrength, compute_lineup
 
 # Ordered list of feature columns (stable contract for the models).
 FEATURE_COLUMNS = [
@@ -25,6 +26,12 @@ FEATURE_COLUMNS = [
     "value_ratio",
     "log_value_ratio",
     "rating_diff",
+    "lineup_overall_diff",
+    "lineup_attack_diff",
+    "lineup_defense_diff",
+    "star_power_diff",
+    "depth_diff",
+    "availability_diff",
     "injury_diff",
     "form_diff",
     "form_home",
@@ -48,7 +55,8 @@ class FeatureBuilder:
     """Build leakage-free tabular features from a chronological match stream."""
 
     def __init__(self, config: FeatureConfig | None = None,
-                 teams: list[Team] | None = None):
+                 teams: list[Team] | None = None,
+                 players: list[Player] | None = None):
         self.cfg = config or FeatureConfig()
         self.elo = EloRatings(
             EloConfig(k=self.cfg.elo_k, home_advantage=self.cfg.elo_home_advantage,
@@ -58,6 +66,16 @@ class FeatureBuilder:
                                 halflife_days=self.cfg.form_decay_halflife_days)
         self.teams: dict[str, Team] = {t.team_id: t for t in (teams or [])}
         self._h2h: dict[tuple[str, str], deque] = defaultdict(lambda: deque(maxlen=5))
+        # Pre-compute each team's first-choice starting-XI strength (bottom-up).
+        self.squads: dict[str, list[Player]] = defaultdict(list)
+        for p in (players or []):
+            self.squads[p.team_id].append(p)
+        self.lineups: dict[str, LineupStrength] = {
+            tid: compute_lineup(ps) for tid, ps in self.squads.items()
+        }
+
+    def _lineup(self, team_id: str) -> LineupStrength:
+        return self.lineups.get(team_id) or LineupStrength()
 
     # ------------------------------------------------------------------
     def _team(self, team_id: str) -> Team:
@@ -82,6 +100,9 @@ class FeatureBuilder:
         rating_away = ta.squad_rating or DEFAULT_SQUAD_RATING
         rating_diff = rating_home - rating_away
 
+        # Bottom-up starting-XI strength (player-by-player → team).
+        lh, la = self._lineup(m.home_id), self._lineup(m.away_id)
+
         # Head-to-head over the last 5 meetings (oriented to current home team).
         key = self._h2h_key(m.home_id, m.away_id)
         h2h = self._h2h[key]
@@ -105,6 +126,12 @@ class FeatureBuilder:
             "value_ratio": value_ratio,
             "log_value_ratio": float(np.log(value_ratio)),
             "rating_diff": rating_diff,
+            "lineup_overall_diff": lh.overall - la.overall,
+            "lineup_attack_diff": lh.attack - la.attack,
+            "lineup_defense_diff": lh.defense - la.defense,
+            "star_power_diff": lh.star_power - la.star_power,
+            "depth_diff": lh.depth - la.depth,
+            "availability_diff": lh.availability - la.availability,
             "injury_diff": th.injury_index - ta.injury_index,
             "form_diff": f_home.form_score - f_away.form_score,
             "form_home": f_home.form_score,

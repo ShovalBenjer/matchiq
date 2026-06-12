@@ -329,25 +329,43 @@ class SyntheticSource(DataSource):
             )
         return teams
 
-    def fetch_players(self, per_team: int = 3) -> list[Player]:
+    # Synthetic squad shape: a realistic ~16-man positional pool per nation.
+    _SQUAD_SHAPE = (("GK", 2), ("DEF", 6), ("MID", 5), ("FWD", 3))
+
+    def fetch_players(self) -> list[Player]:
+        from wc2026.data.squads import expected_minutes as _squad_minutes
+        from wc2026.data.squads import load_squad
+
         players: list[Player] = []
         for lt in self._latent:
-            # Better attacking teams have sharper strikers.
-            base_xg = max(0.15, 0.45 + 0.25 * lt.attack)
-            for p in range(per_team):
-                xg = float(max(0.05, base_xg - 0.1 * p + self.rng.normal(0, 0.05)))
-                players.append(
-                    Player(
-                        player_id=f"{lt.team_id}_p{p}",
-                        name=f"{lt.name} Striker {p + 1}",
-                        team_id=lt.team_id,
-                        position="FW",
-                        age=float(self.rng.integers(20, 34)),
+            slug = lt.team_id
+            real = load_squad(slug, lt.team_id)
+            if real:                      # licensed snapshot / CSV → use it verbatim
+                players.extend(real)
+                continue
+            # Otherwise synthesise a position-aware squad off the team rating, so
+            # every nation still has a full lineup for the bottom-up strength model.
+            base = lt.squad_rating or (76.0 + 9.0 * lt.attack)
+            for pos, n in self._SQUAD_SHAPE:
+                # Positional baseline: attackers a touch below the headline rating.
+                pos_off = {"GK": -1.0, "DEF": -1.5, "MID": 0.0, "FWD": 0.5}[pos]
+                for rank in range(1, n + 1):
+                    ovr = float(np.clip(base + pos_off - 2.2 * (rank - 1)
+                                        + self.rng.normal(0, 1.0), 50, 94))
+                    xg = (max(0.05, (ovr - 68) / 25.0 * 0.65 + 0.15)
+                          if pos == "FWD" else
+                          max(0.02, (ovr - 68) / 25.0 * 0.30 + 0.05) if pos == "MID" else 0.03)
+                    val = float(np.exp(1.6 + 0.11 * (ovr - 70)) * 1e6)
+                    players.append(Player(
+                        player_id=f"{lt.team_id}_{pos}{rank}",
+                        name=f"{lt.name} {pos}{rank}",
+                        team_id=lt.team_id, position=pos, depth_rank=rank,
+                        age=float(self.rng.integers(20, 34)), overall=round(ovr, 1),
+                        market_value_eur=val, club="",
                         club_xg_per90=round(xg, 3),
-                        club_goals_per90=round(max(0.0, xg + self.rng.normal(0, 0.05)), 3),
-                        nt_goals=int(self.rng.integers(0, 40)),
-                        nt_caps=int(self.rng.integers(10, 120)),
-                        expected_minutes=float(self.rng.choice([70, 80, 90], p=[0.2, 0.3, 0.5])),
-                    )
-                )
+                        club_goals_per90=round(max(0.0, xg * 0.95), 3),
+                        nt_goals=int(self.rng.integers(0, 30)),
+                        nt_caps=int(self.rng.integers(5, 110)),
+                        expected_minutes=_squad_minutes(pos, rank),
+                    ))
         return players

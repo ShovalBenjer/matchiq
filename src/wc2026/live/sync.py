@@ -162,6 +162,15 @@ class LiveSync:
                             "home": {"value_eur": th.squad_value_eur, "rating": th.squad_rating},
                             "away": {"value_eur": ta.squad_value_eur, "rating": ta.squad_rating},
                         }
+                    # Projected starting XI + line ratings + key absences (bottom-up).
+                    lus = getattr(orch.builder, "lineups", {}) if orch.builder else {}
+                    lh, la = lus.get(h), lus.get(a)
+                    if lh and la:
+                        def _lu(L):
+                            return {"overall": round(L.overall, 1), "attack": round(L.attack, 1),
+                                    "defense": round(L.defense, 1), "star": round(L.star_power, 1),
+                                    "depth": round(L.depth, 1), "xi": L.xi, "absences": L.absences}
+                        f["lineup"] = {"home": _lu(lh), "away": _lu(la)}
 
             # Tournament tempo / attacking-vs-defensive trend from the model.
             gs = [f["model_goals"] for f in data["fixtures"] if "model_goals" in f]

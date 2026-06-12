@@ -137,7 +137,7 @@ class Orchestrator:
             self.dixon_coles.calibrate_goal_mean(tgt)
 
         # Tabular features + TabPFN.
-        self.builder = FeatureBuilder(self.cfg.features, teams=list(self.teams.values()))
+        self.builder = FeatureBuilder(self.cfg.features, teams=list(self.teams.values()), players=self.players)
         frame = self.builder.build(played)  # advances builder to end-of-history state
         X = FeatureBuilder.matrix(frame)
         y = FeatureBuilder.labels(frame)
@@ -170,10 +170,10 @@ class Orchestrator:
         # Base models trained only on the train slice, evaluated on val.
         dc = DixonColesModel(self.cfg.models.dixon_coles).fit(train)
         bt = BradleyTerryModel(decay_alpha=self.cfg.models.dixon_coles.decay_alpha).fit(train)
-        b = FeatureBuilder(self.cfg.features, teams=list(self.teams.values()))
+        b = FeatureBuilder(self.cfg.features, teams=list(self.teams.values()), players=self.players)
         b.build(train)
         tf = TabPFNModel()
-        tframe = FeatureBuilder(self.cfg.features, teams=list(self.teams.values())).build(train)
+        tframe = FeatureBuilder(self.cfg.features, teams=list(self.teams.values()), players=self.players).build(train)
         tf.fit(FeatureBuilder.matrix(tframe), FeatureBuilder.labels(tframe))
 
         prob_dicts, labels = [], []
