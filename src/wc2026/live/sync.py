@@ -155,6 +155,13 @@ class LiveSync:
                     notes = [{"team": t, **signals[t]} for t in (h, a) if t in signals]
                     if notes:
                         f["expert"] = notes
+                    # Squad strength proxies: Transfermarkt value vs FM26/EA FC rating.
+                    th, ta = orch.teams.get(h), orch.teams.get(a)
+                    if th and ta:
+                        f["squad"] = {
+                            "home": {"value_eur": th.squad_value_eur, "rating": th.squad_rating},
+                            "away": {"value_eur": ta.squad_value_eur, "rating": ta.squad_rating},
+                        }
 
             # Tournament tempo / attacking-vs-defensive trend from the model.
             gs = [f["model_goals"] for f in data["fixtures"] if "model_goals" in f]
