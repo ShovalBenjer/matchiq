@@ -19,6 +19,7 @@ from datetime import date, timedelta
 
 import numpy as np
 
+from wc2026.data import wc2026_facts as _facts
 from wc2026.data.schema import Match, Odds, Player, Stage
 from wc2026.data.schema import Team
 from wc2026.data.sources.base import DataSource
@@ -86,13 +87,18 @@ class SyntheticSource(DataSource):
         teams: list[_LatentTeam] = []
         # Strength is a latent normal; better teams attack more and defend better.
         strengths = np.sort(self.rng.normal(0, 0.55, self.n_teams))[::-1]
+        real_values = _facts.squad_values()
         for i in range(self.n_teams):
             name, conf = _TEAM_POOL[i]
             s = float(strengths[i])
             attack = s + self.rng.normal(0, 0.08)
             defense = -s + self.rng.normal(0, 0.08)  # strong teams concede less
-            # Squad value rises steeply with strength (exp), in EUR millions.
-            value = float(np.exp(6.0 + 1.4 * s + self.rng.normal(0, 0.2)) * 1e6)
+            slug = name.lower().replace(" ", "_")
+            # Real licensed Transfermarkt squad value when known; else synthetic
+            # (value rises steeply with strength, exp, in EUR).
+            value = real_values.get(slug)
+            if value is None:
+                value = float(np.exp(6.0 + 1.4 * s + self.rng.normal(0, 0.2)) * 1e6)
             teams.append(
                 _LatentTeam(
                     team_id=name.lower().replace(" ", "_"),

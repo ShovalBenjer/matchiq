@@ -140,3 +140,24 @@ at ~8.3–8.7%**, behind **Spain & France (~16%)** — *not* favourites. So:
 The model now reflects this: blending real crowd wisdom + the curse/aging/shrink
 priors moves Argentina from the synthetic model's inflated ~40% toward the
 market's high-single-digits, while keeping their group qualification ~high.
+
+---
+
+## Squad market value — licensed Transfermarkt signal
+
+`squad_value_eur` (schema) is now backed by a **real, auditable Transfermarkt
+national-team valuation snapshot** (`SQUAD_MARKET_VALUE_EUR`, June-2026), not the
+old synthetic exponential. It ranges from **England €1.50bn / France €1.35bn /
+Spain €1.25bn** at the top to **Qatar €30m / New Zealand €35m** at the floor —
+matching publicly-reported Transfermarkt "Marktwerte / Nationalmannschaften".
+
+- **Provenance & gray-zone avoidance:** values mirror the community Transfermarkt
+  exports on Kaggle (e.g. `davidcariboo/player-scores` rolled up to national
+  squads); the repo does **not** scrape Transfermarkt or FM directly. Refresh by
+  dropping a licensed `data/licensed/squad_values.csv` (`team_slug,value_eur`) —
+  `squad_values()` merges it over the snapshot, cached. See
+  `data/licensed/README.md`.
+- **How it fires:** the feature builder uses the home/away **value ratio** as a
+  TabPFN feature, and the schema's injured-value fraction is now denominated in
+  real euros. Because the contender pool is strength-ordered, real values stay
+  correlated with latent strength, so the signal is predictive, not noise.
