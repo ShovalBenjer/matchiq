@@ -26,3 +26,4 @@
 {"type": "snapshot", "match_id": "760424", "date": "2026-06-15T02:00Z", "home": "sweden", "away": "tunisia", "odds": {"H": 1.909, "D": 3.45, "A": 4.3}, "ts": 1781274845.2264776}
 {"type": "settle", "match_id": "760416", "result": "D", "home_goals": 1, "away_goals": 1, "closing_odds": {"H": 1.833, "D": 3.5, "A": 4.8}, "ts": 1781335792.7197247}
 {"type": "settle", "match_id": "760417", "result": "H", "home_goals": 4, "away_goals": 0, "closing_odds": {"H": 2.1, "D": 3.2, "A": 3.9}, "ts": 1781335793.4429932}
+{"type": "settle", "match_id": "760420", "result": "D", "home_goals": 1, "away_goals": 1, "closing_odds": {"H": 14.0, "D": 6.5, "A": 1.222}, "ts": 1781385364.3407109}
