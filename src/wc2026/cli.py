@@ -258,9 +258,29 @@ def cmd_lines(args) -> int:
     if args.action == "snapshot":
         orch = None if args.no_picks else _orchestrator(args)
         out = log.snapshot(espn, orchestrator=orch, days=args.days)
-    else:  # settle
+    elif args.action == "settle" and args.match_id:
+        # Manual result entry (live feed not required).
+        out = log.settle_manual(args.match_id, args.result, args.hg, args.ag)
+    else:  # settle from the live feed
         out = log.settle(espn, days_back=args.days)
     print(json.dumps(out))
+    return 0
+
+
+def cmd_calibration(args) -> int:
+    """Calibration & ranking scoreboard — 'can I trust the probabilities?'"""
+    from wc2026.data.ingest import Ingestor
+    from wc2026.pipeline.backtest import BackTester
+    from wc2026.validation import scoreboard
+
+    cfg = load_config(args.config)
+    ing = Ingestor(cfg)
+    ing.run()
+    result = BackTester(cfg, warmup=args.warmup, refit_every=args.refit_every).run(
+        ing.match_objects)
+    rep = scoreboard(result.predictions, n_bins=args.bins)
+    print(json.dumps(rep, indent=2, default=float))
+    print("\nVERDICT:", rep.get("verdict"))
     return 0
 
 
@@ -331,7 +351,19 @@ def build_parser() -> argparse.ArgumentParser:
     pl.add_argument("--days", type=int, default=3)
     pl.add_argument("--no-picks", action="store_true",
                     help="snapshot prices only, without model paper picks")
+    pl.add_argument("--match-id", default=None, help="settle this match by hand")
+    pl.add_argument("--result", default=None, choices=["H", "D", "A"],
+                    help="manual result for --match-id")
+    pl.add_argument("--hg", type=int, default=None, help="home goals (optional)")
+    pl.add_argument("--ag", type=int, default=None, help="away goals (optional)")
     pl.set_defaults(func=cmd_lines)
+
+    pc = sub.add_parser("calibration",
+                        help="calibration & ranking scoreboard (trust the probabilities?)")
+    pc.add_argument("--warmup", type=int, default=200)
+    pc.add_argument("--refit-every", type=int, default=25)
+    pc.add_argument("--bins", type=int, default=10)
+    pc.set_defaults(func=cmd_calibration)
 
     pr = sub.add_parser("recommend", help="value-bet recommendations for fixtures")
     pr.add_argument("--top", type=int, default=20)

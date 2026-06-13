@@ -40,6 +40,7 @@ class BacktestResult:
     baseline_log_loss: float  # market (devigged-odds) log-loss for comparison
     bankroll: dict = field(default_factory=dict)
     bets: list = field(default_factory=list)  # settled BetRecommendations (for validation)
+    predictions: list = field(default_factory=list)  # (prob_vector, outcome_idx) per match
 
     def __str__(self) -> str:
         return (f"Backtest(n={self.n}, log_loss={self.log_loss:.4f} "
@@ -65,6 +66,7 @@ class BackTester:
         bt: BradleyTerryModel | None = None
         ll_sum = base_ll_sum = brier_sum = 0.0
         correct = scored = 0
+        predictions: list[tuple[list[float], int]] = []  # (prob_vector, outcome_idx)
         label_idx = {"H": 0, "D": 1, "A": 2}
 
         for i, m in enumerate(played):
@@ -87,6 +89,7 @@ class BackTester:
             brier_sum += float(np.sum((probs - onehot) ** 2))
             correct += int(np.argmax(probs) == y)
             scored += 1
+            predictions.append((probs.tolist(), y))  # for the calibration scoreboard
 
             # Market baseline (fair odds) for comparison.
             if m.odds is not None:
@@ -105,6 +108,7 @@ class BackTester:
             baseline_log_loss=base_ll_sum / n if base_ll_sum else float("nan"),
             bankroll=bankroll.summary(),
             bets=list(bankroll.history),
+            predictions=predictions,
         )
         logger.info("%s", result)
         return result

@@ -104,6 +104,29 @@ class LineLog:
                  "edge": r.edge, "stake": r.stake} for r in recs]
 
     # -- settlement ------------------------------------------------------
+    def settle_manual(self, match_id: str, result: str,
+                      home_goals: int | None = None, away_goals: int | None = None) -> dict:
+        """Record a known result by hand (when the live feed isn't reachable).
+
+        Idempotent and append-only: a second call for an already-settled match is
+        a no-op. The closing line is taken from the last pre-kickoff snapshot.
+        """
+        result = result.upper()
+        if result not in {"H", "D", "A"}:
+            raise ValueError(f"result must be H/D/A, got {result!r}")
+        recs = self.records()
+        if any(r["type"] == "settle" and r["match_id"] == match_id for r in recs):
+            logger.info("manual settle: %s already settled, skipping", match_id)
+            return {"settled": 0}
+        snaps = sorted((r for r in recs
+                        if r["type"] == "snapshot" and r["match_id"] == match_id),
+                       key=lambda r: r["ts"])
+        closing = snaps[-1]["odds"] if snaps else None
+        self.append({"type": "settle", "match_id": match_id, "result": result,
+                     "home_goals": home_goals, "away_goals": away_goals,
+                     "closing_odds": closing})
+        return {"settled": 1}
+
     def settle(self, espn, days_back: int = 3) -> dict:
         """Freeze closing lines and settle paper picks for finished matches."""
         import datetime as _dt
