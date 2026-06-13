@@ -50,6 +50,16 @@ Status legend: ✅ done · 🟡 partial · ⏳ pending · ⛔ blocked (needs ext
 - ✅ `reliability_shrink` (empirical-Bayes thin-data guard) — wired into `recommend()`.
   Haiti (0 corpus matches) → 100% market, the +40pt phantom edge vanishes.
 - ✅ football-data.co.uk historical-odds **drop-in auto-wired** (`data/licensed/historical_odds.csv`).
+- ✅ **StatsBomb open-data adapter** (`data/sources/statsbomb.py`) — pulls REAL World Cup
+  results into the schema (live-verified: 128 matches, WC2018+WC2022, correct stages),
+  plus a `team_xg()` hook for real shot-level xG. Offline-testable (injected fetch).
+
+### Football Manager data (clarified)
+- ❌ The uploaded `.fmf` mods are **NOT parseable here** — SI's proprietary container
+  (entropy 8.0, no plaintext, non-standard codec; verified by decompression attempts).
+- 🟡 **FM data itself is highly valuable** (real attributes for every NT player incl. Haaland).
+  Bridge: export from the free FM26 Editor / FMRTE → CSV/XML → ingest. Not a dead end —
+  just not crackable from the encrypted binary in this sandbox.
 
 ### Docs
 - ✅ `docs/VALIDATION.md`, `docs/PAPER.md` (full system, glossary, formulas), this file.
