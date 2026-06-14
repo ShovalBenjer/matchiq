@@ -66,6 +66,35 @@ Status legend: ✅ done · 🟡 partial · ⏳ pending · ⛔ blocked (needs ext
 
 ---
 
+## 🔴 Product audit actions (see docs/PRODUCT_AUDIT.md — added 06-14)
+
+The audit found the product is essentially "the market, repackaged": the model
+adds ≈0 and its deviations are biased. Priorities that follow:
+
+- **PA1 — Daily web-search + lineups → daily-picks → dashboard.** The one missing
+  *edge* (team news at ~19:00 bet time) + put the market-grounded picks on the
+  public surface (today it still shows the old crowd-vs-book underdog flags).
+- **PA2 — Fix the modeling bias at the source.** Anchor the model to the market
+  (shrink toward the closing line, not league-average); weight competitive >
+  friendly matches; separate favourites instead of mean-reverting them.
+- **PA3 — Delete/label the scaffolding.** TabPFN+Chronos never run (no torch) —
+  cut or gate them honestly; StatsBomb adapter feeds nothing — wire it or remove;
+  the betting backtest is inert (n=0) until real odds exist.
+- **PA4 — Time-series odds snapshots** so CLV (and the judge) get real signal
+  (currently CLV=0 from single snapshots).
+- **PA5 — Slug-alias** so the live ESPN feed joins to history (today the live
+  model contributes ≈0 and silently defers to market).
+
+### Known biases / caveats now documented
+- **FC26 data**: selection bias (only 28 nations have real EA squads; rest are
+  top-N-by-nationality ≠ actual call-ups), Sept-2025 stale snapshot, `overall` is
+  subjective, xg derived from a finishing attribute (not real xG). Used for
+  futures only.
+- **External judge**: needs hundreds of bets (6 today); CLV blind; `n_trials`
+  under-counted → DSR optimistic; can only judge bets actually placed.
+- **Selection bias**: original synthetic-odds "edge" was circular; live +profit
+  rides one lucky longshot; reliability_shrink k / devig / warmup are chosen knobs.
+
 ## ⏳ Pending — prioritised
 
 ### P0 — directly serves Goal B (winning the game)
