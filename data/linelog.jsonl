@@ -28,3 +28,4 @@
 {"type": "settle", "match_id": "760417", "result": "H", "home_goals": 4, "away_goals": 0, "closing_odds": {"H": 2.1, "D": 3.2, "A": 3.9}, "ts": 1781335793.4429932}
 {"type": "settle", "match_id": "760420", "result": "D", "home_goals": 1, "away_goals": 1, "closing_odds": {"H": 14.0, "D": 6.5, "A": 1.222}, "ts": 1781385364.3407109}
 {"type": "settle", "match_id": "760419", "result": "D", "home_goals": 1, "away_goals": 1, "closing_odds": {"H": 1.645, "D": 3.9, "A": 5.75}, "ts": 1781413160.6443782}
+{"type": "settle", "match_id": "760418", "result": "A", "home_goals": 0, "away_goals": 1, "closing_odds": {"H": 6.0, "D": 4.2, "A": 1.571}, "ts": 1781413299.5336237}
