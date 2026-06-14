@@ -333,13 +333,16 @@ class SyntheticSource(DataSource):
     _SQUAD_SHAPE = (("GK", 2), ("DEF", 6), ("MID", 5), ("FWD", 3))
 
     def fetch_players(self) -> list[Player]:
+        from wc2026.data.fc26 import load_fc26_squad
         from wc2026.data.squads import expected_minutes as _squad_minutes
         from wc2026.data.squads import load_squad
 
         players: list[Player] = []
         for lt in self._latent:
             slug = lt.team_id
-            real = load_squad(slug, lt.team_id)
+            # Prefer the real EA FC 26 squad (overalls/values/finishing), then the
+            # hand-curated table, then synthesise.
+            real = load_fc26_squad(slug, lt.team_id) or load_squad(slug, lt.team_id)
             if real:                      # licensed snapshot / CSV → use it verbatim
                 players.extend(real)
                 continue
