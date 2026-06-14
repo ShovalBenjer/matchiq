@@ -284,6 +284,36 @@ def cmd_calibration(args) -> int:
     return 0
 
 
+def cmd_daily_picks(args) -> int:
+    """Market-grounded pick digest for upcoming fixtures (sane, no underdog bias)."""
+    from wc2026.betting.scorelines import recommend_from_odds
+    from wc2026.data.schema import Odds
+    from wc2026.data.sources.espn import EspnSource
+
+    fixtures = EspnSource().fixtures(days=args.days)
+    rows = []
+    for f in fixtures:
+        cur = (f.odds or {}).get("close")
+        if f.status != "pre" or not cur:
+            continue
+        rec = recommend_from_odds(Odds(cur["home"], cur["draw"], cur["away"]))
+        fair = rec["market_fair"]
+        rows.append((f.date[:16], f.home, f.away, fair, rec))
+    if not rows:
+        print("No upcoming fixtures with odds found.")
+        return 0
+    print(f"\nDAILY PICKS — market-grounded ({len(rows)} matches)\n" + "=" * 64)
+    for date, home, away, fair, rec in rows:
+        lean = {"home": home, "draw": "Draw", "away": away}[rec["outcome_lean"]]
+        print(f"\n{date}  {home} v {away}")
+        print(f"   market: {home} {fair[0]:.0%} / draw {fair[1]:.0%} / {away} {fair[2]:.0%}")
+        print(f"   OUTCOME pick : {lean}")
+        print(f"   SCORE pick   : {rec['modal_score']}  "
+              f"(alts: {', '.join(s['score'] for s in rec['top_scores'][1:3])})")
+    print("\nNote: scores are market-implied; every exact score is only ~10-16% likely.")
+    return 0
+
+
 def cmd_crowd(args) -> int:
     """Compare the model's winner probabilities to live Polymarket crowd wisdom."""
     orch = _orchestrator(args)
@@ -357,6 +387,11 @@ def build_parser() -> argparse.ArgumentParser:
     pl.add_argument("--hg", type=int, default=None, help="home goals (optional)")
     pl.add_argument("--ag", type=int, default=None, help="away goals (optional)")
     pl.set_defaults(func=cmd_lines)
+
+    pdp = sub.add_parser("daily-picks",
+                         help="market-grounded pick digest for upcoming fixtures")
+    pdp.add_argument("--days", type=int, default=2)
+    pdp.set_defaults(func=cmd_daily_picks)
 
     pc = sub.add_parser("calibration",
                         help="calibration & ranking scoreboard (trust the probabilities?)")
