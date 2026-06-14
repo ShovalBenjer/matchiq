@@ -33,10 +33,43 @@ def _poisson_outcome(lam: float, mu: float) -> tuple[float, float, float]:
     return float(np.tril(P, -1).sum()), float(np.trace(P)), float(np.triu(P, 1).sum())
 
 
-def market_goal_rates(fair) -> tuple[float, float]:
-    """Solve for (λ_home, λ_away) whose Poisson outcome probs match the market."""
+def total_for_line(line: float) -> float:
+    """Expected total goals implied by a (balanced) Over/Under line.
+
+    A bookmaker sets the O/U line near the 50/50 point, so we solve for the
+    Poisson total-goals mean T with P(total > line) = 0.5.
+    """
+    from scipy.optimize import brentq
+    from scipy.stats import poisson
+
+    k = int(np.floor(line))
+    try:
+        return float(brentq(lambda t: (1 - poisson.cdf(k, t)) - 0.5, 0.3, 12.0))
+    except ValueError:
+        return float(line) + 0.2
+
+
+def market_goal_rates(fair, ou_line: float | None = None) -> tuple[float, float]:
+    """Solve for (λ_home, λ_away) matching the 1X2 market.
+
+    With an Over/Under ``ou_line``, the *total* is pinned to it (T = λ+μ) and we
+    only solve the home/away split — so the scoreline magnitude comes from the
+    O/U line, not from our weak goal model. Without it, both rates are free.
+    """
     fair = np.asarray(fair, dtype=float)
     fair = fair / fair.sum()
+
+    if ou_line is not None:
+        from scipy.optimize import minimize_scalar
+        total = total_for_line(ou_line)
+
+        def split_loss(s):
+            lam, mu = total * s, total * (1 - s)
+            ph, pd, pa = _poisson_outcome(lam, mu)
+            return (ph - fair[0]) ** 2 + (pd - fair[1]) ** 2 + (pa - fair[2]) ** 2
+
+        s = minimize_scalar(split_loss, bounds=(0.02, 0.98), method="bounded").x
+        return float(np.clip(total * s, 0.05, 8.0)), float(np.clip(total * (1 - s), 0.05, 8.0))
 
     def loss(z):
         lam, mu = np.exp(z)
@@ -56,10 +89,16 @@ def score_matrix(lam: float, mu: float) -> np.ndarray:
     return P / P.sum()
 
 
-def recommend_from_odds(odds, devig_method: str = "multiplicative", top: int = 4) -> dict:
-    """Market-grounded scoreline + outcome recommendation for one match."""
+def recommend_from_odds(odds, devig_method: str = "multiplicative", top: int = 4,
+                        ou_line: float | None = None) -> dict:
+    """Market-grounded scoreline + outcome recommendation for one match.
+
+    Pass ``ou_line`` (the Over/Under total-goals line) to pin the scoreline
+    magnitude to the market's expected total — a meaningfully sharper exact-score
+    pick than inferring goal totals from the 1X2 split alone.
+    """
     fair = devig(odds, devig_method)
-    lam, mu = market_goal_rates(fair)
+    lam, mu = market_goal_rates(fair, ou_line=ou_line)
     P = score_matrix(lam, mu)
     flat = sorted(((x, y, float(P[x, y])) for x in range(_MAXG) for y in range(_MAXG)),
                   key=lambda t: -t[2])

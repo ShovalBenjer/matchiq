@@ -37,3 +37,32 @@ def test_recommendation_shape():
     assert abs(sum(rec["market_fair"]) - 1.0) < 1e-6
     assert len(rec["top_scores"]) == 4
     assert rec["outcome_lean"] in {"home", "draw", "away"}
+
+
+def test_total_for_line_monotonic():
+    from wc2026.betting.scorelines import total_for_line
+    # Higher O/U line ⇒ higher implied total goals; ~line for the 50/50 point.
+    assert total_for_line(1.5) < total_for_line(2.5) < total_for_line(3.5)
+    assert abs(total_for_line(2.5) - 2.67) < 0.2
+
+
+def test_over_under_sets_scoreline_magnitude():
+    # Same 1X2 split, different O/U lines → low line gives low scores, high gives high.
+    from wc2026.betting.scorelines import market_goal_rates
+    fair = [0.5, 0.27, 0.23]
+    lo = sum(market_goal_rates(fair, ou_line=1.5))
+    hi = sum(market_goal_rates(fair, ou_line=4.5))
+    assert hi > lo + 1.0                       # total goals scale with the line
+    # The home/away lean is preserved regardless of the line.
+    lh, lm = market_goal_rates(fair, ou_line=2.5)
+    assert lh > lm
+
+
+def test_recommend_with_ou_changes_modal_score():
+    from wc2026.betting.scorelines import recommend_from_odds
+    from wc2026.data.schema import Odds
+    odds = Odds(1.8, 3.6, 4.5)
+    low = recommend_from_odds(odds, ou_line=1.5)["modal_score"]
+    high = recommend_from_odds(odds, ou_line=4.5)["modal_score"]
+    # Low O/U → fewer total goals in the modal score than a high O/U.
+    assert sum(map(int, low.split("-"))) < sum(map(int, high.split("-")))
