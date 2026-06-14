@@ -22,7 +22,7 @@ from wc2026.config import DixonColesConfig
 from wc2026.data.schema import Match
 from wc2026.models.base import OutcomeProb
 from wc2026.utils.logging import get_logger
-from wc2026.utils.math import safe_log
+from wc2026.utils.math import result_probs, safe_log
 
 logger = get_logger("models.dixon_coles")
 
@@ -194,9 +194,7 @@ class DixonColesModel:
 
     def predict_proba(self, home_id: str, away_id: str, neutral: bool = True) -> OutcomeProb:
         grid = self.score_matrix(home_id, away_id, neutral)
-        p_home = float(np.tril(grid, -1).sum())
-        p_away = float(np.triu(grid, 1).sum())
-        p_draw = float(np.trace(grid))
+        p_home, p_draw, p_away = result_probs(grid)
         return OutcomeProb.from_array([p_home, p_draw, p_away])
 
     def predict_match(self, match: Match) -> OutcomeProb:

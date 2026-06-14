@@ -23,6 +23,7 @@ from wc2026.data import wc2026_facts as _facts
 from wc2026.data.schema import Match, Odds, Player, Stage
 from wc2026.data.schema import Team
 from wc2026.data.sources.base import DataSource
+from wc2026.utils.math import result_probs
 
 # A representative 48-team-ish field for 2026 with rough confederations.
 _TEAM_POOL: list[tuple[str, str]] = [
@@ -136,9 +137,7 @@ class SyntheticSource(DataSource):
         hg = poisson.pmf(np.arange(max_goals + 1), lam_home)
         ag = poisson.pmf(np.arange(max_goals + 1), lam_away)
         grid = np.outer(hg, ag)
-        p_home = float(np.tril(grid, -1).sum())
-        p_away = float(np.triu(grid, 1).sum())
-        p_draw = float(np.trace(grid))
+        p_home, p_draw, p_away = result_probs(grid)
         total = p_home + p_draw + p_away
         return p_home / total, p_draw / total, p_away / total
 

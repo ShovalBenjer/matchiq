@@ -20,7 +20,9 @@ import json
 from datetime import date, datetime
 
 from wc2026.data.schema import Match, Stage
-from wc2026.data.sources.base import DataSource, SourceUnavailable, _try_import_requests
+from wc2026.data.sources.base import (DataSource, SourceUnavailable,
+                                      _try_import_requests)
+from wc2026.data.sources.base import int_or_none as _int_or_none
 from wc2026.utils.logging import get_logger
 
 logger = get_logger("data.statsbomb")
@@ -134,8 +136,3 @@ def _parse_date(s: str) -> date:
         return date.today()
 
 
-def _int_or_none(v):
-    try:
-        return int(v)
-    except (TypeError, ValueError):
-        return None

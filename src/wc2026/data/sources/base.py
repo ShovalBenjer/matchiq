@@ -42,3 +42,11 @@ def _try_import_requests():
         return requests
     except ModuleNotFoundError as exc:  # pragma: no cover
         raise SourceUnavailable("the `requests` package is required") from exc
+
+
+def int_or_none(v):
+    """Parse to int, or None for missing/garbage values (shared by sources)."""
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return None

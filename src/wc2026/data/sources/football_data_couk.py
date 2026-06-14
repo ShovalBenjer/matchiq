@@ -11,7 +11,9 @@ from __future__ import annotations
 from datetime import date, datetime
 
 from wc2026.data.schema import Match, Odds, Stage
-from wc2026.data.sources.base import DataSource, SourceUnavailable, _try_import_requests
+from wc2026.data.sources.base import (DataSource, SourceUnavailable,
+                                      _try_import_requests)
+from wc2026.data.sources.base import int_or_none as _int_or_none
 from wc2026.utils.logging import get_logger
 
 logger = get_logger("data.football_data_couk")
@@ -97,11 +99,6 @@ def _parse_date(s: str) -> date:
     raise ValueError(f"unparseable date: {s!r}")
 
 
-def _int_or_none(v):
-    try:
-        return int(v)
-    except (ValueError, TypeError):
-        return None
 
 
 def _slug(name: str) -> str:

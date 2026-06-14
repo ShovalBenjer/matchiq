@@ -12,6 +12,12 @@ def safe_log(x: np.ndarray | float) -> np.ndarray:
     return np.log(np.clip(x, _EPS, None))
 
 
+def result_probs(grid: np.ndarray) -> tuple[float, float, float]:
+    """(P home win, P draw, P away win) from a home×away scoreline matrix."""
+    return (float(np.tril(grid, -1).sum()), float(np.trace(grid)),
+            float(np.triu(grid, 1).sum()))
+
+
 def softmax(x: np.ndarray, axis: int = -1) -> np.ndarray:
     """Numerically stable softmax."""
     x = np.asarray(x, dtype=float)

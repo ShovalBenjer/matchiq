@@ -20,17 +20,14 @@ import numpy as np
 from scipy.optimize import minimize
 
 from wc2026.betting.value import devig
+from wc2026.utils.math import result_probs
 
 _MAXG = 8
 
 
 def _poisson_outcome(lam: float, mu: float) -> tuple[float, float, float]:
     """(P home win, P draw, P away win) for independent Poisson goals."""
-    px = np.array([exp(-lam) * lam ** k / factorial(k) for k in range(_MAXG)])
-    py = np.array([exp(-mu) * mu ** k / factorial(k) for k in range(_MAXG)])
-    P = np.outer(px, py)
-    P /= P.sum()
-    return float(np.tril(P, -1).sum()), float(np.trace(P)), float(np.triu(P, 1).sum())
+    return result_probs(score_matrix(lam, mu))
 
 
 def total_for_line(line: float) -> float:

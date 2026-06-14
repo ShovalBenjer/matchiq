@@ -19,6 +19,7 @@ from dataclasses import dataclass, field
 
 from wc2026.data.schema import Match, Odds, Stage
 from wc2026.data.sources.base import DataSource, SourceUnavailable
+from wc2026.data.sources.base import int_or_none as _int_or_none
 from wc2026.utils.logging import get_logger
 
 logger = get_logger("data.espn")
@@ -181,11 +182,6 @@ class EspnSource(DataSource):
         return out
 
 
-def _int_or_none(v):
-    try:
-        return int(v)
-    except (TypeError, ValueError):
-        return None
 
 
 def _num(v):
