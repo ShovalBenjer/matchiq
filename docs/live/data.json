@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T10:29:09+00:00",
+  "generated_at": "2026-06-14T23:30:06+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -65,150 +65,150 @@
       {
         "team": "Canada",
         "team_id": "canada",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 1,
+        "GA": 1,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Bosnia-Herzegovina",
         "team_id": "bosnia_herzegovina",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 1,
+        "GA": 1,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Switzerland",
         "team_id": "switzerland",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 1,
+        "GA": 1,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Qatar",
         "team_id": "qatar",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 1,
+        "GA": 1,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       }
     ],
     "Group C": [
       {
         "team": "Brazil",
         "team_id": "brazil",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 1,
+        "GA": 1,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Scotland",
         "team_id": "scotland",
-        "P": 0,
-        "W": 0,
+        "P": 1,
+        "W": 1,
         "D": 0,
         "L": 0,
-        "GF": 0,
+        "GF": 1,
         "GA": 0,
-        "GD": 0,
-        "Pts": 0
+        "GD": 1,
+        "Pts": 3
       },
       {
         "team": "Haiti",
         "team_id": "haiti",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
+        "L": 1,
         "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "GA": 1,
+        "GD": -1,
         "Pts": 0
       },
       {
         "team": "Morocco",
         "team_id": "morocco",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 1,
+        "GA": 1,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       }
     ],
     "Group D": [
       {
         "team": "Paraguay",
         "team_id": "paraguay",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 4,
+        "GD": -3,
         "Pts": 0
       },
       {
         "team": "T\u00fcrkiye",
         "team_id": "t\u00fcrkiye",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
+        "L": 1,
         "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "GA": 2,
+        "GD": -2,
         "Pts": 0
       },
       {
         "team": "Australia",
         "team_id": "australia",
-        "P": 0,
-        "W": 0,
+        "P": 1,
+        "W": 1,
         "D": 0,
         "L": 0,
-        "GF": 0,
+        "GF": 2,
         "GA": 0,
-        "GD": 0,
-        "Pts": 0
+        "GD": 2,
+        "Pts": 3
       },
       {
         "team": "United States",
         "team_id": "united_states",
-        "P": 0,
-        "W": 0,
+        "P": 1,
+        "W": 1,
         "D": 0,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 0
+        "GF": 4,
+        "GA": 1,
+        "GD": 3,
+        "Pts": 3
       }
     ],
     "Group E": [
@@ -227,14 +227,14 @@
       {
         "team": "Germany",
         "team_id": "germany",
-        "P": 0,
-        "W": 0,
+        "P": 1,
+        "W": 1,
         "D": 0,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 0
+        "GF": 7,
+        "GA": 1,
+        "GD": 6,
+        "Pts": 3
       },
       {
         "team": "Ivory Coast",
@@ -251,13 +251,13 @@
       {
         "team": "Cura\u00e7ao",
         "team_id": "cura\u00e7ao",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 7,
+        "GD": -6,
         "Pts": 0
       }
     ],
@@ -265,14 +265,14 @@
       {
         "team": "Netherlands",
         "team_id": "netherlands",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 2,
+        "GA": 2,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Sweden",
@@ -289,14 +289,14 @@
       {
         "team": "Japan",
         "team_id": "japan",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
+        "GF": 2,
+        "GA": 2,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Tunisia",
@@ -614,328 +614,151 @@
   },
   "fixtures": [
     {
-      "match_id": "760416",
-      "date": "2026-06-12T19:00Z",
-      "status": "pre",
-      "home": "Canada",
-      "away": "Bosnia-Herzegovina",
-      "home_id": "canada",
-      "away_id": "bosnia_herzegovina",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "CAN -120",
-      "book": {
-        "home": 0.527,
-        "draw": 0.2702,
-        "away": 0.2028
-      },
-      "crowd": null,
-      "clv": {
-        "home_open": 2.0,
-        "home_close": 1.833,
-        "drift": -0.167
-      },
-      "value": null,
-      "pick": "home"
-    },
-    {
-      "match_id": "760417",
-      "date": "2026-06-13T01:00Z",
-      "status": "pre",
-      "home": "United States",
-      "away": "Paraguay",
-      "home_id": "united_states",
-      "away_id": "paraguay",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "USA +110",
-      "book": {
-        "home": 0.4603,
-        "draw": 0.2936,
-        "away": 0.2462
-      },
-      "crowd": {
-        "home": 0.468,
-        "draw": 0.2906,
-        "away": 0.2414
-      },
-      "clv": {
-        "home_open": 2.05,
-        "home_close": 2.1,
-        "drift": 0.05
-      },
-      "value": {
-        "outcome": "home",
-        "ev": -0.0172,
-        "is_value": false,
-        "offered_odds": 2.1
-      },
-      "pick": "home"
-    },
-    {
-      "match_id": "760420",
-      "date": "2026-06-13T19:00Z",
-      "status": "pre",
-      "home": "Qatar",
-      "away": "Switzerland",
-      "home_id": "qatar",
-      "away_id": "switzerland",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "SUI -475",
-      "book": {
-        "home": 0.0547,
-        "draw": 0.1403,
-        "away": 0.8049
-      },
-      "crowd": {
-        "home": 0.0576,
-        "draw": 0.1353,
-        "away": 0.807
-      },
-      "clv": {
-        "home_open": 7.0,
-        "home_close": 15.0,
-        "drift": 8.0
-      },
-      "value": {
-        "outcome": "away",
-        "ev": -0.0227,
-        "is_value": false,
-        "offered_odds": 1.211
-      },
-      "pick": "away",
-      "model": {
-        "home": 0.1482,
-        "draw": 0.2416,
-        "away": 0.6102
-      },
-      "model_ou": {
-        "line": 2.5,
-        "over": 0.6396,
-        "under": 0.3604
-      },
-      "model_goals": 3.3,
-      "squad": {
-        "home": {
-          "value_eur": 30000000.0,
-          "rating": 71
-        },
-        "away": {
-          "value_eur": 350000000.0,
-          "rating": 80
-        }
-      }
-    },
-    {
-      "match_id": "760419",
-      "date": "2026-06-13T22:00Z",
-      "status": "pre",
-      "home": "Brazil",
-      "away": "Morocco",
-      "home_id": "brazil",
-      "away_id": "morocco",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "BRA -155",
-      "book": {
-        "home": 0.5927,
-        "draw": 0.2445,
-        "away": 0.1628
-      },
-      "crowd": {
-        "home": 0.592,
-        "draw": 0.2438,
-        "away": 0.1642
-      },
-      "clv": {
-        "home_open": 1.571,
-        "home_close": 1.645,
-        "drift": 0.074
-      },
-      "value": {
-        "outcome": "home",
-        "ev": -0.0262,
-        "is_value": false,
-        "offered_odds": 1.645
-      },
-      "pick": "home",
-      "model": {
-        "home": 0.5192,
-        "draw": 0.2727,
-        "away": 0.2081
-      },
-      "model_ou": {
-        "line": 2.5,
-        "over": 0.4211,
-        "under": 0.5789
-      },
-      "model_goals": 2.18,
-      "expert": [
-        {
-          "team": "morocco",
-          "style": "low_block",
-          "note": "compact mid/low block + fast transitions (2022 SF run)",
-          "source": "analyst previews 2026"
-        }
-      ],
-      "squad": {
-        "home": {
-          "value_eur": 1150000000.0,
-          "rating": 84
-        },
-        "away": {
-          "value_eur": 360000000.0,
-          "rating": 78
-        }
-      }
-    },
-    {
-      "match_id": "760418",
-      "date": "2026-06-14T01:00Z",
-      "status": "pre",
-      "home": "Haiti",
-      "away": "Scotland",
-      "home_id": "haiti",
-      "away_id": "scotland",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "SCO -175",
-      "book": {
-        "home": 0.1548,
-        "draw": 0.2254,
-        "away": 0.6198
-      },
-      "crowd": {
-        "home": 0.1558,
-        "draw": 0.2261,
-        "away": 0.6181
-      },
-      "clv": {
-        "home_open": 6.5,
-        "home_close": 6.0,
-        "drift": -0.5
-      },
-      "value": {
-        "outcome": "away",
-        "ev": -0.029,
-        "is_value": false,
-        "offered_odds": 1.571
-      },
-      "pick": "away"
-    },
-    {
       "match_id": "760421",
       "date": "2026-06-14T04:00Z",
-      "status": "pre",
+      "status": "post",
       "home": "Australia",
       "away": "T\u00fcrkiye",
       "home_id": "australia",
       "away_id": "t\u00fcrkiye",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "TUR -140",
-      "book": {
-        "home": 0.1862,
-        "draw": 0.2486,
-        "away": 0.5652
-      },
-      "crowd": {
-        "home": 0.1841,
-        "draw": 0.2537,
-        "away": 0.5622
-      },
-      "clv": {
-        "home_open": 4.7,
-        "home_close": 5.0,
-        "drift": 0.3
-      },
-      "value": {
-        "outcome": "draw",
-        "ev": -0.0359,
-        "is_value": false,
-        "offered_odds": 3.8
-      },
-      "pick": "away"
+      "score": "2-0",
+      "over_under": null,
+      "details": null,
+      "book": null,
+      "crowd": null,
+      "clv": null,
+      "value": null,
+      "pick": null,
+      "rec": null,
+      "news": [
+        {
+          "side": "home",
+          "headline": "Montella says Australia loss gives T\u00fcrkiye 'more motivation'",
+          "link": "https://www.espn.com/video/clip/_/id/49059745/montella-says-australia-loss-gives-turkiye-more-motivation",
+          "team_relevant": false
+        },
+        {
+          "side": "away",
+          "headline": "'Delighted' Popovic eyes U.S. after famous T\u00fcrkiye upset",
+          "link": "https://www.espn.com/soccer/story/_/id/49059353/fifa-world-cup-tony-popovic-looks-ahead-socceroos-united-states-clash-turkiye-win",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "'It was amazing': Patrick Beach repays Popovic's faith in win over T\u00fcrkiye",
+          "link": "https://www.espn.com/soccer/story/_/id/49059143/fifa-world-cup-australia-socceroos-goalkeeper-patrick-beach-repays-tony-popovic-faith-win-turkiye",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "Arise Irankunda: Australia has new prince as Socceroos shock T\u00fcrkiye",
+          "link": "https://www.espn.com/soccer/story/_/id/49058502/arise-irankunda-australia-new-prince-socceroos-shock-turkiye",
+          "team_relevant": false
+        }
+      ]
     },
     {
       "match_id": "760422",
       "date": "2026-06-14T17:00Z",
-      "status": "pre",
+      "status": "post",
       "home": "Germany",
       "away": "Cura\u00e7ao",
       "home_id": "germany",
       "away_id": "cura\u00e7ao",
-      "score": "0-0",
-      "over_under": 4.5,
-      "details": "GER -3000",
-      "book": {
-        "home": 0.9368,
-        "draw": 0.0442,
-        "away": 0.019
-      },
-      "crowd": {
-        "home": 0.9382,
-        "draw": 0.0394,
-        "away": 0.0224
-      },
-      "clv": {
-        "home_open": 1.005,
-        "home_close": 1.033,
-        "drift": 0.028
-      },
-      "value": {
-        "outcome": "home",
-        "ev": -0.0308,
-        "is_value": false,
-        "offered_odds": 1.033
-      },
-      "pick": "home"
+      "score": "7-1",
+      "over_under": null,
+      "details": null,
+      "book": null,
+      "crowd": null,
+      "clv": null,
+      "value": null,
+      "pick": null,
+      "rec": null,
+      "news": [
+        {
+          "side": "home",
+          "headline": "Germany get needed confidence boost in 7-goal rout of Cura\u00e7ao",
+          "link": "https://www.espn.com/soccer/story/_/id/49064317/germany-confidence-boost-7-goal-rout-curacao",
+          "team_relevant": true
+        },
+        {
+          "side": "home",
+          "headline": "Havertz double leads Germany in WC opening rout of Cura\u00e7ao ",
+          "link": "http://www.espn.com/soccer/report/_/gameId/760422",
+          "team_relevant": true
+        },
+        {
+          "side": "home",
+          "headline": "Germany's big win shows pros and cons of expanded World Cup",
+          "link": "https://www.espn.com/soccer/story/_/id/49063542/germany-big-win-shows-pros-cons-expanded-world-cup",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "Robson: Germany's 7-1 win vs. Cura\u00e7ao was a training game",
+          "link": "https://www.espn.com/video/clip/_/id/49063386/germany-7-1-win-vs-curacao-was-training-game",
+          "team_relevant": false
+        }
+      ]
     },
     {
       "match_id": "760425",
       "date": "2026-06-14T20:00Z",
-      "status": "pre",
+      "status": "post",
       "home": "Netherlands",
       "away": "Japan",
       "home_id": "netherlands",
       "away_id": "japan",
-      "score": "0-0",
-      "over_under": 2.5,
-      "details": "NED -105",
-      "book": {
-        "home": 0.4856,
-        "draw": 0.263,
-        "away": 0.2514
-      },
+      "score": "2-2",
+      "over_under": null,
+      "details": null,
+      "book": null,
       "crowd": {
-        "home": 0.4826,
-        "draw": 0.2637,
-        "away": 0.2537
+        "home": 0.0005,
+        "draw": 0.999,
+        "away": 0.0005
       },
-      "clv": {
-        "home_open": 1.952,
-        "home_close": 1.952,
-        "drift": 0.0
-      },
-      "value": {
-        "outcome": "home",
-        "ev": -0.058,
-        "is_value": false,
-        "offered_odds": 1.952
-      },
-      "pick": "home",
+      "clv": null,
+      "value": null,
+      "pick": null,
+      "rec": null,
+      "news": [
+        {
+          "side": "home",
+          "headline": "Japan justify dark horse credentials with dramatic draw vs. Netherlands",
+          "link": "https://www.espn.com/soccer/story/_/id/49065026/japan-justify-dark-horse-credentials-dramatic-draw-netherlands-2026-world-cup",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "Will Japan go further than the Netherlands at the World Cup?",
+          "link": "https://www.espn.com/video/clip/_/id/49065076/will-japan-go-further-netherlands-world-cup",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "Japan fight back twice to snatch late draw vs. Netherlands",
+          "link": "https://www.espn.com/soccer/story/_/id/49064974/japan-fight-back-twice-snatch-late-draw-vs-netherlands",
+          "team_relevant": false
+        },
+        {
+          "side": "away",
+          "headline": "World Cup 2026: Why do Japan fans clean up the stadium?",
+          "link": "https://www.espn.com/soccer/story/_/id/48851733/world-cup-2026-why-do-japan-fans-clean-stadium",
+          "team_relevant": false
+        }
+      ],
       "model": {
-        "home": 0.2462,
-        "draw": 0.2875,
-        "away": 0.4663
+        "home": 0.2456,
+        "draw": 0.2878,
+        "away": 0.4666
       },
       "model_ou": {
         "line": 2.5,
-        "over": 0.4118,
-        "under": 0.5882
+        "over": 0.4085,
+        "under": 0.5915
       },
-      "model_goals": 2.47,
+      "model_goals": 2.46,
       "expert": [
         {
           "team": "japan",
@@ -953,43 +776,110 @@
           "value_eur": 320000000.0,
           "rating": 78
         }
+      },
+      "lineup": {
+        "home": {
+          "overall": 83.8,
+          "attack": 81.7,
+          "defense": 59.7,
+          "star": 87.7,
+          "depth": 82.6,
+          "xi": [
+            "V. van Dijk",
+            "D. Dumfries",
+            "S. de Vrij",
+            "N. Ak\u00e9",
+            "F. de Jong",
+            "T. Reijnders",
+            "R. Gravenberch",
+            "M. Depay",
+            "N. Lang",
+            "W. Weghorst",
+            "X. Simons"
+          ],
+          "absences": []
+        },
+        "away": {
+          "overall": 78.2,
+          "attack": 78.1,
+          "defense": 54.5,
+          "star": 82.0,
+          "depth": 78.0,
+          "xi": [
+            "H. Ito",
+            "K. Itakura",
+            "K. Machida",
+            "T. Watanabe",
+            "K. Mitoma",
+            "T. Kubo",
+            "R. Doan",
+            "D. Maeda",
+            "S. Machino",
+            "K. Furuhashi",
+            "H. Morita"
+          ],
+          "absences": []
+        }
       }
     },
     {
       "match_id": "760423",
       "date": "2026-06-14T23:00Z",
-      "status": "pre",
+      "status": "in",
       "home": "Ivory Coast",
       "away": "Ecuador",
       "home_id": "ivory_coast",
       "away_id": "ecuador",
       "score": "0-0",
       "over_under": 1.5,
-      "details": "ECU +145",
+      "details": "ECU +150",
       "book": {
-        "home": 0.2661,
-        "draw": 0.3386,
-        "away": 0.3953
+        "home": 0.2944,
+        "draw": 0.3198,
+        "away": 0.3858
       },
       "crowd": null,
       "clv": {
         "home_open": 3.3,
-        "home_close": 3.6,
-        "drift": 0.3
+        "home_close": 3.25,
+        "drift": -0.05
       },
       "value": null,
       "pick": "away",
+      "rec": {
+        "outcome": "Ecuador",
+        "outcome_side": "away",
+        "score": "0-0",
+        "alts": [
+          "0-1",
+          "1-0"
+        ]
+      },
+      "news": [
+        {
+          "side": "home",
+          "headline": "FIFA World Cup classic clashes - Greece 2-1 Ivory Coast - A Golden Generation's defining failure",
+          "link": "https://www.espn.com/espn/story/_/id/49051454/fifa-world-cup-classic-clashes-greece-2-1-ivory-coast-golden-generation-defining-failure",
+          "team_relevant": true
+        },
+        {
+          "side": "home",
+          "headline": "World Cup Daily LIVE: Dark horses Ivory Coast, Ecuador face off in Philly",
+          "link": "https://www.espn.com/soccer/story/_/id/49056657/world-cup-daily-germany-fan-cycles-26000-km-get-houston",
+          "team_relevant": false
+        }
+      ],
       "model": {
-        "home": 0.3007,
-        "draw": 0.2921,
-        "away": 0.4072
+        "home": 0.307,
+        "draw": 0.3156,
+        "away": 0.3774
       },
       "model_ou": {
         "line": 2.5,
-        "over": 0.2176,
-        "under": 0.7824
+        "over": 0.218,
+        "under": 0.782
       },
-      "model_goals": 1.6,
+      "model_goals": 1.61,
       "squad": {
         "home": {
           "value_eur": 280000000.0,
@@ -998,6 +888,50 @@
         "away": {
           "value_eur": 320000000.0,
           "rating": 77
+        }
+      },
+      "lineup": {
+        "home": {
+          "overall": 78.7,
+          "attack": 77.7,
+          "defense": 78.9,
+          "star": 80.3,
+          "depth": 77.8,
+          "xi": [
+            "Y. Fofana",
+            "E. Ndicka",
+            "W. Singo",
+            "O. Diomande",
+            "O. Kossounou",
+            "F. Kessi\u00e9",
+            "N. P\u00e9p\u00e9",
+            "Amad",
+            "W. Zaha",
+            "S. Haller",
+            "J. Boga"
+          ],
+          "absences": []
+        },
+        "away": {
+          "overall": 76.8,
+          "attack": 73.6,
+          "defense": 78.2,
+          "star": 85.3,
+          "depth": 72.2,
+          "xi": [
+            "H. Gal\u00edndez",
+            "W. Pacho",
+            "P. Hincapi\u00e9",
+            "P. Estupi\u00f1\u00e1n",
+            "J. Ordo\u00f1ez",
+            "M. Caicedo",
+            "\u00c1. Preciado",
+            "K. P\u00e1ez",
+            "L. Campana",
+            "B. Palacios",
+            "J. Yeboah"
+          ],
+          "absences": []
         }
       }
     },
@@ -1013,14 +947,14 @@
       "over_under": 2.5,
       "details": "SWE -110",
       "book": {
-        "home": 0.5064,
-        "draw": 0.2751,
-        "away": 0.2185
+        "home": 0.5087,
+        "draw": 0.2812,
+        "away": 0.2101
       },
       "crowd": {
         "home": 0.5124,
-        "draw": 0.2736,
-        "away": 0.2139
+        "draw": 0.2836,
+        "away": 0.204
       },
       "clv": {
         "home_open": 1.87,
@@ -1034,17 +968,27 @@
         "offered_odds": 1.909
       },
       "pick": "home",
+      "rec": {
+        "outcome": "Sweden",
+        "outcome_side": "home",
+        "score": "1-1",
+        "alts": [
+          "1-0",
+          "2-1"
+        ]
+      },
+      "news": [],
       "model": {
-        "home": 0.3867,
-        "draw": 0.3152,
-        "away": 0.2981
+        "home": 0.3749,
+        "draw": 0.3207,
+        "away": 0.3044
       },
       "model_ou": {
         "line": 2.5,
-        "over": 0.6005,
-        "under": 0.3995
+        "over": 0.6106,
+        "under": 0.3894
       },
-      "model_goals": 3.11,
+      "model_goals": 3.15,
       "squad": {
         "home": {
           "value_eur": 310000000.0,
@@ -1053,6 +997,50 @@
         "away": {
           "value_eur": 110000000.0,
           "rating": 74
+        }
+      },
+      "lineup": {
+        "home": {
+          "overall": 79.8,
+          "attack": 83.2,
+          "defense": 76.8,
+          "star": 86.0,
+          "depth": 75.6,
+          "xi": [
+            "V. Johansson",
+            "C. Starfelt",
+            "I. Hien",
+            "G. Gudmundsson",
+            "D. Svensson",
+            "D. Kulusevski",
+            "H. Larsson",
+            "L. Bergvall",
+            "A. Isak",
+            "V. Gy\u00f6keres",
+            "A. Elanga"
+          ],
+          "absences": []
+        },
+        "away": {
+          "overall": 72.9,
+          "attack": 72.6,
+          "defense": 50.9,
+          "star": 76.7,
+          "depth": 68.2,
+          "xi": [
+            "A. Abdi",
+            "M. Talbi",
+            "Y. Valery",
+            "M. Ben Ouanes",
+            "E. Skhiri",
+            "Hannibal",
+            "I. Gharbi",
+            "A. Layouni",
+            "E. Saad",
+            "E. Achouri",
+            "S. Khaoui"
+          ],
+          "absences": []
         }
       }
     },
@@ -1066,20 +1054,55 @@
       "away_id": "cape_verde",
       "score": "0-0",
       "over_under": 3.5,
-      "details": "ESP -1200",
+      "details": "ESP -1100",
       "book": {
-        "home": 0.902,
-        "draw": 0.0707,
-        "away": 0.0273
+        "home": 0.8961,
+        "draw": 0.0713,
+        "away": 0.0326
       },
       "crowd": null,
       "clv": {
         "home_open": 1.071,
-        "home_close": 1.083,
-        "drift": 0.012
+        "home_close": 1.091,
+        "drift": 0.02
       },
       "value": null,
-      "pick": "home"
+      "pick": "home",
+      "rec": {
+        "outcome": "Spain",
+        "outcome_side": "home",
+        "score": "3-0",
+        "alts": [
+          "2-0",
+          "4-0"
+        ]
+      },
+      "news": [
+        {
+          "side": "home",
+          "headline": "Barcelona's Ferran Torres on PSG links: 'Don't know and don't care'",
+          "link": "https://www.espn.com/soccer/story/_/id/49061893/ferran-torres-barcelona-psg",
+          "team_relevant": true
+        },
+        {
+          "side": "home",
+          "headline": "Lamine Yamal in 'perfect condition' at World Cup but could start opener on bench - Spain boss",
+          "link": "https://www.espn.com/soccer/story/_/id/49064321/lamine-yamal-fitness-spain-cape-verde",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "Spain training ahead of World Cup opener vs. Cape Verde",
+          "link": "https://www.espn.com/video/clip/_/id/49063627/spain-training-ahead-world-cup-opener-vs-cape-verde",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "Mikel Merino keen for Spain to avoid World Cup debut slip-up",
+          "link": "https://www.espn.com/soccer/story/_/id/49061674/mikel-merino-keen-spain-avoid-world-cup-debut-slip-up",
+          "team_relevant": false
+        }
+      ]
     },
     {
       "match_id": "760426",
@@ -1098,9 +1121,9 @@
         "away": 0.1641
       },
       "crowd": {
-        "home": 0.592,
-        "draw": 0.2438,
-        "away": 0.1642
+        "home": 0.5961,
+        "draw": 0.2414,
+        "away": 0.1626
       },
       "clv": {
         "home_open": 1.588,
@@ -1108,23 +1131,40 @@
         "drift": 0.018
       },
       "value": {
-        "outcome": "draw",
-        "ev": -0.0492,
+        "outcome": "home",
+        "ev": -0.0427,
         "is_value": false,
-        "offered_odds": 3.9
+        "offered_odds": 1.606
       },
       "pick": "home",
+      "rec": {
+        "outcome": "Belgium",
+        "outcome_side": "home",
+        "score": "1-0",
+        "alts": [
+          "2-0",
+          "1-1"
+        ]
+      },
+      "news": [
+        {
+          "side": "away",
+          "headline": "'The Moroccan Bellingham', 'The Egyptian Haaland' - Picking one wonderkid from Africa's World Cup teams",
+          "link": "https://www.espn.com/espn/story/_/id/49027523/the-moroccan-bellingham-egyptian-haaland-picking-one-wonderkid-africa-world-cup-teams",
+          "team_relevant": false
+        }
+      ],
       "model": {
-        "home": 0.6092,
-        "draw": 0.2369,
-        "away": 0.1539
+        "home": 0.5844,
+        "draw": 0.2697,
+        "away": 0.1459
       },
       "model_ou": {
         "line": 2.5,
-        "over": 0.5627,
-        "under": 0.4373
+        "over": 0.565,
+        "under": 0.435
       },
-      "model_goals": 2.94,
+      "model_goals": 2.95,
       "squad": {
         "home": {
           "value_eur": 480000000.0,
@@ -1133,6 +1173,49 @@
         "away": {
           "value_eur": 190000000.0,
           "rating": 76
+        }
+      },
+      "lineup": {
+        "home": {
+          "overall": 83.3,
+          "attack": 83.2,
+          "defense": 83.5,
+          "star": 87.0,
+          "depth": 80.8,
+          "xi": [
+            "T. Courtois",
+            "A. Theate",
+            "M. De Cuyper",
+            "K. De Bruyne",
+            "Y. Tielemans",
+            "C. De Ketelaere",
+            "R. Lukaku",
+            "L. Trossard",
+            "L. Openda",
+            "D. Luk\u00e9bakio",
+            "Y. Carrasco"
+          ],
+          "absences": []
+        },
+        "away": {
+          "overall": 70.6,
+          "attack": 70.8,
+          "defense": 49.4,
+          "star": 83.3,
+          "depth": 0.0,
+          "xi": [
+            "A. Hegazi",
+            "M. Abdelmonem",
+            "R. Rabia",
+            "O. Fayed",
+            "M. Salah",
+            "S. Sharples-Ahmed",
+            "O. Marmoush",
+            "M. Mohamed",
+            "A. Hassan",
+            "K. Ashraf"
+          ],
+          "absences": []
         }
       }
     },
@@ -1146,16 +1229,16 @@
       "away_id": "uruguay",
       "score": "0-0",
       "over_under": 2.5,
-      "details": "URU -220",
+      "details": "URU -215",
       "book": {
-        "home": 0.1214,
-        "draw": 0.2092,
-        "away": 0.6694
+        "home": 0.1213,
+        "draw": 0.2141,
+        "away": 0.6646
       },
       "crowd": {
         "home": 0.1156,
-        "draw": 0.2161,
-        "away": 0.6683
+        "draw": 0.2261,
+        "away": 0.6583
       },
       "clv": {
         "home_open": 5.0,
@@ -1164,22 +1247,32 @@
       },
       "value": {
         "outcome": "draw",
-        "ev": -0.0276,
+        "ev": -0.0052,
         "is_value": false,
-        "offered_odds": 4.5
+        "offered_odds": 4.4
       },
       "pick": "away",
+      "rec": {
+        "outcome": "Uruguay",
+        "outcome_side": "away",
+        "score": "0-1",
+        "alts": [
+          "0-2",
+          "1-1"
+        ]
+      },
+      "news": [],
       "model": {
-        "home": 0.1698,
-        "draw": 0.3051,
-        "away": 0.5251
+        "home": 0.1685,
+        "draw": 0.3111,
+        "away": 0.5204
       },
       "model_ou": {
         "line": 2.5,
-        "over": 0.2747,
-        "under": 0.7253
+        "over": 0.2717,
+        "under": 0.7283
       },
-      "model_goals": 1.82,
+      "model_goals": 1.81,
       "squad": {
         "home": {
           "value_eur": 45000000.0,
@@ -1188,6 +1281,50 @@
         "away": {
           "value_eur": 500000000.0,
           "rating": 79
+        }
+      },
+      "lineup": {
+        "home": {
+          "overall": 73.3,
+          "attack": 71.5,
+          "defense": 72.9,
+          "star": 77.3,
+          "depth": 70.0,
+          "xi": [
+            "N. Al Aqidi",
+            "S. Abdulhamid",
+            "S. Al Ghannam",
+            "H. Tombakti",
+            "A. Sharahili",
+            "S. Al Dawsari",
+            "F. Al Birekan",
+            "M. Al Juwair",
+            "S. Al Shehri",
+            "M. Kanno",
+            "H. Kadish"
+          ],
+          "absences": []
+        },
+        "away": {
+          "overall": 80.8,
+          "attack": 80.3,
+          "defense": 80.9,
+          "star": 85.0,
+          "depth": 78.6,
+          "xi": [
+            "F. Muslera",
+            "J. Gim\u00e9nez",
+            "R. Araujo",
+            "S. Coates",
+            "M. Olivera",
+            "F. Valverde",
+            "L. Torreira",
+            "M. Arambarri",
+            "L. Su\u00e1rez",
+            "D. N\u00fa\u00f1ez",
+            "C. Stuani"
+          ],
+          "absences": []
         }
       }
     },
@@ -1201,40 +1338,63 @@
       "away_id": "new_zealand",
       "score": "0-0",
       "over_under": 2.5,
-      "details": "IRN -120",
+      "details": "IRN -105",
       "book": {
-        "home": 0.5287,
-        "draw": 0.2717,
-        "away": 0.1996
+        "home": 0.4977,
+        "draw": 0.2816,
+        "away": 0.2207
       },
       "crowd": {
-        "home": 0.5276,
-        "draw": 0.2764,
-        "away": 0.196
+        "home": 0.5075,
+        "draw": 0.2864,
+        "away": 0.206
       },
       "clv": {
         "home_open": 1.645,
-        "home_close": 1.833,
-        "drift": 0.188
+        "home_close": 1.952,
+        "drift": 0.307
       },
       "value": {
-        "outcome": "draw",
-        "ev": -0.0326,
+        "outcome": "home",
+        "ev": -0.0094,
         "is_value": false,
-        "offered_odds": 3.5
+        "offered_odds": 1.952
       },
       "pick": "home",
+      "rec": {
+        "outcome": "Iran",
+        "outcome_side": "home",
+        "score": "1-1",
+        "alts": [
+          "1-0",
+          "2-1"
+        ]
+      },
+      "news": [
+        {
+          "side": "home",
+          "headline": "Arise Irankunda: Australia has new prince as Socceroos shock T\u00fcrkiye",
+          "link": "https://www.espn.com/soccer/story/_/id/49058502/arise-irankunda-australia-new-prince-socceroos-shock-turkiye",
+          "team_relevant": false
+        },
+        {
+          "side": "home",
+          "headline": "FIFA World Cup 2026 stats: Brazil's 21, Qatar's first, Irankunda Australia's youngest",
+          "link": "https://www.espn.com/soccer/story/_/id/49058619/fifa-world-cup-2026-stats-brazil-21-qatar-first-nestory-irankunda-australia-youngest",
+          "team_relevant": false
+        }
+      ],
       "model": {
-        "home": 0.5714,
-        "draw": 0.2331,
-        "away": 0.1955
+        "home": 0.5995,
+        "draw": 0.2257,
+        "away": 0.1748
       },
       "model_ou": {
         "line": 2.5,
-        "over": 0.4772,
-        "under": 0.5228
+        "over": 0.4941,
+        "under": 0.5059
       },
-      "model_goals": 2.58,
+      "model_goals": 2.65,
       "squad": {
         "home": {
           "value_eur": 65000000.0,
@@ -1244,6 +1404,45 @@
           "value_eur": 35000000.0,
           "rating": 70
         }
+      },
+      "lineup": {
+        "home": {
+          "overall": 71.0,
+          "attack": 75.4,
+          "defense": 68.5,
+          "star": 74.3,
+          "depth": 0.0,
+          "xi": [
+            "A. Abedzadeh",
+            "M. Hosseini",
+            "A. Sayyadmanesh",
+            "A. Gholizadeh",
+            "A. Karimi",
+            "M. Taremi"
+          ],
+          "absences": []
+        },
+        "away": {
+          "overall": 71.0,
+          "attack": 72.0,
+          "defense": 70.4,
+          "star": 76.0,
+          "depth": 66.8,
+          "xi": [
+            "A. Paulsen",
+            "L. Cacace",
+            "M. Boxall",
+            "F. de Vries",
+            "T. Bindon",
+            "J. Bell",
+            "M. Stameni\u0107",
+            "C. McCowatt",
+            "C. Wood",
+            "K. Barbarouses",
+            "B. Old"
+          ],
+          "absences": []
+        }
       }
     }
   ],
@@ -1251,549 +1450,539 @@
     {
       "team": "Spain",
       "team_id": "spain",
-      "prob": 0.1631,
-      "fair_odds": 6.13,
-      "model": 0.1187,
-      "blended": 0.1485
+      "prob": 0.1614,
+      "fair_odds": 6.2,
+      "model": 0.1144,
+      "blended": 0.1471
     },
     {
       "team": "France",
       "team_id": "france",
-      "prob": 0.1545,
-      "fair_odds": 6.47,
-      "model": 0.0791,
-      "blended": 0.1244
+      "prob": 0.1594,
+      "fair_odds": 6.27,
+      "model": 0.079,
+      "blended": 0.1282
     },
     {
       "team": "Portugal",
       "team_id": "portugal",
-      "prob": 0.1064,
-      "fair_odds": 9.4,
-      "model": 0.0901,
-      "blended": 0.1021
+      "prob": 0.1097,
+      "fair_odds": 9.11,
+      "model": 0.0905,
+      "blended": 0.1055
     },
     {
       "team": "England",
       "team_id": "england",
-      "prob": 0.1006,
-      "fair_odds": 9.94,
-      "model": 0.0539,
-      "blended": 0.0822
+      "prob": 0.0958,
+      "fair_odds": 10.44,
+      "model": 0.0567,
+      "blended": 0.082
     },
     {
       "team": "Argentina",
       "team_id": "argentina",
-      "prob": 0.0852,
-      "fair_odds": 11.74,
-      "model": 0.1066,
-      "blended": 0.0937
+      "prob": 0.0789,
+      "fair_odds": 12.67,
+      "model": 0.1046,
+      "blended": 0.0895
     },
     {
       "team": "Brazil",
       "team_id": "brazil",
-      "prob": 0.0823,
-      "fair_odds": 12.15,
-      "model": 0.0732,
-      "blended": 0.0804
+      "prob": 0.067,
+      "fair_odds": 14.92,
+      "model": 0.0684,
+      "blended": 0.0694
     },
     {
       "team": "Germany",
       "team_id": "germany",
-      "prob": 0.0496,
-      "fair_odds": 20.17,
-      "model": 0.0111,
-      "blended": 0.0299
+      "prob": 0.0601,
+      "fair_odds": 16.64,
+      "model": 0.0116,
+      "blended": 0.0348
     },
     {
       "team": "Netherlands",
       "team_id": "netherlands",
-      "prob": 0.0428,
-      "fair_odds": 23.35,
-      "model": 0.0127,
+      "prob": 0.0501,
+      "fair_odds": 19.94,
+      "model": 0.0092,
       "blended": 0.0285
     },
     {
       "team": "Norway",
       "team_id": "norway",
-      "prob": 0.0236,
-      "fair_odds": 42.41,
-      "model": 0.0137,
-      "blended": 0.0198
-    },
-    {
-      "team": "Japan",
-      "team_id": "japan",
-      "prob": 0.0197,
-      "fair_odds": 50.68,
-      "model": 0.0298,
-      "blended": 0.0232
-    },
-    {
-      "team": "Belgium",
-      "team_id": "belgium",
-      "prob": 0.0197,
-      "fair_odds": 50.68,
-      "model": 0.0485,
-      "blended": 0.0275
-    },
-    {
-      "team": "Colombia",
-      "team_id": "colombia",
-      "prob": 0.0168,
-      "fair_odds": 59.37,
-      "model": 0.0548,
-      "blended": 0.0259
-    },
-    {
-      "team": "Morocco",
-      "team_id": "morocco",
-      "prob": 0.0149,
-      "fair_odds": 67.03,
-      "model": 0.0899,
-      "blended": 0.0284
-    },
-    {
-      "team": "Mexico",
-      "team_id": "mexico",
-      "prob": 0.014,
-      "fair_odds": 71.66,
-      "model": 0.0086,
-      "blended": 0.012
-    },
-    {
-      "team": "Switzerland",
-      "team_id": "switzerland",
-      "prob": 0.013,
-      "fair_odds": 76.96,
-      "model": 0.0146,
-      "blended": 0.0138
+      "prob": 0.0243,
+      "fair_odds": 41.1,
+      "model": 0.0128,
+      "blended": 0.02
     },
     {
       "team": "Usa",
       "team_id": "usa",
-      "prob": 0.0111,
-      "fair_odds": 90.35,
+      "prob": 0.0204,
+      "fair_odds": 49.12,
       "model": 0.0012,
-      "blended": 0.0072
+      "blended": 0.0108
     },
     {
-      "team": "Turkiye",
-      "team_id": "turkiye",
-      "prob": 0.0111,
-      "fair_odds": 90.35,
-      "blended": 0.0072
+      "team": "Morocco",
+      "team_id": "morocco",
+      "prob": 0.0204,
+      "fair_odds": 49.12,
+      "model": 0.0918,
+      "blended": 0.0355
+    },
+    {
+      "team": "Japan",
+      "team_id": "japan",
+      "prob": 0.0194,
+      "fair_odds": 51.64,
+      "model": 0.0303,
+      "blended": 0.0233
+    },
+    {
+      "team": "Belgium",
+      "team_id": "belgium",
+      "prob": 0.0194,
+      "fair_odds": 51.64,
+      "model": 0.0516,
+      "blended": 0.0281
+    },
+    {
+      "team": "Colombia",
+      "team_id": "colombia",
+      "prob": 0.0154,
+      "fair_odds": 64.97,
+      "model": 0.0494,
+      "blended": 0.0238
+    },
+    {
+      "team": "Mexico",
+      "team_id": "mexico",
+      "prob": 0.0124,
+      "fair_odds": 80.56,
+      "model": 0.0073,
+      "blended": 0.0106
+    },
+    {
+      "team": "Switzerland",
+      "team_id": "switzerland",
+      "prob": 0.0084,
+      "fair_odds": 118.47,
+      "model": 0.0132,
+      "blended": 0.0101
     },
     {
       "team": "Uruguay",
       "team_id": "uruguay",
-      "prob": 0.0091,
-      "fair_odds": 109.37,
-      "model": 0.0137,
-      "blended": 0.0107
-    },
-    {
-      "team": "Ecuador",
-      "team_id": "ecuador",
-      "prob": 0.0082,
-      "fair_odds": 122.24,
-      "model": 0.0307,
-      "blended": 0.0132
+      "prob": 0.0084,
+      "fair_odds": 118.47,
+      "model": 0.0126,
+      "blended": 0.0099
     },
     {
       "team": "Croatia",
       "team_id": "croatia",
-      "prob": 0.0082,
-      "fair_odds": 122.24,
-      "model": 0.008,
-      "blended": 0.0083
+      "prob": 0.0084,
+      "fair_odds": 118.47,
+      "model": 0.0108,
+      "blended": 0.0094
+    },
+    {
+      "team": "Ecuador",
+      "team_id": "ecuador",
+      "prob": 0.0074,
+      "fair_odds": 134.27,
+      "model": 0.0277,
+      "blended": 0.0121
     },
     {
       "team": "Senegal",
       "team_id": "senegal",
-      "prob": 0.0063,
-      "fair_odds": 159.85,
-      "model": 0.0049,
-      "blended": 0.0059
+      "prob": 0.0065,
+      "fair_odds": 154.92,
+      "model": 0.0064,
+      "blended": 0.0067
     },
     {
       "team": "South Korea",
       "team_id": "south_korea",
-      "prob": 0.0043,
-      "fair_odds": 230.89,
-      "model": 0.0,
-      "blended": 0.0039
+      "prob": 0.0045,
+      "fair_odds": 223.78,
+      "model": 0.0004,
+      "blended": 0.004
+    },
+    {
+      "team": "Turkiye",
+      "team_id": "turkiye",
+      "prob": 0.0045,
+      "fair_odds": 223.78,
+      "blended": 0.004
     },
     {
       "team": "Austria",
       "team_id": "austria",
-      "prob": 0.0043,
-      "fair_odds": 230.89,
-      "model": 0.0283,
-      "blended": 0.0085
+      "prob": 0.0045,
+      "fair_odds": 223.78,
+      "model": 0.0313,
+      "blended": 0.0091
     },
     {
-      "team": "Canada",
-      "team_id": "canada",
-      "prob": 0.0034,
-      "fair_odds": 296.86,
-      "model": 0.0016,
-      "blended": 0.0033
+      "team": "Ivory Coast",
+      "team_id": "ivory_coast",
+      "prob": 0.0035,
+      "fair_odds": 287.71,
+      "model": 0.0227,
+      "blended": 0.0069
     }
   ],
   "top_scorer": [
     {
-      "player": "Prince-Osei Owusu",
-      "prob": 0.1045,
-      "fair_odds": 9.57
+      "player": "Kylian Mbappe",
+      "prob": 0.1515,
+      "fair_odds": 6.6
+    },
+    {
+      "player": "Harry Kane",
+      "prob": 0.132,
+      "fair_odds": 7.58
+    },
+    {
+      "player": "Erling Haaland",
+      "prob": 0.0733,
+      "fair_odds": 13.64
+    },
+    {
+      "player": "Mikel Oyarzabal",
+      "prob": 0.0733,
+      "fair_odds": 13.64
+    },
+    {
+      "player": "Kai Havertz",
+      "prob": 0.0714,
+      "fair_odds": 14.01
     },
     {
       "player": "Lionel Messi",
-      "prob": 0.0663,
-      "fair_odds": 15.09
+      "prob": 0.0533,
+      "fair_odds": 18.77
     },
     {
-      "player": "Denis Bouanga",
-      "prob": 0.0616,
-      "fair_odds": 16.23
+      "player": "Lamine Yamal",
+      "prob": 0.0425,
+      "fair_odds": 23.52
     },
     {
-      "player": "Sam Surridge",
-      "prob": 0.0591,
-      "fair_odds": 16.91
+      "player": "Julian Alvarez",
+      "prob": 0.0386,
+      "fair_odds": 25.9
     },
     {
-      "player": "Hugo Cuypers",
-      "prob": 0.0568,
-      "fair_odds": 17.61
+      "player": "Cristiano Ronaldo",
+      "prob": 0.0381,
+      "fair_odds": 26.23
     },
     {
-      "player": "Brian White",
-      "prob": 0.0555,
-      "fair_odds": 18.02
+      "player": "Michael Olise",
+      "prob": 0.0357,
+      "fair_odds": 28.03
     },
     {
-      "player": "Eric Maxim Choupo-Moting",
-      "prob": 0.0548,
-      "fair_odds": 18.23
+      "player": "Vinicius Junior",
+      "prob": 0.0337,
+      "fair_odds": 29.65
     },
     {
-      "player": "Alonso Mart\u00ednez",
-      "prob": 0.0539,
-      "fair_odds": 18.54
+      "player": "Folarin Balogun",
+      "prob": 0.0323,
+      "fair_odds": 31.0
     },
     {
-      "player": "Anders Dreyer",
-      "prob": 0.0513,
-      "fair_odds": 19.48
+      "player": "Ferran Torres",
+      "prob": 0.0235,
+      "fair_odds": 42.62
     },
     {
-      "player": "Hany Mukhtar",
-      "prob": 0.0496,
-      "fair_odds": 20.14
+      "player": "Ousmane Dembele",
+      "prob": 0.0181,
+      "fair_odds": 55.3
     },
     {
-      "player": "Dejan Jovelji\u0107",
-      "prob": 0.0467,
-      "fair_odds": 21.43
+      "player": "Cody Gakpo",
+      "prob": 0.0166,
+      "fair_odds": 60.18
     },
     {
-      "player": "Petar Musa",
-      "prob": 0.0415,
-      "fair_odds": 24.12
+      "player": "Lautaro Martinez",
+      "prob": 0.0132,
+      "fair_odds": 75.78
     },
     {
-      "player": "Marco Pa\u0161ali\u0107",
-      "prob": 0.0395,
-      "fair_odds": 25.31
+      "player": "Luis Diaz",
+      "prob": 0.0127,
+      "fair_odds": 78.69
     },
     {
-      "player": "Idan Toklomati",
-      "prob": 0.0385,
-      "fair_odds": 26.0
+      "player": "Bruno Fernandes",
+      "prob": 0.0112,
+      "fair_odds": 88.96
     },
     {
-      "player": "Diego Rossi",
-      "prob": 0.0366,
-      "fair_odds": 27.29
+      "player": "Romelu Lukaku",
+      "prob": 0.0108,
+      "fair_odds": 93.0
     },
     {
-      "player": "Milan Iloski",
-      "prob": 0.0352,
-      "fair_odds": 28.39
-    },
-    {
-      "player": "Mart\u00edn Ojeda",
-      "prob": 0.0301,
-      "fair_odds": 33.17
-    },
-    {
-      "player": "Djordje Mihailovic",
-      "prob": 0.0299,
-      "fair_odds": 33.46
-    },
-    {
-      "player": "Philip Zinckernagel",
-      "prob": 0.0248,
-      "fair_odds": 40.29
-    },
-    {
-      "player": "K\u00e9vin Denkey",
-      "prob": 0.022,
-      "fair_odds": 45.53
+      "player": "Igor Thiago",
+      "prob": 0.0093,
+      "fair_odds": 107.68
     }
   ],
   "group_winners": {
     "A": [
       {
         "team": "Mexico",
-        "prob": 0.6149
+        "prob": 0.6241
       },
       {
         "team": "South Korea",
-        "prob": 0.3394
+        "prob": 0.3345
       },
       {
         "team": "Czechia",
-        "prob": 0.0369
+        "prob": 0.0349
       },
       {
         "team": "South Africa",
-        "prob": 0.0089
+        "prob": 0.0065
       }
     ],
     "B": [
       {
         "team": "Switzerland",
-        "prob": 0.5558
+        "prob": 0.4655
       },
       {
         "team": "Canada",
-        "prob": 0.3
+        "prob": 0.3554
       },
       {
         "team": "Bosnia And Herzegovina",
-        "prob": 0.123
+        "prob": 0.1552
       },
       {
         "team": "Qatar",
-        "prob": 0.0212
+        "prob": 0.024
       }
     ],
     "C": [
       {
         "team": "Brazil",
-        "prob": 0.7073
+        "prob": 0.6041
       },
       {
         "team": "Morocco",
-        "prob": 0.2112
+        "prob": 0.2893
       },
       {
         "team": "Scotland",
-        "prob": 0.0697
+        "prob": 0.102
       },
       {
         "team": "Haiti",
-        "prob": 0.0118
+        "prob": 0.0046
       }
     ],
     "D": [
       {
-        "team": "T\u00fcrkiye",
-        "prob": 0.3778
-      },
-      {
         "team": "Usa",
-        "prob": 0.368
-      },
-      {
-        "team": "Paraguay",
-        "prob": 0.1619
+        "prob": 0.7146
       },
       {
         "team": "Australia",
-        "prob": 0.0922
+        "prob": 0.1944
+      },
+      {
+        "team": "T\u00fcrkiye",
+        "prob": 0.075
+      },
+      {
+        "team": "Paraguay",
+        "prob": 0.016
       }
     ],
     "E": [
       {
         "team": "Germany",
-        "prob": 0.6578
+        "prob": 0.7032
       },
       {
         "team": "Ecuador",
-        "prob": 0.2127
+        "prob": 0.2045
       },
       {
         "team": "Ivory Coast",
-        "prob": 0.1251
+        "prob": 0.0908
       },
       {
         "team": "Cura\u00e7ao",
-        "prob": 0.0045
+        "prob": 0.0015
       }
     ],
     "F": [
       {
         "team": "Netherlands",
-        "prob": 0.5268
+        "prob": 0.4817
       },
       {
         "team": "Japan",
-        "prob": 0.2806
+        "prob": 0.2789
       },
       {
         "team": "Sweden",
-        "prob": 0.1428
+        "prob": 0.1826
       },
       {
         "team": "Tunisia",
-        "prob": 0.0497
+        "prob": 0.0568
       }
     ],
     "G": [
       {
         "team": "Belgium",
-        "prob": 0.6824
+        "prob": 0.703
       },
       {
         "team": "Egypt",
-        "prob": 0.1522
+        "prob": 0.1622
       },
       {
         "team": "Iran",
-        "prob": 0.1281
+        "prob": 0.1067
       },
       {
         "team": "New Zealand",
-        "prob": 0.0373
+        "prob": 0.028
       }
     ],
     "H": [
       {
         "team": "Spain",
-        "prob": 0.7819
+        "prob": 0.7829
       },
       {
         "team": "Uruguay",
-        "prob": 0.1892
+        "prob": 0.1871
       },
       {
         "team": "Saudi Arabia",
-        "prob": 0.0159
+        "prob": 0.0192
       },
       {
         "team": "Cape Verde",
-        "prob": 0.0129
+        "prob": 0.0108
       }
     ],
     "I": [
       {
         "team": "France",
-        "prob": 0.6441
+        "prob": 0.6667
       },
       {
         "team": "Norway",
-        "prob": 0.236
+        "prob": 0.2272
       },
       {
         "team": "Senegal",
-        "prob": 0.1131
+        "prob": 0.0988
       },
       {
         "team": "Iraq",
-        "prob": 0.0069
+        "prob": 0.0074
       }
     ],
     "J": [
       {
         "team": "Argentina",
-        "prob": 0.7065
+        "prob": 0.7101
       },
       {
         "team": "Austria",
-        "prob": 0.1828
+        "prob": 0.1923
       },
       {
         "team": "Algeria",
-        "prob": 0.0944
+        "prob": 0.0843
       },
       {
         "team": "Jordan",
-        "prob": 0.0163
+        "prob": 0.0133
       }
     ],
     "K": [
       {
         "team": "Portugal",
-        "prob": 0.6158
+        "prob": 0.6185
       },
       {
         "team": "Colombia",
-        "prob": 0.3202
+        "prob": 0.3216
       },
       {
         "team": "Congo Dr",
-        "prob": 0.0404
+        "prob": 0.0346
       },
       {
         "team": "Uzbekistan",
-        "prob": 0.0236
+        "prob": 0.0252
       }
     ],
     "L": [
       {
         "team": "England",
-        "prob": 0.6979
+        "prob": 0.7154
       },
       {
         "team": "Croatia",
-        "prob": 0.2144
+        "prob": 0.2151
       },
       {
         "team": "Ghana",
-        "prob": 0.0593
+        "prob": 0.0445
       },
       {
         "team": "Panama",
-        "prob": 0.0284
+        "prob": 0.025
       }
     ]
   },
   "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
   "tempo": {
-    "avg_goals": 2.5,
-    "avg_over25": 0.451,
-    "index": 46,
-    "lean": "balanced",
+    "avg_goals": 2.44,
+    "avg_over25": 0.428,
+    "index": 44,
+    "lean": "defensive",
     "baseline": 2.6
   },
   "chaos": {
-    "chaos_index": 0.078,
-    "lyapunov_proxy": 0.3127,
-    "field_entropy": 0.77,
-    "favourite_fragility": 0.876,
+    "chaos_index": 0.094,
+    "lyapunov_proxy": 0.3773,
+    "field_entropy": 0.774,
+    "favourite_fragility": 0.883,
     "favourite": "spain",
-    "favourite_prob": 0.124,
+    "favourite_prob": 0.117,
     "tipping_points": [
       {
         "home": "argentina",
         "away": "france",
         "entropy": 1.0,
         "probs": [
-          0.34,
-          0.329,
-          0.331
-        ]
-      },
-      {
-        "home": "sweden",
-        "away": "ukraine",
-        "entropy": 1.0,
-        "probs": [
-          0.341,
-          0.319,
-          0.34
+          0.337,
+          0.327,
+          0.336
         ]
       },
       {
@@ -1802,8 +1991,8 @@
         "entropy": 0.999,
         "probs": [
           0.351,
-          0.337,
-          0.312
+          0.339,
+          0.31
         ]
       },
       {
@@ -1811,29 +2000,39 @@
         "away": "ghana",
         "entropy": 0.999,
         "probs": [
-          0.351,
-          0.322,
-          0.326
+          0.35,
+          0.328,
+          0.322
+        ]
+      },
+      {
+        "home": "sweden",
+        "away": "ukraine",
+        "entropy": 0.999,
+        "probs": [
+          0.335,
+          0.315,
+          0.35
         ]
       },
       {
         "home": "jamaica",
         "away": "qatar",
-        "entropy": 0.999,
+        "entropy": 0.998,
         "probs": [
-          0.358,
-          0.313,
-          0.329
+          0.321,
+          0.316,
+          0.363
         ]
       },
       {
-        "home": "qatar",
+        "home": "jamaica",
         "away": "new_zealand",
-        "entropy": 0.999,
+        "entropy": 0.996,
         "probs": [
-          0.348,
-          0.335,
-          0.317
+          0.356,
+          0.352,
+          0.292
         ]
       }
     ]

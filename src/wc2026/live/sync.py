@@ -21,10 +21,13 @@ import datetime as _dt
 import json
 from pathlib import Path
 
+from wc2026.betting.scorelines import recommend_from_odds
 from wc2026.betting.value import devig, expected_value
+from wc2026.data.schema import Odds
 from wc2026.data.sources.base import SourceUnavailable
 from wc2026.data.sources.espn import EspnSource
 from wc2026.data.sources.polymarket import PolymarketSource
+from wc2026.live.teamnews import match_team_news
 from wc2026.utils.logging import get_logger
 
 logger = get_logger("live.sync")
@@ -239,6 +242,7 @@ class LiveSync:
     def _fixtures(self, start: _dt.date) -> list[dict]:
         raw = self._safe(lambda: self.espn.fixtures(start, self.days), [])
         crowd_idx = self._crowd_match_index()
+        articles = self._safe(lambda: self.espn.news(), [])
         out = []
         for f in raw:
             book = _devig_book(f.odds.get("close"), self.devig_method)
@@ -256,8 +260,27 @@ class LiveSync:
             entry["clv"] = self._clv(f.odds)
             entry["value"] = self._value(f.odds.get("close"), book, crowd)
             entry["pick"] = (max(book, key=book.get) if book else None)
+            # Market-grounded recommendation (outcome + exact score) and team news.
+            entry["rec"] = self._market_pick(f)
+            entry["news"] = match_team_news(articles, f.home, f.away)
             out.append(entry)
         return out
+
+    def _market_pick(self, f) -> dict | None:
+        """Market+O/U grounded outcome & exact-score pick — the trustworthy one."""
+        cur = (f.odds or {}).get("close")
+        if not cur:
+            return None
+        ou = (f.odds or {}).get("over_under")
+        try:
+            ou = float(ou) if ou is not None else None
+        except (TypeError, ValueError):
+            ou = None
+        rec = recommend_from_odds(Odds(cur["home"], cur["draw"], cur["away"]), ou_line=ou)
+        lean = {"home": f.home, "draw": "Draw", "away": f.away}[rec["outcome_lean"]]
+        return {"outcome": lean, "outcome_side": rec["outcome_lean"],
+                "score": rec["modal_score"],
+                "alts": [s["score"] for s in rec["top_scores"][1:3]]}
 
     @staticmethod
     def _fixture_crowd(f, crowd_idx) -> dict | None:

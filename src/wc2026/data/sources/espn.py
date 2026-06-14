@@ -166,6 +166,20 @@ class EspnSource(DataSource):
                  "name": t["team"]["displayName"],
                  "abbr": t["team"].get("abbreviation")} for t in teams]
 
+    def news(self, limit: int = 50) -> list[dict]:
+        """Recent World Cup news headlines (free ESPN feed) — our daily team-news."""
+        try:
+            data = self._get(f"{_BASE}/site/v2/sports/{_LEAGUE}/news?limit={limit}")
+        except SourceUnavailable:
+            return []
+        out = []
+        for a in data.get("articles", []):
+            out.append({"headline": a.get("headline", ""),
+                        "description": a.get("description", ""),
+                        "published": a.get("published", ""),
+                        "link": (a.get("links", {}).get("web", {}) or {}).get("href", "")})
+        return out
+
     # DataSource contract: real played matches as Match objects (for the model).
     def fetch_matches(self) -> list[Match]:
         out: list[Match] = []
