@@ -27,6 +27,27 @@ from wc2026.utils.math import result_probs, safe_log
 logger = get_logger("models.dixon_coles")
 
 
+# Finals tournaments whose matches are the strongest signal of true strength.
+_MAJORS = ("world cup", "euro", "copa américa", "copa america", "nations cup",
+           "africa cup", "african cup", "asian cup", "gold cup", "confederations")
+
+
+def match_importance(tournament: str | None, friendly: float = 0.4,
+                     major: float = 1.5) -> float:
+    """Weight a match by competition: friendlies low, finals tournaments high.
+
+    Qualifiers/Nations-League and anything unrecognised keep weight 1.0.
+    """
+    t = (tournament or "").lower()
+    if "friendly" in t or "challenge" in t or "kirin" in t:
+        return friendly
+    if "quali" in t:                       # qualifiers are competitive but not finals
+        return 1.0
+    if any(k in t for k in _MAJORS):
+        return major
+    return 1.0
+
+
 def tau(x: int, y: int, lam: float, mu: float, rho: float) -> float:
     """Dixon-Coles low-score dependence correction."""
     if x == 0 and y == 0:
@@ -71,6 +92,12 @@ class DixonColesModel:
         ag = np.array([m.away_goals for m in played], dtype=float)
         ages = np.array([(self._ref_date - m.date).days for m in played], dtype=float)
         weights = np.exp(-self.cfg.decay_alpha * np.clip(ages, 0, None))
+        # Importance weighting: a rested-squad friendly is a weak signal of true
+        # strength and (at 37% of the corpus) mean-reverts giants toward minnows;
+        # competitive matches — especially finals tournaments — count for more.
+        weights = weights * np.array([match_importance(
+            m.tournament, self.cfg.friendly_weight, self.cfg.major_weight)
+            for m in played])
         # WC matches are neutral-venue; the synthetic generator still encodes a
         # host edge, so we keep a (small) home-advantage term for non-neutral games.
         home_field = np.array([0.0 if m.neutral else 1.0 for m in played])

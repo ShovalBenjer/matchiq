@@ -62,6 +62,8 @@ class DixonColesConfig:
     max_goals: int = 10
     home_advantage_init: float = 0.25
     ridge: float = 1.0  # Gaussian-prior shrinkage on attack/defence (anti-blowup)
+    friendly_weight: float = 0.4  # down-weight friendlies (37% of corpus, noisy)
+    major_weight: float = 1.5     # up-weight World Cup / continental finals
     target_goals_per_game: float | None = 2.6  # WC historical mean (None disables)
     max_rate: float = 6.0  # hard clamp on expected goals per side (safety net)
     param_bound: float = 2.0  # |attack|, |defence| box bound for the optimiser

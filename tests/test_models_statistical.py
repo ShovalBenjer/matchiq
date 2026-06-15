@@ -57,3 +57,25 @@ def test_hmm_fits_and_returns_state_distribution(played):
     assert np.isclose(sum(dist.values()), 1.0)
     mom = hmm.momentum(TournamentHMM.observations_for(teams[0], played))
     assert 0.0 <= mom <= 1.0
+
+
+def test_match_importance_weights():
+    from wc2026.models.dixon_coles import match_importance
+    assert match_importance("Friendly") == 0.4
+    assert match_importance("Kirin Challenge Cup") == 0.4
+    assert match_importance("FIFA World Cup") == 1.5
+    assert match_importance("Copa América") == 1.5
+    assert match_importance("FIFA World Cup qualification") == 1.0  # qualifier ≠ final
+    assert match_importance("UEFA Nations League") == 1.0
+    assert match_importance(None) == 1.0
+    # Configurable.
+    assert match_importance("Friendly", friendly=0.1) == 0.1
+
+
+def test_importance_weighting_keeps_valid_probabilities(played):
+    from wc2026.models.dixon_coles import DixonColesModel
+    m = DixonColesModel().fit(played)              # default has weighting on
+    teams = m.teams[:2]
+    if len(teams) == 2:
+        p = m.predict_proba(teams[0], teams[1]).as_array()
+        assert abs(float(p.sum()) - 1.0) < 1e-6
