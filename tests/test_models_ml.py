@@ -86,3 +86,21 @@ def test_news_adjustment_moves_probabilities():
     away_neutral = NewsSignal(confidence=0.0)
     adj = NewsRAGAgent.adjust(base, home_bad, away_neutral)
     assert adj.home < base.home  # injuries reduce the home win prob
+
+
+def test_ensemble_skips_missing_member_not_uniform():
+    """A genuinely-unavailable member must be skipped, not averaged in as uniform."""
+    import numpy as np
+
+    from wc2026.config import EnsembleConfig
+    from wc2026.models.base import OutcomeProb
+    from wc2026.models.ensemble import StackingEnsemble
+
+    cfg = EnsembleConfig(members=("a", "b", "dead"))
+    ens = StackingEnsemble(cfg)
+    ens._fitted = True  # average meta needs no fit
+    # 'dead' absent → blend should be the mean of a & b, NOT pulled toward 1/3.
+    pd = {"a": OutcomeProb.from_array([0.8, 0.1, 0.1]),
+          "b": OutcomeProb.from_array([0.7, 0.2, 0.1])}
+    p = ens.predict(pd).as_array()
+    assert np.allclose(p, [0.75, 0.15, 0.10], atol=1e-9)   # uniform would drag home→~0.5

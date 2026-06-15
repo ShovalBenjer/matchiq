@@ -129,10 +129,19 @@ class StackingEnsemble:
         if self.meta == "logistic" and self._meta_model is not None:
             x = self._stack(prob_dict).reshape(1, -1)
             return OutcomeProb.from_array(self._meta_model.predict_proba(x)[0])
-        # average or weighted → convex blend of member vectors
-        members = self._member_array(prob_dict)         # (M, 3)
-        w = self._weights if self._weights is not None else np.ones(len(self.members)) / len(self.members)
-        return OutcomeProb.from_array(w @ members)
+        # average or weighted → convex blend of the members actually PRESENT
+        # (a genuinely-unavailable model is skipped, not defaulted to uniform —
+        # uniform would drag the blend toward 1/3,1/3,1/3 and blunt discrimination).
+        present = [i for i, m in enumerate(self.members) if m in prob_dict]
+        if not present:
+            return OutcomeProb.from_array(np.array([1 / 3, 1 / 3, 1 / 3]))
+        vecs = np.array([prob_dict[self.members[i]].as_array() for i in present])
+        if self._weights is not None:
+            w = self._weights[present]
+            w = w / w.sum() if w.sum() > 0 else np.ones(len(present)) / len(present)
+        else:
+            w = np.ones(len(present)) / len(present)
+        return OutcomeProb.from_array(w @ vecs)
 
     def weights(self) -> dict[str, float]:
         if self._weights is None:

@@ -38,32 +38,42 @@ def _direction(x: int, y: int) -> str:
     return "home" if x > y else "away" if y > x else "draw"
 
 
-def rank_scorelines(P: np.ndarray, dir_pts: float, exact_pts: float) -> list[dict]:
-    """Every scoreline ranked by expected points under the distribution ``P``."""
+def rank_scorelines(P: np.ndarray, dir_pts: float, exact_pts: float,
+                    risk: float = 0.0) -> list[dict]:
+    """Every scoreline ranked by objective under the distribution ``P``.
+
+    ``risk`` ∈ [0,1] tilts from expected-points (0, the safe play) toward the
+    big-swing exact payoff (1). From *behind* in a rank-order league you can't
+    win on safe +direction points, so you chase the rarer exact-score points —
+    objective = (1−risk)·EV + risk·(exact_pts·P_exact).
+    """
     ph, pd, pa = result_probs(P)
     dir_prob = {"home": ph, "draw": pd, "away": pa}
     rows = []
     for x in range(_MAXG):
         for y in range(_MAXG):
             d = _direction(x, y)
-            ev = dir_pts * dir_prob[d] + (exact_pts - dir_pts) * float(P[x, y])
+            p_exact = float(P[x, y])
+            ev = dir_pts * dir_prob[d] + (exact_pts - dir_pts) * p_exact
+            upside = exact_pts * p_exact
+            obj = (1 - risk) * ev + risk * upside
             rows.append({"score": f"{x}-{y}", "direction": d,
-                         "p_exact": round(float(P[x, y]), 4),
-                         "ev": round(ev, 4)})
-    rows.sort(key=lambda r: -r["ev"])
+                         "p_exact": round(p_exact, 4), "ev": round(ev, 4),
+                         "obj": round(obj, 4)})
+    rows.sort(key=lambda r: -r["obj"])
     return rows
 
 
 def optimize_pick(odds, stage: Stage = Stage.GROUP, ou_line: float | None = None,
-                  devig_method: str = "multiplicative") -> dict:
-    """EV-maximising prediction for one match, given the stage's point values."""
+                  devig_method: str = "multiplicative", risk: float = 0.0) -> dict:
+    """EV-maximising prediction for one match (raise ``risk`` when trailing)."""
     dir_pts, exact_pts = STAGE_POINTS.get(stage, (1, 3))
     fair = devig(odds, devig_method)
     P = score_matrix(*market_goal_rates(fair, ou_line=ou_line))
-    ranked = rank_scorelines(P, dir_pts, exact_pts)
+    ranked = rank_scorelines(P, dir_pts, exact_pts, risk=risk)
     best = ranked[0]
     return {
-        "stage": stage.value,
+        "stage": stage.value, "risk": risk,
         "points": {"direction": dir_pts, "exact": exact_pts},
         "best_score": best["score"],
         "best_direction": best["direction"],

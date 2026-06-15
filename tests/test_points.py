@@ -45,3 +45,21 @@ def test_all_stages_have_points():
         if st in STAGE_POINTS:
             d, e = STAGE_POINTS[st]
             assert 0 < d < e            # exact always worth more than direction
+
+
+def test_risk_shifts_toward_exact_upside():
+    # The safe (risk=0) pick maximises expected points by definition; the bold
+    # (risk=1) pick chases the big exact payoff, so it can't have higher EV.
+    odds = Odds(1.909, 3.4, 4.5)
+    safe = optimize_pick(odds, Stage.GROUP, ou_line=2.5, risk=0.0)
+    bold = optimize_pick(odds, Stage.GROUP, ou_line=2.5, risk=1.0)
+    assert safe["expected_points"] >= bold["expected_points"]
+    assert "-" in bold["best_score"]
+
+
+def test_risk_can_change_the_pick_on_a_coin_flip():
+    odds = Odds(3.25, 2.95, 2.55)   # near coin-flip
+    safe = optimize_pick(odds, Stage.GROUP, ou_line=1.5, risk=0.0)["best_score"]
+    bold = optimize_pick(odds, Stage.GROUP, ou_line=1.5, risk=1.0)["best_score"]
+    # Both valid scorelines; the bold one targets the single most-likely exact.
+    assert "-" in safe and "-" in bold

@@ -306,13 +306,14 @@ def cmd_daily_picks(args) -> int:
             ou = None
         odds = Odds(cur["home"], cur["draw"], cur["away"])
         rec = recommend_from_odds(odds, ou_line=ou)
-        opt = optimize_pick(odds, stage=args.stage, ou_line=ou)
+        opt = optimize_pick(odds, stage=args.stage, ou_line=ou, risk=args.risk)
         rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt))
     if not rows:
         print("No upcoming fixtures with odds found.")
         return 0
     dp, ep = STAGE_POINTS[args.stage]
-    print(f"\nDAILY PICKS — EV-optimal ({len(rows)} matches, {args.stage.value}: "
+    mode = "EV-optimal (safe)" if args.risk <= 0 else f"variance/chase (risk={args.risk})"
+    print(f"\nDAILY PICKS — {mode} ({len(rows)} matches, {args.stage.value}: "
           f"direction={dp} / exact={ep} pts)\n" + "=" * 66)
     for date, home, away, fair, rec, ou, opt in rows:
         lean = {"home": home, "draw": "Draw", "away": away}[opt["best_direction"]]
@@ -406,6 +407,8 @@ def build_parser() -> argparse.ArgumentParser:
     pdp.add_argument("--days", type=int, default=2)
     pdp.add_argument("--stage", default="group",
                      help="tournament stage for point values (group/round_of_16/...)")
+    pdp.add_argument("--risk", type=float, default=0.0,
+                     help="0=safe EV-max; →1 chase big exact-score swings (use when behind)")
     pdp.set_defaults(func=cmd_daily_picks)
 
     pc = sub.add_parser("calibration",

@@ -193,6 +193,7 @@ class Orchestrator:
                     tf.predict_proba(np.array([b.row_for(m)[c] for c in FEATURE_COLUMNS]).reshape(1, -1))[0]
                 ),
                 "chronos": self._chronos_outcome(m, train),
+                "graph": self.graph.predict_match(m),
             }
             prob_dicts.append(pd)
             labels.append({"H": 0, "D": 1, "A": 2}[m.outcome.value])
