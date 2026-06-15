@@ -106,6 +106,30 @@ that must be stated or it gives false comfort:
 - **Forward-test settling** — we only score finished matches; fine here, but a
   reminder that "results so far" is a biased, tiny window.
 
+## 6b. Modeling: what we HAVE vs what we PLAN (06-15)
+
+- **"TabPFN" / "Chronos" are fallbacks, not the real models.** `torch` isn't
+  installed in this environment, so `TabPFNModel` runs `_SoftmaxRegression` (a
+  plain logistic regression) and `ChronosForecaster` runs a simple time-series
+  heuristic. We are NOT running TabPFN v2/v3 or the Chronos foundation model.
+  Naming them as such overstates the system — corrected here.
+- **Plan — real foundation models:** install `torch` + `tabpfn` + `chronos-
+  forecasting`, gate them behind availability, and **ablate** (does the real
+  TabPFN v3 beat the fallback / Dixon-Coles on out-of-sample log-loss?). Honest
+  expectation from the 2026 report: gradient boosting matches/exceeds deep
+  learning on tabular, and *nothing beats the market* — so real foundation
+  models are unlikely to change match-pick quality much. The edge is **data
+  (lineups), not model sophistication.**
+- **Auto-research ambition (HF-ML-intern style):** an automated experiment
+  harness that (1) proposes model/feature variants, (2) fits them, (3) scores
+  each on a frozen out-of-sample split (log-loss / RPS / accuracy), (4) keeps
+  ONLY what beats the current champion, (5) logs the result. This formalises the
+  manual loop already used this session (friendly-weighting ✓ kept, ridge ✗
+  rejected). It is the right way to "make the model better" *honestly* — every
+  change must earn its place against a held-out benchmark, never be assumed.
+  Status: planned, not built. It is genuinely high-value as a process even if,
+  per the report, the achievable model gains over the market are small.
+
 ## 7. Process errors worth recording (mine)
 - **The Brazil 2-1 advice.** I talked the user off a correct 1-1 exact-score pick
   by over-weighting the market's favourite view with false confidence on a
