@@ -166,6 +166,27 @@ class EspnSource(DataSource):
                  "name": t["team"]["displayName"],
                  "abbr": t["team"].get("abbreviation")} for t in teams]
 
+    def lineups(self, event_id: str) -> dict[str, list[dict]]:
+        """Starting XI + bench per team for a match (available ~1h pre-kickoff).
+
+        Returns ``{team_slug: [{name, starter, position}, ...]}`` or {} if the
+        official lineup isn't published yet.
+        """
+        try:
+            data = self._get(f"{_BASE}/site/v2/sports/{_LEAGUE}/summary?event={event_id}")
+        except SourceUnavailable:
+            return {}
+        out: dict[str, list[dict]] = {}
+        for r in data.get("rosters", []):
+            team = _slug(r.get("team", {}).get("displayName", "?"))
+            players = [{"name": p.get("athlete", {}).get("displayName", ""),
+                        "starter": bool(p.get("starter")),
+                        "position": (p.get("position", {}) or {}).get("abbreviation", "")}
+                       for p in r.get("roster", [])]
+            if players:
+                out[team] = players
+        return out
+
     def news(self, limit: int = 50) -> list[dict]:
         """Recent World Cup news headlines (free ESPN feed) — our daily team-news."""
         try:

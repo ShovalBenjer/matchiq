@@ -288,12 +288,15 @@ def cmd_daily_picks(args) -> int:
     """EV-optimal pick digest for upcoming fixtures (stage-aware game scoring)."""
     from wc2026.betting.points import STAGE_POINTS, optimize_pick
     from wc2026.betting.scorelines import recommend_from_odds
+    from wc2026.data.fc26 import load_fc26_squad
     from wc2026.data.schema import Odds, Stage
     from wc2026.data.sources.espn import EspnSource
+    from wc2026.live.lineups import lineup_report
 
     args.stage = Stage(args.stage) if not isinstance(args.stage, Stage) else args.stage
 
-    fixtures = EspnSource().fixtures(days=args.days)
+    espn = EspnSource()
+    fixtures = espn.fixtures(days=args.days)
     rows = []
     for f in fixtures:
         cur = (f.odds or {}).get("close")
@@ -307,7 +310,15 @@ def cmd_daily_picks(args) -> int:
         odds = Odds(cur["home"], cur["draw"], cur["away"])
         rec = recommend_from_odds(odds, ou_line=ou)
         opt = optimize_pick(odds, stage=args.stage, ou_line=ou, risk=args.risk)
-        rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt))
+        # Lineup check (fires ~1h pre-KO): which side rested key players?
+        warn = []
+        lus = espn.lineups(f.match_id) if not args.no_lineups else {}
+        for side, tid in (("home", f.home_id), ("away", f.away_id)):
+            rep = lineup_report(lus.get(tid, []), load_fc26_squad(tid, tid) or [])
+            if rep and rep["rested_stars"]:
+                who = ", ".join(f"{r['name']}({int(r['overall'])})" for r in rep["rested_stars"][:3])
+                warn.append(f"{f.home if side == 'home' else f.away} rest {who} ({rep['delta']:+.1f})")
+        rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt, warn))
     if not rows:
         print("No upcoming fixtures with odds found.")
         return 0
@@ -315,7 +326,7 @@ def cmd_daily_picks(args) -> int:
     mode = "EV-optimal (safe)" if args.risk <= 0 else f"variance/chase (risk={args.risk})"
     print(f"\nDAILY PICKS — {mode} ({len(rows)} matches, {args.stage.value}: "
           f"direction={dp} / exact={ep} pts)\n" + "=" * 66)
-    for date, home, away, fair, rec, ou, opt in rows:
+    for date, home, away, fair, rec, ou, opt, warn in rows:
         lean = {"home": home, "draw": "Draw", "away": away}[opt["best_direction"]]
         ou_txt = f" | O/U {ou}" if ou else ""
         alts = ", ".join(a["score"] for a in opt["alternatives"][:2])
@@ -323,6 +334,8 @@ def cmd_daily_picks(args) -> int:
         print(f"   market: {home} {fair[0]:.0%} / draw {fair[1]:.0%} / {away} {fair[2]:.0%}{ou_txt}")
         print(f"   >>> BET: {lean} {opt['best_score']}   "
               f"(E[pts]={opt['expected_points']:.2f}; alts {alts})")
+        for w in warn:
+            print(f"   ⚠ LINEUP: {w} — downgrade this pick")
     print("\nEV = direction_pts·P(outcome) + exact_bonus·P(score). Back the favourite; "
           "exact scores still hit only ~10-18%.")
     return 0
@@ -409,6 +422,8 @@ def build_parser() -> argparse.ArgumentParser:
                      help="tournament stage for point values (group/round_of_16/...)")
     pdp.add_argument("--risk", type=float, default=0.0,
                      help="0=safe EV-max; →1 chase big exact-score swings (use when behind)")
+    pdp.add_argument("--no-lineups", action="store_true",
+                     help="skip the per-match lineup fetch (faster)")
     pdp.set_defaults(func=cmd_daily_picks)
 
     pc = sub.add_parser("calibration",
