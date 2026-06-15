@@ -285,10 +285,13 @@ def cmd_calibration(args) -> int:
 
 
 def cmd_daily_picks(args) -> int:
-    """Market-grounded pick digest for upcoming fixtures (sane, no underdog bias)."""
+    """EV-optimal pick digest for upcoming fixtures (stage-aware game scoring)."""
+    from wc2026.betting.points import STAGE_POINTS, optimize_pick
     from wc2026.betting.scorelines import recommend_from_odds
-    from wc2026.data.schema import Odds
+    from wc2026.data.schema import Odds, Stage
     from wc2026.data.sources.espn import EspnSource
+
+    args.stage = Stage(args.stage) if not isinstance(args.stage, Stage) else args.stage
 
     fixtures = EspnSource().fixtures(days=args.days)
     rows = []
@@ -301,22 +304,26 @@ def cmd_daily_picks(args) -> int:
             ou = float(ou) if ou is not None else None
         except (TypeError, ValueError):
             ou = None
-        rec = recommend_from_odds(Odds(cur["home"], cur["draw"], cur["away"]), ou_line=ou)
-        fair = rec["market_fair"]
-        rows.append((f.date[:16], f.home, f.away, fair, rec, ou))
+        odds = Odds(cur["home"], cur["draw"], cur["away"])
+        rec = recommend_from_odds(odds, ou_line=ou)
+        opt = optimize_pick(odds, stage=args.stage, ou_line=ou)
+        rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt))
     if not rows:
         print("No upcoming fixtures with odds found.")
         return 0
-    print(f"\nDAILY PICKS — market-grounded ({len(rows)} matches)\n" + "=" * 64)
-    for date, home, away, fair, rec, ou in rows:
-        lean = {"home": home, "draw": "Draw", "away": away}[rec["outcome_lean"]]
+    dp, ep = STAGE_POINTS[args.stage]
+    print(f"\nDAILY PICKS — EV-optimal ({len(rows)} matches, {args.stage.value}: "
+          f"direction={dp} / exact={ep} pts)\n" + "=" * 66)
+    for date, home, away, fair, rec, ou, opt in rows:
+        lean = {"home": home, "draw": "Draw", "away": away}[opt["best_direction"]]
         ou_txt = f" | O/U {ou}" if ou else ""
+        alts = ", ".join(a["score"] for a in opt["alternatives"][:2])
         print(f"\n{date}  {home} v {away}")
         print(f"   market: {home} {fair[0]:.0%} / draw {fair[1]:.0%} / {away} {fair[2]:.0%}{ou_txt}")
-        print(f"   OUTCOME pick : {lean}")
-        print(f"   SCORE pick   : {rec['modal_score']}  "
-              f"(alts: {', '.join(s['score'] for s in rec['top_scores'][1:3])})")
-    print("\nNote: scores are market-implied; every exact score is only ~10-16% likely.")
+        print(f"   >>> BET: {lean} {opt['best_score']}   "
+              f"(E[pts]={opt['expected_points']:.2f}; alts {alts})")
+    print("\nEV = direction_pts·P(outcome) + exact_bonus·P(score). Back the favourite; "
+          "exact scores still hit only ~10-18%.")
     return 0
 
 
@@ -395,8 +402,10 @@ def build_parser() -> argparse.ArgumentParser:
     pl.set_defaults(func=cmd_lines)
 
     pdp = sub.add_parser("daily-picks",
-                         help="market-grounded pick digest for upcoming fixtures")
+                         help="EV-optimal pick digest for upcoming fixtures")
     pdp.add_argument("--days", type=int, default=2)
+    pdp.add_argument("--stage", default="group",
+                     help="tournament stage for point values (group/round_of_16/...)")
     pdp.set_defaults(func=cmd_daily_picks)
 
     pc = sub.add_parser("calibration",

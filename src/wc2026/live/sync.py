@@ -21,9 +21,9 @@ import datetime as _dt
 import json
 from pathlib import Path
 
-from wc2026.betting.scorelines import recommend_from_odds
+from wc2026.betting.points import optimize_pick
 from wc2026.betting.value import devig, expected_value
-from wc2026.data.schema import Odds
+from wc2026.data.schema import Odds, Stage
 from wc2026.data.sources.base import SourceUnavailable
 from wc2026.data.sources.espn import EspnSource
 from wc2026.data.sources.polymarket import PolymarketSource
@@ -267,7 +267,7 @@ class LiveSync:
         return out
 
     def _market_pick(self, f) -> dict | None:
-        """Market+O/U grounded outcome & exact-score pick — the trustworthy one."""
+        """EV-optimal outcome & exact-score pick (group-stage game scoring)."""
         cur = (f.odds or {}).get("close")
         if not cur:
             return None
@@ -276,11 +276,12 @@ class LiveSync:
             ou = float(ou) if ou is not None else None
         except (TypeError, ValueError):
             ou = None
-        rec = recommend_from_odds(Odds(cur["home"], cur["draw"], cur["away"]), ou_line=ou)
-        lean = {"home": f.home, "draw": "Draw", "away": f.away}[rec["outcome_lean"]]
-        return {"outcome": lean, "outcome_side": rec["outcome_lean"],
-                "score": rec["modal_score"],
-                "alts": [s["score"] for s in rec["top_scores"][1:3]]}
+        opt = optimize_pick(Odds(cur["home"], cur["draw"], cur["away"]),
+                            stage=Stage.GROUP, ou_line=ou)
+        lean = {"home": f.home, "draw": "Draw", "away": f.away}[opt["best_direction"]]
+        return {"outcome": lean, "outcome_side": opt["best_direction"],
+                "score": opt["best_score"], "ev": opt["expected_points"],
+                "alts": [a["score"] for a in opt["alternatives"][:2]]}
 
     @staticmethod
     def _fixture_crowd(f, crowd_idx) -> dict | None:
