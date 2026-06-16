@@ -54,6 +54,7 @@ class LiveFixture:
     home_goals: int | None = None
     away_goals: int | None = None
     odds: dict = field(default_factory=dict)   # decimal {home,draw,away}, open, ou
+    venue_city: str = ""
 
 
 class EspnSource(DataSource):
@@ -133,6 +134,7 @@ class EspnSource(DataSource):
                     status=comp["status"]["type"]["state"],
                     home_goals=hg, away_goals=ag,
                     odds=self._parse_odds(comp),
+                    venue_city=(comp.get("venue", {}).get("address", {}) or {}).get("city", ""),
                 ))
         logger.info("ESPN fixtures %s +%dd: %d matches", start, days, len(out))
         return out

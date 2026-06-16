@@ -292,6 +292,7 @@ def cmd_daily_picks(args) -> int:
     from wc2026.data.schema import Odds, Stage
     from wc2026.data.sources.espn import EspnSource
     from wc2026.live.lineups import lineup_report
+    from wc2026.live.venue import venue_flag
 
     args.stage = Stage(args.stage) if not isinstance(args.stage, Stage) else args.stage
 
@@ -317,7 +318,11 @@ def cmd_daily_picks(args) -> int:
             rep = lineup_report(lus.get(tid, []), load_fc26_squad(tid, tid) or [])
             if rep and rep["rested_stars"]:
                 who = ", ".join(f"{r['name']}({int(r['overall'])})" for r in rep["rested_stars"][:3])
-                warn.append(f"{f.home if side == 'home' else f.away} rest {who} ({rep['delta']:+.1f})")
+                warn.append(f"⚠ LINEUP: {f.home if side == 'home' else f.away} rest {who} "
+                            f"({rep['delta']:+.1f}) — downgrade")
+        vflag = venue_flag(f.venue_city, f.home_id, f.away_id)
+        if vflag:
+            warn.append(vflag)
         rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt, warn))
     if not rows:
         print("No upcoming fixtures with odds found.")
@@ -335,7 +340,7 @@ def cmd_daily_picks(args) -> int:
         print(f"   >>> BET: {lean} {opt['best_score']}   "
               f"(E[pts]={opt['expected_points']:.2f}; alts {alts})")
         for w in warn:
-            print(f"   ⚠ LINEUP: {w} — downgrade this pick")
+            print(f"   {w}")
     print("\nEV = direction_pts·P(outcome) + exact_bonus·P(score). Back the favourite; "
           "exact scores still hit only ~10-18%.")
     return 0
