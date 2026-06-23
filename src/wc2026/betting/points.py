@@ -65,11 +65,12 @@ def rank_scorelines(P: np.ndarray, dir_pts: float, exact_pts: float,
 
 
 def optimize_pick(odds, stage: Stage = Stage.GROUP, ou_line: float | None = None,
-                  devig_method: str = "multiplicative", risk: float = 0.0) -> dict:
+                  devig_method: str = "multiplicative", risk: float = 0.0,
+                  goal_boost: float = 1.0) -> dict:
     """EV-maximising prediction for one match (raise ``risk`` when trailing)."""
     dir_pts, exact_pts = STAGE_POINTS.get(stage, (1, 3))
     fair = devig(odds, devig_method)
-    P = score_matrix(*market_goal_rates(fair, ou_line=ou_line))
+    P = score_matrix(*market_goal_rates(fair, ou_line=ou_line, goal_boost=goal_boost))
     ranked = rank_scorelines(P, dir_pts, exact_pts, risk=risk)
     best = ranked[0]
     return {

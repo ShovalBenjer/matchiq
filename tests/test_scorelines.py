@@ -66,3 +66,15 @@ def test_recommend_with_ou_changes_modal_score():
     high = recommend_from_odds(odds, ou_line=4.5)["modal_score"]
     # Low O/U → fewer total goals in the modal score than a high O/U.
     assert sum(map(int, low.split("-"))) < sum(map(int, high.split("-")))
+
+
+def test_goal_boost_raises_total_goals():
+    from wc2026.betting.scorelines import market_goal_rates, recommend_from_odds
+    from wc2026.data.schema import Odds
+    base = sum(market_goal_rates([0.5, 0.27, 0.23], ou_line=2.5, goal_boost=1.0))
+    boosted = sum(market_goal_rates([0.5, 0.27, 0.23], ou_line=2.5, goal_boost=1.2))
+    assert boosted > base + 0.3
+    # The boosted modal score should not have fewer goals than the base one.
+    lo = recommend_from_odds(Odds(1.8, 3.6, 4.5), ou_line=2.5, goal_boost=1.0)["modal_score"]
+    hi = recommend_from_odds(Odds(1.8, 3.6, 4.5), ou_line=2.5, goal_boost=1.25)["modal_score"]
+    assert sum(map(int, hi.split("-"))) >= sum(map(int, lo.split("-")))

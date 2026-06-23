@@ -310,7 +310,8 @@ def cmd_daily_picks(args) -> int:
             ou = None
         odds = Odds(cur["home"], cur["draw"], cur["away"])
         rec = recommend_from_odds(odds, ou_line=ou)
-        opt = optimize_pick(odds, stage=args.stage, ou_line=ou, risk=args.risk)
+        opt = optimize_pick(odds, stage=args.stage, ou_line=ou, risk=args.risk,
+                            goal_boost=args.goal_boost)
         # Lineup check (fires ~1h pre-KO): which side rested key players?
         warn = []
         lus = espn.lineups(f.match_id) if not args.no_lineups else {}
@@ -429,6 +430,8 @@ def build_parser() -> argparse.ArgumentParser:
                      help="0=safe EV-max; →1 chase big exact-score swings (use when behind)")
     pdp.add_argument("--no-lineups", action="store_true",
                      help="skip the per-match lineup fetch (faster)")
+    pdp.add_argument("--goal-boost", type=float, default=1.0,
+                     help="scale predicted goals (>1 for a high-scoring tournament / score differentiation)")
     pdp.set_defaults(func=cmd_daily_picks)
 
     pc = sub.add_parser("calibration",
