@@ -286,7 +286,7 @@ def cmd_calibration(args) -> int:
 
 def cmd_daily_picks(args) -> int:
     """EV-optimal pick digest for upcoming fixtures (stage-aware game scoring)."""
-    from wc2026.betting.points import STAGE_POINTS, optimize_pick
+    from wc2026.betting.points import STAGE_POINTS, optimize_pick, surprise_pick
     from wc2026.betting.scorelines import recommend_from_odds
     from wc2026.data.fc26 import load_fc26_squad
     from wc2026.data.schema import Odds, Stage
@@ -324,7 +324,9 @@ def cmd_daily_picks(args) -> int:
         vflag = venue_flag(f.venue_city, f.home_id, f.away_id)
         if vflag:
             warn.append(vflag)
-        rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt, warn))
+        sp = (surprise_pick(odds, stage=args.stage, ou_line=ou,
+                            goal_boost=args.goal_boost) if args.surprise else None)
+        rows.append((f.date[:16], f.home, f.away, rec["market_fair"], rec, ou, opt, warn, sp))
     if not rows:
         print("No upcoming fixtures with odds found.")
         return 0
@@ -332,7 +334,7 @@ def cmd_daily_picks(args) -> int:
     mode = "EV-optimal (safe)" if args.risk <= 0 else f"variance/chase (risk={args.risk})"
     print(f"\nDAILY PICKS — {mode} ({len(rows)} matches, {args.stage.value}: "
           f"direction={dp} / exact={ep} pts)\n" + "=" * 66)
-    for date, home, away, fair, rec, ou, opt, warn in rows:
+    for date, home, away, fair, rec, ou, opt, warn, _sp in rows:
         lean = {"home": home, "draw": "Draw", "away": away}[opt["best_direction"]]
         ou_txt = f" | O/U {ou}" if ou else ""
         alts = ", ".join(a["score"] for a in opt["alternatives"][:2])
@@ -342,6 +344,18 @@ def cmd_daily_picks(args) -> int:
               f"(E[pts]={opt['expected_points']:.2f}; alts {alts})")
         for w in warn:
             print(f"   {w}")
+    if args.surprise:
+        # Differentiation card: where a draw or upset pick gains on the field.
+        card = [(d, h, a, sp) for d, h, a, *_rest, sp in rows if sp]
+        print("\nSURPRISE CARD — differentiation plays (trailing-player mode)")
+        print("-" * 66)
+        for d, h, a, sp in sorted(card, key=lambda r: -r[3]["p_draw"])[:5]:
+            print(f"  DRAW  {h} v {a}: {sp['draw_score']} "
+                  f"(P(draw)={sp['p_draw']:.0%}, exact {sp['p_draw_exact']:.0%})")
+        for d, h, a, sp in sorted(card, key=lambda r: -r[3]["p_upset"])[:3]:
+            dog = h if sp["underdog"] == "home" else a
+            print(f"  UPSET {h} v {a}: {dog} {sp['upset_score']} "
+                  f"(P(upset)={sp['p_upset']:.0%}, exact {sp['p_upset_exact']:.0%})")
     print("\nEV = direction_pts·P(outcome) + exact_bonus·P(score). Back the favourite; "
           "exact scores still hit only ~10-18%.")
     return 0
@@ -430,8 +444,10 @@ def build_parser() -> argparse.ArgumentParser:
                      help="0=safe EV-max; →1 chase big exact-score swings (use when behind)")
     pdp.add_argument("--no-lineups", action="store_true",
                      help="skip the per-match lineup fetch (faster)")
-    pdp.add_argument("--goal-boost", type=float, default=1.0,
-                     help="scale predicted goals (>1 for a high-scoring tournament / score differentiation)")
+    pdp.add_argument("--goal-boost", type=float, default=None,
+                     help="scale predicted goals (default: stage-aware — group 1.10, knockout 0.90)")
+    pdp.add_argument("--surprise", action="store_true",
+                     help="append the differentiation card: best draws + live upsets")
     pdp.set_defaults(func=cmd_daily_picks)
 
     pc = sub.add_parser("calibration",

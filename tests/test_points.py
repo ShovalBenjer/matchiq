@@ -63,3 +63,27 @@ def test_risk_can_change_the_pick_on_a_coin_flip():
     bold = optimize_pick(odds, Stage.GROUP, ou_line=1.5, risk=1.0)["best_score"]
     # Both valid scorelines; the bold one targets the single most-likely exact.
     assert "-" in safe and "-" in bold
+
+
+def test_stage_aware_default_boost():
+    from wc2026.betting.points import default_goal_boost
+    assert default_goal_boost(Stage.GROUP) == 1.10
+    for st in (Stage.ROUND_OF_32, Stage.ROUND_OF_16, Stage.QUARTER, Stage.FINAL):
+        assert default_goal_boost(st) == 0.90   # knockout regulation tightens
+    # optimize_pick with goal_boost=None picks lower totals in knockouts.
+    odds = Odds(1.909, 3.4, 4.5)
+    g = optimize_pick(odds, Stage.GROUP, ou_line=2.5, goal_boost=None)["best_score"]
+    k = optimize_pick(odds, Stage.ROUND_OF_16, ou_line=2.5, goal_boost=None)["best_score"]
+    assert sum(map(int, k.split("-"))) <= sum(map(int, g.split("-")))
+
+
+def test_surprise_pick_structure():
+    from wc2026.betting.points import surprise_pick
+    sp = surprise_pick(Odds(1.909, 3.4, 4.5), Stage.ROUND_OF_16, ou_line=2.5)
+    assert 0 < sp["p_draw"] < 1
+    x, y = map(int, sp["draw_score"].split("-"))
+    assert x == y                                # a draw scoreline
+    assert sp["underdog"] == "away"              # 4.5 side is the dog
+    ux, uy = map(int, sp["upset_score"].split("-"))
+    assert uy > ux                               # an away-win scoreline
+    assert sp["p_upset"] < 0.5
