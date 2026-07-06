@@ -36,3 +36,15 @@ def test_football_data_couk_live_odds():
     withodds = [m for m in matches if m.odds is not None]
     assert len(withodds) > 100
     assert all(m.odds.home > 1.0 for m in withodds)
+
+
+def test_espn_slug_aliases_join_the_corpus():
+    """Live ESPN names must map to corpus/fc26 slugs (the USA join bug)."""
+    from wc2026.data.sources.espn import _slug
+    assert _slug("United States") == "usa"
+    assert _slug("Czech Republic") == "czechia"
+    assert _slug("Côte d'Ivoire") == "ivory_coast"
+    assert _slug("Cabo Verde") == "cape_verde"
+    assert _slug("Curaçao") == "curacao"
+    assert _slug("South Korea") == "south_korea"     # already fine, must not break
+    assert _slug("Bosnia and Herzegovina") == "bosnia_herzegovina"

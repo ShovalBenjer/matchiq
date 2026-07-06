@@ -38,8 +38,28 @@ def american_to_decimal(american) -> float | None:
     return 1.0 + (a / 100.0 if a > 0 else 100.0 / abs(a))
 
 
+# ESPN display names → corpus/FC26 slugs. Without this, the live path fails to
+# join team history (the "USA bug": ESPN says united_states, corpus says usa),
+# silently zeroing the model's contribution and the FC26 lineup lookup.
+_ALIASES = {
+    "united_states": "usa",
+    "czech_republic": "czechia",
+    "côte_d'ivoire": "ivory_coast",
+    "cote_d'ivoire": "ivory_coast",
+    "cabo_verde": "cape_verde",
+    "curaçao": "curacao",
+    "türkiye": "turkey",
+    "bosnia_and_herzegovina": "bosnia_herzegovina",
+    "bosnia_herzegovina": "bosnia_herzegovina",
+    "ir_iran": "iran",
+    "korea_republic": "south_korea",
+    "dr_congo": "congo_dr",
+}
+
+
 def _slug(name: str) -> str:
-    return name.strip().lower().replace(" ", "_").replace("-", "_").replace(".", "")
+    raw = name.strip().lower().replace(" ", "_").replace("-", "_").replace(".", "")
+    return _ALIASES.get(raw, raw)
 
 
 @dataclass
