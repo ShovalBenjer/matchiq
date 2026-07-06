@@ -101,7 +101,7 @@ class LineLog:
             return []
         return [{"type": "pick", "match_id": r.match_id, "outcome": r.outcome,
                  "odds_taken": r.odds, "model_prob": r.model_prob, "fair_prob": r.fair_prob,
-                 "edge": r.edge, "stake": r.stake} for r in recs]
+                 "edge": r.edge, "stake": r.stake, "strategy": "model"} for r in recs]
 
     # -- settlement ------------------------------------------------------
     def settle_manual(self, match_id: str, result: str,

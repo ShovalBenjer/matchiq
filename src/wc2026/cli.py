@@ -361,6 +361,35 @@ def cmd_daily_picks(args) -> int:
     return 0
 
 
+def cmd_recalibrate(args) -> int:
+    """Closed loop: learn goal boosts + strategy posteriors from the settled ledger."""
+    from wc2026.betting.linelog import LineLog
+    from wc2026.betting.recalibrate import (allocate, recalibrate_from_linelog,
+                                            save_calibration)
+
+    records = LineLog().records()
+    cal = recalibrate_from_linelog(records)
+    print(json.dumps({k: (round(v, 4) if isinstance(v, float) else v)
+                      for k, v in cal.items()}, indent=2))
+    # Strategy posteriors from tagged, settled picks (hit = pick scored > 0).
+    settles = {r["match_id"]: r for r in records if r["type"] == "settle"}
+    stats: dict[str, list[int]] = {}
+    for r in records:
+        if r.get("type") != "pick" or r["match_id"] not in settles:
+            continue
+        strat = r.get("strategy", "model")
+        won = settles[r["match_id"]].get("result") == r.get("outcome")
+        h, n = stats.get(strat, [0, 0])
+        stats[strat] = [h + int(won), n + 1]
+    if stats:
+        post = allocate({k: tuple(v) for k, v in stats.items()})
+        print("strategy posteriors:", json.dumps(post))
+    if args.write:
+        save_calibration({k: v for k, v in cal.items() if k in ("group", "knockout")})
+        print("calibration written → data/calibration.json")
+    return 0
+
+
 def cmd_crowd(args) -> int:
     """Compare the model's winner probabilities to live Polymarket crowd wisdom."""
     orch = _orchestrator(args)
@@ -449,6 +478,12 @@ def build_parser() -> argparse.ArgumentParser:
     pdp.add_argument("--surprise", action="store_true",
                      help="append the differentiation card: best draws + live upsets")
     pdp.set_defaults(func=cmd_daily_picks)
+
+    prc = sub.add_parser("recalibrate",
+                         help="closed loop: learn goal boosts/strategy mix from the ledger")
+    prc.add_argument("--write", action="store_true",
+                     help="persist data/calibration.json (used by daily-picks)")
+    prc.set_defaults(func=cmd_recalibrate)
 
     pc = sub.add_parser("calibration",
                         help="calibration & ranking scoreboard (trust the probabilities?)")

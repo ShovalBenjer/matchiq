@@ -15,6 +15,9 @@ cell. This is the "1-0 Sweden beats 1-1" reasoning, automated and stage-aware.
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import numpy as np
 
 from wc2026.betting.scorelines import market_goal_rates, score_matrix, _MAXG
@@ -34,14 +37,33 @@ STAGE_POINTS = {
 }
 
 
-def default_goal_boost(stage: Stage) -> float:
-    """Stage-aware goal calibration, measured on WC2026 itself.
+CALIBRATION_PATH = Path("data/calibration.json")
+_CAL_CACHE: dict | None = None
 
-    Group games ran ~3.0 g/g vs a ~2.7 market line (boost 1.10). Knockout
-    REGULATION play collapsed to ~2.2 g/g (R32 sample) — the contest scores the
-    90 minutes, and history's "knockouts score more" includes extra time — so
-    knockouts get a *sub-1* boost. Update these as rounds settle.
+
+def _calibration() -> dict:
+    global _CAL_CACHE
+    if _CAL_CACHE is None:
+        try:
+            _CAL_CACHE = json.loads(Path(CALIBRATION_PATH).read_text())
+        except (OSError, ValueError):
+            _CAL_CACHE = {}
+    return _CAL_CACHE
+
+
+def default_goal_boost(stage: Stage) -> float:
+    """Stage-aware goal calibration — CLOSED LOOP.
+
+    Prefers `data/calibration.json` (written by `wc2026 recalibrate --write`
+    from the settled forward-test ledger) so the dial follows real results.
+    Falls back to the session-measured constants: group 1.10 (3.0 g/g observed
+    vs ~2.7 line), knockout 0.90 (regulation collapsed to ~2.2; the contest
+    scores the 90 minutes — extra time is why history says otherwise).
     """
+    bucket = "group" if stage == Stage.GROUP else "knockout"
+    cal = _calibration()
+    if isinstance(cal.get(bucket), (int, float)):
+        return float(cal[bucket])
     return 1.10 if stage == Stage.GROUP else 0.90
 
 

@@ -35,6 +35,7 @@ jobs:
         # pre-kickoff prices and the model's paper picks at those exact prices.
         run: |
           python -m wc2026.cli lines settle --days 3 || echo "settle skipped"
+          python -m wc2026.cli recalibrate --write || echo "recalibrate skipped"
           python -m wc2026.cli lines snapshot --days 5 || echo "snapshot skipped"
           python -m wc2026.cli lines report || true
       - name: Commit refreshed dashboard + forward-test ledger
@@ -42,6 +43,7 @@ jobs:
           git config user.name  "matchiq-bot"
           git config user.email "actions@users.noreply.github.com"
           git add docs/live data/linelog.jsonl
+          git add data/calibration.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes."
           else
