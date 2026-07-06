@@ -32,8 +32,11 @@ def _orchestrator(args):
 
 
 def cmd_info(args) -> int:
+    from wc2026.models.capabilities import model_capabilities
+
     cfg = load_config(args.config)
     print(json.dumps(cfg.to_dict(), indent=2, default=lambda o: list(o) if isinstance(o, tuple) else o))
+    print("model capabilities:", json.dumps(model_capabilities(), indent=2))
     return 0
 
 

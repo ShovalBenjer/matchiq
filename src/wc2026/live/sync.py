@@ -28,6 +28,7 @@ from wc2026.data.sources.base import SourceUnavailable
 from wc2026.data.sources.espn import EspnSource
 from wc2026.data.sources.polymarket import PolymarketSource
 from wc2026.live.teamnews import match_team_news
+from wc2026.models.capabilities import model_capabilities
 from wc2026.utils.logging import get_logger
 
 logger = get_logger("live.sync")
@@ -79,8 +80,9 @@ class LiveSync:
             "engines": {
                 "market": "DraftKings (3-way, Shin-devigged) + Polymarket crowd",
                 "model": ("Dixon-Coles + Bradley-Terry + graph-centrality ensemble on "
-                          "REAL results (martj42, since 2015) with curse/aging/altitude/rest priors"),
+                          "REAL results (martj42, since 2015); unvalidated priors OFF"),
                 "blend": "log-opinion pool, model weight ≈ 0.35",
+                "capabilities": model_capabilities(),
             },
             "groups": groups,
             "fixtures": fixtures,
