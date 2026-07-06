@@ -66,6 +66,12 @@ Status legend: ✅ done · 🟡 partial · ⏳ pending · ⛔ blocked (needs ext
 
 ---
 
+## ✅ TDD loop closed (07-04): T0 PRD committed · T1 closed-loop recalibration
+(ledger→calibration.json→goal boosts; Beta strategy posteriors) · T2 claims
+ledger as CI gate (docs/CLAIMS.md + test_claims_gate) · T3 unvalidated priors
+killed by default · T4 ESPN slug aliases (USA join fixed) · T5 capability
+honesty (fallbacks declared) · T6 CLV closing-line regression test.
+
 ## 🔴 Product audit actions (see docs/PRODUCT_AUDIT.md — added 06-14)
 
 The audit found the product is essentially "the market, repackaged": the model

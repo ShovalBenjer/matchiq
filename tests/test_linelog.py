@@ -68,3 +68,20 @@ def test_report_with_no_picks(tmp_path):
     rep = LineLog(tmp_path / "empty.jsonl").report()
     assert rep["n_settled"] == 0
     assert "no settled picks" in rep["verdict"]
+
+
+def test_closing_line_is_last_snapshot(tmp_path):
+    """CLV integrity: with drifting prices, settle must freeze the LAST pre-KO
+    snapshot as the closing line — that is what makes CLV real (T6)."""
+    log = LineLog(tmp_path / "clv.jsonl")
+    log.append({"type": "snapshot", "match_id": "m9", "date": "2026-07-01T20:00Z",
+                "odds": {"H": 2.4, "D": 3.3, "A": 3.0}, "ts": 1.0})
+    log.append({"type": "pick", "match_id": "m9", "outcome": "H", "odds_taken": 2.4,
+                "model_prob": 0.5, "fair_prob": 0.4, "edge": 0.1, "stake": 10.0,
+                "strategy": "model", "ts": 1.5})
+    # Price drifts against us before kickoff → the close is 2.1, not 2.4.
+    log.append({"type": "snapshot", "match_id": "m9", "date": "2026-07-01T20:00Z",
+                "odds": {"H": 2.1, "D": 3.4, "A": 3.4}, "ts": 2.0})
+    log.settle_manual("m9", "H", 1, 0)
+    p = log.settled_picks()[0]
+    assert p["clv"] is not None and abs(p["clv"] - (2.4 / 2.1 - 1.0)) < 1e-9  # beat the close
