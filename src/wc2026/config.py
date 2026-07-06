@@ -103,14 +103,17 @@ class PriorsConfig:
     enable_market_blend: bool = True
     market_blend_weight: float = 0.35  # rest of the weight goes to the market
     # Holders' curse (group-stage only, heavily regressed from ~2.3 xPts).
-    enable_champions_curse: bool = True
+    # KILLED by default (autonomy-loop rule: no held-out evidence → no nudge).
+    # These only touch futures (n=1, unverifiable in-tournament); re-enable only
+    # with a measured justification. See docs/CLAIMS.md "Explicit NON-claims".
+    enable_champions_curse: bool = False
     champions_curse_xpts: float = 0.4
     # Squad-age decline.
-    enable_squad_age: bool = True
+    enable_squad_age: bool = False
     squad_age_baseline: float = 27.0
     squad_age_coef: float = 0.02
     # Favourite shrink (single-elimination variance).
-    enable_favourite_shrink: bool = True
+    enable_favourite_shrink: bool = False
     favourite_shrink_power: float = 0.92  # <1 flattens the top of the board
     # Environmental/logistical adjustments (altitude/heat/travel/rest).
     enable_environment: bool = True

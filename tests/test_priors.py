@@ -54,3 +54,15 @@ def test_favourite_shrink_flattens_top():
     assert np.isclose(sum(out.values()), 1.0)
     assert out["a"] < wp["a"]          # favourite loses share
     assert out["e"] > wp["e"]          # longshot gains share
+
+
+def test_unvalidated_priors_default_off():
+    """Autonomy-loop 'kill' rule: nudges with no held-out evidence must not run
+    by default. Market blend stays on (evidence: market calibration dominates,
+    2026 report + our own backtests)."""
+    from wc2026.config import PriorsConfig
+    cfg = PriorsConfig()
+    assert cfg.enable_market_blend is True          # evidence-backed → stays
+    assert cfg.enable_champions_curse is False      # unvalidated → off
+    assert cfg.enable_squad_age is False            # unvalidated → off
+    assert cfg.enable_favourite_shrink is False     # unvalidated → off
