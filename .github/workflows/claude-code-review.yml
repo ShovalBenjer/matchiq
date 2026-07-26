@@ -40,8 +40,6 @@ jobs:
             - Tiered depth: Critical/High get code snippets; Low gets one line.
             - Max 5 nits; count the rest in the summary.
             - Do not report style that CI already enforces.
-claude_args: |
+          claude_args: |
             --model claude-sonnet-5
             --max-turns 10
-
-
