@@ -21,14 +21,13 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          allowed_bots: '*'
           track_progress: true
           prompt: |
             Perform a fresh, full review of this PR (do not assume prior reviews).
@@ -44,6 +43,3 @@ jobs:
           claude_args: |
             --model claude-sonnet-5
             --max-turns 10
-
- 
-
