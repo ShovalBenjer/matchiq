@@ -1,2 +1,9 @@
-* @ShovalBenjer
-.github @ShovalBenjer
+# Default owners for all files in the repo
+* @claude-setup/owners
+
+# GitHub workflows are owned by the platform team
+.github/ @claude-setup/owners
+.github/workflows/ @claude-setup/owners
+
+# Documentation
+*.md @claude-setup/owners
