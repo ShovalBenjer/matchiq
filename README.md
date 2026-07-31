@@ -35,12 +35,7 @@ cd matchiq
 
 ## Contributing
 
-1. Create a feature branch from `main`.
-2. Make your changes with clear, focused commits.
-3. Open a pull request — Claude Code will automatically review it.
-4. Address any feedback and merge once approved.
-
-See `CLAUDE-OS.md` for the full workflow and conventions documentation.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full contributing guidelines.
 
 ## License
 
