@@ -2,6 +2,7 @@
 
 ## In Progress
 
+- [x] **Add CONTRIBUTING.md** — Added contributing guidelines covering PR process, code style, testing, and commit conventions.
 - [ ] **Expand README.md** — Add project description, setup/usage instructions, and contributing guidelines.
 - [ ] **Define project scope** — Clarify what `matchiq` does and its intended feature set.
 
