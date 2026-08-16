@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  lint:
+    name: markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --global markdownlint-cli
+      - run: markdownlint "**/*.md"
+
+  test:
+    name: structure validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          set -e
+          test -f README.md
+          test -f LICENSE
+          test -f .gitignore
+          test -f CODEOWNERS
+          test -d .github/workflows
+          ls .github/workflows/*.yml
