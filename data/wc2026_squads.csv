@@ -1,0 +1,1057 @@
+team_id,name,position,depth_rank,age,overall,value_eur,club,finishing
+algeria,R. Mahrez,MID,1,34,84,20000000.0,Al Ahli SFC,80.0
+algeria,R. Aït-Nouri,DEF,1,24,81,34500000.0,Manchester City,50.0
+algeria,I. Bennacer,MID,2,27,80,23000000.0,Dinamo Zagreb,67.0
+algeria,M. Amoura,FWD,1,25,80,29500000.0,VfL Wolfsburg,83.0
+algeria,A. Gouiri,FWD,2,25,79,26000000.0,Olympique de Marseille,85.0
+algeria,R. Bensebaini,DEF,2,30,79,15000000.0,Borussia Dortmund,72.0
+algeria,A. Zorgane,MID,3,25,78,16000000.0,Union Saint-Gilloise,67.0
+algeria,H. Boudaoui,MID,4,25,77,14000000.0,OGC Nice,68.0
+algeria,H. Aouar,MID,5,27,77,12000000.0,Al Ittihad,73.0
+algeria,N. Bentaleb,MID,6,30,77,9000000.0,Lille OSC,65.0
+algeria,S. Benrahma,FWD,3,29,77,10500000.0,NEOM SC,72.0
+algeria,H. Abdelli,MID,7,25,76,10500000.0,Angers SCO,67.0
+algeria,I. Kebbal,MID,8,26,76,8000000.0,Paris FC,72.0
+algeria,A. Hadj-Moussa,FWD,4,23,76,12000000.0,Feyenoord,73.0
+algeria,B. Bouanani,FWD,5,20,75,11000000.0,VfB Stuttgart,70.0
+algeria,A. Sâyoud,MID,9,34,75,2600000.0,Al Hazem FC,72.0
+algeria,A. Mandi,DEF,3,33,75,2700000.0,Lille OSC,41.0
+algeria,H. Belkebla,MID,10,31,74,3000000.0,Angers SCO,41.0
+algeria,R. Ghezzal,MID,11,33,74,2600000.0,Olympique Lyonnais,68.0
+algeria,F. Chaïbi,MID,12,22,74,8500000.0,Eintracht Frankfurt,71.0
+algeria,M. Belloumi,MID,13,23,73,4800000.0,Hull City,70.0
+algeria,R. Guitane,FWD,6,26,73,3600000.0,GD Estoril Praia,69.0
+algeria,A. Kadri,MID,14,25,73,4000000.0,KAA Gent,70.0
+argentina,L. Martínez,FWD,1,27,88,99000000.0,Inter,93.0
+argentina,A. Mac Allister,MID,1,26,87,93000000.0,Liverpool,79.0
+argentina,J. Alvarez,FWD,2,25,87,107000000.0,Atlético Madrid,88.0
+argentina,P. Dybala,MID,2,31,86,56500000.0,Roma,85.0
+argentina,L. Messi,FWD,3,38,86,22000000.0,Inter Miami,84.0
+argentina,E. Martínez,GK,1,32,85,26500000.0,Aston Villa,16.0
+argentina,E. Palacios,MID,3,26,84,52000000.0,Bayer 04 Leverkusen,74.0
+argentina,R. De Paul,MID,4,31,84,34500000.0,Inter Miami,75.0
+argentina,E. Fernández,MID,5,24,84,57000000.0,Chelsea,72.0
+argentina,G. Lo Celso,MID,6,29,82,30000000.0,Real Betis Balompié,82.0
+argentina,C. Romero,DEF,1,27,82,32500000.0,Tottenham Hotspur,48.0
+argentina,G. Rulli,GK,2,33,82,10000000.0,Olympique de Marseille,15.0
+argentina,N. Otamendi,DEF,2,37,82,5500000.0,SL Benfica,54.0
+argentina,L. Martínez,DEF,3,27,81,26000000.0,Manchester United,52.0
+argentina,J. Foyth,DEF,4,27,79,17500000.0,Villarreal CF,43.0
+argentina,J. Musso,GK,3,31,79,9500000.0,Atlético Madrid,18.0
+argentina,N. Molina,DEF,5,27,79,18500000.0,Atlético Madrid,67.0
+argentina,M. Acuña,DEF,6,33,78,7500000.0,River Plate,63.0
+argentina,L. Paredes,MID,7,31,78,11500000.0,Boca Juniors,60.0
+argentina,G. Montiel,DEF,7,28,78,12500000.0,River Plate,60.0
+argentina,N. Gonzalez,MID,8,27,78,15000000.0,Atlético Madrid,78.0
+argentina,N. Tagliafico,DEF,8,32,78,9500000.0,Olympique Lyonnais,57.0
+argentina,A. Garnacho,MID,9,21,77,21500000.0,Chelsea,77.0
+australia,M. Ryan,GK,1,33,78,4600000.0,Levante UD,15.0
+australia,J. Irvine,MID,1,32,75,4400000.0,FC St. Pauli,67.0
+australia,H. Souttar,DEF,1,26,73,3300000.0,Leicester City,25.0
+australia,C. Burgess,DEF,2,29,73,2500000.0,Swansea City,38.0
+australia,C. Goodwin,MID,2,33,73,1900000.0,Adelaide United,72.0
+australia,R. McGree,MID,3,26,72,2800000.0,Middlesbrough,66.0
+australia,M. Luongo,MID,4,32,72,1600000.0,Millwall FC,62.0
+australia,N. Milanović,MID,5,23,71,2700000.0,Aberdeen,74.0
+australia,K. Rowles,DEF,3,27,71,1900000.0,DC United,16.0
+australia,A. Grant,DEF,4,31,71,1300000.0,Sydney FC,43.0
+australia,C. Devlin,MID,6,27,71,2200000.0,Hearts,52.0
+australia,A. Circati,DEF,5,21,71,3900000.0,Parma,24.0
+australia,M. Boyle,FWD,1,32,71,1500000.0,Hibernian,73.0
+australia,N. D'Agostino,FWD,2,27,70,1900000.0,Viking FK,70.0
+australia,A. Carter,FWD,3,30,70,1600000.0,Santa Clara,73.0
+australia,P. Izzo,GK,2,30,70,1100000.0,Randers FC,14.0
+australia,B. Borrello,FWD,4,29,70,1600000.0,Western Sydney Wanderers,68.0
+australia,M. Leckie,MID,7,34,70,725000.0,Melbourne City FC,68.0
+australia,A. O'Neill,MID,8,26,70,1500000.0,New York City FC,59.0
+australia,C. Metcalfe,MID,9,25,69,1900000.0,FC St. Pauli,61.0
+australia,A. Caceres,MID,10,32,69,1100000.0,Macarthur FC,64.0
+australia,J. Bos,DEF,6,22,69,3000000.0,Feyenoord,55.0
+australia,J. Maclaren,FWD,5,31,69,1200000.0,Mohun Bagan Super Giant,74.0
+austria,K. Laimer,DEF,1,28,82,27500000.0,FC Bayern München,69.0
+austria,D. Alaba,DEF,2,33,82,14500000.0,Real Madrid,62.0
+austria,M. Sabitzer,MID,1,31,80,15000000.0,Borussia Dortmund,76.0
+austria,X. Schlager,MID,2,27,80,23000000.0,RB Leipzig,66.0
+austria,P. Lienhart,DEF,3,28,79,16500000.0,SC Freiburg,24.0
+austria,K. Danso,DEF,4,26,79,20500000.0,Tottenham Hotspur,26.0
+austria,S. Posch,DEF,5,28,79,16000000.0,Como,52.0
+austria,R. Schmid,MID,3,25,78,18500000.0,SV Werder Bremen,62.0
+austria,C. Baumgartner,MID,4,25,77,14000000.0,RB Leipzig,72.0
+austria,M. Friedl,DEF,6,27,77,11000000.0,SV Werder Bremen,39.0
+austria,N. Seiwald,MID,5,24,77,20000000.0,RB Leipzig,58.0
+austria,P. Wimmer,MID,6,24,77,16500000.0,VfL Wolfsburg,70.0
+austria,P. Mwene,DEF,7,31,76,5500000.0,1. FSV Mainz 05,52.0
+austria,V. Lazaro,MID,7,29,76,7500000.0,Torino,64.0
+austria,K. Stöger,MID,8,31,76,6000000.0,Borussia Mönchengladbach,69.0
+austria,F. Grillitsch,MID,9,29,75,5500000.0,Sporting Clube de Braga,58.0
+austria,L. Querfeld,DEF,8,21,75,12000000.0,1. FC Union Berlin,24.0
+austria,M. Grüll,MID,10,26,75,6000000.0,SV Werder Bremen,76.0
+austria,M. Cham,MID,11,24,75,9000000.0,SK Slavia Praha,71.0
+austria,D. Affengruber,DEF,9,24,75,11500000.0,Elche CF,38.0
+austria,M. Gregoritsch,FWD,1,31,75,4800000.0,Brøndby IF,78.0
+austria,G. Trauner,DEF,10,33,75,2700000.0,Feyenoord,50.0
+austria,M. Wöber,DEF,11,27,75,5500000.0,SV Werder Bremen,41.0
+belgium,T. Courtois,GK,1,33,89,33500000.0,Real Madrid,14.0
+belgium,K. De Bruyne,MID,1,34,87,36500000.0,Napoli,78.0
+belgium,Y. Tielemans,MID,2,28,85,54000000.0,Aston Villa,77.0
+belgium,R. Lukaku,FWD,1,32,84,34000000.0,Napoli,84.0
+belgium,L. Trossard,FWD,2,30,83,35000000.0,Arsenal,83.0
+belgium,M. Sels,GK,2,33,83,12000000.0,Nottingham Forest,16.0
+belgium,L. Openda,FWD,3,25,83,46000000.0,Juventus,84.0
+belgium,K. Casteels,GK,3,33,82,10000000.0,Al Qadsiah FC,15.0
+belgium,C. De Ketelaere,MID,3,24,82,43500000.0,Atalanta,78.0
+belgium,D. Lukébakio,MID,4,27,82,32500000.0,SL Benfica,82.0
+belgium,Y. Carrasco,FWD,4,31,81,21500000.0,Al Shabab,77.0
+belgium,A. Theate,DEF,1,25,80,26500000.0,Eintracht Frankfurt,23.0
+belgium,M. De Cuyper,DEF,2,24,80,31000000.0,Brighton & Hove Albion,70.0
+belgium,J. Doku,FWD,5,23,80,32000000.0,Manchester City,72.0
+belgium,H. Vanaken,MID,5,32,80,16500000.0,Club Brugge KV,81.0
+belgium,A. Onana,MID,6,23,79,23000000.0,Aston Villa,57.0
+belgium,A. Saelemaekers,MID,7,26,79,20500000.0,AC Milan,68.0
+belgium,M. Fofana,MID,8,20,78,31000000.0,Olympique Lyonnais,74.0
+belgium,S. Lammens,GK,4,22,78,27500000.0,Manchester United,10.0
+belgium,B. Heynen,MID,9,28,78,12500000.0,KRC Genk,74.0
+belgium,Z. Debast,MID,10,21,78,30000000.0,Sporting CP,51.0
+belgium,J. Bakayoko,FWD,6,22,78,28500000.0,RB Leipzig,74.0
+belgium,R. Lavia,MID,11,21,78,27000000.0,Chelsea,43.0
+brazil,Vini Jr.,FWD,1,24,89,141000000.0,Real Madrid,88.0
+brazil,Alisson,GK,1,32,89,51000000.0,Liverpool,13.0
+brazil,Raphinha,MID,1,28,89,104000000.0,FC Barcelona,87.0
+brazil,Gabriel,DEF,1,27,88,84000000.0,Arsenal,37.0
+brazil,Marquinhos,DEF,2,31,87,54500000.0,Paris Saint-Germain,59.0
+brazil,Bruno Guimarães,MID,2,27,86,77500000.0,Newcastle United,73.0
+brazil,Bremer,DEF,3,28,85,51000000.0,Juventus,49.0
+brazil,Rodrygo,FWD,2,24,85,81500000.0,Real Madrid,83.0
+brazil,Ederson,GK,2,31,85,28500000.0,Fenerbahçe SK,14.0
+brazil,Éder Militão,DEF,4,27,84,48000000.0,Real Madrid,48.0
+brazil,Murillo,DEF,5,22,83,47500000.0,Nottingham Forest,33.0
+brazil,Matheus Cunha,MID,3,26,83,45000000.0,Manchester United,85.0
+brazil,Ronaldo Cabrais,MID,4,29,83,35500000.0,Botafogo,74.0
+brazil,Savinho,FWD,3,21,82,47000000.0,Manchester City,74.0
+brazil,Lucas Mantela,GK,3,25,82,24500000.0,Palmeiras,15.0
+brazil,Fabinho,MID,5,31,82,21500000.0,Al Ittihad,63.0
+brazil,Malcom,MID,6,28,82,30500000.0,Al Hilal,77.0
+brazil,Ibañez,DEF,6,26,82,33500000.0,Al Ahli SFC,27.0
+brazil,Joelinton,MID,7,28,82,30500000.0,Newcastle United,75.0
+brazil,Éderson,MID,8,25,82,40000000.0,Atalanta,72.0
+brazil,Rosival Dourado,MID,9,25,81,25500000.0,Corinthians,53.0
+brazil,Welington Dano,DEF,7,25,81,26000000.0,Atlético Mineiro,51.0
+brazil,Carlos Augusto,DEF,8,26,81,27500000.0,Inter,68.0
+cameroon,B. Mbeumo,FWD,1,25,85,64500000.0,Manchester United,87.0
+cameroon,A. Zambo Anguissa,MID,1,29,82,29500000.0,Napoli,76.0
+cameroon,C. Baleba,MID,2,21,81,38000000.0,Brighton & Hove Albion,63.0
+cameroon,A. Onana,GK,1,29,80,14500000.0,Trabzonspor,12.0
+cameroon,F. Boyomo,DEF,1,23,78,26000000.0,CA Osasuna,35.0
+cameroon,H. Moukoudi,DEF,2,27,76,7500000.0,AEK Athens,31.0
+cameroon,E. Choupo-Moting,FWD,2,36,75,1900000.0,New York Red Bulls,75.0
+cameroon,Y. Neyou,MID,3,28,75,5500000.0,Getafe CF,64.0
+cameroon,J. Tchatchoua,DEF,3,24,74,8000000.0,Wolverhampton Wanderers,56.0
+cameroon,D. Namaso,FWD,3,24,73,4700000.0,AJ Auxerre,73.0
+cameroon,F. Moumbagna,FWD,4,25,73,4300000.0,Cremonese,74.0
+cameroon,M. Ngadeu,DEF,4,34,73,1000000.0,Beijing Guoan,34.0
+cameroon,P. Soko,FWD,5,27,73,3300000.0,UD Almería,75.0
+cameroon,O. Ntcham,MID,4,29,73,2600000.0,Samsunspor,68.0
+cameroon,O. Kemen,MID,5,28,72,2300000.0,Medipol Başakşehir FK,70.0
+cameroon,D. Yongwa,DEF,5,24,72,3100000.0,FC Lorient,41.0
+cameroon,F. Magri,FWD,6,25,72,3100000.0,Toulouse FC,74.0
+cameroon,I. Ganago,FWD,7,26,72,2900000.0,New England Revolution,71.0
+cameroon,N. Ngoumou,MID,6,25,72,3100000.0,Borussia Mönchengladbach,69.0
+cameroon,E. Tchato,DEF,6,22,71,4000000.0,Montpellier HSC,53.0
+cameroon,J. Onana,MID,7,25,71,2500000.0,Genoa,61.0
+cameroon,A. Avom Ebong,MID,8,20,71,4099999.0,FC Lorient,52.0
+cameroon,M. Hongla,MID,9,27,71,2100000.0,Granada CF,64.0
+canada,A. Davies,DEF,1,24,84,53500000.0,FC Bayern München,64.0
+canada,J. David,FWD,1,25,82,41000000.0,Juventus,85.0
+canada,A. Johnston,DEF,2,26,78,17000000.0,Celtic,57.0
+canada,M. Borjan,GK,1,37,78,1600000.0,Al Riyadh,15.0
+canada,C. Larin,FWD,2,30,77,10500000.0,Feyenoord,78.0
+canada,Stephen Eustáquio,MID,1,28,77,10000000.0,FC Porto,64.0
+canada,M. Bombito,DEF,3,25,76,13500000.0,OGC Nice,55.0
+canada,P. David,FWD,3,23,75,8500000.0,Union Saint-Gilloise,83.0
+canada,T. Buchanan,MID,2,26,74,5000000.0,Villarreal CF,65.0
+canada,D. Cornelius,DEF,4,27,74,4500000.0,Rangers FC,27.0
+canada,D. St. Clair,GK,2,28,73,2800000.0,Minnesota United FC,5.0
+canada,R. Laryea,MID,3,30,72,2300000.0,Toronto FC,60.0
+canada,I. Koné,MID,4,23,72,4700000.0,Sassuolo,59.0
+canada,L. Millar,MID,5,25,72,3100000.0,Hull City,66.0
+canada,J. Osorio,MID,6,33,71,1200000.0,Toronto FC,66.0
+canada,T. Bair,FWD,4,25,71,2500000.0,FC Lausanne-Sport,71.0
+canada,K. Miller,DEF,5,28,71,1600000.0,Portland Timbers,46.0
+canada,N. Sigur,DEF,6,21,70,3400000.0,Hajduk Split,54.0
+canada,T. Oluwaseyi,FWD,5,25,70,2200000.0,Villarreal CF,73.0
+canada,J. Hoilett,MID,7,35,69,575000.0,Hibernian,65.0
+canada,M. Crépeau,GK,3,31,69,750000.0,Portland Timbers,17.0
+canada,S. Piette,MID,8,30,69,1200000.0,CF Montréal,18.0
+canada,I. Ugbo,FWD,6,26,69,1700000.0,Sheffield Wednesday,71.0
+colombia,L. Díaz,MID,1,28,85,54500000.0,FC Bayern München,83.0
+colombia,D. Sánchez,DEF,1,29,82,25500000.0,Galatasaray SK,59.0
+colombia,D. Zapata,FWD,1,34,82,15000000.0,Torino,84.0
+colombia,D. Muñoz,DEF,2,29,81,22500000.0,Crystal Palace,72.0
+colombia,J. Durán,FWD,2,21,79,36000000.0,Fenerbahçe SK,82.0
+colombia,R. Ríos,MID,2,25,79,24500000.0,SL Benfica,67.0
+colombia,J. Arias,FWD,3,27,78,15000000.0,Wolverhampton Wanderers,75.0
+colombia,J. Mojica,DEF,3,32,78,9500000.0,RCD Mallorca,62.0
+colombia,Cucho,FWD,4,26,78,18500000.0,Real Betis Balompié,76.0
+colombia,C. Arango,FWD,5,30,78,14000000.0,San Jose Earthquakes,82.0
+colombia,J. Lerma,MID,3,30,77,9000000.0,Crystal Palace,65.0
+colombia,L. Suárez,FWD,6,27,77,12500000.0,Sporting CP,77.0
+colombia,K. Castaño,MID,4,24,77,14500000.0,River Plate,68.0
+colombia,J. Quintero,MID,5,32,77,8500000.0,River Plate,70.0
+colombia,Y. Mina,DEF,4,30,77,8500000.0,Cagliari,44.0
+colombia,M. Uribe,MID,6,34,76,3500000.0,Atlético Nacional,73.0
+colombia,L. Muriel,FWD,7,34,76,3600000.0,Orlando City SC,76.0
+colombia,D. Machado,DEF,5,31,76,5500000.0,RC Lens,66.0
+colombia,J. Cuadrado,MID,7,37,76,2400000.0,Pisa,68.0
+colombia,J. Lucumí,DEF,6,27,76,8000000.0,Bologna,24.0
+colombia,J. Campaz,MID,8,25,76,10000000.0,Rosario Central,74.0
+colombia,M. Borja,FWD,8,32,76,6000000.0,River Plate,77.0
+colombia,D. Ospina,GK,1,36,76,825000.0,Atlético Nacional,10.0
+costa_rica,P. Sequeira,GK,1,26,71,2200000.0,Casa Pia,6.0
+costa_rica,A. Martínez,FWD,1,26,70,2100000.0,New York City FC,78.0
+costa_rica,B. Aguilera,MID,1,22,69,3100000.0,Rio Ave FC,57.0
+costa_rica,K. Chamorro,GK,2,25,69,1700000.0,Rio Ave FC,5.0
+costa_rica,C. Mora,DEF,1,24,68,1500000.0,Universitatea Craiova,63.0
+costa_rica,F. Calvo,DEF,2,32,68,775000.0,Al Ettifaq,41.0
+costa_rica,R. Leal,MID,2,28,68,1200000.0,DC United,62.0
+costa_rica,J. Alcócer,MID,3,20,67,2500000.0,KVC Westerlo,66.0
+costa_rica,J. Cascante,DEF,3,31,67,700000.0,Austin FC,45.0
+costa_rica,J. Mitchell,DEF,4,20,66,1900000.0,SK Sturm Graz,29.0
+costa_rica,A. Lassiter,MID,4,30,66,825000.0,Portland Timbers,64.0
+costa_rica,K. Vargas,FWD,2,23,65,1600000.0,Hearts,70.0
+costa_rica,G. Vivi,FWD,3,24,59,350000.0,LA Galaxy,56.0
+croatia,J. Gvardiol,DEF,1,23,84,53500000.0,Manchester City,68.0
+croatia,L. Modrić,MID,1,39,83,11500000.0,AC Milan,68.0
+croatia,M. Kovačić,MID,2,31,83,30000000.0,Manchester City,68.0
+croatia,A. Budimir,FWD,1,33,82,19500000.0,CA Osasuna,86.0
+croatia,A. Kramarić,MID,3,34,81,12000000.0,TSG 1899 Hoffenheim,83.0
+croatia,I. Perišić,FWD,2,36,81,8500000.0,PSV,78.0
+croatia,D. Livaković,GK,1,30,80,14000000.0,Girona FC,12.0
+croatia,M. Pašalić,MID,4,30,80,20000000.0,Atalanta,80.0
+croatia,N. Vlašić,MID,5,27,79,18500000.0,Torino,74.0
+croatia,L. Sučić,MID,6,22,78,31500000.0,Real Sociedad,73.0
+croatia,J. Šutalo,DEF,2,25,78,17500000.0,Ajax,27.0
+croatia,M. Baturina,MID,7,22,78,21500000.0,Como,67.0
+croatia,J. Stanišić,DEF,3,25,78,17500000.0,FC Bayern München,44.0
+croatia,D. Kotarski,GK,2,25,77,11500000.0,FC København,6.0
+croatia,K. Jakić,MID,8,28,76,6500000.0,FC Augsburg,52.0
+croatia,J. Juranović,DEF,4,29,75,4900000.0,1. FC Union Berlin,57.0
+croatia,N. Moro,MID,9,27,75,6000000.0,Bologna,67.0
+croatia,F. Ivanović,FWD,3,21,75,12500000.0,SL Benfica,83.0
+croatia,T. Fruk,MID,10,24,75,0.0,nan,71.0
+croatia,P. Sučić,MID,11,21,74,9500000.0,Inter,71.0
+croatia,M. Pongračić,DEF,5,27,74,4500000.0,Fiorentina,21.0
+croatia,D. Ćaleta-Car,DEF,6,28,74,3600000.0,Real Sociedad,32.0
+croatia,M. Erlić,DEF,7,27,72,2400000.0,FC Midtjylland,29.0
+denmark,M. Hjulmand,MID,1,26,83,43000000.0,Sporting CP,76.0
+denmark,P. Højbjerg,MID,2,29,82,26000000.0,Olympique de Marseille,68.0
+denmark,C. Nørgaard,MID,3,31,80,15000000.0,Arsenal,63.0
+denmark,M. Damsgaard,MID,4,24,80,29000000.0,Brentford,74.0
+denmark,A. Christensen,DEF,1,29,80,19500000.0,FC Barcelona,36.0
+denmark,R. Kristensen,DEF,2,27,79,17000000.0,Eintracht Frankfurt,60.0
+denmark,K. Schmeichel,GK,1,38,79,1900000.0,Celtic,12.0
+denmark,J. Mæhle,DEF,3,28,78,12500000.0,VfL Wolfsburg,50.0
+denmark,A. Bah,DEF,4,27,78,15000000.0,SL Benfica,59.0
+denmark,M. O'Riley,MID,5,24,78,21000000.0,Olympique de Marseille,77.0
+denmark,J. Andersen,DEF,5,29,78,12000000.0,Fulham FC,51.0
+denmark,M. Biereth,FWD,1,22,78,29000000.0,AS Monaco,83.0
+denmark,J. Wind,FWD,2,26,78,17500000.0,VfL Wolfsburg,82.0
+denmark,A. Skov Olsen,FWD,3,25,77,12500000.0,VfL Wolfsburg,77.0
+denmark,K. Dolberg,FWD,4,27,77,11500000.0,Ajax,81.0
+denmark,F. Jörgensen,GK,2,23,77,13500000.0,Chelsea,11.0
+denmark,G. Isaksen,MID,6,24,76,10000000.0,Lazio,74.0
+denmark,M. Frendrup,MID,7,24,76,10500000.0,Genoa,58.0
+denmark,M. Hermansen,GK,3,24,76,9000000.0,West Ham United,9.0
+denmark,R. Højlund,FWD,5,22,76,15500000.0,Napoli,77.0
+denmark,C. Eriksen,MID,8,33,76,4600000.0,VfL Wolfsburg,70.0
+denmark,V. Kristiansen,DEF,6,22,75,8500000.0,Leicester City,52.0
+denmark,J. Lindstrøm,MID,9,25,75,7500000.0,VfL Wolfsburg,70.0
+ecuador,M. Caicedo,MID,1,23,87,93000000.0,Chelsea,57.0
+ecuador,W. Pacho,DEF,1,23,86,83000000.0,Paris Saint-Germain,30.0
+ecuador,P. Hincapié,DEF,2,23,83,52000000.0,Arsenal,41.0
+ecuador,P. Estupiñán,DEF,3,27,79,18500000.0,AC Milan,48.0
+ecuador,Á. Preciado,MID,2,27,75,6000000.0,Sparta Praha,61.0
+ecuador,J. Ordoñez,DEF,4,21,75,12000000.0,Club Brugge KV,23.0
+ecuador,H. Galíndez,GK,1,38,74,475000.0,Huracán,15.0
+ecuador,K. Páez,MID,3,18,73,7000000.0,RC Strasbourg Alsace,70.0
+ecuador,A. Domínguez,GK,2,38,73,350000.0,LDU Quito,11.0
+ecuador,J. Sornoza,MID,4,31,72,1900000.0,Independiente del Valle,73.0
+ecuador,J. Chávez,DEF,5,23,72,3500000.0,RC Lens,58.0
+ecuador,J. Cifuentes,MID,5,26,72,3000000.0,Toronto FC,60.0
+ecuador,L. Campana,FWD,1,25,72,3500000.0,New England Revolution,78.0
+ecuador,C. Gruezo,MID,6,30,72,2000000.0,LDU Quito,41.0
+ecuador,J. Burrai,GK,3,34,72,400000.0,Talleres,19.0
+ecuador,B. Palacios,FWD,2,30,71,1800000.0,Universidad Católica del Ecuador,76.0
+ecuador,B. Ramírez,MID,7,24,71,2600000.0,LDU Quito,66.0
+ecuador,J. Corozo,MID,8,29,71,1800000.0,Barcelona de Guayaquil,66.0
+ecuador,L. Quiñonez,DEF,6,31,71,1400000.0,LDU Quito,55.0
+ecuador,F. Gaibor,MID,9,33,71,1200000.0,Alianza Lima,62.0
+ecuador,J. Ortiz,MID,10,29,71,1600000.0,Portland Timbers,65.0
+ecuador,G. Cortez,MID,11,29,70,1600000.0,Barcelona de Guayaquil,70.0
+ecuador,J. Yeboah,FWD,3,25,70,2400000.0,Venezia,69.0
+egypt,M. Salah,MID,1,33,91,82000000.0,Liverpool,94.0
+egypt,O. Marmoush,FWD,1,26,84,50500000.0,Manchester City,87.0
+egypt,A. Hegazi,DEF,1,34,75,1800000.0,NEOM SC,30.0
+egypt,M. Abdelmonem,DEF,2,26,74,5500000.0,OGC Nice,34.0
+egypt,M. Mohamed,FWD,2,27,73,3300000.0,FC Nantes,72.0
+egypt,A. Hassan,FWD,3,32,72,1900000.0,Al Ettifaq,74.0
+egypt,R. Rabia,DEF,3,32,67,650000.0,Al Ain,39.0
+egypt,O. Fayed,DEF,4,21,65,1500000.0,FC Arouca,25.0
+egypt,K. Ashraf,FWD,4,21,53,210000.0,Al Akhdoud Saudi Club,51.0
+egypt,S. Sharples-Ahmed,MID,2,20,52,210000.0,Bolton Wanderers,44.0
+england,J. Bellingham,MID,1,22,90,174500000.0,Real Madrid,88.0
+england,H. Kane,FWD,1,31,89,87000000.0,FC Bayern München,93.0
+england,B. Saka,FWD,2,23,88,118500000.0,Arsenal,84.0
+england,D. Rice,MID,2,26,87,83500000.0,Arsenal,64.0
+england,C. Palmer,MID,3,23,87,109000000.0,Chelsea,82.0
+england,T. Alexander-Arnold,DEF,1,26,86,73000000.0,Real Madrid,64.0
+england,P. Foden,FWD,3,25,85,71500000.0,Manchester City,82.0
+england,J. Pickford,GK,1,31,84,22500000.0,Everton,19.0
+england,E. Eze,MID,4,27,83,42000000.0,Arsenal,79.0
+england,J. Bowen,MID,5,28,83,36500000.0,West Ham United,84.0
+england,A. Gordon,FWD,4,24,83,49500000.0,Newcastle United,81.0
+england,M. Guéhi,DEF,2,24,82,35000000.0,Crystal Palace,42.0
+england,M. Rogers,MID,6,22,82,44500000.0,Aston Villa,80.0
+england,E. Konsa,DEF,3,27,82,30500000.0,Aston Villa,55.0
+england,D. Henderson,GK,2,28,81,20500000.0,Crystal Palace,9.0
+england,R. James,DEF,4,25,81,31500000.0,Chelsea,67.0
+england,L. Colwill,DEF,5,22,80,27500000.0,Chelsea,38.0
+england,M. Rashford,MID,7,27,80,22500000.0,FC Barcelona,79.0
+england,C. Jones,MID,8,24,80,29000000.0,Liverpool,75.0
+england,D. Solanke,FWD,5,27,80,23000000.0,Tottenham Hotspur,81.0
+england,T. Livramento,DEF,6,22,80,31500000.0,Newcastle United,49.0
+england,K. Walker,DEF,7,35,79,5500000.0,Burnley,51.0
+england,D. Burn,DEF,8,33,79,8500000.0,Newcastle United,26.0
+france,K. Mbappé,FWD,1,26,91,173500000.0,Real Madrid,92.0
+france,O. Dembélé,FWD,2,28,90,122500000.0,Paris Saint-Germain,90.0
+france,W. Saliba,DEF,1,24,87,92000000.0,Arsenal,35.0
+france,M. Maignan,GK,1,29,87,61000000.0,AC Milan,15.0
+france,J. Koundé,DEF,2,26,87,85500000.0,FC Barcelona,47.0
+france,M. Olise,MID,1,23,86,88000000.0,FC Bayern München,83.0
+france,I. Konaté,DEF,3,26,86,70000000.0,Liverpool,29.0
+france,D. Doué,FWD,3,20,85,83500000.0,Paris Saint-Germain,78.0
+france,D. Upamecano,DEF,4,26,85,62500000.0,FC Bayern München,39.0
+france,M. Thuram,FWD,4,27,85,58500000.0,Inter,85.0
+france,B. Pavard,DEF,5,29,84,35500000.0,Olympique de Marseille,60.0
+france,A. Tchouaméni,MID,2,25,84,50500000.0,Real Madrid,65.0
+france,T. Hernández,DEF,6,27,84,44500000.0,Al Hilal,71.0
+france,B. Barcola,FWD,5,22,84,61500000.0,Paris Saint-Germain,80.0
+france,L. Chevalier,GK,2,23,83,44000000.0,Paris Saint-Germain,9.0
+france,A. Rabiot,MID,3,30,83,35000000.0,AC Milan,79.0
+france,E. Camavinga,MID,4,22,83,73500000.0,Real Madrid,64.0
+france,M. Guendouzi,MID,5,26,82,36000000.0,Lazio,73.0
+france,R. Cherki,FWD,6,21,81,52500000.0,Manchester City,75.0
+france,L. Hernández,DEF,7,29,81,21500000.0,Paris Saint-Germain,53.0
+france,R. Kolo Muani,FWD,7,26,81,31000000.0,Tottenham Hotspur,81.0
+france,L. Digne,DEF,8,31,80,15500000.0,Aston Villa,60.0
+france,J. Clauss,DEF,9,32,80,14500000.0,OGC Nice,68.0
+germany,J. Kimmich,MID,1,30,89,86000000.0,FC Bayern München,68.0
+germany,F. Wirtz,MID,2,22,89,150500000.0,Liverpool,84.0
+germany,J. Tah,DEF,1,29,87,66500000.0,FC Bayern München,32.0
+germany,A. Rüdiger,DEF,2,32,86,44000000.0,Real Madrid,40.0
+germany,M. ter Stegen,GK,1,33,86,22000000.0,FC Barcelona,14.0
+germany,A. Stiller,MID,3,24,83,47500000.0,VfB Stuttgart,49.0
+germany,O. Baumann,GK,2,35,83,4000000.0,TSG 1899 Hoffenheim,11.0
+germany,L. Goretzka,MID,4,30,82,29000000.0,FC Bayern München,76.0
+germany,D. Raum,DEF,3,27,82,32000000.0,RB Leipzig,59.0
+germany,F. Nmecha,MID,5,24,82,40000000.0,Borussia Dortmund,73.0
+germany,R. Koch,DEF,4,28,82,26500000.0,Eintracht Frankfurt,40.0
+germany,S. Gnabry,MID,6,29,82,30000000.0,FC Bayern München,84.0
+germany,J. Burkardt,FWD,1,24,82,42000000.0,Eintracht Frankfurt,86.0
+germany,M. Mittelstädt,DEF,5,28,82,27500000.0,VfB Stuttgart,56.0
+germany,W. Anton,DEF,6,28,82,26500000.0,Borussia Dortmund,42.0
+germany,A. Nübel,GK,3,28,81,20500000.0,VfB Stuttgart,18.0
+germany,R. Andrich,MID,7,30,81,21500000.0,Bayer 04 Leverkusen,74.0
+germany,N. Amiri,MID,8,28,81,25500000.0,1. FSV Mainz 05,77.0
+germany,K. Adeyemi,MID,9,23,81,39000000.0,Borussia Dortmund,77.0
+germany,P. Groß,MID,10,34,80,7000000.0,Borussia Dortmund,72.0
+germany,D. Undav,FWD,2,28,80,21500000.0,VfB Stuttgart,83.0
+germany,N. Füllkrug,FWD,3,32,79,14000000.0,West Ham United,81.0
+germany,M. Beier,FWD,4,22,79,27500000.0,Borussia Dortmund,82.0
+ghana,Iñaki Williams,MID,1,31,83,30000000.0,Athletic Club,82.0
+ghana,T. Partey,MID,2,32,83,24000000.0,Villarreal CF,66.0
+ghana,M. Kudus,FWD,1,24,80,29000000.0,Tottenham Hotspur,76.0
+ghana,A. Semenyo,MID,3,25,80,26500000.0,AFC Bournemouth,83.0
+ghana,A. Djiku,DEF,1,30,77,0.0,nan,34.0
+ghana,J. Paintsil,MID,4,27,76,8000000.0,LA Galaxy,73.0
+ghana,M. Salisu,DEF,2,26,76,10000000.0,AS Monaco,30.0
+ghana,E. Nuamah,MID,5,21,75,11500000.0,Olympique Lyonnais,71.0
+ghana,G. Mensah,DEF,3,26,74,4500000.0,AJ Auxerre,54.0
+ghana,A. Seidu,DEF,4,25,74,6000000.0,Stade Rennais FC,35.0
+ghana,L. Zigi,GK,1,28,73,2600000.0,FC St.Gallen 1879,18.0
+ghana,S. Abdul Samed,MID,6,25,73,3400000.0,OGC Nice,51.0
+ghana,J. Ayew,MID,7,33,73,1900000.0,Leicester City,73.0
+ghana,E. Owusu,MID,8,27,73,3500000.0,AJ Auxerre,47.0
+ghana,O. Bukari,FWD,2,26,72,2800000.0,Austin FC,67.0
+ghana,A. Ayew,FWD,3,35,72,0.0,nan,72.0
+ghana,M. Fuseini,FWD,4,23,71,3000000.0,Union Saint-Gilloise,75.0
+ghana,R. Königsdörffer,FWD,5,23,71,3000000.0,Hamburger SV,72.0
+ghana,I. Baba,MID,9,29,71,1600000.0,UD Almería,66.0
+ghana,R. Ofori,GK,2,31,71,0.0,nan,18.0
+ghana,D. Odoi,MID,10,37,70,0.0,nan,54.0
+ghana,M. Ashimeru,MID,11,27,69,1500000.0,RSC Anderlecht,61.0
+ghana,K. Schindler,MID,12,31,69,0.0,nan,62.0
+iran,M. Taremi,FWD,1,32,78,11500000.0,Olympiacos FC,80.0
+iran,A. Sayyadmanesh,MID,1,24,74,6500000.0,KVC Westerlo,73.0
+iran,A. Gholizadeh,MID,2,29,71,1800000.0,Lech Poznań,68.0
+iran,M. Hosseini,DEF,1,29,68,1100000.0,Kayserispor,22.0
+iran,A. Abedzadeh,GK,1,32,68,600000.0,CD Castellón,10.0
+iran,A. Karimi,MID,3,31,67,725000.0,Kayserispor,60.0
+italy,G. Donnarumma,GK,1,26,89,97000000.0,Manchester City,12.0
+italy,N. Barella,MID,1,28,87,79500000.0,Inter,77.0
+italy,A. Bastoni,DEF,1,26,87,87000000.0,Inter,39.0
+italy,S. Tonali,MID,2,25,86,76500000.0,Newcastle United,69.0
+italy,F. Dimarco,DEF,2,27,85,52000000.0,Inter,74.0
+italy,M. Locatelli,MID,3,27,84,43000000.0,Juventus,58.0
+italy,M. Zaccagni,MID,4,30,84,40500000.0,Lazio,79.0
+italy,M. Retegui,FWD,1,26,83,43500000.0,Al Qadsiah FC,88.0
+italy,M. Kean,FWD,2,25,83,48500000.0,Fiorentina,88.0
+italy,G. Di Lorenzo,DEF,3,31,83,26500000.0,Napoli,72.0
+italy,G. Mancini,DEF,4,29,83,30500000.0,Roma,48.0
+italy,G. Vicario,GK,2,28,82,26000000.0,Tottenham Hotspur,6.0
+italy,A. Meret,GK,3,28,82,26000000.0,Napoli,17.0
+italy,R. Orsolini,MID,5,28,82,30500000.0,Bologna,80.0
+italy,M. Politano,FWD,3,31,81,21500000.0,Napoli,78.0
+italy,D. Frattesi,MID,6,25,81,32000000.0,Inter,79.0
+italy,L. Pellegrini,MID,7,29,80,20500000.0,Roma,76.0
+italy,F. Gatti,DEF,5,27,80,24000000.0,Juventus,30.0
+italy,N. Rovella,MID,8,23,79,24500000.0,Lazio,52.0
+italy,A. Cambiaso,DEF,6,25,79,21500000.0,Juventus,68.0
+italy,R. Calafiori,DEF,7,23,78,21000000.0,Arsenal,62.0
+italy,S. Ricci,MID,9,23,78,26500000.0,AC Milan,53.0
+italy,R. Bellanova,MID,10,25,78,17000000.0,Atalanta,61.0
+ivory_coast,E. Ndicka,DEF,1,25,81,28500000.0,Roma,49.0
+ivory_coast,F. Kessié,MID,1,28,80,20500000.0,Al Ahli SFC,75.0
+ivory_coast,N. Pépé,MID,2,30,80,20500000.0,Villarreal CF,76.0
+ivory_coast,W. Singo,DEF,2,24,80,29000000.0,Galatasaray SK,55.0
+ivory_coast,O. Diomande,DEF,3,21,80,40000000.0,Sporting CP,20.0
+ivory_coast,O. Kossounou,DEF,4,24,80,29000000.0,Atalanta,26.0
+ivory_coast,Amad,MID,3,22,79,28000000.0,Manchester United,77.0
+ivory_coast,E. Agbadou,DEF,5,28,79,17500000.0,Wolverhampton Wanderers,51.0
+ivory_coast,E. Guessand,MID,4,24,79,26500000.0,Aston Villa,79.0
+ivory_coast,W. Zaha,FWD,1,32,77,8500000.0,Charlotte FC,73.0
+ivory_coast,S. Haller,FWD,2,31,77,9000000.0,FC Utrecht,79.0
+ivory_coast,G. Doué,DEF,6,22,77,15000000.0,RC Strasbourg Alsace,41.0
+ivory_coast,J. Bamba,MID,5,29,77,10500000.0,Chicago Fire,71.0
+ivory_coast,H. Traoré,MID,6,25,77,14000000.0,Olympique de Marseille,71.0
+ivory_coast,I. Sangaré,MID,7,27,77,11500000.0,Nottingham Forest,59.0
+ivory_coast,S. Fofana,MID,8,30,77,10000000.0,Stade Rennais FC,72.0
+ivory_coast,S. Adingra,MID,9,23,76,15000000.0,Sunderland,71.0
+ivory_coast,J. Boga,FWD,3,28,76,7500000.0,OGC Nice,65.0
+ivory_coast,Y. Fofana,GK,1,24,76,9000000.0,Çaykur Rizespor,5.0
+ivory_coast,A. Lafont,GK,2,26,75,5500000.0,Panathinaikos FC,6.0
+ivory_coast,B. Traoré,MID,10,22,75,12500000.0,FC Basel 1893,77.0
+ivory_coast,M. Cornet,MID,11,28,74,4200000.0,Genoa,73.0
+ivory_coast,C. Operi,DEF,7,28,74,3800000.0,Medipol Başakşehir FK,48.0
+jamaica,L. Bailey,MID,1,27,79,18500000.0,Roma,76.0
+jamaica,E. Pinnock,DEF,1,32,77,7000000.0,Brentford,31.0
+jamaica,A. Blake,GK,1,34,75,950000.0,Philadelphia Union,13.0
+jamaica,B. De Cordova-Reid,MID,2,32,72,1900000.0,Leicester City,69.0
+jamaica,D. Gray,MID,3,29,72,2300000.0,Birmingham City,68.0
+jamaica,A. Bell,DEF,2,31,70,1100000.0,Charlton Athletic,47.0
+jamaica,A. Gray,FWD,1,34,70,775000.0,Fatih Karagümrük,72.0
+jamaica,K. Palmer,MID,4,28,70,1600000.0,Hull City,63.0
+jamaica,J. Lowe,FWD,2,30,70,1600000.0,Sheffield Wednesday,71.0
+jamaica,J. Latibeaudiere,DEF,3,25,69,1800000.0,Coventry City,35.0
+jamaica,D. Bernard,DEF,4,24,69,2900000.0,Sheffield Wednesday,40.0
+jamaica,I. Hayden,MID,5,30,69,1200000.0,Queens Park Rangers,50.0
+jamaica,D. Johnson,MID,6,32,68,950000.0,Fatih Karagümrük,63.0
+jamaica,G. Leigh,DEF,5,30,68,1000000.0,Oxford United,62.0
+jamaica,D. Mitchell,MID,7,28,68,1200000.0,Leyton Orient,62.0
+jamaica,J. Brown,DEF,6,26,67,1100000.0,Real Salt Lake,44.0
+jamaica,G. McCleary,MID,8,38,66,275000.0,Gillingham,63.0
+jamaica,N. Campbell,MID,9,25,66,1000000.0,Randers FC,65.0
+jamaica,W. Harding,DEF,7,28,66,800000.0,Millwall FC,34.0
+jamaica,T. Gray,DEF,8,22,66,1300000.0,New York City FC,25.0
+jamaica,M. Mothersille,MID,10,21,65,1600000.0,Stockport County,64.0
+jamaica,A. Powell,DEF,9,30,65,625000.0,FC Cincinnati,37.0
+jamaica,T. Campbell,MID,11,21,65,1600000.0,Charlton Athletic,61.0
+japan,K. Mitoma,MID,1,28,82,30500000.0,Brighton & Hove Albion,79.0
+japan,T. Kubo,MID,2,24,82,43500000.0,Real Sociedad,79.0
+japan,R. Doan,MID,3,27,82,32500000.0,Eintracht Frankfurt,75.0
+japan,H. Morita,MID,4,30,79,17000000.0,Sporting CP,75.0
+japan,K. Sano,MID,5,24,79,23000000.0,1. FSV Mainz 05,43.0
+japan,W. Endo,MID,6,32,79,11500000.0,Liverpool,67.0
+japan,D. Maeda,FWD,1,27,79,18500000.0,Celtic,82.0
+japan,H. Ito,DEF,1,26,78,17500000.0,FC Bayern München,48.0
+japan,T. Minamino,MID,7,30,78,13500000.0,AS Monaco,76.0
+japan,D. Kamada,MID,8,28,77,10500000.0,Crystal Palace,74.0
+japan,J. Ito,MID,9,32,77,8500000.0,KRC Genk,70.0
+japan,K. Itakura,DEF,2,28,77,10000000.0,Ajax,60.0
+japan,R. Hatate,MID,10,27,76,8500000.0,Celtic,70.0
+japan,A. Tanaka,MID,11,26,76,9000000.0,Leeds United,66.0
+japan,K. Nakamura,MID,12,24,76,10000000.0,Stade de Reims,73.0
+japan,K. Machida,DEF,3,27,76,7000000.0,TSG 1899 Hoffenheim,34.0
+japan,S. Machino,FWD,2,25,75,7500000.0,Borussia Mönchengladbach,74.0
+japan,T. Asano,MID,13,30,75,5500000.0,RCD Mallorca,69.0
+japan,K. Furuhashi,FWD,3,30,75,5500000.0,Birmingham City,74.0
+japan,T. Watanabe,DEF,4,28,75,4800000.0,Feyenoord,33.0
+japan,K. Fujimoto,MID,14,26,74,5500000.0,Birmingham City,69.0
+japan,S. Maikuma,DEF,5,27,74,4400000.0,AZ Alkmaar,58.0
+japan,Y. Sugawara,DEF,6,25,74,5500000.0,SV Werder Bremen,48.0
+mexico,J. Quiñones,FWD,1,28,80,21500000.0,Al Qadsiah FC,83.0
+mexico,S. Giménez,FWD,2,24,79,27000000.0,AC Milan,82.0
+mexico,L. Malagón,GK,1,28,79,0.0,nan,9.0
+mexico,R. Alvarado,MID,1,26,78,0.0,nan,68.0
+mexico,A. Vega,FWD,3,27,78,0.0,nan,76.0
+mexico,E. Sánchez,MID,2,25,78,0.0,nan,72.0
+mexico,E. Álvarez,MID,3,27,78,14500000.0,Fenerbahçe SK,57.0
+mexico,G. Berterame,FWD,4,26,78,0.0,nan,83.0
+mexico,H. Lozano,FWD,5,29,78,14000000.0,San Diego FC,75.0
+mexico,O. Pineda,MID,4,29,77,10500000.0,AEK Athens,73.0
+mexico,R. Jiménez,FWD,6,34,77,5000000.0,Fulham FC,79.0
+mexico,D. Lainez,MID,5,25,76,0.0,nan,64.0
+mexico,C. Rodríguez,MID,6,28,76,0.0,nan,72.0
+mexico,M. Ruiz,MID,7,24,75,0.0,nan,60.0
+mexico,J. Gallardo,DEF,1,30,75,0.0,nan,69.0
+mexico,C. Montes,DEF,2,28,75,0.0,nan,48.0
+mexico,J. Vásquez,DEF,3,26,75,6500000.0,Genoa,32.0
+mexico,J. Sánchez,DEF,4,27,73,0.0,nan,44.0
+mexico,E. Lira,MID,8,25,73,0.0,nan,53.0
+mexico,C. Huerta,FWD,7,24,73,4400000.0,RSC Anderlecht,69.0
+mexico,J. Orozco Chiquete,DEF,5,23,73,0.0,nan,25.0
+mexico,R. Huescas,DEF,6,21,72,5000000.0,FC København,62.0
+mexico,J. Sánchez Purata,DEF,7,27,72,0.0,nan,44.0
+morocco,A. Hakimi,DEF,1,26,89,111000000.0,Paris Saint-Germain,80.0
+morocco,Y. En-Nesyri,FWD,1,28,82,31000000.0,Fenerbahçe SK,83.0
+morocco,Y. Bounou,GK,1,34,82,5000000.0,Al Hilal,14.0
+morocco,Brahim,MID,1,25,82,36500000.0,Real Madrid,76.0
+morocco,N. Aguerd,DEF,2,29,81,24000000.0,Olympique de Marseille,40.0
+morocco,A. El Kaabi,FWD,2,32,80,17000000.0,Olympiacos FC,84.0
+morocco,N. Mazraoui,DEF,3,27,80,22000000.0,Manchester United,69.0
+morocco,R. Saïss,DEF,4,35,79,0.0,nan,55.0
+morocco,I. Saibari,MID,2,23,79,26500000.0,PSV,75.0
+morocco,S. Amrabat,MID,3,28,78,12500000.0,Real Betis Balompié,65.0
+morocco,H. Ziyech,MID,4,32,78,0.0,nan,71.0
+morocco,A. Adli,FWD,3,25,78,20000000.0,AFC Bournemouth,79.0
+morocco,Abde,MID,5,23,77,16500000.0,Real Betis Balompié,70.0
+morocco,A. Ounahi,MID,6,25,76,11000000.0,Girona FC,67.0
+morocco,B. El Khannouss,MID,7,21,76,17000000.0,VfB Stuttgart,65.0
+morocco,M. Mohand Mohamedi,GK,2,36,74,0.0,nan,19.0
+morocco,T. Tissoudali,FWD,4,32,74,0.0,nan,78.0
+morocco,A. Abqar,DEF,5,26,74,5500000.0,Getafe CF,27.0
+morocco,A. Sabiri,MID,8,28,73,3100000.0,Fiorentina,69.0
+morocco,J. El Yamiq,DEF,6,33,73,1500000.0,Al-Najma SC,43.0
+morocco,S. Amallah,MID,9,28,72,0.0,nan,72.0
+morocco,A. Richardson,MID,10,23,72,4700000.0,Fiorentina,63.0
+morocco,Y. Attiat-Allah,DEF,7,30,71,0.0,nan,51.0
+netherlands,V. van Dijk,DEF,1,33,90,57000000.0,Liverpool,52.0
+netherlands,F. de Jong,MID,1,28,87,79500000.0,FC Barcelona,75.0
+netherlands,T. Reijnders,MID,2,26,86,79500000.0,Manchester City,78.0
+netherlands,R. Gravenberch,MID,3,23,85,66500000.0,Liverpool,78.0
+netherlands,X. Simons,MID,4,22,84,58500000.0,Tottenham Hotspur,79.0
+netherlands,D. Dumfries,DEF,2,29,84,37000000.0,Inter,75.0
+netherlands,C. Gakpo,MID,5,26,84,49500000.0,Liverpool,81.0
+netherlands,S. de Vrij,DEF,3,33,84,20000000.0,Inter,25.0
+netherlands,N. Aké,DEF,4,30,83,30000000.0,Manchester City,48.0
+netherlands,J. Frimpong,DEF,5,24,83,43500000.0,Liverpool,66.0
+netherlands,M. van de Ven,DEF,6,24,82,37000000.0,Tottenham Hotspur,43.0
+netherlands,J. Timber,DEF,7,24,82,38500000.0,Arsenal,41.0
+netherlands,M. de Ligt,DEF,8,25,82,34000000.0,Manchester United,50.0
+netherlands,T. Koopmeiners,MID,6,27,81,27500000.0,Juventus,76.0
+netherlands,M. Depay,FWD,1,31,81,0.0,nan,82.0
+netherlands,Q. Timber,MID,7,24,80,31500000.0,Feyenoord,75.0
+netherlands,J. Schouten,MID,8,28,80,20500000.0,PSV,58.0
+netherlands,N. Lang,FWD,2,26,80,25000000.0,Napoli,80.0
+netherlands,J. van Hecke,DEF,9,25,80,25000000.0,Brighton & Hove Albion,35.0
+netherlands,J. Kluivert,MID,9,26,79,21500000.0,AFC Bournemouth,75.0
+netherlands,D. Malen,MID,10,26,79,20500000.0,Aston Villa,79.0
+netherlands,S. Steijn,MID,11,23,78,21000000.0,Feyenoord,86.0
+netherlands,W. Weghorst,FWD,3,32,78,11500000.0,Ajax,80.0
+new_zealand,C. Wood,FWD,1,33,82,19500000.0,Nottingham Forest,85.0
+new_zealand,J. Bell,MID,1,26,74,5000000.0,Viking FK,59.0
+new_zealand,L. Cacace,DEF,1,24,72,3300000.0,Wrexham,59.0
+new_zealand,M. Stamenić,MID,2,23,71,3900000.0,Swansea City,55.0
+new_zealand,A. Paulsen,GK,1,22,71,3600000.0,Lechia Gdańsk,19.0
+new_zealand,M. Boxall,DEF,2,36,70,275000.0,Minnesota United FC,36.0
+new_zealand,F. de Vries,DEF,3,30,69,1200000.0,Auckland FC,50.0
+new_zealand,T. Bindon,DEF,4,20,69,3200000.0,Sheffield United,44.0
+new_zealand,K. Barbarouses,FWD,2,35,68,525000.0,Western Sydney Wanderers,72.0
+new_zealand,F. Surman,DEF,5,21,68,2300000.0,Portland Timbers,35.0
+new_zealand,B. Old,FWD,3,22,68,2700000.0,AS Saint-Étienne,62.0
+new_zealand,C. McCowatt,MID,3,26,67,1300000.0,Silkeborg IF,67.0
+new_zealand,N. Pijnaker,DEF,6,26,67,1100000.0,Auckland FC,44.0
+new_zealand,A. Rufer,MID,4,29,67,875000.0,Wellington Phoenix,57.0
+new_zealand,R. Thomas,MID,5,30,66,825000.0,PEC Zwolle,55.0
+new_zealand,E. Just,FWD,4,25,66,1100000.0,Motherwell FC,68.0
+new_zealand,M. Crocombe,GK,2,31,65,375000.0,Millwall FC,14.0
+new_zealand,M. Garbett,MID,6,23,65,1100000.0,Peterborough United,61.0
+new_zealand,B. Tuiloma,DEF,7,30,65,575000.0,Charlotte FC,50.0
+new_zealand,J. McGarry,DEF,8,27,64,625000.0,Brisbane Roar,56.0
+new_zealand,L. Rogerson,MID,7,27,64,625000.0,Auckland FC,65.0
+new_zealand,S. Sutton,DEF,9,23,63,1000000.0,Perth Glory,53.0
+new_zealand,T. Payne,DEF,10,31,63,350000.0,Wellington Phoenix,53.0
+nigeria,V. Osimhen,FWD,1,26,87,100000000.0,Galatasaray SK,88.0
+nigeria,A. Lookman,FWD,2,27,84,45500000.0,Atalanta,87.0
+nigeria,V. Boniface,FWD,3,24,81,37500000.0,SV Werder Bremen,82.0
+nigeria,A. Iwobi,MID,1,29,80,20500000.0,Fulham FC,74.0
+nigeria,O. Aina,DEF,1,28,80,19000000.0,Nottingham Forest,54.0
+nigeria,S. Chukwueze,MID,2,26,80,23000000.0,Fulham FC,75.0
+nigeria,T. Arokodare,FWD,4,24,79,28000000.0,Wolverhampton Wanderers,85.0
+nigeria,C. Bassey,DEF,2,25,78,16500000.0,Fulham FC,36.0
+nigeria,N. Tella,MID,3,25,78,17000000.0,Bayer 04 Leverkusen,77.0
+nigeria,C. Ejuke,MID,4,27,78,15000000.0,Sevilla FC,67.0
+nigeria,R. Onyedika,MID,5,24,77,20000000.0,Club Brugge KV,59.0
+nigeria,M. Simon,MID,6,29,77,10500000.0,Paris FC,68.0
+nigeria,U. Sadiq,FWD,5,28,77,11000000.0,Real Sociedad,76.0
+nigeria,B. Osayi-Samuel,DEF,3,27,76,8000000.0,Birmingham City,58.0
+nigeria,C. Uche,FWD,6,22,76,17000000.0,Crystal Palace,74.0
+nigeria,W. Ndidi,MID,7,28,76,6500000.0,Beşiktaş JK,61.0
+nigeria,I. Ogbu,DEF,4,25,75,6500000.0,SK Slavia Praha,40.0
+nigeria,J. Torunarigha,DEF,5,27,75,5000000.0,Hamburger SV,42.0
+nigeria,T. Awoniyi,FWD,7,27,75,6000000.0,Nottingham Forest,76.0
+nigeria,R. Durosinmi,FWD,8,22,75,9000000.0,Viktoria Plzeň,73.0
+nigeria,T. Moffi,FWD,9,26,75,7500000.0,OGC Nice,75.0
+nigeria,F. Agu,DEF,6,25,75,7000000.0,SV Werder Bremen,58.0
+nigeria,F. Onyeka,MID,8,27,74,4800000.0,Brentford,64.0
+norway,E. Haaland,FWD,1,24,90,157000000.0,Manchester City,94.0
+norway,M. Ødegaard,MID,1,26,87,98000000.0,Arsenal,79.0
+norway,A. Sørloth,FWD,2,29,84,42000000.0,Atlético Madrid,85.0
+norway,J. Ryerson,DEF,1,27,79,18500000.0,Borussia Dortmund,62.0
+norway,S. Berge,MID,2,27,79,18000000.0,Fulham FC,63.0
+norway,J. Larsen,FWD,3,25,78,21000000.0,Wolverhampton Wanderers,82.0
+norway,P. Berg,MID,3,27,77,12000000.0,FK Bodø/Glimt,64.0
+norway,A. Nusa,MID,4,20,76,18000000.0,RB Leipzig,73.0
+norway,Ø. Nyland,GK,1,34,76,1300000.0,Sevilla FC,11.0
+norway,A. Dønnum,MID,5,27,75,6000000.0,Toulouse FC,68.0
+norway,A. Hanche-Olsen,DEF,2,28,75,5500000.0,1. FSV Mainz 05,35.0
+norway,A. Schjelderup,FWD,4,21,75,12500000.0,SL Benfica,70.0
+norway,K. Thorstvedt,MID,6,26,75,6500000.0,Sassuolo,69.0
+norway,K. Ajer,DEF,3,27,75,6000000.0,Brentford,58.0
+norway,J. Hauge,FWD,5,25,74,5500000.0,FK Bodø/Glimt,71.0
+norway,L. Johnsen,MID,7,25,73,4000000.0,Malmö FF,67.0
+norway,L. Østigård,DEF,4,25,73,5500000.0,Genoa,33.0
+norway,D. Wolfe,DEF,5,23,73,4300000.0,Wolverhampton Wanderers,52.0
+norway,T. Heggem,DEF,6,26,73,3500000.0,Bologna,44.0
+norway,M. Thorsby,MID,8,29,72,2300000.0,Genoa,62.0
+norway,O. Bobb,FWD,6,21,72,5500000.0,Manchester City,66.0
+norway,M. Pedersen,DEF,7,24,72,3000000.0,Torino,48.0
+norway,M. Dyngeland,GK,2,29,70,1300000.0,SK Brann,13.0
+panama,A. Murillo,DEF,1,29,76,6500000.0,Olympique de Marseille,56.0
+panama,L. Mejía,GK,1,34,72,400000.0,Club Nacional de Football,14.0
+panama,A. Godoy,MID,1,35,70,650000.0,San Diego FC,53.0
+panama,O. Mosquera,GK,2,30,70,1200000.0,Al Fayha,5.0
+panama,A. Andrade,DEF,2,26,69,1700000.0,LASK Linz,48.0
+panama,E. Guerrero,FWD,1,25,69,1900000.0,Dynamo Kyiv,67.0
+panama,J. Fajardo,FWD,2,31,68,1000000.0,Universidad Católica del Ecuador,73.0
+panama,J. Córdoba,DEF,3,24,68,1700000.0,Norwich City,24.0
+panama,E. Cedeño,MID,2,21,66,1900000.0,UD Las Palmas,59.0
+panama,A. Londoño,FWD,3,24,65,1400000.0,Universidad Católica del Ecuador,66.0
+panama,C. Harvey,DEF,4,25,65,900000.0,Minnesota United FC,40.0
+panama,L. Heráldez,MID,3,32,64,400000.0,Caracas FC,37.0
+panama,M. Krug,DEF,5,18,62,875000.0,Levante UD,26.0
+panama,O. Valencia,DEF,6,21,59,525000.0,New York Red Bulls,43.0
+panama,Rafael Mosquera,FWD,4,20,54,250000.0,New York Red Bulls,56.0
+paraguay,Kaku,MID,1,30,79,17000000.0,Al Ain,75.0
+paraguay,O. Alderete,DEF,1,28,78,13500000.0,Sunderland,55.0
+paraguay,M. Almirón,FWD,1,31,76,6000000.0,Atlanta United,70.0
+paraguay,A. Sanabria,FWD,2,29,76,7500000.0,Cremonese,79.0
+paraguay,D. Viera,DEF,2,34,76,2400000.0,Libertad,21.0
+paraguay,G. Ávalos,FWD,3,34,75,2700000.0,Independiente,78.0
+paraguay,R. Sánchez,MID,2,29,75,5500000.0,Racing Club,60.0
+paraguay,A. Arce,FWD,4,30,75,5500000.0,Independiente Rivadavia,82.0
+paraguay,L. Melgarejo,FWD,5,34,74,2000000.0,Libertad,76.0
+paraguay,A. Cubas,MID,3,29,74,3600000.0,Vancouver Whitecaps FC,40.0
+paraguay,M. Rojas,FWD,6,29,74,4099999.0,Portland Timbers,73.0
+paraguay,M. Galarza,MID,4,23,73,6000000.0,River Plate,74.0
+paraguay,D. González,FWD,7,31,73,2600000.0,Club Olimpia,75.0
+paraguay,J. Enciso,MID,5,21,73,7000000.0,RC Strasbourg Alsace,69.0
+paraguay,A. Sández,DEF,3,24,73,4500000.0,Rosario Central,36.0
+paraguay,C. Domínguez,MID,6,30,73,2900000.0,Cerro Porteño,73.0
+paraguay,S. Arzamendia,DEF,4,27,73,2900000.0,Estudiantes de La Plata,67.0
+paraguay,C. González,FWD,8,32,73,2500000.0,Newell's Old Boys,76.0
+paraguay,G. Velázquez,DEF,5,34,73,1000000.0,Cerro Porteño,27.0
+paraguay,D. Gómez,MID,7,22,73,6000000.0,Brighton & Hove Albion,65.0
+paraguay,W. Riveros,DEF,6,32,72,1500000.0,Universitario de Deportes,41.0
+paraguay,I. Leguizamón,FWD,9,22,72,3800000.0,Club Olimpia,69.0
+paraguay,C. Coronel,GK,1,28,72,2200000.0,New York Red Bulls,10.0
+peru,L. Advíncula,DEF,1,35,75,1700000.0,Boca Juniors,65.0
+peru,S. Peña,MID,1,29,73,3000000.0,Alianza Lima,62.0
+peru,C. Zambrano,DEF,2,35,73,800000.0,Alianza Lima,41.0
+peru,A. Polo,MID,2,30,72,2300000.0,Universitario de Deportes,65.0
+peru,E. Flores,FWD,1,31,72,1900000.0,Universitario de Deportes,73.0
+peru,J. Concha,MID,3,26,72,3000000.0,Universitario de Deportes,69.0
+peru,P. Guerrero,FWD,2,41,72,0.0,Alianza Lima,78.0
+peru,A. Callens,DEF,3,33,72,1100000.0,AEK Athens,48.0
+peru,A. Valera,FWD,3,29,72,2300000.0,Universitario de Deportes,70.0
+peru,P. Gallese,GK,1,35,72,250000.0,Orlando City SC,20.0
+peru,C. Cáceda,GK,2,33,72,750000.0,FBC Melgar,8.0
+peru,A. Santamaría,DEF,4,33,71,900000.0,Universitario de Deportes,55.0
+peru,M. Távara,MID,4,26,71,2400000.0,Sporting Cristal,66.0
+peru,A. Corzo,DEF,5,36,71,325000.0,Universitario de Deportes,43.0
+peru,K. Cabrera,MID,5,22,71,4200000.0,Vancouver Whitecaps FC,71.0
+peru,C. Gonzáles,MID,6,32,71,1500000.0,Sporting Cristal,70.0
+peru,G. Lapadula,FWD,4,35,71,800000.0,Spezia,74.0
+peru,A. Hohberg,FWD,5,33,71,1200000.0,Cienciano,69.0
+peru,R. Garcés,DEF,6,29,71,1700000.0,Alianza Lima,21.0
+peru,B. Reyna,MID,7,26,71,2000000.0,Belgrano de Córdoba,69.0
+peru,M. López,DEF,7,25,71,2300000.0,FC København,49.0
+peru,M. Trauco,DEF,8,32,71,1300000.0,Alianza Lima,46.0
+peru,Y. Yotún,MID,8,35,70,650000.0,Sporting Cristal,65.0
+poland,R. Lewandowski,FWD,1,36,88,31000000.0,FC Barcelona,92.0
+poland,P. Zieliński,MID,1,31,80,17500000.0,Inter,74.0
+poland,M. Cash,DEF,1,27,79,17000000.0,Aston Villa,66.0
+poland,K. Grabara,GK,1,26,79,20000000.0,VfL Wolfsburg,15.0
+poland,Ł. Skorupski,GK,2,34,79,3000000.0,Bologna,11.0
+poland,S. Szymański,MID,2,26,78,17500000.0,Fenerbahçe SK,76.0
+poland,K. Piątek,FWD,2,30,78,0.0,nan,83.0
+poland,J. Kiwior,DEF,2,25,77,12500000.0,FC Porto,29.0
+poland,N. Zalewski,MID,3,23,76,10000000.0,Atalanta,58.0
+poland,B. Drągowski,GK,3,27,76,7500000.0,Panathinaikos FC,12.0
+poland,P. Frankowski,DEF,3,30,75,4800000.0,Stade Rennais FC,68.0
+poland,T. Kędziora,DEF,4,31,75,3800000.0,PAOK,38.0
+poland,J. Moder,MID,4,26,75,7000000.0,Feyenoord,66.0
+poland,K. Grosicki,MID,5,37,74,1400000.0,Pogoń Szczecin,68.0
+poland,J. Bednarek,DEF,5,29,74,3500000.0,FC Porto,19.0
+poland,J. Kamiński,MID,6,23,74,6500000.0,1. FC Köln,68.0
+poland,A. Buksa,FWD,3,28,73,3100000.0,Udinese,77.0
+poland,B. Slisz,MID,7,26,73,3600000.0,Atlanta United,56.0
+poland,K. Świderski,FWD,4,28,73,3100000.0,Panathinaikos FC,76.0
+poland,B. Kapustka,MID,8,28,72,2300000.0,Legia Warszawa,70.0
+poland,B. Mrozek,GK,4,25,72,2700000.0,Lech Poznań,7.0
+poland,P. Wiśniewski,DEF,6,26,71,2000000.0,Spezia,16.0
+poland,P. Wszołek,DEF,7,33,70,825000.0,Legia Warszawa,62.0
+portugal,Vitinha,MID,1,25,89,128500000.0,Paris Saint-Germain,80.0
+portugal,Bruno Fernandes,MID,2,30,87,77000000.0,Manchester United,80.0
+portugal,Nuno Mendes,DEF,1,23,86,86000000.0,Paris Saint-Germain,61.0
+portugal,Rúben Dias,DEF,2,28,86,64500000.0,Manchester City,29.0
+portugal,Cristiano Ronaldo,FWD,1,40,85,0.0,Al Nassr,88.0
+portugal,João Neves,MID,3,20,85,79500000.0,Paris Saint-Germain,69.0
+portugal,Bernardo Silva,MID,4,30,84,40500000.0,Manchester City,78.0
+portugal,Rúben Neves,MID,5,28,84,40500000.0,Al Hilal,66.0
+portugal,Rafael Leão,FWD,2,26,84,49500000.0,AC Milan,82.0
+portugal,João Cancelo,DEF,3,31,84,30500000.0,Al Hilal,69.0
+portugal,Diogo Costa,GK,1,25,84,49500000.0,FC Porto,6.0
+portugal,Pedro Gonçalves,MID,6,27,83,38500000.0,Sporting CP,84.0
+portugal,Palhinha,MID,7,29,83,31000000.0,Tottenham Hotspur,66.0
+portugal,Trincão,MID,8,25,82,38000000.0,Sporting CP,81.0
+portugal,Gonçalo Inácio,DEF,4,23,81,35000000.0,Sporting CP,23.0
+portugal,Rui Silva,GK,2,31,81,13500000.0,Sporting CP,20.0
+portugal,Gonçalo Ramos,FWD,3,24,80,30500000.0,Paris Saint-Germain,82.0
+portugal,Pedro Neto,MID,9,25,80,26500000.0,Chelsea,75.0
+portugal,Matheus Nunes,DEF,5,26,79,19000000.0,Manchester City,69.0
+portugal,Francisco Conceição,MID,10,22,79,35500000.0,Juventus,69.0
+portugal,Diogo Dalot,DEF,6,26,79,20000000.0,Manchester United,54.0
+portugal,João Félix,MID,11,25,79,23000000.0,Al Nassr,76.0
+portugal,António Silva,DEF,7,21,78,29500000.0,SL Benfica,31.0
+qatar,A. Afif,MID,1,28,78,0.0,nan,79.0
+qatar,Guilherme,MID,2,34,77,0.0,nan,58.0
+qatar,Edmilson Junior,FWD,1,30,76,0.0,nan,72.0
+qatar,A. Ali,FWD,2,28,74,0.0,nan,76.0
+qatar,B. Khoukhi,DEF,1,34,71,0.0,nan,49.0
+qatar,K. Boudiaf,MID,3,34,71,0.0,nan,60.0
+qatar,H. Al Haydos,MID,4,34,71,0.0,nan,68.0
+qatar,A. Hatem,MID,5,34,70,0.0,nan,64.0
+qatar,M. Barsham,GK,1,27,70,0.0,nan,5.0
+qatar,H. Ahmed,DEF,2,25,68,0.0,nan,44.0
+qatar,T. Salman,DEF,3,27,68,0.0,nan,31.0
+qatar,Pedro Miguel,DEF,4,34,68,0.0,nan,35.0
+qatar,A. Fathi,MID,6,32,68,0.0,nan,36.0
+qatar,A. Al Ganehi,FWD,3,24,67,0.0,nan,65.0
+qatar,M. Muntari,FWD,4,31,66,0.0,nan,68.0
+qatar,A. Madibo,MID,7,28,65,0.0,nan,35.0
+qatar,Y. Abdurisag,FWD,5,25,65,0.0,nan,60.0
+qatar,M. Mashaal,MID,8,24,64,0.0,nan,45.0
+qatar,S. Zakaria,GK,2,26,64,0.0,nan,5.0
+qatar,A. Yousef,DEF,5,23,63,0.0,nan,36.0
+qatar,J. Gaber,DEF,6,23,63,0.0,nan,42.0
+qatar,A. Al Yazidi,DEF,7,23,63,0.0,nan,39.0
+qatar,M. Badreldin,GK,3,26,62,0.0,nan,16.0
+saudi_arabia,S. Al Dawsari,MID,1,33,82,19000000.0,Al Hilal,75.0
+saudi_arabia,F. Al Birekan,MID,2,25,75,7500000.0,Al Ahli SFC,79.0
+saudi_arabia,S. Abdulhamid,DEF,1,25,75,7000000.0,RC Lens,41.0
+saudi_arabia,M. Al Juwair,MID,3,22,75,11500000.0,Al Qadsiah FC,67.0
+saudi_arabia,N. Al Aqidi,GK,1,25,72,2900000.0,Al Nassr,7.0
+saudi_arabia,S. Al Ghannam,DEF,2,31,72,1700000.0,Al Nassr,59.0
+saudi_arabia,H. Tombakti,DEF,3,26,72,3100000.0,Al Hilal,33.0
+saudi_arabia,M. Kanno,MID,4,30,72,2200000.0,Al Hilal,64.0
+saudi_arabia,A. Sharahili,DEF,4,31,71,1300000.0,Al Ittihad,31.0
+saudi_arabia,H. Kadish,DEF,5,32,71,1300000.0,Al Ittihad,43.0
+saudi_arabia,A. Al Amri,DEF,6,28,70,1600000.0,Al Nassr,20.0
+saudi_arabia,M. Al Shanqeeti,DEF,7,26,70,1900000.0,Al Ittihad,43.0
+saudi_arabia,A. Ghareeb,MID,5,28,70,1600000.0,Al Nassr,64.0
+saudi_arabia,A. Lajami,DEF,8,29,70,1500000.0,Al Hilal,48.0
+saudi_arabia,M. Al Buraik,DEF,9,32,70,1100000.0,NEOM SC,54.0
+saudi_arabia,A. Al Obud,MID,6,30,70,1500000.0,Al Ittihad,68.0
+saudi_arabia,A. Majrashi,DEF,10,25,70,2200000.0,Al Ahli SFC,36.0
+saudi_arabia,A. Al Bulayhi,DEF,11,35,70,425000.0,Al Hilal,49.0
+saudi_arabia,S. Al Faraj,MID,7,35,69,550000.0,NEOM SC,58.0
+saudi_arabia,S. Al Shehri,FWD,1,31,69,1200000.0,Al Ittihad,71.0
+saudi_arabia,S. Al Amri,MID,8,31,69,1200000.0,Al Khaleej,66.0
+saudi_arabia,A. Al Khaibari,MID,9,28,68,1100000.0,Al Nassr,35.0
+saudi_arabia,N. Al Dawsari,MID,10,26,68,1600000.0,Al Hilal,57.0
+scotland,S. McTominay,MID,1,28,85,54000000.0,Napoli,84.0
+scotland,A. Robertson,DEF,1,31,82,22000000.0,Liverpool,55.0
+scotland,J. McGinn,MID,2,30,81,25000000.0,Aston Villa,76.0
+scotland,R. Christie,MID,3,30,79,14500000.0,AFC Bournemouth,68.0
+scotland,L. Ferguson,MID,4,25,78,18500000.0,Bologna,78.0
+scotland,R. Gauld,FWD,1,29,78,14000000.0,Vancouver Whitecaps FC,70.0
+scotland,K. Tierney,DEF,2,28,77,9500000.0,Celtic,52.0
+scotland,C. Adams,FWD,2,28,77,11000000.0,Torino,81.0
+scotland,S. McKenna,DEF,3,28,75,5500000.0,Dinamo Zagreb,22.0
+scotland,A. Hickey,DEF,4,23,74,6000000.0,Brentford,48.0
+scotland,J. Hendry,DEF,5,30,74,3500000.0,Al Ettifaq,50.0
+scotland,B. Gilmour,MID,5,24,74,6500000.0,Napoli,53.0
+scotland,J. Souttar,DEF,6,28,73,2900000.0,Rangers FC,42.0
+scotland,J. Doig,DEF,7,23,73,4300000.0,Sassuolo,62.0
+scotland,A. Gunn,GK,1,29,72,1900000.0,Nottingham Forest,15.0
+scotland,K. McLean,MID,6,33,72,1200000.0,Norwich City,66.0
+scotland,G. Hirst,FWD,3,26,72,2900000.0,Ipswich Town,73.0
+scotland,A. Ralston,DEF,8,26,71,2300000.0,Celtic,58.0
+scotland,B. Gannon-Doak,MID,7,19,71,4400000.0,AFC Bournemouth,62.0
+scotland,L. Miller,MID,8,18,71,4300000.0,Udinese,60.0
+scotland,Z. Clark,GK,2,33,70,525000.0,Hearts,14.0
+scotland,G. Hanley,DEF,9,33,70,750000.0,Hibernian,30.0
+scotland,M. Johnston,DEF,10,21,68,2300000.0,Derby County,32.0
+senegal,S. Mané,MID,1,33,83,22500000.0,Al Nassr,81.0
+senegal,K. Koulibaly,DEF,1,34,82,10000000.0,Al Hilal,43.0
+senegal,N. Jackson,FWD,1,24,80,30500000.0,FC Bayern München,81.0
+senegal,B. Dia,FWD,2,28,80,21500000.0,Lazio,83.0
+senegal,É. Mendy,GK,1,33,80,7000000.0,Al Ahli SFC,5.0
+senegal,I. Ndiaye,MID,2,25,79,23000000.0,Everton,78.0
+senegal,I. Sarr,MID,3,27,79,18500000.0,Crystal Palace,79.0
+senegal,P. Sarr,MID,4,22,79,27000000.0,Tottenham Hotspur,65.0
+senegal,I. Gueye,MID,5,35,79,4900000.0,Everton,52.0
+senegal,P. Gueye,MID,6,26,78,18000000.0,Villarreal CF,56.0
+senegal,Y. Diouf,GK,2,25,78,16500000.0,OGC Nice,8.0
+senegal,P. Ciss,MID,7,31,77,7500000.0,Rayo Vallecano,55.0
+senegal,L. Camara,MID,8,21,77,23500000.0,AS Monaco,65.0
+senegal,H. Diarra,MID,9,21,77,17000000.0,Sunderland,66.0
+senegal,M. Niakhaté,DEF,2,29,77,9000000.0,Olympique Lyonnais,49.0
+senegal,A. Diao,MID,10,19,76,16000000.0,Como,79.0
+senegal,I. Jakobs,DEF,3,25,75,7000000.0,Galatasaray SK,64.0
+senegal,E. Diouf,DEF,4,20,75,10500000.0,West Ham United,67.0
+senegal,A. Ndiaye,DEF,5,23,75,8000000.0,Parma,24.0
+senegal,M. Thiam,FWD,3,32,75,4600000.0,Eyüpspor,77.0
+senegal,B. Ndiaye,MID,11,34,74,1400000.0,Gaziantep FK,62.0
+senegal,K. Diatta,MID,12,26,74,5000000.0,AS Monaco,68.0
+senegal,O. Ba,DEF,6,29,74,3900000.0,Medipol Başakşehir FK,26.0
+serbia,S. Milinković-Savić,MID,1,30,84,40500000.0,Al Hilal,81.0
+serbia,N. Milenković,DEF,1,27,83,36500000.0,Nottingham Forest,38.0
+serbia,D. Vlahović,FWD,1,25,82,41000000.0,Juventus,84.0
+serbia,M. Svilar,GK,1,25,82,33500000.0,Roma,14.0
+serbia,F. Kostić,MID,2,32,81,20500000.0,Juventus,71.0
+serbia,Đ. Petrović,GK,2,25,80,24500000.0,AFC Bournemouth,11.0
+serbia,P. Rajković,GK,3,29,80,17500000.0,Al Ittihad,9.0
+serbia,V. Milinković-Savić,GK,4,28,79,15000000.0,Napoli,20.0
+serbia,M. Dmitrović,GK,5,33,79,5500000.0,RCD Espanyol,20.0
+serbia,A. Živković,MID,3,28,78,14000000.0,PAOK,74.0
+serbia,S. Lukić,MID,4,28,78,12500000.0,Fulham FC,65.0
+serbia,N. Matić,MID,5,36,77,2100000.0,Sassuolo,59.0
+serbia,N. Gudelj,DEF,2,33,77,5000000.0,Sevilla FC,62.0
+serbia,V. Birmančević,FWD,2,27,76,8000000.0,Sparta Praha,72.0
+serbia,L. Jović,FWD,3,27,76,8000000.0,AEK Athens,76.0
+serbia,S. Pavlović,DEF,3,24,76,14000000.0,AC Milan,43.0
+serbia,I. Ilić,MID,6,24,76,11500000.0,Torino,69.0
+serbia,D. Joveljić,FWD,4,25,75,7500000.0,Sporting Kansas City,81.0
+serbia,L. Samardžić,MID,7,23,75,11000000.0,Atalanta,72.0
+serbia,F. Đuričić,MID,8,33,75,3500000.0,Panathinaikos FC,73.0
+serbia,F. Stanković,GK,6,23,74,8000000.0,Venezia,6.0
+serbia,N. Radoja,MID,9,32,73,2000000.0,Sporting Kansas City,59.0
+serbia,M. Gaćinović,MID,10,30,73,2900000.0,AEK Athens,61.0
+south_korea,H. Son,FWD,1,32,85,43000000.0,Los Angeles FC,84.0
+south_korea,Kim Min Jae,DEF,1,28,82,29000000.0,FC Bayern München,23.0
+south_korea,Lee Kang In,FWD,2,24,79,26500000.0,Paris Saint-Germain,75.0
+south_korea,Lee Jae Sung,MID,1,32,77,8500000.0,1. FSV Mainz 05,71.0
+south_korea,Hwang In Beom,MID,2,28,77,10500000.0,Feyenoord,67.0
+south_korea,Lee Dong Kyeong,MID,3,27,75,6000000.0,Gimcheon Sangmu FC,73.0
+south_korea,Hwang Hee Chan,FWD,3,29,75,5500000.0,Wolverhampton Wanderers,76.0
+south_korea,Jo Hyeon Woo,GK,1,33,75,1800000.0,Ulsan HD FC,18.0
+south_korea,Song Bum Keun,GK,2,27,74,4400000.0,Jeonbuk Hyundai Motors,17.0
+south_korea,Lee Chang Geun,GK,3,31,74,2200000.0,Daejeon Citizen,19.0
+south_korea,Joo Min Kyu,FWD,4,35,74,1800000.0,Daejeon Citizen,78.0
+south_korea,Hong Hyeon Seok,MID,4,26,73,3800000.0,FC Nantes,72.0
+south_korea,Jeong Woo Yeong,MID,5,25,73,4000000.0,1. FC Union Berlin,66.0
+south_korea,Paik Seung Ho,MID,6,28,72,2100000.0,Birmingham City,63.0
+south_korea,Jeon Jin Woo,FWD,5,25,72,2800000.0,Jeonbuk Hyundai Motors,74.0
+south_korea,Kim Bong Soo,MID,7,25,72,3000000.0,Daejeon Citizen,53.0
+south_korea,Hwang Ui Jo,FWD,6,32,71,1500000.0,Alanyaspor,70.0
+south_korea,Lee Ho Jae,FWD,7,24,71,2900000.0,Pohang Steelers,75.0
+south_korea,Ko Seung Beom,MID,8,31,71,1500000.0,Ulsan HD FC,57.0
+south_korea,Park Jin Seob,DEF,2,29,71,1600000.0,Jeonbuk Hyundai Motors,47.0
+south_korea,Eom Ji Sung,MID,9,23,71,4200000.0,Swansea City,63.0
+south_korea,Park Seung Wook,DEF,3,28,71,1600000.0,Pohang Steelers,34.0
+south_korea,Oh Hyeon Gyu,FWD,8,24,71,3000000.0,KRC Genk,73.0
+spain,Rodri,MID,1,29,90,102000000.0,Manchester City,74.0
+spain,Pedri,MID,2,22,89,149500000.0,FC Barcelona,77.0
+spain,Lamine Yamal,MID,3,17,89,147000000.0,FC Barcelona,83.0
+spain,David Raya,GK,1,29,87,54500000.0,Arsenal,19.0
+spain,Nico Williams,MID,4,22,86,94500000.0,Athletic Club,79.0
+spain,Carvajal,DEF,1,33,85,28000000.0,Real Madrid,56.0
+spain,Dani Olmo,MID,5,27,85,62000000.0,FC Barcelona,80.0
+spain,Fabián Ruiz,MID,6,29,85,52500000.0,Paris Saint-Germain,76.0
+spain,Unai Simón,GK,2,28,85,43000000.0,Athletic Club,14.0
+spain,Grimaldo,MID,7,29,84,41500000.0,Bayer 04 Leverkusen,67.0
+spain,Marc Cucurella,DEF,2,26,84,45500000.0,Chelsea,61.0
+spain,Vivian,DEF,3,25,84,49500000.0,Athletic Club,52.0
+spain,Álex Baena,MID,8,23,84,63500000.0,Atlético Madrid,77.0
+spain,Mikel Merino,MID,9,29,83,35500000.0,Arsenal,80.0
+spain,R. Le Normand,DEF,4,28,83,36500000.0,Atlético Madrid,22.0
+spain,Ayoze,FWD,1,31,83,30500000.0,Villarreal CF,86.0
+spain,Ferran Torres,FWD,2,25,83,48000000.0,FC Barcelona,84.0
+spain,Zubimendi,MID,10,26,83,45500000.0,Arsenal,69.0
+spain,Álex Remiro,GK,3,30,83,27500000.0,Real Sociedad,13.0
+spain,Pedro Porro,DEF,5,25,82,37000000.0,Tottenham Hotspur,68.0
+spain,Oyarzabal,FWD,3,28,82,31000000.0,Real Sociedad,83.0
+spain,D. Huijsen,DEF,6,20,82,56000000.0,Real Madrid,44.0
+spain,Pau Cubarsí,DEF,7,18,82,40500000.0,FC Barcelona,41.0
+sweden,A. Isak,FWD,1,25,88,111000000.0,Liverpool,91.0
+sweden,V. Gyökeres,FWD,2,27,87,93000000.0,Arsenal,88.0
+sweden,D. Kulusevski,MID,1,25,83,47500000.0,Tottenham Hotspur,82.0
+sweden,A. Elanga,FWD,3,23,81,35000000.0,Newcastle United,77.0
+sweden,H. Larsson,MID,2,21,78,31500000.0,Eintracht Frankfurt,77.0
+sweden,C. Starfelt,DEF,1,30,78,11500000.0,RC Celta,25.0
+sweden,I. Hien,DEF,2,26,78,16500000.0,Atalanta,30.0
+sweden,G. Gudmundsson,DEF,3,26,77,11500000.0,Leeds United,59.0
+sweden,D. Svensson,DEF,4,23,77,15000000.0,Borussia Dortmund,51.0
+sweden,L. Bergvall,MID,3,19,77,22500000.0,Tottenham Hotspur,63.0
+sweden,S. Nanasi,MID,4,23,76,15000000.0,RC Strasbourg Alsace,67.0
+sweden,N. Eliasson,MID,5,29,76,7500000.0,AEK Athens,69.0
+sweden,M. Svanberg,MID,6,26,76,9500000.0,VfL Wolfsburg,68.0
+sweden,Y. Ayari,MID,7,21,75,11500000.0,Brighton & Hove Albion,66.0
+sweden,V. Lindelöf,DEF,5,30,75,4600000.0,Aston Villa,42.0
+sweden,G. Nilsson,FWD,4,28,75,6000000.0,Club Brugge KV,76.0
+sweden,J. Karlström,MID,8,30,75,4700000.0,Udinese,52.0
+sweden,E. Holm,DEF,6,25,74,5500000.0,Bologna,57.0
+sweden,V. Johansson,GK,1,26,74,4000000.0,Stoke City,6.0
+sweden,A. Salétros,MID,9,29,73,3000000.0,AIK,65.0
+sweden,R. Olsen,GK,2,35,73,350000.0,Malmö FF,11.0
+sweden,B. Zeneli,MID,10,22,72,4700000.0,IF Elfsborg,68.0
+sweden,H. Ekdal,DEF,7,26,72,2600000.0,Burnley,30.0
+switzerland,Y. Sommer,GK,1,36,87,9000000.0,Inter,13.0
+switzerland,G. Kobel,GK,2,27,86,66500000.0,Borussia Dortmund,10.0
+switzerland,G. Xhaka,MID,1,32,85,36000000.0,Sunderland,67.0
+switzerland,M. Akanji,DEF,1,29,82,25500000.0,Inter,38.0
+switzerland,F. Schär,DEF,2,33,82,14500000.0,Newcastle United,60.0
+switzerland,D. Zakaria,MID,2,28,82,29500000.0,AS Monaco,64.0
+switzerland,R. Freuler,MID,3,33,81,13000000.0,Bologna,70.0
+switzerland,D. Ndoye,MID,4,24,79,24000000.0,Nottingham Forest,74.0
+switzerland,X. Shaqiri,MID,5,33,78,9000000.0,FC Basel 1893,79.0
+switzerland,B. Embolo,FWD,1,28,77,11000000.0,Stade Rennais FC,75.0
+switzerland,A. Jashari,MID,6,22,77,22500000.0,AC Milan,64.0
+switzerland,R. Bürki,GK,3,34,77,1800000.0,St. Louis CITY SC,8.0
+switzerland,P. Köhn,GK,4,27,77,10500000.0,AS Monaco,8.0
+switzerland,N. Elvedi,DEF,3,28,77,9000000.0,Borussia Mönchengladbach,30.0
+switzerland,J. Omlin,GK,5,31,76,4000000.0,Borussia Mönchengladbach,17.0
+switzerland,C. Zesiger,DEF,4,27,76,8500000.0,FC Augsburg,37.0
+switzerland,D. Sow,MID,7,28,76,7500000.0,Sevilla FC,69.0
+switzerland,Y. Mvogo,GK,6,31,76,4000000.0,FC Lorient,10.0
+switzerland,N. Okafor,FWD,2,25,76,10000000.0,Leeds United,78.0
+switzerland,F. Ugrinić,MID,8,26,75,7500000.0,Valencia CF,70.0
+switzerland,M. Muheim,DEF,5,27,75,6000000.0,Hamburger SV,62.0
+switzerland,V. Sierro,MID,9,29,75,5500000.0,Al Shabab,67.0
+switzerland,R. Steffen,FWD,3,33,75,3500000.0,FC Lugano,70.0
+tunisia,E. Skhiri,MID,1,30,80,17500000.0,Eintracht Frankfurt,76.0
+tunisia,A. Abdi,DEF,1,31,76,5500000.0,OGC Nice,63.0
+tunisia,Hannibal,MID,2,22,74,9500000.0,Burnley,60.0
+tunisia,I. Gharbi,MID,3,21,73,7000000.0,FC Augsburg,66.0
+tunisia,M. Talbi,DEF,2,27,73,3500000.0,FC Lorient,23.0
+tunisia,E. Achouri,MID,4,26,72,2800000.0,FC København,64.0
+tunisia,A. Layouni,FWD,1,32,72,1900000.0,BK Häcken,74.0
+tunisia,E. Saad,FWD,2,25,72,2900000.0,FC Augsburg,72.0
+tunisia,Y. Valery,DEF,3,26,71,2300000.0,Sheffield Wednesday,42.0
+tunisia,S. Khaoui,MID,5,30,70,1500000.0,Red Star FC,68.0
+tunisia,M. Ben Ouanes,DEF,4,30,69,1200000.0,Kasımpaşa SK,59.0
+tunisia,S. Tounekti,MID,6,22,69,2800000.0,Celtic,64.0
+tunisia,I. El Mizouni,MID,7,24,68,1700000.0,Leyton Orient,55.0
+tunisia,D. Bronn,DEF,5,30,68,1000000.0,Servette FC,56.0
+tunisia,H. Rafia,MID,8,26,68,1600000.0,Lecce,62.0
+tunisia,S. Ltaief,MID,9,25,68,1600000.0,Sparta Rotterdam,62.0
+tunisia,A. Ghram,DEF,6,23,67,2100000.0,Shakhtar Donetsk,37.0
+tunisia,A. Slimane,MID,10,24,67,1500000.0,Norwich City,60.0
+tunisia,M. Mahmoud,MID,11,25,67,1900000.0,FC Lugano,56.0
+tunisia,A. Cherni,DEF,7,23,66,1300000.0,Göztepe SK,32.0
+tunisia,M. Dräger,DEF,8,29,65,625000.0,Eintracht Braunschweig,61.0
+tunisia,C. Labidi,MID,12,24,65,1100000.0,CD Nacional,55.0
+tunisia,R. Kaib,DEF,9,28,65,650000.0,Halmstads BK,41.0
+ukraine,A. Dovbyk,FWD,1,28,83,37000000.0,Roma,86.0
+ukraine,A. Lunin,GK,1,26,81,29500000.0,Real Madrid,8.0
+ukraine,A. Trubin,GK,2,23,80,36000000.0,SL Benfica,9.0
+ukraine,G. Sudakov,MID,1,22,80,43000000.0,SL Benfica,76.0
+ukraine,V. Tsygankov,MID,2,27,79,18500000.0,Girona FC,74.0
+ukraine,I. Zabarnyi,DEF,1,22,79,24500000.0,Paris Saint-Germain,33.0
+ukraine,V. Mykolenko,DEF,2,26,78,15000000.0,Everton,44.0
+ukraine,M. Shaparenko,MID,3,26,78,16500000.0,Dynamo Kyiv,69.0
+ukraine,M. Matviienko,DEF,3,29,77,9000000.0,Shakhtar Donetsk,53.0
+ukraine,O. Zinchenko,DEF,4,28,77,9500000.0,Nottingham Forest,58.0
+ukraine,V. Buyalskyi,MID,4,32,76,6000000.0,Dynamo Kyiv,71.0
+ukraine,V. Vanat,FWD,2,23,76,11500000.0,Girona FC,81.0
+ukraine,V. Bondar,DEF,5,26,75,7000000.0,Shakhtar Donetsk,27.0
+ukraine,R. Yaremchuk,FWD,3,29,74,4200000.0,Olympiacos FC,76.0
+ukraine,D. Riznyk,GK,3,26,74,4500000.0,Shakhtar Donetsk,14.0
+ukraine,A. Yarmolenko,MID,5,35,73,1200000.0,Dynamo Kyiv,74.0
+ukraine,T. Stepanenko,MID,6,35,73,850000.0,Eyüpspor,51.0
+ukraine,Y. Konoplia,DEF,6,25,72,2900000.0,Shakhtar Donetsk,41.0
+ukraine,O. Nazarenko,MID,7,25,72,0.0,nan,65.0
+ukraine,O. Hutsuliak,MID,8,27,72,0.0,nan,73.0
+ukraine,B. Mykhailichenko,DEF,7,28,71,0.0,nan,51.0
+ukraine,Y. Yarmoliuk,MID,9,21,71,3800000.0,Brentford,64.0
+ukraine,I. Kaliuzhnyi,MID,10,27,70,0.0,nan,55.0
+uruguay,F. Valverde,MID,1,26,89,120500000.0,Real Madrid,80.0
+uruguay,L. Torreira,MID,2,29,83,31000000.0,Galatasaray SK,71.0
+uruguay,J. Giménez,DEF,1,30,83,30000000.0,Atlético Madrid,37.0
+uruguay,R. Araujo,DEF,2,26,83,42000000.0,FC Barcelona,56.0
+uruguay,M. Arambarri,MID,3,29,80,20500000.0,Getafe CF,82.0
+uruguay,R. Bentancur,MID,4,28,80,20500000.0,Tottenham Hotspur,68.0
+uruguay,R. Zalazar,MID,5,25,79,23000000.0,Sporting Clube de Braga,80.0
+uruguay,L. Suárez,FWD,1,38,79,6000000.0,Inter Miami,82.0
+uruguay,D. Núñez,FWD,2,26,79,23000000.0,Al Hilal,77.0
+uruguay,M. Ugarte,MID,6,24,79,23000000.0,Manchester United,65.0
+uruguay,S. Coates,DEF,3,34,79,5500000.0,Club Nacional de Football,55.0
+uruguay,F. Muslera,GK,1,39,79,1900000.0,Estudiantes de La Plata,10.0
+uruguay,M. Olivera,DEF,4,27,78,13500000.0,Napoli,50.0
+uruguay,L. Fernández,MID,7,26,78,18500000.0,Peñarol,80.0
+uruguay,M. Araújo,MID,8,25,77,14000000.0,Sporting CP,71.0
+uruguay,C. Stuani,FWD,3,38,77,3600000.0,Girona FC,79.0
+uruguay,M. Vecino,MID,9,33,77,6500000.0,Lazio,68.0
+uruguay,J. Rodríguez,MID,10,31,76,6000000.0,Portland Timbers,75.0
+uruguay,E. Cavani,FWD,4,38,76,2600000.0,Boca Juniors,80.0
+uruguay,N. López,FWD,5,31,76,6500000.0,Club Nacional de Football,84.0
+uruguay,M. Merentiel,FWD,6,29,76,7500000.0,Boca Juniors,79.0
+uruguay,N. Nández,MID,11,29,76,7500000.0,Al Qadsiah FC,60.0
+uruguay,S. Bueno,DEF,5,26,76,8500000.0,Wolverhampton Wanderers,20.0
+usa,C. Pulisic,FWD,1,26,84,46000000.0,AC Milan,85.0
+usa,M. Tillman,MID,1,23,82,46000000.0,Bayer 04 Leverkusen,75.0
+usa,A. Robinson,DEF,1,27,82,29500000.0,Fulham FC,44.0
+usa,T. Adams,MID,2,26,79,19500000.0,AFC Bournemouth,52.0
+usa,S. Dest,DEF,2,24,79,23500000.0,PSV,60.0
+usa,C. Carter-Vickers,DEF,3,27,79,20000000.0,Celtic,24.0
+usa,W. McKennie,MID,3,26,78,16500000.0,Juventus,68.0
+usa,T. Weah,MID,4,25,77,12500000.0,Olympique de Marseille,74.0
+usa,C. Richards,DEF,4,25,77,12500000.0,Crystal Palace,23.0
+usa,R. Pepi,FWD,2,22,76,17000000.0,PSV,83.0
+usa,A. Zendejas,MID,5,27,76,0.0,nan,73.0
+usa,W. Zimmerman,DEF,5,32,75,3600000.0,Nashville SC,52.0
+usa,J. Sargent,FWD,3,25,75,7500000.0,Norwich City,77.0
+usa,G. Reyna,MID,6,22,75,9000000.0,Borussia Mönchengladbach,71.0
+usa,B. Aaronson,MID,7,24,74,6000000.0,Leeds United,66.0
+usa,Y. Musah,MID,8,22,74,9500000.0,Atalanta,66.0
+usa,A. Trusty,DEF,6,26,74,4900000.0,Celtic,42.0
+usa,J. Scally,DEF,7,22,74,5500000.0,Borussia Mönchengladbach,49.0
+usa,M. McKenzie,DEF,8,26,74,5500000.0,Toulouse FC,37.0
+usa,M. Turner,GK,1,31,74,2200000.0,New England Revolution,15.0
+usa,M. Robinson,DEF,9,28,73,3100000.0,FC Cincinnati,29.0
+usa,Z. Steffen,GK,2,30,73,2000000.0,Colorado Rapids,9.0
+usa,T. Ream,DEF,10,37,72,425000.0,Charlotte FC,41.0
+wales,B. Johnson,FWD,1,24,79,25000000.0,Tottenham Hotspur,82.0
+wales,N. Williams,DEF,1,24,78,18000000.0,Nottingham Forest,45.0
+wales,E. Ampadu,DEF,2,24,76,9000000.0,Leeds United,51.0
+wales,D. James,MID,1,27,76,8000000.0,Leeds United,74.0
+wales,J. Rodon,DEF,3,27,76,8000000.0,Leeds United,23.0
+wales,C. Roberts,DEF,4,29,75,4900000.0,Burnley,60.0
+wales,D. Brooks,MID,2,27,75,6000000.0,AFC Bournemouth,70.0
+wales,B. Davies,DEF,5,32,75,3600000.0,Tottenham Hotspur,58.0
+wales,C. Mepham,DEF,6,27,73,3200000.0,West Bromwich Albion,32.0
+wales,N. Broadhead,MID,3,27,73,3200000.0,Wrexham,73.0
+wales,K. Moore,FWD,2,32,72,1900000.0,Wrexham,71.0
+wales,T. Lawrence,MID,4,31,72,0.0,nan,70.0
+wales,K. Darlow,GK,1,34,72,400000.0,Leeds United,14.0
+wales,B. Cabango,DEF,7,25,71,2600000.0,Swansea City,24.0
+wales,S. Thomas,MID,5,26,71,2200000.0,Stoke City,56.0
+wales,L. Cullen,MID,6,26,70,2100000.0,Swansea City,73.0
+wales,D. Ward,GK,2,32,70,800000.0,Wrexham,11.0
+wales,J. James,MID,7,20,69,3000000.0,Leicester City,67.0
+wales,R. Matondo,MID,8,24,69,1900000.0,Rangers FC,63.0
+wales,L. Koumas,MID,9,19,69,3300000.0,Birmingham City,64.0
+wales,J. Dasilva,DEF,8,27,69,1500000.0,Coventry City,37.0
+wales,J. Sheehan,MID,10,30,68,1000000.0,Bolton Wanderers,55.0
+wales,M. Harris,FWD,3,26,68,1600000.0,Oxford United,66.0

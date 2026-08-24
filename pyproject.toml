@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wc2026"
+version = "0.1.0"
+description = "World Cup 2026 agentic match-outcome pipeline (matchiq): data ingestion, feature engineering, a model ensemble (Dixon-Coles, TabPFN, Chronos, HMM, Bradley-Terry, LLM-RAG), and a Kelly bankroll layer."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "matchiq" }]
+keywords = ["football", "world-cup", "betting", "dixon-coles", "tabpfn", "kelly", "elo"]
+
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+# Heavier / optional integrations. The package runs fully without these,
+# falling back to in-package implementations.
+store = ["duckdb>=0.9", "pyarrow>=12"]
+config = ["pyyaml>=6"]
+sources = ["requests>=2.28"]
+ml = ["scikit-learn>=1.3"]
+foundation = ["tabpfn>=2.0", "chronos-forecasting>=1.2", "torch>=2.0"]
+llm = ["anthropic>=0.39"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "hypothesis>=6.90"]
+all = [
+    "duckdb>=0.9", "pyarrow>=12", "pyyaml>=6", "requests>=2.28",
+    "scikit-learn>=1.3", "anthropic>=0.39", "pytest>=7.4",
+]
+
+[project.scripts]
+wc2026 = "wc2026.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
