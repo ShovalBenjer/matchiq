@@ -1,0 +1,30 @@
+{
+  "data": {
+    "store_dir": "data/store",
+    "cache_dir": "data/cache",
+    "synthetic_seed": 2026,
+    "synthetic_n_history_tournaments": 6
+  },
+  "features": {
+    "elo_k": 32.0,
+    "elo_home_advantage": 65.0,
+    "elo_initial": 1500.0,
+    "form_window": 6,
+    "form_decay_halflife_days": 180.0
+  },
+  "models": {
+    "dixon_coles": { "decay_alpha": 0.0065, "max_goals": 10, "home_advantage_init": 0.25 },
+    "hmm": { "states": ["Dominant", "Grinding", "Struggling", "Eliminated"], "n_iter": 25, "tol": 0.0001 },
+    "ensemble": { "members": ["dixon_coles", "tabpfn", "chronos", "bradley_terry"], "meta_learner": "average", "cv_folds": 5 },
+    "llm_model": "claude-opus-4-8",
+    "llm_enabled": true
+  },
+  "betting": {
+    "edge_threshold": 0.03,
+    "kelly_fraction": 0.25,
+    "max_stake_fraction": 0.05,
+    "starting_bankroll": 1000.0,
+    "devig_method": "multiplicative",
+    "monte_carlo_paths": 50000
+  }
+}
