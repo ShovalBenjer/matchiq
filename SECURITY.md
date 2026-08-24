@@ -9,7 +9,7 @@
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability in wc2026, please report it responsibly via
-email to **security@example.com** or open a private security advisory on GitHub.
+email to **security@shovalbenjer.com** or open a private security advisory on GitHub.
 
 Please include:
 
