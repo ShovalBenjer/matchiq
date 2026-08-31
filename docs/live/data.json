@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T18:57:16+00:00",
+  "generated_at": "2026-08-31T01:21:52+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -623,7 +623,108 @@
   },
   "fixtures": [],
   "winner": [],
-  "top_scorer": [],
+  "top_scorer": [
+    {
+      "player": "Lionel Messi",
+      "prob": 0.5571,
+      "fair_odds": 1.79
+    },
+    {
+      "player": "Petar Musa",
+      "prob": 0.2143,
+      "fair_odds": 4.67
+    },
+    {
+      "player": "Sam Surridge",
+      "prob": 0.0577,
+      "fair_odds": 17.35
+    },
+    {
+      "player": "Denis Bouanga",
+      "prob": 0.0321,
+      "fair_odds": 31.11
+    },
+    {
+      "player": "Hugo Cuypers",
+      "prob": 0.0265,
+      "fair_odds": 37.69
+    },
+    {
+      "player": "Tai Baribo",
+      "prob": 0.0255,
+      "fair_odds": 39.2
+    },
+    {
+      "player": "Evander",
+      "prob": 0.0184,
+      "fair_odds": 54.44
+    },
+    {
+      "player": "Brian White",
+      "prob": 0.0107,
+      "fair_odds": 93.33
+    },
+    {
+      "player": "K\u00e9vin Denkey",
+      "prob": 0.0097,
+      "fair_odds": 103.16
+    },
+    {
+      "player": "Mart\u00edn Ojeda",
+      "prob": 0.0071,
+      "fair_odds": 140.0
+    },
+    {
+      "player": "Hany Mukhtar",
+      "prob": 0.0066,
+      "fair_odds": 150.77
+    },
+    {
+      "player": "Milan Iloski",
+      "prob": 0.0061,
+      "fair_odds": 163.33
+    },
+    {
+      "player": "Prince-Osei Owusu",
+      "prob": 0.0056,
+      "fair_odds": 178.18
+    },
+    {
+      "player": "Dejan Jovelji\u0107",
+      "prob": 0.0046,
+      "fair_odds": 217.78
+    },
+    {
+      "player": "Eric Maxim Choupo-Moting",
+      "prob": 0.0041,
+      "fair_odds": 245.0
+    },
+    {
+      "player": "Germ\u00e1n Berterame",
+      "prob": 0.0036,
+      "fair_odds": 280.0
+    },
+    {
+      "player": "Albert Rusn\u00e1k",
+      "prob": 0.0026,
+      "fair_odds": 392.0
+    },
+    {
+      "player": "Tadeo Allende",
+      "prob": 0.0015,
+      "fair_odds": 653.33
+    },
+    {
+      "player": "Louis Munteanu",
+      "prob": 0.0015,
+      "fair_odds": 653.33
+    },
+    {
+      "player": "Anders Dreyer",
+      "prob": 0.0005,
+      "fair_odds": 1960.0
+    }
+  ],
   "group_winners": {},
   "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
   "chaos": {
