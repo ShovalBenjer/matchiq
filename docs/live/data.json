@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T00:58:42+00:00",
+  "generated_at": "2026-09-07T16:30:06+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -623,108 +623,7 @@
   },
   "fixtures": [],
   "winner": [],
-  "top_scorer": [
-    {
-      "player": "Lionel Messi",
-      "prob": 0.4789,
-      "fair_odds": 2.09
-    },
-    {
-      "player": "Petar Musa",
-      "prob": 0.4239,
-      "fair_odds": 2.36
-    },
-    {
-      "player": "Denis Bouanga",
-      "prob": 0.0097,
-      "fair_odds": 102.9
-    },
-    {
-      "player": "Hugo Cuypers",
-      "prob": 0.0097,
-      "fair_odds": 102.9
-    },
-    {
-      "player": "K\u00e9vin Denkey",
-      "prob": 0.0093,
-      "fair_odds": 108.05
-    },
-    {
-      "player": "Sam Surridge",
-      "prob": 0.0083,
-      "fair_odds": 120.06
-    },
-    {
-      "player": "Evander",
-      "prob": 0.0083,
-      "fair_odds": 120.06
-    },
-    {
-      "player": "Tai Baribo",
-      "prob": 0.0083,
-      "fair_odds": 120.06
-    },
-    {
-      "player": "Mart\u00edn Ojeda",
-      "prob": 0.0069,
-      "fair_odds": 144.07
-    },
-    {
-      "player": "Hany Mukhtar",
-      "prob": 0.0056,
-      "fair_odds": 180.08
-    },
-    {
-      "player": "Milan Iloski",
-      "prob": 0.0042,
-      "fair_odds": 240.11
-    },
-    {
-      "player": "Prince-Osei Owusu",
-      "prob": 0.0042,
-      "fair_odds": 240.11
-    },
-    {
-      "player": "Dejan Jovelji\u0107",
-      "prob": 0.0037,
-      "fair_odds": 270.12
-    },
-    {
-      "player": "Eric Maxim Choupo-Moting",
-      "prob": 0.0032,
-      "fair_odds": 308.71
-    },
-    {
-      "player": "Germ\u00e1n Berterame",
-      "prob": 0.0032,
-      "fair_odds": 308.71
-    },
-    {
-      "player": "Brian White",
-      "prob": 0.0028,
-      "fair_odds": 360.17
-    },
-    {
-      "player": "Albert Rusn\u00e1k",
-      "prob": 0.0023,
-      "fair_odds": 432.2
-    },
-    {
-      "player": "Tadeo Allende",
-      "prob": 0.0014,
-      "fair_odds": 720.33
-    },
-    {
-      "player": "Louis Munteanu",
-      "prob": 0.0014,
-      "fair_odds": 720.33
-    },
-    {
-      "player": "Philip Zinckernagel",
-      "prob": 0.0009,
-      "fair_odds": 1080.5
-    }
-  ],
+  "top_scorer": [],
   "group_winners": {},
   "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
   "chaos": {
