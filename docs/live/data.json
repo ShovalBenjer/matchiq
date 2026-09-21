@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T01:02:36+00:00",
+  "generated_at": "2026-09-21T17:05:45+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -626,103 +626,103 @@
   "top_scorer": [
     {
       "player": "Lionel Messi",
-      "prob": 0.5922,
-      "fair_odds": 1.69
+      "prob": 0.7068,
+      "fair_odds": 1.41
     },
     {
       "player": "Petar Musa",
-      "prob": 0.3119,
-      "fair_odds": 3.21
+      "prob": 0.1976,
+      "fair_odds": 5.06
     },
     {
       "player": "Sam Surridge",
-      "prob": 0.0297,
-      "fair_odds": 33.72
-    },
-    {
-      "player": "Tai Baribo",
-      "prob": 0.0158,
-      "fair_odds": 63.47
-    },
-    {
-      "player": "K\u00e9vin Denkey",
-      "prob": 0.0148,
-      "fair_odds": 67.44
+      "prob": 0.029,
+      "fair_odds": 34.48
     },
     {
       "player": "Brian White",
-      "prob": 0.0116,
-      "fair_odds": 86.32
+      "prob": 0.0236,
+      "fair_odds": 42.32
+    },
+    {
+      "player": "K\u00e9vin Denkey",
+      "prob": 0.0097,
+      "fair_odds": 103.44
+    },
+    {
+      "player": "Tai Baribo",
+      "prob": 0.0086,
+      "fair_odds": 116.37
     },
     {
       "player": "Denis Bouanga",
-      "prob": 0.0056,
-      "fair_odds": 179.83
-    },
-    {
-      "player": "Evander",
-      "prob": 0.0023,
-      "fair_odds": 431.6
-    },
-    {
-      "player": "Eric Maxim Choupo-Moting",
-      "prob": 0.0023,
-      "fair_odds": 431.6
-    },
-    {
-      "player": "Hany Mukhtar",
-      "prob": 0.0023,
-      "fair_odds": 431.6
+      "prob": 0.007,
+      "fair_odds": 143.23
     },
     {
       "player": "Prince-Osei Owusu",
-      "prob": 0.0019,
-      "fair_odds": 539.5
+      "prob": 0.0021,
+      "fair_odds": 465.5
     },
     {
       "player": "Dejan Jovelji\u0107",
-      "prob": 0.0014,
-      "fair_odds": 719.33
+      "prob": 0.0016,
+      "fair_odds": 620.67
+    },
+    {
+      "player": "Evander",
+      "prob": 0.0016,
+      "fair_odds": 620.67
+    },
+    {
+      "player": "Eric Maxim Choupo-Moting",
+      "prob": 0.0016,
+      "fair_odds": 620.67
     },
     {
       "player": "Germ\u00e1n Berterame",
-      "prob": 0.0014,
-      "fair_odds": 719.33
+      "prob": 0.0016,
+      "fair_odds": 620.67
+    },
+    {
+      "player": "Hany Mukhtar",
+      "prob": 0.0011,
+      "fair_odds": 931.0
     },
     {
       "player": "Anders Dreyer",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     },
     {
       "player": "Tadeo Allende",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     },
     {
       "player": "Alonso Mart\u00ednez",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     },
     {
       "player": "Hugo Cuypers",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     },
     {
       "player": "Danny Musovski",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     },
     {
       "player": "Diego Rossi",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     },
     {
       "player": "Mart\u00edn Ojeda",
       "prob": 0.0005,
-      "fair_odds": 2158.0
+      "fair_odds": 1862.0
     }
   ],
   "group_winners": {},
