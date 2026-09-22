@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T20:12:28+00:00",
+  "generated_at": "2026-09-22T01:35:13+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -626,103 +626,103 @@
   "top_scorer": [
     {
       "player": "Lionel Messi",
-      "prob": 0.7115,
-      "fair_odds": 1.41
+      "prob": 0.7167,
+      "fair_odds": 1.4
     },
     {
       "player": "Petar Musa",
-      "prob": 0.1983,
-      "fair_odds": 5.04
+      "prob": 0.196,
+      "fair_odds": 5.1
     },
     {
       "player": "Sam Surridge",
-      "prob": 0.0274,
-      "fair_odds": 36.46
+      "prob": 0.0235,
+      "fair_odds": 42.6
     },
     {
       "player": "Brian White",
-      "prob": 0.02,
-      "fair_odds": 49.89
+      "prob": 0.0218,
+      "fair_odds": 45.8
     },
     {
       "player": "K\u00e9vin Denkey",
-      "prob": 0.0095,
-      "fair_odds": 105.33
-    },
-    {
-      "player": "Denis Bouanga",
-      "prob": 0.0084,
-      "fair_odds": 118.5
+      "prob": 0.0093,
+      "fair_odds": 107.76
     },
     {
       "player": "Tai Baribo",
-      "prob": 0.0079,
-      "fair_odds": 126.4
+      "prob": 0.0082,
+      "fair_odds": 122.13
+    },
+    {
+      "player": "Denis Bouanga",
+      "prob": 0.0071,
+      "fair_odds": 140.92
     },
     {
       "player": "Prince-Osei Owusu",
-      "prob": 0.0021,
-      "fair_odds": 474.0
+      "prob": 0.0022,
+      "fair_odds": 458.0
     },
     {
       "player": "Dejan Jovelji\u0107",
       "prob": 0.0016,
-      "fair_odds": 632.0
+      "fair_odds": 610.67
     },
     {
       "player": "Evander",
       "prob": 0.0016,
-      "fair_odds": 632.0
+      "fair_odds": 610.67
     },
     {
       "player": "Eric Maxim Choupo-Moting",
       "prob": 0.0016,
-      "fair_odds": 632.0
+      "fair_odds": 610.67
     },
     {
       "player": "Germ\u00e1n Berterame",
       "prob": 0.0016,
-      "fair_odds": 632.0
+      "fair_odds": 610.67
     },
     {
       "player": "Anders Dreyer",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Tadeo Allende",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Alonso Mart\u00ednez",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Hugo Cuypers",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Hany Mukhtar",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Danny Musovski",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Diego Rossi",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     },
     {
       "player": "Mart\u00edn Ojeda",
       "prob": 0.0005,
-      "fair_odds": 1896.0
+      "fair_odds": 1832.0
     }
   ],
   "group_winners": {},
