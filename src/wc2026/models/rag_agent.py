@@ -206,12 +206,19 @@ class NewsRAGAgent:
 
     # --- Claude extractor ---------------------------------------------
     def _analyze_claude(self, team_name: str, context: list[str]) -> NewsSignal:  # pragma: no cover
+        from wc2026.utils.prompt_safety import SYSTEM_REMINDER, mark_data
+
+        # Scraped articles are untrusted input: delimit and provenance-mark
+        # every chunk (OWASP LLM01:2025) before it enters the prompt window.
+        data_blocks = "\n---\n".join(
+            mark_data(chunk, source=f"article-{i}") for i, chunk in enumerate(context[:8]))
         prompt = (
             f"You are a football analyst. From the news snippets about {team_name}, "
             "extract a JSON object with keys: injury_severity (0..1 float, how much "
             "key-starter availability is reduced), morale (-1..1 float), "
             "tactical_change (bool), confidence (0..1 float), rationale (short string). "
-            "Respond with ONLY the JSON.\n\nNEWS:\n" + "\n---\n".join(context[:8])
+            f"{SYSTEM_REMINDER} "
+            "Respond with ONLY the JSON.\n\nNEWS:\n" + data_blocks
         )
         msg = self._client.messages.create(
             model=self.model,
