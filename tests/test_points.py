@@ -1,9 +1,25 @@
 """The points optimiser must back the favourite for direction and shade scores."""
 
+import pytest
+
+from wc2026.betting import points
 from wc2026.betting.points import STAGE_POINTS, optimize_pick, rank_scorelines
 from wc2026.betting.scorelines import market_goal_rates, score_matrix
 from wc2026.betting.value import devig
 from wc2026.data.schema import Odds, Stage
+
+
+@pytest.fixture(autouse=True)
+def _isolate_goal_boost_calibration(tmp_path, monkeypatch):
+    """Keep goal-boost tests hermetic.
+
+    The daily data sync writes data/calibration.json, which default_goal_boost
+    prefers over the session-measured constants. These tests assert the
+    fallback constants, so point the calibration loader at a nonexistent file
+    (and clear its cache) instead of the ambient checkout state.
+    """
+    monkeypatch.setattr(points, "CALIBRATION_PATH", tmp_path / "no-calibration.json")
+    monkeypatch.setattr(points, "_CAL_CACHE", None)
 
 
 def test_favourite_pick_beats_the_draw():
