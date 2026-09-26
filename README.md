@@ -11,7 +11,7 @@ standardized repository conventions.
 
 ## Repository Structure
 
-```
+```text
 matchiq/
 ├── .github/
 │   └── workflows/
