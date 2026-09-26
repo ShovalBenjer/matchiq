@@ -29,3 +29,6 @@ artifacts/
 .DS_Store
 .idea/
 .vscode/
+
+# Local telemetry: jev routing decision ledger (append-only, machine-local)
+jev/decisions.jsonl
