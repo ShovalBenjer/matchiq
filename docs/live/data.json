@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T02:33:53+00:00",
+  "generated_at": "2026-09-29T16:54:35+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -623,108 +623,7 @@
   },
   "fixtures": [],
   "winner": [],
-  "top_scorer": [
-    {
-      "player": "Lionel Messi",
-      "prob": 0.8506,
-      "fair_odds": 1.18
-    },
-    {
-      "player": "Milan Iloski",
-      "prob": 0.057,
-      "fair_odds": 17.54
-    },
-    {
-      "player": "Petar Musa",
-      "prob": 0.0327,
-      "fair_odds": 30.63
-    },
-    {
-      "player": "Brian White",
-      "prob": 0.0194,
-      "fair_odds": 51.63
-    },
-    {
-      "player": "K\u00e9vin Denkey",
-      "prob": 0.0127,
-      "fair_odds": 78.57
-    },
-    {
-      "player": "Sam Surridge",
-      "prob": 0.0061,
-      "fair_odds": 164.27
-    },
-    {
-      "player": "Tai Baribo",
-      "prob": 0.0039,
-      "fair_odds": 258.14
-    },
-    {
-      "player": "Denis Bouanga",
-      "prob": 0.0033,
-      "fair_odds": 301.17
-    },
-    {
-      "player": "Dejan Jovelji\u0107",
-      "prob": 0.0017,
-      "fair_odds": 602.33
-    },
-    {
-      "player": "Eric Maxim Choupo-Moting",
-      "prob": 0.0017,
-      "fair_odds": 602.33
-    },
-    {
-      "player": "Germ\u00e1n Berterame",
-      "prob": 0.0017,
-      "fair_odds": 602.33
-    },
-    {
-      "player": "Anders Dreyer",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Tadeo Allende",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Alonso Mart\u00ednez",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Hugo Cuypers",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Evander",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Hany Mukhtar",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Danny Musovski",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Diego Rossi",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    },
-    {
-      "player": "Mart\u00edn Ojeda",
-      "prob": 0.0006,
-      "fair_odds": 1807.0
-    }
-  ],
+  "top_scorer": [],
   "group_winners": {},
   "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
   "chaos": {
