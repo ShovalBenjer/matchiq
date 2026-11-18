@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T04:14:02+00:00",
+  "generated_at": "2026-11-18T19:25:17+00:00",
   "tournament": "FIFA World Cup 2026",
   "sources": {
     "results_odds": "ESPN / DraftKings",
@@ -627,71 +627,71 @@
   "group_winners": {},
   "disclaimer": "Market-anchored, educational only \u2014 not financial advice. Bet responsibly; only stake what you can afford.",
   "chaos": {
-    "chaos_index": 0.057,
-    "lyapunov_proxy": 0.2282,
-    "field_entropy": 0.583,
-    "favourite_fragility": 0.626,
+    "chaos_index": 0.056,
+    "lyapunov_proxy": 0.2257,
+    "field_entropy": 0.621,
+    "favourite_fragility": 0.688,
     "favourite": "spain",
-    "favourite_prob": 0.374,
+    "favourite_prob": 0.312,
     "tipping_points": [
       {
-        "home": "senegal",
-        "away": "south_korea",
+        "home": "morocco",
+        "away": "japan",
         "entropy": 1.0,
         "probs": [
           0.334,
-          0.324,
-          0.343
-        ]
-      },
-      {
-        "home": "australia",
-        "away": "iran",
-        "entropy": 1.0,
-        "probs": [
-          0.326,
-          0.338,
-          0.335
-        ]
-      },
-      {
-        "home": "saudi_arabia",
-        "away": "ghana",
-        "entropy": 0.999,
-        "probs": [
-          0.319,
-          0.355,
+          0.341,
           0.325
         ]
       },
       {
-        "home": "jamaica",
-        "away": "new_zealand",
-        "entropy": 0.999,
+        "home": "serbia",
+        "away": "poland",
+        "entropy": 1.0,
         "probs": [
-          0.328,
-          0.316,
-          0.356
+          0.337,
+          0.336,
+          0.327
         ]
       },
       {
-        "home": "qatar",
-        "away": "new_zealand",
+        "home": "saudi_arabia",
+        "away": "egypt",
         "entropy": 0.999,
         "probs": [
-          0.332,
-          0.311,
-          0.357
+          0.323,
+          0.325,
+          0.352
         ]
       },
       {
         "home": "nigeria",
         "away": "egypt",
-        "entropy": 0.998,
+        "entropy": 0.999,
         "probs": [
-          0.339,
-          0.354,
+          0.344,
+          0.35,
           0.307
+        ]
+      },
+      {
+        "home": "sweden",
+        "away": "austria",
+        "entropy": 0.997,
+        "probs": [
+          0.368,
+          0.309,
+          0.323
+        ]
+      },
+      {
+        "home": "saudi_arabia",
+        "away": "nigeria",
+        "entropy": 0.996,
+        "probs": [
+          0.34,
+          0.291,
+          0.369
         ]
       }
     ]
